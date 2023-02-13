@@ -21,8 +21,6 @@ De blokjes die een rode rand van binnen hebben geven de movement van de speler "
 Aan de onderkant van het spel staat een win kans berekening om een indicatie te geven of de party met de zichtbare monsters kan overleven of dat ze zich beter kunnen terug trekken (deze berekening word gemaakt op basis van de mogelijkheden van de gehele party en de distance de monsters kunnen bewegen)
 ![image](https://user-images.githubusercontent.com/39293162/218317884-b7cc76e4-08dd-4b63-80fe-773a7ecf7a52.png)
 
-
-
 ### Dungeon Master scherm 2
 Het tweede scherm is een weergave van de spelers waarin hp, level en andere statistieken weergegeven kunnen worden.
 ![image](https://user-images.githubusercontent.com/39293162/218316726-ecbca92a-5f5d-4aa0-b032-3f904660c55d.png)
@@ -35,22 +33,26 @@ Naast de mogelijkheid om monster tegen te komen, bestaan er ook veel npc's in di
 Het laatste scherm is het instellingen scherm. Op dit scherm worden alle instellingen voor het spel ingesteld en opgeslagen. Het zou uiteindelijk ook fijn zijn als de spelvoortgang opgeslagen kan worden. Hiervoor is het handig dat er een import en export functie komt binnen de applicatie.
 ![image](https://user-images.githubusercontent.com/39293162/218318332-b07dc54d-0db3-40fe-8bc9-3526df6bb3b9.png)
 
-
-
 ## Onderdelen van het systeem
 
 ### Map generator 
+Die een rooster maakt van blokjes waar de spelers op kunnen staan en overheen kunnen lopen, dit rooster kan dan ook gebruikt worden om weer te geven hoe ver een monster kan lopen of een speler kan lopen, dit geld dan ook voor het genereren van terrein, generator en structuren 
 
 ### Campaign generator 
 
 ### Loot generator
+De loot die gegenereerd op basis van het level, dat het item niet te sterk is, maar wel leuk of gek genoeg is voor de spelers om te gebruiken en te gebruiken.
 
 ### Enemy generator
 De DM selecteert het aantal enemies dat gegenereerd moet worden. Doormiddel van threading worden deze enemies opgesteld vanuit de dataset, wanneer een enemy een hoge moeilijkheidsgraad heeft is deze enemy uniek en wordt deze uit de dataset gehaald zodat hij niet nog een keer kan voorkomen (resource sharing). Wanneer een lage moeilijkheidsgraad enemy wordt opgesteld zal dit niet het geval zijn, aangezien het vaak kan voorkomen dat er bijvoorbeeld 10 goblins/bandits aanwezig zijn. Bij de enemies worden ook statistieken gegenereerd zoals difficulty, hit points, armor rating, etc.
 
-### NPC generator 
+### NPC generator  
+hoe die er uit ziet, achtergrondverhaal, statistieken etc
+Het achtergrondverhaal van de npc wordt gegenereerd en wat voor werk deze persoon doet etc. dit wordt dan op gelsagen en mogelijk gelinkt aan mensen die deze persoon kent
 
 ### Quest generator
+Quest generator voor als de spelers iets geheel anders doen dan wat zou moeten gebeuren
+puzzel generator om een deur of chest open te maken 
 
 ### Player Turn calculation 
 
@@ -63,23 +65,6 @@ Op basis van de statistieke van de enemies, in het specifiek de stappen die de e
 
 ### Import / Export game state
 
-
-### Simple manier voor progresie opslag
-weergave van het level van de speler 
-
-### Npc generator hoe die er uit ziet, achtergrondverhaal, statistieken etc
-Het achtergrondverhaal van de npc wordt gegenereerd en wat voor werk deze persoon doet etc. dit wordt dan op gelsagen en mogelijk gelinkt aan mensen die deze persoon kent
-
-### Loot generator  
-De loot die gegenereerd op basis van het level, dat het item niet te sterk is, maar wel leuk of gek genoeg is voor de spelers om te gebruiken en te gebruiken.
-
-### Map generator
-Die een rooster maakt van blokjes waar de spelers op kunnen staan en overheen kunnen lopen, dit rooster kan dan ook gebruikt worden om weer te geven hoe ver een monster kan lopen of een speler kan lopen, dit geld dan ook voor het genereren van terrein, generator en structuren 
-
-### Quest generator voor als de spelers iets geheel anders doen dan wat zou moeten gebeuren
-
-### puzzel generator om een deur of chest open te maken 
-
 ## Waar gebruik van wordt gemaakt:
 Schrijf hier nog even hoe dit wordt gebruikt en waarbij
 – (Multi)Threading; 
@@ -90,4 +75,3 @@ Schrijf hier nog even hoe dit wordt gebruikt en waarbij
 – Task Parallel Library / Async & Await; 
 – Linq/PLinq;
 – Asynchronous I/O.
-
