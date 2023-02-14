@@ -65,13 +65,26 @@ Op basis van de statistieke van de enemies, in het specifiek de stappen die de e
 
 ### Import / Export game state
 
-## Waar gebruik van wordt gemaakt:
-Schrijf hier nog even hoe dit wordt gebruikt en waarbij
-– (Multi)Threading; 
-– Locking; 
-– Mutex; 
-– Semaphore; 
-– Thread pool; 
-– Task Parallel Library / Async & Await; 
-– Linq/PLinq;
-– Asynchronous I/O.
+## Welke C# threading methodes worden gebruikt en hoe ze worden gebruikt:
+- (Multi)Threading; 
+   - Map generator, 
+   - Campaign generator,
+   - Loot generator,
+   - Enemy generator,
+   - NPC generator,
+   -  Quest generator,
+   - Player Turn calculation,
+- Locking; 
+	- Win kans percentage berekening,
+- Mutex; 
+	- Map generator,
+	- Enemy generator,
+	- NPC generator,
+- Semaphore; 
+	- Campaign generator
+- Thread pool; 
+- Linq/PLinq;
+	- Enemy generator
+	- Loot generator
+- Task Parallel Library / Async & Await;
+- Multiple Asynchronized I/O calls naar een api
