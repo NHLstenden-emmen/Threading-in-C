@@ -36,55 +36,46 @@ Het laatste scherm is het instellingen scherm. Op dit scherm worden alle instell
 ## Onderdelen van het systeem
 
 ### Map generator 
-Die een rooster maakt van blokjes waar de spelers op kunnen staan en overheen kunnen lopen, dit rooster kan dan ook gebruikt worden om weer te geven hoe ver een monster kan lopen of een speler kan lopen, dit geld dan ook voor het genereren van terrein, generator en structuren 
+Een generator die op een willekeurige manier een speelveld in de vorm van een grid opsteld. Met stukken waar de spelers wel en niet overheen kunnen bewegen. Dit speelveld kan ook worden gebruikt om weer te geven welke afstand een enemy of speler kan bewegen. In dit speelveld kan de omgeving en structuren worden gegenereerd.
 
 ### Campaign generator 
+De campaign generator combineert alle functionaliteit om een grote campaign op te zetten. Hierbij worden verschillende levels van de campaign gegenereerd met behulp van de map generator. In deze campaign wereld, bestaande uit meerdere mappen worden ook enemies gegenereerd en geplaats, samen met loot, NPC's en quest. Op deze manier kan de Dungeon master snel een heel spel op stellen, zonder uren aan voorbereiding te hoeven doen.
 
 ### Loot generator
-De loot die gegenereerd op basis van het level, dat het item niet te sterk is, maar wel leuk of gek genoeg is voor de spelers om te gebruiken en te gebruiken.
+Een generator die loot kan genereren voor de spelers, deze loot wordt opgesteld vanuit de dataset. Dit kan voorkomen in kisten, als rewards voor quest etc. Deze loot kan worden gegenereerd op basis van het level van de spelers. Deze berekening wordt toegepast om te verzekeren dat het item niet te sterk, of te zwak is voor het punt waar de spelers zich op bevinden.
 
 ### Enemy generator
 De DM selecteert het aantal enemies dat gegenereerd moet worden. Doormiddel van threading worden deze enemies opgesteld vanuit de dataset, wanneer een enemy een hoge moeilijkheidsgraad heeft is deze enemy uniek en wordt deze uit de dataset gehaald zodat hij niet nog een keer kan voorkomen (resource sharing). Wanneer een lage moeilijkheidsgraad enemy wordt opgesteld zal dit niet het geval zijn, aangezien het vaak kan voorkomen dat er bijvoorbeeld 10 goblins/bandits aanwezig zijn. Bij de enemies worden ook statistieken gegenereerd zoals difficulty, hit points, armor rating, etc.
 
 ### NPC generator  
-hoe die er uit ziet, achtergrondverhaal, statistieken etc
-Het achtergrondverhaal van de npc wordt gegenereerd en wat voor werk deze persoon doet etc. dit wordt dan op gelsagen en mogelijk gelinkt aan mensen die deze persoon kent
+Ook is het mogelijk om npc's te genereren. Dit is van belang omdat de spelers in een campaign vaak meerdere malen in contact komen met deze npc's, en hier vaak met kunnen praten, quest aannemen en meer. Bij het genereren van de npc's wordt uit de dataset het uiterlijk, achtergrond verhaal en de andere nodige statistieken gehaald. 
+Om te voorkomen dat er exact dezelfde npc's ontstaan zijn sommige aspecten van de npc's uniek, dus na dat dit bepaalde aspect een keer is gebruikt wordt deze uit de dataset gehaald. Wel is het mogelijk om verbanden tussen npc's op stellen, denk bijvoorbeeld aan een familie aan de hand van dezelfde achternaam.
 
 ### Quest generator
-Quest generator voor als de spelers iets geheel anders doen dan wat zou moeten gebeuren
-puzzel generator om een deur of chest open te maken 
+Tijdens het spel kunnen de spelers verschillende afwijkende doelen tegenkomen die kunnen worden vervuld voor extra beloningen (aan de hand van de loot generator). Om dit niet te makkelijk te maken kan worden gebruik gemaakt van een quest generator om een alternatief doel te genereren, dit kan een simpele quest zijn, zoals het ophalen van een item, maar ook aan de hand van bijvoorbeeld een puzzel. 
 
 ### Player Turn calculation 
+Aangezien de omgeving van de spelers enorm kan verschillen is het soms onduidelijk welke route ze kunnen nemen aan de hand van hun statistieken. Om dit proces te versimpelen kan een berekening worden uitgevoerd die het complete veld laat zien waar de speler zich in kan voortbewegen. Dit kan voor elke speler gebeuren om zo een duidelijk overzicht te krijgen van waar de spelers heen kunnen lopen.
 
 ### Enemy Postion calculation
 Op basis van de statistieke van de enemies, in het specifiek de stappen die de enemy kan zetten en zijn aanval afstand. Kan de DM voor elke enemy een tegelijk een berekening uitvoeren wat de beste mogelijk positie zou zijn voor de enemy om de speler aan te vallen. Dit is dan een mogelijk positie waar de DM de enemy neer kan zetten die wordt aangegeven door de kleur van de enemy weer te geven op de mogelijke positie.
 
 ### Win change percentage calculation
+Om het mogelijk te maken de winkans te berekenen wordt een combinatie van de statistieken van de spelers en de statistieken van de enemies genomen. Door met deze statistieken een berekening uit te voeren wordt een winkans opgesteld.
 
 ### Save game state 
+Het moet mogelijk zijn om wanneer een save file is aangemaakt, makkelijk de huidige staat van het spel op te slaan. Op deze manier kan de Dungeon master verzekeren dat er geen progressie verloren gaat. 
 
 ### Import / Export game state
+Om makkelijk verder te kunnen spelen of de spel progressie te kunnen delen met anderen moet de mogelijkheid bestaan de game state te importeren of exporteren. Dit kan een soepele herstart van het spel garanderen. En op deze manier kunnen meerdere spelers het bestand van de game state bewaren om te verzekeren dat deze niet verloren gaat. 
 
-## Welke C# threading methodes worden gebruikt en hoe ze worden gebruikt:
-- (Multi)Threading; 
-   - Map generator, 
-   - Campaign generator,
-   - Loot generator,
-   - Enemy generator,
-   - NPC generator,
-   -  Quest generator,
-   - Player Turn calculation,
-- Locking; 
-	- Win kans percentage berekening,
-- Mutex; 
-	- Map generator,
-	- Enemy generator,
-	- NPC generator,
-- Semaphore; 
-	- Campaign generator
-- Thread pool; 
-- Linq/PLinq;
-	- Enemy generator
-	- Loot generator
-- Task Parallel Library / Async & Await;
-- Multiple Asynchronized I/O calls naar een api
+## Waar gebruik van wordt gemaakt:
+Schrijf hier nog even hoe dit wordt gebruikt en waarbij
+– (Multi)Threading; 
+– Locking; 
+– Mutex; 
+– Semaphore; 
+– Thread pool; 
+– Task Parallel Library / Async & Await; 
+– Linq/PLinq;
+– Asynchronous I/O.
