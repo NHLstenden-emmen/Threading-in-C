@@ -69,13 +69,26 @@ Het moet mogelijk zijn om wanneer een save file is aangemaakt, makkelijk de huid
 ### Import / Export game state
 Om makkelijk verder te kunnen spelen of de spel progressie te kunnen delen met anderen moet de mogelijkheid bestaan de game state te importeren of exporteren. Dit kan een soepele herstart van het spel garanderen. En op deze manier kunnen meerdere spelers het bestand van de game state bewaren om te verzekeren dat deze niet verloren gaat. 
 
-## Waar gebruik van wordt gemaakt:
-Schrijf hier nog even hoe dit wordt gebruikt en waarbij
-– (Multi)Threading; 
-– Locking; 
-– Mutex; 
-– Semaphore; 
-– Thread pool; 
-– Task Parallel Library / Async & Await; 
-– Linq/PLinq;
-– Asynchronous I/O.
+## Welke C# threading methodes worden gebruikt en hoe ze worden gebruikt:
+- (Multi)Threading; 
+   - Map generator, 
+   - Campaign generator,
+   - Loot generator,
+   - Enemy generator,
+   - NPC generator,
+   -  Quest generator,
+   - Player Turn calculation,
+- Locking; 
+	- Win kans percentage berekening,
+- Mutex; 
+	- Map generator,
+	- Enemy generator,
+	- NPC generator,
+- Semaphore; 
+	- Campaign generator
+- Thread pool; 
+- Linq/PLinq;
+	- Enemy generator
+	- Loot generator
+- Task Parallel Library / Async & Await;
+- Multiple Asynchronized I/O calls naar een api
