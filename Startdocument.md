@@ -33,6 +33,10 @@ Naast de mogelijkheid om monster tegen te komen, bestaan er ook veel npc's in di
 Het laatste scherm is het instellingen scherm. Op dit scherm worden alle instellingen voor het spel ingesteld en opgeslagen. Het zou uiteindelijk ook fijn zijn als de spelvoortgang opgeslagen kan worden. Hiervoor is het handig dat er een import en export functie komt binnen de applicatie.
 ![image](https://user-images.githubusercontent.com/39293162/218318332-b07dc54d-0db3-40fe-8bc9-3526df6bb3b9.png)
 
+## Moscow analyse 
+
+![image](https://user-images.githubusercontent.com/73099939/219017599-e5231ec6-c08a-46ff-a086-e0ddcc99be62.png)
+
 ## Onderdelen van het systeem
 
 ### Map generator 
