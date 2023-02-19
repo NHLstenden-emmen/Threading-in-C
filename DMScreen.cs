@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Threading_in_C
 {
-    public partial class Form1 : Form
+    public partial class DMScreen : Form
     {
-        public Form1()
+        public DMScreen()
         {
             InitializeComponent();
 
