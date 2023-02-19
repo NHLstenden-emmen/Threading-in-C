@@ -10,15 +10,9 @@ using System.Windows.Forms;
 
 namespace Threading_in_C
 {
-<<<<<<<< HEAD:DungeonMasterUI.cs
     public partial class DungeonMasterUI : Form
     {
         public DungeonMasterUI()
-========
-    public partial class DMScreen : Form
-    {
-        public DMScreen()
->>>>>>>> 6330bd14cb7222411d7364c1884b45e29e316337:DMScreen.cs
         {
             InitializeComponent();
 
@@ -85,7 +79,7 @@ namespace Threading_in_C
             this.Controls.Add(layoutPanel);
 
             // Here the size of the windows form can be set, for the main game it needs to be: , for programming a scaled down version of: 1920x1080 is used.
-            this.Size = new Size(1920, 1080);
+            this.Size = new Size(1280, 720);
         }
 
         private void DungeonMasterUI_Load(object sender, EventArgs e)
