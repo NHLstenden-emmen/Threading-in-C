@@ -292,7 +292,7 @@
             // 
             // PlayerNameTextbox
             // 
-            this.PlayerNameTextbox.BackColor = System.Drawing.Color.White;
+            this.PlayerNameTextbox.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerNameTextbox.Location = new System.Drawing.Point(78, 27);
             this.PlayerNameTextbox.Multiline = true;
@@ -880,6 +880,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfNPCs)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             this.ResumeLayout(false);
 
         }
