@@ -30,6 +30,8 @@
         {
             this.menuBar = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ChangePlayerAttributes = new System.Windows.Forms.Button();
+            this.DeletePlayerButton = new System.Windows.Forms.Button();
             this.AddPlayerButton = new System.Windows.Forms.Button();
             this.PlayerCreationGroupBox = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -96,7 +98,6 @@
             this.ExportGameButton = new System.Windows.Forms.Button();
             this.SaveGameButton = new System.Windows.Forms.Button();
             this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
-            this.DeletePlayerButton = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.PlayerCreationGroupBox.SuspendLayout();
@@ -138,6 +139,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ChangePlayerAttributes);
             this.tabPage1.Controls.Add(this.DeletePlayerButton);
             this.tabPage1.Controls.Add(this.AddPlayerButton);
             this.tabPage1.Controls.Add(this.PlayerCreationGroupBox);
@@ -152,13 +154,33 @@
             this.tabPage1.Text = "Players";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // ChangePlayerAttributes
+            // 
+            this.ChangePlayerAttributes.Location = new System.Drawing.Point(524, 405);
+            this.ChangePlayerAttributes.Name = "ChangePlayerAttributes";
+            this.ChangePlayerAttributes.Size = new System.Drawing.Size(111, 23);
+            this.ChangePlayerAttributes.TabIndex = 12;
+            this.ChangePlayerAttributes.Text = "Edit Player";
+            this.ChangePlayerAttributes.UseVisualStyleBackColor = true;
+            this.ChangePlayerAttributes.Click += new System.EventHandler(this.ChangePlayerAttributes_Click);
+            // 
+            // DeletePlayerButton
+            // 
+            this.DeletePlayerButton.Location = new System.Drawing.Point(395, 405);
+            this.DeletePlayerButton.Name = "DeletePlayerButton";
+            this.DeletePlayerButton.Size = new System.Drawing.Size(111, 23);
+            this.DeletePlayerButton.TabIndex = 11;
+            this.DeletePlayerButton.Text = "Remove Player";
+            this.DeletePlayerButton.UseVisualStyleBackColor = true;
+            this.DeletePlayerButton.Click += new System.EventHandler(this.DeletePlayerButton_Click);
+            // 
             // AddPlayerButton
             // 
             this.AddPlayerButton.Location = new System.Drawing.Point(134, 405);
             this.AddPlayerButton.Name = "AddPlayerButton";
             this.AddPlayerButton.Size = new System.Drawing.Size(111, 23);
             this.AddPlayerButton.TabIndex = 10;
-            this.AddPlayerButton.Text = "Add Player";
+            this.AddPlayerButton.Text = "Register Character";
             this.AddPlayerButton.UseVisualStyleBackColor = true;
             this.AddPlayerButton.Click += new System.EventHandler(this.AddPlayerButton_Click);
             // 
@@ -844,16 +866,6 @@
             this.SaveGameButton.Text = "Save Game";
             this.SaveGameButton.UseVisualStyleBackColor = true;
             // 
-            // DeletePlayerButton
-            // 
-            this.DeletePlayerButton.Location = new System.Drawing.Point(460, 405);
-            this.DeletePlayerButton.Name = "DeletePlayerButton";
-            this.DeletePlayerButton.Size = new System.Drawing.Size(111, 23);
-            this.DeletePlayerButton.TabIndex = 11;
-            this.DeletePlayerButton.Text = "Remove Player";
-            this.DeletePlayerButton.UseVisualStyleBackColor = true;
-            this.DeletePlayerButton.Click += new System.EventHandler(this.DeletePlayerButton_Click);
-            // 
             // DungeonMasterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -892,6 +904,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfNPCs)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -967,5 +980,6 @@
         private System.Windows.Forms.NumericUpDown PlayerConstitutionNumeric;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button DeletePlayerButton;
+        private System.Windows.Forms.Button ChangePlayerAttributes;
     }
 }

@@ -82,28 +82,38 @@ namespace Threading_in_C
 
         private void AddPlayerButton_Click(object sender, EventArgs e)
         {
-            var player = new Player();
+            var existingPlayer = players.FirstOrDefault(p => p.Name == PlayerNameTextbox.Text);
 
-            // Check if the player already exists
-            if (players.Any(p => p.Name == PlayerNameTextbox.Text))
+            if (existingPlayer != null)
             {
-                MessageBox.Show("Player with the same name already exists.");
-                return;
+                existingPlayer.Health = (int)PlayerHealthNumeric.Value;
+                existingPlayer.Movement = (int)PlayerMovementNumeric.Value;
+                existingPlayer.Strength = (int)PlayerStrengthNumeric.Value;
+                existingPlayer.Dexterity = (int)PlayerDexterityNumeric.Value;
+                existingPlayer.Constitution = (int)PlayerConstitutionNumeric.Value;
+                existingPlayer.Intelligence = (int)PlayerIntelligenceNumeric.Value;
+                existingPlayer.Wisdom = (int)PlayerWisdomNumeric.Value;
+                existingPlayer.Charisma = (int)PlayerCharismaNumeric.Value;
+
+                MessageBox.Show("Player stats updated.");
             }
+            else
+            {
+                var player = new Player();
+                player.Name = PlayerNameTextbox.Text;
+                player.Health = (int)PlayerHealthNumeric.Value;
+                player.Movement = (int)PlayerMovementNumeric.Value;
+                player.Strength = (int)PlayerStrengthNumeric.Value;
+                player.Dexterity = (int)PlayerDexterityNumeric.Value;
+                player.Constitution = (int)PlayerConstitutionNumeric.Value;
+                player.Intelligence = (int)PlayerIntelligenceNumeric.Value;
+                player.Wisdom = (int)PlayerWisdomNumeric.Value;
+                player.Charisma = (int)PlayerCharismaNumeric.Value;
 
-            player.Name = PlayerNameTextbox.Text;
-            player.Health = (int)PlayerHealthNumeric.Value;
-            player.Movement = (int)PlayerMovementNumeric.Value;
-            player.Strength = (int)PlayerStrengthNumeric.Value;
-            player.Dexterity = (int)PlayerDexterityNumeric.Value;
-            player.Constitution = (int)PlayerConstitutionNumeric.Value;
-            player.Intelligence = (int)PlayerIntelligenceNumeric.Value; 
-            player.Wisdom = (int)PlayerWisdomNumeric.Value; 
-            player.Charisma = (int)PlayerCharismaNumeric.Value; 
-
-            // Add the player to the ListBox control
-            players.Add(player);
-            PlayerListBox.Items.Add(player.Name);
+                // Add the player to the ListBox control
+                players.Add(player);
+                PlayerListBox.Items.Add(player.Name);
+            }
         }
 
         private void PlayerListBox_SelectedIndexChanged(Object sender, EventArgs e)
@@ -145,6 +155,34 @@ namespace Threading_in_C
             PlayerListBox.Items.Remove(selectedPlayerName);
 
             MessageBox.Show("Player deleted successfully.");
+        }
+
+        private void ChangePlayerAttributes_Click(object sender, EventArgs e)
+        {
+            // Get the selected player from the list box
+            var selectedPlayerName = PlayerListBox.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(selectedPlayerName))
+            {
+                return;
+            }
+
+            // Find the player in the list of players
+            var selectedPlayer = players.FirstOrDefault(p => p.Name == selectedPlayerName);
+            if (selectedPlayer == null)
+            {
+                return;
+            }
+
+            // Display the player's attributes in text boxes
+            PlayerNameTextbox.Text = selectedPlayer.Name;
+            PlayerHealthNumeric.Value = selectedPlayer.Health;
+            PlayerMovementNumeric.Value = selectedPlayer.Movement;
+            PlayerStrengthNumeric.Value = selectedPlayer.Strength;
+            PlayerDexterityNumeric.Value = selectedPlayer.Dexterity;
+            PlayerConstitutionNumeric.Value = selectedPlayer.Constitution;
+            PlayerIntelligenceNumeric.Value = selectedPlayer.Intelligence;
+            PlayerWisdomNumeric.Value = selectedPlayer.Wisdom;
+            PlayerCharismaNumeric.Value = selectedPlayer.Charisma;
         }
     }
 }
