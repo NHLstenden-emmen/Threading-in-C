@@ -30,7 +30,28 @@
         {
             this.menuBar = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.AddPlayerButton = new System.Windows.Forms.Button();
+            this.PlayerCreationGroupBox = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PlayerCharismaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerWisdomNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerIntelligenceNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerConstitutionNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerDexterityNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerStrengthNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerMovementNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerHealthNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerNameTextbox = new System.Windows.Forms.TextBox();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.PlayerHealthLabel = new System.Windows.Forms.Label();
+            this.PlayerMovementLabel = new System.Windows.Forms.Label();
+            this.PlayerStrengthLabel = new System.Windows.Forms.Label();
+            this.PlayerConstitutionLabel = new System.Windows.Forms.Label();
+            this.PlayerDexterityLabel = new System.Windows.Forms.Label();
+            this.PlayerCharismaLabel = new System.Windows.Forms.Label();
+            this.PlayerIntelligenceLabel = new System.Windows.Forms.Label();
+            this.PlayerWisdomLabel = new System.Windows.Forms.Label();
+            this.PlayerListBox = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.GenerateMapsButton = new System.Windows.Forms.TabPage();
             this.DeleteMap = new System.Windows.Forms.Button();
@@ -75,29 +96,18 @@
             this.ExportGameButton = new System.Windows.Forms.Button();
             this.SaveGameButton = new System.Windows.Forms.Button();
             this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.PlayerCreationGroupBox = new System.Windows.Forms.GroupBox();
-            this.NameLabel = new System.Windows.Forms.Label();
-            this.PlayerHealthLabel = new System.Windows.Forms.Label();
-            this.PlayerMovementLabel = new System.Windows.Forms.Label();
-            this.PlayerStrengthLabel = new System.Windows.Forms.Label();
-            this.PlayerDexterityLabel = new System.Windows.Forms.Label();
-            this.PlayerConstitutionLabel = new System.Windows.Forms.Label();
-            this.PlayerIntelligenceLabel = new System.Windows.Forms.Label();
-            this.PlayerWisdomLabel = new System.Windows.Forms.Label();
-            this.PlayerCharismaLabel = new System.Windows.Forms.Label();
-            this.PlayerNameTextbox = new System.Windows.Forms.TextBox();
-            this.PlayerHealthTextbox = new System.Windows.Forms.TextBox();
-            this.PlayerMovementTextbox = new System.Windows.Forms.TextBox();
-            this.PlayerStrengthTextbox = new System.Windows.Forms.TextBox();
-            this.PlayerDexterityTextbox = new System.Windows.Forms.TextBox();
-            this.PlayerConstitutionTextbox = new System.Windows.Forms.TextBox();
-            this.PlayerIntelligenceTextbox = new System.Windows.Forms.TextBox();
-            this.PlayerWisdomTextbox = new System.Windows.Forms.TextBox();
-            this.PlayerCharismaTextbox = new System.Windows.Forms.TextBox();
             this.menuBar.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.PlayerCreationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerCharismaNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerWisdomNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerIntelligenceNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerConstitutionNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerDexterityNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerStrengthNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerMovementNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerHealthNumeric)).BeginInit();
             this.GenerateMapsButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfMaps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -108,7 +118,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfNPCs)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
-            this.PlayerCreationGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -128,9 +137,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.AddPlayerButton);
             this.tabPage1.Controls.Add(this.PlayerCreationGroupBox);
-            this.tabPage1.Controls.Add(this.listBox1);
-            this.tabPage1.Controls.Add(this.pictureBox1);
+            this.tabPage1.Controls.Add(this.PlayerListBox);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
@@ -141,16 +150,246 @@
             this.tabPage1.Text = "Players";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // AddPlayerButton
+            // 
+            this.AddPlayerButton.Location = new System.Drawing.Point(134, 405);
+            this.AddPlayerButton.Name = "AddPlayerButton";
+            this.AddPlayerButton.Size = new System.Drawing.Size(111, 23);
+            this.AddPlayerButton.TabIndex = 10;
+            this.AddPlayerButton.Text = "Add Player";
+            this.AddPlayerButton.UseVisualStyleBackColor = true;
+            this.AddPlayerButton.Click += new System.EventHandler(this.AddPlayerButton_Click);
+            // 
+            // PlayerCreationGroupBox
+            // 
+            this.PlayerCreationGroupBox.BackgroundImage = global::Threading_in_C.Properties.Resources.magicitemcards_template_front_poker;
+            this.PlayerCreationGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PlayerCreationGroupBox.Controls.Add(this.pictureBox1);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerCharismaNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerWisdomNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerIntelligenceNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerConstitutionNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerDexterityNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerStrengthNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerMovementNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerHealthNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerNameTextbox);
+            this.PlayerCreationGroupBox.Controls.Add(this.NameLabel);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerHealthLabel);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerMovementLabel);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerStrengthLabel);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerConstitutionLabel);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerDexterityLabel);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerCharismaLabel);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerIntelligenceLabel);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerWisdomLabel);
+            this.PlayerCreationGroupBox.Location = new System.Drawing.Point(39, 38);
+            this.PlayerCreationGroupBox.Name = "PlayerCreationGroupBox";
+            this.PlayerCreationGroupBox.Size = new System.Drawing.Size(295, 380);
+            this.PlayerCreationGroupBox.TabIndex = 9;
+            this.PlayerCreationGroupBox.TabStop = false;
+            this.PlayerCreationGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Threading_in_C.Properties.Resources.magicitemcards_template_front_poker;
-            this.pictureBox1.Location = new System.Drawing.Point(47, 42);
+            this.pictureBox1.Image = global::Threading_in_C.Properties.Resources.DnD_Symbol;
+            this.pictureBox1.Location = new System.Drawing.Point(52, 94);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(246, 332);
+            this.pictureBox1.Size = new System.Drawing.Size(185, 111);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            // 
+            // PlayerCharismaNumeric
+            // 
+            this.PlayerCharismaNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerCharismaNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerCharismaNumeric.Location = new System.Drawing.Point(217, 338);
+            this.PlayerCharismaNumeric.Name = "PlayerCharismaNumeric";
+            this.PlayerCharismaNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerCharismaNumeric.TabIndex = 25;
+            this.PlayerCharismaNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerCharismaNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerWisdomNumeric
+            // 
+            this.PlayerWisdomNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerWisdomNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerWisdomNumeric.Location = new System.Drawing.Point(217, 311);
+            this.PlayerWisdomNumeric.Name = "PlayerWisdomNumeric";
+            this.PlayerWisdomNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerWisdomNumeric.TabIndex = 24;
+            this.PlayerWisdomNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerWisdomNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerIntelligenceNumeric
+            // 
+            this.PlayerIntelligenceNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerIntelligenceNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerIntelligenceNumeric.Location = new System.Drawing.Point(217, 282);
+            this.PlayerIntelligenceNumeric.Name = "PlayerIntelligenceNumeric";
+            this.PlayerIntelligenceNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerIntelligenceNumeric.TabIndex = 23;
+            this.PlayerIntelligenceNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerIntelligenceNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerConstitutionNumeric
+            // 
+            this.PlayerConstitutionNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerConstitutionNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerConstitutionNumeric.Location = new System.Drawing.Point(217, 254);
+            this.PlayerConstitutionNumeric.Name = "PlayerConstitutionNumeric";
+            this.PlayerConstitutionNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerConstitutionNumeric.TabIndex = 22;
+            this.PlayerConstitutionNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerConstitutionNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerDexterityNumeric
+            // 
+            this.PlayerDexterityNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerDexterityNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerDexterityNumeric.Location = new System.Drawing.Point(96, 339);
+            this.PlayerDexterityNumeric.Name = "PlayerDexterityNumeric";
+            this.PlayerDexterityNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerDexterityNumeric.TabIndex = 21;
+            this.PlayerDexterityNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerDexterityNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.PlayerDexterityNumeric.ValueChanged += new System.EventHandler(this.PlayerDexterityNumeric_ValueChanged);
+            // 
+            // PlayerStrengthNumeric
+            // 
+            this.PlayerStrengthNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerStrengthNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerStrengthNumeric.Location = new System.Drawing.Point(96, 310);
+            this.PlayerStrengthNumeric.Name = "PlayerStrengthNumeric";
+            this.PlayerStrengthNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerStrengthNumeric.TabIndex = 20;
+            this.PlayerStrengthNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerStrengthNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerMovementNumeric
+            // 
+            this.PlayerMovementNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerMovementNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerMovementNumeric.Location = new System.Drawing.Point(96, 280);
+            this.PlayerMovementNumeric.Name = "PlayerMovementNumeric";
+            this.PlayerMovementNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerMovementNumeric.TabIndex = 19;
+            this.PlayerMovementNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerMovementNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerHealthNumeric
+            // 
+            this.PlayerHealthNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerHealthNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerHealthNumeric.Location = new System.Drawing.Point(96, 252);
+            this.PlayerHealthNumeric.Name = "PlayerHealthNumeric";
+            this.PlayerHealthNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerHealthNumeric.TabIndex = 18;
+            this.PlayerHealthNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerHealthNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerNameTextbox
+            // 
+            this.PlayerNameTextbox.BackColor = System.Drawing.Color.White;
+            this.PlayerNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerNameTextbox.Location = new System.Drawing.Point(78, 27);
+            this.PlayerNameTextbox.Multiline = true;
+            this.PlayerNameTextbox.Name = "PlayerNameTextbox";
+            this.PlayerNameTextbox.Size = new System.Drawing.Size(133, 20);
+            this.PlayerNameTextbox.TabIndex = 9;
+            this.PlayerNameTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // NameLabel
+            // 
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(125, 11);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(35, 13);
+            this.NameLabel.TabIndex = 0;
+            this.NameLabel.Text = "Name";
+            this.NameLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // PlayerHealthLabel
+            // 
+            this.PlayerHealthLabel.AutoSize = true;
+            this.PlayerHealthLabel.Location = new System.Drawing.Point(45, 253);
+            this.PlayerHealthLabel.Name = "PlayerHealthLabel";
+            this.PlayerHealthLabel.Size = new System.Drawing.Size(38, 13);
+            this.PlayerHealthLabel.TabIndex = 1;
+            this.PlayerHealthLabel.Text = "Health";
+            // 
+            // PlayerMovementLabel
+            // 
+            this.PlayerMovementLabel.AutoSize = true;
+            this.PlayerMovementLabel.Location = new System.Drawing.Point(37, 281);
+            this.PlayerMovementLabel.Name = "PlayerMovementLabel";
+            this.PlayerMovementLabel.Size = new System.Drawing.Size(57, 13);
+            this.PlayerMovementLabel.TabIndex = 2;
+            this.PlayerMovementLabel.Text = "Movement";
+            // 
+            // PlayerStrengthLabel
+            // 
+            this.PlayerStrengthLabel.AutoSize = true;
+            this.PlayerStrengthLabel.Location = new System.Drawing.Point(40, 311);
+            this.PlayerStrengthLabel.Name = "PlayerStrengthLabel";
+            this.PlayerStrengthLabel.Size = new System.Drawing.Size(47, 13);
+            this.PlayerStrengthLabel.TabIndex = 3;
+            this.PlayerStrengthLabel.Text = "Strength";
+            // 
+            // PlayerConstitutionLabel
+            // 
+            this.PlayerConstitutionLabel.AutoSize = true;
+            this.PlayerConstitutionLabel.Location = new System.Drawing.Point(142, 253);
+            this.PlayerConstitutionLabel.Name = "PlayerConstitutionLabel";
+            this.PlayerConstitutionLabel.Size = new System.Drawing.Size(62, 13);
+            this.PlayerConstitutionLabel.TabIndex = 5;
+            this.PlayerConstitutionLabel.Text = "Constitution";
+            // 
+            // PlayerDexterityLabel
+            // 
+            this.PlayerDexterityLabel.AutoSize = true;
+            this.PlayerDexterityLabel.Location = new System.Drawing.Point(42, 341);
+            this.PlayerDexterityLabel.Name = "PlayerDexterityLabel";
+            this.PlayerDexterityLabel.Size = new System.Drawing.Size(48, 13);
+            this.PlayerDexterityLabel.TabIndex = 4;
+            this.PlayerDexterityLabel.Text = "Dexterity";
+            // 
+            // PlayerCharismaLabel
+            // 
+            this.PlayerCharismaLabel.AutoSize = true;
+            this.PlayerCharismaLabel.Location = new System.Drawing.Point(148, 341);
+            this.PlayerCharismaLabel.Name = "PlayerCharismaLabel";
+            this.PlayerCharismaLabel.Size = new System.Drawing.Size(50, 13);
+            this.PlayerCharismaLabel.TabIndex = 8;
+            this.PlayerCharismaLabel.Text = "Charisma";
+            // 
+            // PlayerIntelligenceLabel
+            // 
+            this.PlayerIntelligenceLabel.AutoSize = true;
+            this.PlayerIntelligenceLabel.Location = new System.Drawing.Point(142, 281);
+            this.PlayerIntelligenceLabel.Name = "PlayerIntelligenceLabel";
+            this.PlayerIntelligenceLabel.Size = new System.Drawing.Size(61, 13);
+            this.PlayerIntelligenceLabel.TabIndex = 6;
+            this.PlayerIntelligenceLabel.Text = "Intelligence";
+            // 
+            // PlayerWisdomLabel
+            // 
+            this.PlayerWisdomLabel.AutoSize = true;
+            this.PlayerWisdomLabel.Location = new System.Drawing.Point(149, 311);
+            this.PlayerWisdomLabel.Name = "PlayerWisdomLabel";
+            this.PlayerWisdomLabel.Size = new System.Drawing.Size(45, 13);
+            this.PlayerWisdomLabel.TabIndex = 7;
+            this.PlayerWisdomLabel.Text = "Wisdom";
+            // 
+            // PlayerListBox
+            // 
+            this.PlayerListBox.FormattingEnabled = true;
+            this.PlayerListBox.Location = new System.Drawing.Point(381, 38);
+            this.PlayerListBox.Name = "PlayerListBox";
+            this.PlayerListBox.Size = new System.Drawing.Size(272, 381);
+            this.PlayerListBox.TabIndex = 8;
             // 
             // button1
             // 
@@ -603,187 +842,6 @@
             this.SaveGameButton.Text = "Save Game";
             this.SaveGameButton.UseVisualStyleBackColor = true;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(557, 18);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 8;
-            // 
-            // PlayerCreationGroupBox
-            // 
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerCharismaTextbox);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerWisdomTextbox);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerIntelligenceTextbox);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerConstitutionTextbox);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerDexterityTextbox);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerStrengthTextbox);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerMovementTextbox);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerHealthTextbox);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerNameTextbox);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerCharismaLabel);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerWisdomLabel);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerIntelligenceLabel);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerConstitutionLabel);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerDexterityLabel);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerStrengthLabel);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerMovementLabel);
-            this.PlayerCreationGroupBox.Controls.Add(this.PlayerHealthLabel);
-            this.PlayerCreationGroupBox.Controls.Add(this.NameLabel);
-            this.PlayerCreationGroupBox.Location = new System.Drawing.Point(370, 264);
-            this.PlayerCreationGroupBox.Name = "PlayerCreationGroupBox";
-            this.PlayerCreationGroupBox.Size = new System.Drawing.Size(200, 167);
-            this.PlayerCreationGroupBox.TabIndex = 9;
-            this.PlayerCreationGroupBox.TabStop = false;
-            this.PlayerCreationGroupBox.Text = "PLayer Creation";
-            this.PlayerCreationGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // NameLabel
-            // 
-            this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(6, 16);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(35, 13);
-            this.NameLabel.TabIndex = 0;
-            this.NameLabel.Text = "Name";
-            this.NameLabel.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // PlayerHealthLabel
-            // 
-            this.PlayerHealthLabel.AutoSize = true;
-            this.PlayerHealthLabel.Location = new System.Drawing.Point(7, 33);
-            this.PlayerHealthLabel.Name = "PlayerHealthLabel";
-            this.PlayerHealthLabel.Size = new System.Drawing.Size(38, 13);
-            this.PlayerHealthLabel.TabIndex = 1;
-            this.PlayerHealthLabel.Text = "Health";
-            // 
-            // PlayerMovementLabel
-            // 
-            this.PlayerMovementLabel.AutoSize = true;
-            this.PlayerMovementLabel.Location = new System.Drawing.Point(7, 50);
-            this.PlayerMovementLabel.Name = "PlayerMovementLabel";
-            this.PlayerMovementLabel.Size = new System.Drawing.Size(57, 13);
-            this.PlayerMovementLabel.TabIndex = 2;
-            this.PlayerMovementLabel.Text = "Movement";
-            // 
-            // PlayerStrengthLabel
-            // 
-            this.PlayerStrengthLabel.AutoSize = true;
-            this.PlayerStrengthLabel.Location = new System.Drawing.Point(7, 67);
-            this.PlayerStrengthLabel.Name = "PlayerStrengthLabel";
-            this.PlayerStrengthLabel.Size = new System.Drawing.Size(47, 13);
-            this.PlayerStrengthLabel.TabIndex = 3;
-            this.PlayerStrengthLabel.Text = "Strength";
-            // 
-            // PlayerDexterityLabel
-            // 
-            this.PlayerDexterityLabel.AutoSize = true;
-            this.PlayerDexterityLabel.Location = new System.Drawing.Point(7, 84);
-            this.PlayerDexterityLabel.Name = "PlayerDexterityLabel";
-            this.PlayerDexterityLabel.Size = new System.Drawing.Size(48, 13);
-            this.PlayerDexterityLabel.TabIndex = 4;
-            this.PlayerDexterityLabel.Text = "Dexterity";
-            // 
-            // PlayerConstitutionLabel
-            // 
-            this.PlayerConstitutionLabel.AutoSize = true;
-            this.PlayerConstitutionLabel.Location = new System.Drawing.Point(7, 101);
-            this.PlayerConstitutionLabel.Name = "PlayerConstitutionLabel";
-            this.PlayerConstitutionLabel.Size = new System.Drawing.Size(62, 13);
-            this.PlayerConstitutionLabel.TabIndex = 5;
-            this.PlayerConstitutionLabel.Text = "Constitution";
-            // 
-            // PlayerIntelligenceLabel
-            // 
-            this.PlayerIntelligenceLabel.AutoSize = true;
-            this.PlayerIntelligenceLabel.Location = new System.Drawing.Point(7, 118);
-            this.PlayerIntelligenceLabel.Name = "PlayerIntelligenceLabel";
-            this.PlayerIntelligenceLabel.Size = new System.Drawing.Size(61, 13);
-            this.PlayerIntelligenceLabel.TabIndex = 6;
-            this.PlayerIntelligenceLabel.Text = "Intelligence";
-            // 
-            // PlayerWisdomLabel
-            // 
-            this.PlayerWisdomLabel.AutoSize = true;
-            this.PlayerWisdomLabel.Location = new System.Drawing.Point(7, 135);
-            this.PlayerWisdomLabel.Name = "PlayerWisdomLabel";
-            this.PlayerWisdomLabel.Size = new System.Drawing.Size(45, 13);
-            this.PlayerWisdomLabel.TabIndex = 7;
-            this.PlayerWisdomLabel.Text = "Wisdom";
-            // 
-            // PlayerCharismaLabel
-            // 
-            this.PlayerCharismaLabel.AutoSize = true;
-            this.PlayerCharismaLabel.Location = new System.Drawing.Point(7, 152);
-            this.PlayerCharismaLabel.Name = "PlayerCharismaLabel";
-            this.PlayerCharismaLabel.Size = new System.Drawing.Size(50, 13);
-            this.PlayerCharismaLabel.TabIndex = 8;
-            this.PlayerCharismaLabel.Text = "Charisma";
-            // 
-            // PlayerNameTextbox
-            // 
-            this.PlayerNameTextbox.Location = new System.Drawing.Point(99, 8);
-            this.PlayerNameTextbox.Name = "PlayerNameTextbox";
-            this.PlayerNameTextbox.Size = new System.Drawing.Size(100, 20);
-            this.PlayerNameTextbox.TabIndex = 9;
-            // 
-            // PlayerHealthTextbox
-            // 
-            this.PlayerHealthTextbox.Location = new System.Drawing.Point(99, 26);
-            this.PlayerHealthTextbox.Name = "PlayerHealthTextbox";
-            this.PlayerHealthTextbox.Size = new System.Drawing.Size(100, 20);
-            this.PlayerHealthTextbox.TabIndex = 10;
-            // 
-            // PlayerMovementTextbox
-            // 
-            this.PlayerMovementTextbox.Location = new System.Drawing.Point(99, 43);
-            this.PlayerMovementTextbox.Name = "PlayerMovementTextbox";
-            this.PlayerMovementTextbox.Size = new System.Drawing.Size(100, 20);
-            this.PlayerMovementTextbox.TabIndex = 11;
-            // 
-            // PlayerStrengthTextbox
-            // 
-            this.PlayerStrengthTextbox.Location = new System.Drawing.Point(99, 60);
-            this.PlayerStrengthTextbox.Name = "PlayerStrengthTextbox";
-            this.PlayerStrengthTextbox.Size = new System.Drawing.Size(100, 20);
-            this.PlayerStrengthTextbox.TabIndex = 12;
-            // 
-            // PlayerDexterityTextbox
-            // 
-            this.PlayerDexterityTextbox.Location = new System.Drawing.Point(99, 77);
-            this.PlayerDexterityTextbox.Name = "PlayerDexterityTextbox";
-            this.PlayerDexterityTextbox.Size = new System.Drawing.Size(100, 20);
-            this.PlayerDexterityTextbox.TabIndex = 13;
-            // 
-            // PlayerConstitutionTextbox
-            // 
-            this.PlayerConstitutionTextbox.Location = new System.Drawing.Point(99, 94);
-            this.PlayerConstitutionTextbox.Name = "PlayerConstitutionTextbox";
-            this.PlayerConstitutionTextbox.Size = new System.Drawing.Size(100, 20);
-            this.PlayerConstitutionTextbox.TabIndex = 14;
-            // 
-            // PlayerIntelligenceTextbox
-            // 
-            this.PlayerIntelligenceTextbox.Location = new System.Drawing.Point(99, 111);
-            this.PlayerIntelligenceTextbox.Name = "PlayerIntelligenceTextbox";
-            this.PlayerIntelligenceTextbox.Size = new System.Drawing.Size(100, 20);
-            this.PlayerIntelligenceTextbox.TabIndex = 15;
-            // 
-            // PlayerWisdomTextbox
-            // 
-            this.PlayerWisdomTextbox.Location = new System.Drawing.Point(99, 128);
-            this.PlayerWisdomTextbox.Name = "PlayerWisdomTextbox";
-            this.PlayerWisdomTextbox.Size = new System.Drawing.Size(100, 20);
-            this.PlayerWisdomTextbox.TabIndex = 16;
-            // 
-            // PlayerCharismaTextbox
-            // 
-            this.PlayerCharismaTextbox.Location = new System.Drawing.Point(99, 145);
-            this.PlayerCharismaTextbox.Name = "PlayerCharismaTextbox";
-            this.PlayerCharismaTextbox.Size = new System.Drawing.Size(100, 20);
-            this.PlayerCharismaTextbox.TabIndex = 17;
-            // 
             // DungeonMasterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -799,7 +857,17 @@
             this.Load += new System.EventHandler(this.DungeonMasterUI_Load);
             this.menuBar.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.PlayerCreationGroupBox.ResumeLayout(false);
+            this.PlayerCreationGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerCharismaNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerWisdomNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerIntelligenceNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerConstitutionNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerDexterityNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerStrengthNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerMovementNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerHealthNumeric)).EndInit();
             this.GenerateMapsButton.ResumeLayout(false);
             this.GenerateMapsButton.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfMaps)).EndInit();
@@ -812,8 +880,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfNPCs)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            this.PlayerCreationGroupBox.ResumeLayout(false);
-            this.PlayerCreationGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -865,19 +931,10 @@
         private System.Windows.Forms.Button ExportGameButton;
         private System.Windows.Forms.Button SaveGameButton;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Diagnostics.PerformanceCounter performanceCounter1;
         private System.Windows.Forms.GroupBox PlayerCreationGroupBox;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox PlayerListBox;
         private System.Windows.Forms.Label NameLabel;
-        private System.Windows.Forms.TextBox PlayerCharismaTextbox;
-        private System.Windows.Forms.TextBox PlayerWisdomTextbox;
-        private System.Windows.Forms.TextBox PlayerIntelligenceTextbox;
-        private System.Windows.Forms.TextBox PlayerConstitutionTextbox;
-        private System.Windows.Forms.TextBox PlayerDexterityTextbox;
-        private System.Windows.Forms.TextBox PlayerStrengthTextbox;
-        private System.Windows.Forms.TextBox PlayerMovementTextbox;
-        private System.Windows.Forms.TextBox PlayerHealthTextbox;
         private System.Windows.Forms.TextBox PlayerNameTextbox;
         private System.Windows.Forms.Label PlayerCharismaLabel;
         private System.Windows.Forms.Label PlayerWisdomLabel;
@@ -887,5 +944,15 @@
         private System.Windows.Forms.Label PlayerStrengthLabel;
         private System.Windows.Forms.Label PlayerMovementLabel;
         private System.Windows.Forms.Label PlayerHealthLabel;
+        private System.Windows.Forms.Button AddPlayerButton;
+        private System.Windows.Forms.NumericUpDown PlayerHealthNumeric;
+        private System.Windows.Forms.NumericUpDown PlayerMovementNumeric;
+        private System.Windows.Forms.NumericUpDown PlayerStrengthNumeric;
+        private System.Windows.Forms.NumericUpDown PlayerDexterityNumeric;
+        private System.Windows.Forms.NumericUpDown PlayerCharismaNumeric;
+        private System.Windows.Forms.NumericUpDown PlayerWisdomNumeric;
+        private System.Windows.Forms.NumericUpDown PlayerIntelligenceNumeric;
+        private System.Windows.Forms.NumericUpDown PlayerConstitutionNumeric;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

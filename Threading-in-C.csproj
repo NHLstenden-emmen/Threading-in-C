@@ -94,5 +94,8 @@
   <ItemGroup>
     <None Include="Resources\magicitemcards_template_front_poker.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DnD-Symbol.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

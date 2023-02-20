@@ -63,6 +63,16 @@ namespace Threading_in_C.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DnD_Symbol {
+            get {
+                object obj = ResourceManager.GetObject("DnD-Symbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap magicitemcards_template_front_poker {
             get {
                 object obj = ResourceManager.GetObject("magicitemcards_template_front_poker", resourceCulture);
