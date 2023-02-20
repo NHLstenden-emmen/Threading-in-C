@@ -33,7 +33,7 @@
             // 
             // SelectPlayerBoardScreen
             // 
-            this.SelectPlayerBoardScreen.Location = new System.Drawing.Point(307, 354);
+            this.SelectPlayerBoardScreen.Location = new System.Drawing.Point(30, 126);
             this.SelectPlayerBoardScreen.Name = "SelectPlayerBoardScreen";
             this.SelectPlayerBoardScreen.Size = new System.Drawing.Size(211, 23);
             this.SelectPlayerBoardScreen.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(284, 161);
             this.Controls.Add(this.SelectPlayerBoardScreen);
             this.Name = "ChoosePlayerBoardScreen";
             this.Text = "ChoosePlayerBoardScreen";
