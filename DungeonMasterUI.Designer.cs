@@ -72,11 +72,17 @@
             this.NPCExampleSix = new System.Windows.Forms.RichTextBox();
             this.NPCExampleFive = new System.Windows.Forms.RichTextBox();
             this.NPCExampleFour = new System.Windows.Forms.RichTextBox();
+            this.SaveGameButton = new System.Windows.Forms.Button();
+            this.ExportGameButton = new System.Windows.Forms.Button();
+            this.ImportGameButton = new System.Windows.Forms.Button();
+            this.SavedGameBox = new System.Windows.Forms.RichTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuBar.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.GenerateMapsButton.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfMaps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -178,6 +184,11 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.textBox1);
+            this.tabPage5.Controls.Add(this.SavedGameBox);
+            this.tabPage5.Controls.Add(this.ImportGameButton);
+            this.tabPage5.Controls.Add(this.ExportGameButton);
+            this.tabPage5.Controls.Add(this.SaveGameButton);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -504,6 +515,51 @@
             this.NPCExampleFour.TabIndex = 7;
             this.NPCExampleFour.Text = "NPC Example";
             // 
+            // SaveGameButton
+            // 
+            this.SaveGameButton.Location = new System.Drawing.Point(36, 30);
+            this.SaveGameButton.Name = "SaveGameButton";
+            this.SaveGameButton.Size = new System.Drawing.Size(242, 81);
+            this.SaveGameButton.TabIndex = 0;
+            this.SaveGameButton.Text = "Save Game";
+            this.SaveGameButton.UseVisualStyleBackColor = true;
+            // 
+            // ExportGameButton
+            // 
+            this.ExportGameButton.Location = new System.Drawing.Point(36, 141);
+            this.ExportGameButton.Name = "ExportGameButton";
+            this.ExportGameButton.Size = new System.Drawing.Size(242, 81);
+            this.ExportGameButton.TabIndex = 1;
+            this.ExportGameButton.Text = "Export Game";
+            this.ExportGameButton.UseVisualStyleBackColor = true;
+            // 
+            // ImportGameButton
+            // 
+            this.ImportGameButton.Location = new System.Drawing.Point(36, 253);
+            this.ImportGameButton.Name = "ImportGameButton";
+            this.ImportGameButton.Size = new System.Drawing.Size(242, 81);
+            this.ImportGameButton.TabIndex = 2;
+            this.ImportGameButton.Text = "Import Game";
+            this.ImportGameButton.UseVisualStyleBackColor = true;
+            // 
+            // SavedGameBox
+            // 
+            this.SavedGameBox.Location = new System.Drawing.Point(447, 30);
+            this.SavedGameBox.Name = "SavedGameBox";
+            this.SavedGameBox.Size = new System.Drawing.Size(427, 491);
+            this.SavedGameBox.TabIndex = 3;
+            this.SavedGameBox.Text = "Save games appear here";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(228, 928);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(449, 22);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "Last saved on ... ";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // DungeonMasterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -523,6 +579,8 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfMaps)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -578,5 +636,10 @@
         private System.Windows.Forms.RichTextBox NPCExampleFour;
         private System.Windows.Forms.RichTextBox NPCExampleThree;
         private System.Windows.Forms.RichTextBox NPCExampleTwo;
+        private System.Windows.Forms.RichTextBox SavedGameBox;
+        private System.Windows.Forms.Button ImportGameButton;
+        private System.Windows.Forms.Button ExportGameButton;
+        private System.Windows.Forms.Button SaveGameButton;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
