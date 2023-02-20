@@ -20,7 +20,7 @@ namespace Threading_in_C
         public MyApplicationContext()
         {
             var forms = new List<Form>() {
-                new DMScreen(),
+                new DungeonMasterUI(),
                 new PlayerBoard()
             };
 

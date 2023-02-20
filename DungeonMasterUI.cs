@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Threading_in_C
 {
-    public partial class DMScreen : Form
+    public partial class DungeonMasterUI : Form
     {
-        public DMScreen()
+        public DungeonMasterUI()
         {
             InitializeComponent();
 
@@ -79,7 +79,7 @@ namespace Threading_in_C
             this.Controls.Add(layoutPanel);
 
             // Here the size of the windows form can be set, for the main game it needs to be: , for programming a scaled down version of: 1920x1080 is used.
-            this.Size = new Size(1920, 1080);
+            this.Size = new Size(1920, 1080); // de dm tool moet niet full screen dit moet de helft van het scherm nemen
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Threading_in_C
 {
-    partial class DMScreen
+    partial class DungeonMasterUI
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "DMScreen";
+            this.Text = "DungeonMasterUI";
         }
 
         #endregion
