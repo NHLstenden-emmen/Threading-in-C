@@ -51,5 +51,10 @@ namespace Threading_in_C
         {
 
         }
+
+        private void richTextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

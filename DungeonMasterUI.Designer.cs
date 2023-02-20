@@ -62,14 +62,26 @@
             this.EnemyExampleFour = new System.Windows.Forms.RichTextBox();
             this.SavedEnemyBox = new System.Windows.Forms.RichTextBox();
             this.DeleteEnemyButton = new System.Windows.Forms.Button();
+            this.SavedNPCList = new System.Windows.Forms.RichTextBox();
+            this.GenerateNPCButton = new System.Windows.Forms.Button();
+            this.AmountOfNPCs = new System.Windows.Forms.NumericUpDown();
+            this.DeleteNPC = new System.Windows.Forms.Button();
+            this.NPCExampleOne = new System.Windows.Forms.RichTextBox();
+            this.NPCExampleTwo = new System.Windows.Forms.RichTextBox();
+            this.NPCExampleThree = new System.Windows.Forms.RichTextBox();
+            this.NPCExampleSix = new System.Windows.Forms.RichTextBox();
+            this.NPCExampleFive = new System.Windows.Forms.RichTextBox();
+            this.NPCExampleFour = new System.Windows.Forms.RichTextBox();
             this.menuBar.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.GenerateMapsButton.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfMaps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MonsterAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountOfNPCs)).BeginInit();
             this.SuspendLayout();
             // 
             // menuBar
@@ -146,6 +158,16 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.NPCExampleSix);
+            this.tabPage4.Controls.Add(this.NPCExampleFive);
+            this.tabPage4.Controls.Add(this.NPCExampleFour);
+            this.tabPage4.Controls.Add(this.NPCExampleThree);
+            this.tabPage4.Controls.Add(this.NPCExampleTwo);
+            this.tabPage4.Controls.Add(this.NPCExampleOne);
+            this.tabPage4.Controls.Add(this.DeleteNPC);
+            this.tabPage4.Controls.Add(this.AmountOfNPCs);
+            this.tabPage4.Controls.Add(this.GenerateNPCButton);
+            this.tabPage4.Controls.Add(this.SavedNPCList);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -400,6 +422,88 @@
             this.DeleteEnemyButton.UseVisualStyleBackColor = true;
             this.DeleteEnemyButton.Click += new System.EventHandler(this.button3_Click);
             // 
+            // SavedNPCList
+            // 
+            this.SavedNPCList.Location = new System.Drawing.Point(489, 61);
+            this.SavedNPCList.Name = "SavedNPCList";
+            this.SavedNPCList.Size = new System.Drawing.Size(395, 897);
+            this.SavedNPCList.TabIndex = 0;
+            this.SavedNPCList.Text = "Saved NPC\'s Appear here";
+            // 
+            // GenerateNPCButton
+            // 
+            this.GenerateNPCButton.Location = new System.Drawing.Point(60, 61);
+            this.GenerateNPCButton.Name = "GenerateNPCButton";
+            this.GenerateNPCButton.Size = new System.Drawing.Size(114, 23);
+            this.GenerateNPCButton.TabIndex = 1;
+            this.GenerateNPCButton.Text = "Generate NPC\'s";
+            this.GenerateNPCButton.UseVisualStyleBackColor = true;
+            // 
+            // AmountOfNPCs
+            // 
+            this.AmountOfNPCs.Location = new System.Drawing.Point(173, 61);
+            this.AmountOfNPCs.Name = "AmountOfNPCs";
+            this.AmountOfNPCs.Size = new System.Drawing.Size(40, 22);
+            this.AmountOfNPCs.TabIndex = 2;
+            // 
+            // DeleteNPC
+            // 
+            this.DeleteNPC.Location = new System.Drawing.Point(134, 737);
+            this.DeleteNPC.Name = "DeleteNPC";
+            this.DeleteNPC.Size = new System.Drawing.Size(204, 87);
+            this.DeleteNPC.TabIndex = 3;
+            this.DeleteNPC.Text = "Delete NPC";
+            this.DeleteNPC.UseVisualStyleBackColor = true;
+            // 
+            // NPCExampleOne
+            // 
+            this.NPCExampleOne.Location = new System.Drawing.Point(60, 122);
+            this.NPCExampleOne.Name = "NPCExampleOne";
+            this.NPCExampleOne.Size = new System.Drawing.Size(153, 150);
+            this.NPCExampleOne.TabIndex = 4;
+            this.NPCExampleOne.Text = "NPC Example";
+            // 
+            // NPCExampleTwo
+            // 
+            this.NPCExampleTwo.Location = new System.Drawing.Point(60, 318);
+            this.NPCExampleTwo.Name = "NPCExampleTwo";
+            this.NPCExampleTwo.Size = new System.Drawing.Size(153, 150);
+            this.NPCExampleTwo.TabIndex = 5;
+            this.NPCExampleTwo.Text = "NPC Example";
+            // 
+            // NPCExampleThree
+            // 
+            this.NPCExampleThree.Location = new System.Drawing.Point(60, 513);
+            this.NPCExampleThree.Name = "NPCExampleThree";
+            this.NPCExampleThree.Size = new System.Drawing.Size(153, 150);
+            this.NPCExampleThree.TabIndex = 6;
+            this.NPCExampleThree.Text = "NPC Example";
+            // 
+            // NPCExampleSix
+            // 
+            this.NPCExampleSix.Location = new System.Drawing.Point(271, 513);
+            this.NPCExampleSix.Name = "NPCExampleSix";
+            this.NPCExampleSix.Size = new System.Drawing.Size(153, 150);
+            this.NPCExampleSix.TabIndex = 9;
+            this.NPCExampleSix.Text = "NPC Example";
+            this.NPCExampleSix.TextChanged += new System.EventHandler(this.richTextBox4_TextChanged);
+            // 
+            // NPCExampleFive
+            // 
+            this.NPCExampleFive.Location = new System.Drawing.Point(271, 318);
+            this.NPCExampleFive.Name = "NPCExampleFive";
+            this.NPCExampleFive.Size = new System.Drawing.Size(153, 150);
+            this.NPCExampleFive.TabIndex = 8;
+            this.NPCExampleFive.Text = "NPC Example";
+            // 
+            // NPCExampleFour
+            // 
+            this.NPCExampleFour.Location = new System.Drawing.Point(271, 122);
+            this.NPCExampleFour.Name = "NPCExampleFour";
+            this.NPCExampleFour.Size = new System.Drawing.Size(153, 150);
+            this.NPCExampleFour.TabIndex = 7;
+            this.NPCExampleFour.Text = "NPC Example";
+            // 
             // DungeonMasterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -418,10 +522,12 @@
             this.GenerateMapsButton.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfMaps)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MonsterAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountOfNPCs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -462,5 +568,15 @@
         private System.Windows.Forms.RichTextBox EnemyExampleThree;
         private System.Windows.Forms.RichTextBox EnemyExampleTwo;
         private System.Windows.Forms.RichTextBox EnemyExample;
+        private System.Windows.Forms.NumericUpDown AmountOfNPCs;
+        private System.Windows.Forms.Button GenerateNPCButton;
+        private System.Windows.Forms.RichTextBox SavedNPCList;
+        private System.Windows.Forms.RichTextBox NPCExampleOne;
+        private System.Windows.Forms.Button DeleteNPC;
+        private System.Windows.Forms.RichTextBox NPCExampleSix;
+        private System.Windows.Forms.RichTextBox NPCExampleFive;
+        private System.Windows.Forms.RichTextBox NPCExampleFour;
+        private System.Windows.Forms.RichTextBox NPCExampleThree;
+        private System.Windows.Forms.RichTextBox NPCExampleTwo;
     }
 }
