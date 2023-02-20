@@ -20,5 +20,10 @@ namespace Threading_in_C
 
             InitializeComponent();
         }
+
+        private void PlayerBoard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

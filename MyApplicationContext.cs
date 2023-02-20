@@ -20,8 +20,7 @@ namespace Threading_in_C
         public MyApplicationContext()
         {
             var forms = new List<Form>() {
-                new DungeonMasterUI(),
-                new PlayerBoard()
+                new DungeonMasterUI()
             };
 
             foreach (var form in forms)

@@ -61,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DungeonMasterUI.resx">
+      <DependentUpon>DungeonMasterUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlayerBoard.resx">
       <DependentUpon>PlayerBoard.cs</DependentUpon>
     </EmbeddedResource>

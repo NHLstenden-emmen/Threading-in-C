@@ -15,6 +15,7 @@ namespace Threading_in_C
         public DungeonMasterUI()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
 
             // Creating a top menu bar
             MenuStrip menuBar = new MenuStrip();
@@ -78,8 +79,16 @@ namespace Threading_in_C
             // Add the layout panel to the form
             this.Controls.Add(layoutPanel);
 
-            // Here the size of the windows form can be set, for the main game it needs to be: , for programming a scaled down version of: 1920x1080 is used.
-            this.Size = new Size(1920, 1080); // de dm tool moet niet full screen dit moet de helft van het scherm nemen
+            // Set the width of the form to 50% of the display width
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width / 2;
+
+            // Set the height of the form to 1080
+            this.Height = 1080;
+        }
+
+        private void DungeonMasterUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
