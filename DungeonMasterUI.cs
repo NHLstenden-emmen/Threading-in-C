@@ -15,13 +15,14 @@ namespace Threading_in_C
         public DungeonMasterUI()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
 
             // Creating a top menu bar
             MenuStrip menuBar = new MenuStrip();
 
             // Creating the menu bar items 
             ToolStripMenuItem playerMenu = new ToolStripMenuItem();
-            playerMenu.Text = "Players";
+            playerMenu.Text = "Players"; 
 
             ToolStripMenuItem mapMenu = new ToolStripMenuItem();
             mapMenu.Text = "Map";
@@ -55,7 +56,7 @@ namespace Threading_in_C
 
             // Adding the menu bar to the middle column 
             layoutPanel.Controls.Add(menuBar, 2, 0);
-
+            
             // Center the menu bar within the column
             menuBar.Anchor = AnchorStyles.None;
             menuBar.Anchor |= AnchorStyles.Top;
@@ -78,8 +79,11 @@ namespace Threading_in_C
             // Add the layout panel to the form
             this.Controls.Add(layoutPanel);
 
-            // Here the size of the windows form can be set, for the main game it needs to be: , for programming a scaled down version of: 1920x1080 is used.
-            this.Size = new Size(1280, 720);
+            // Set the width of the form to 50% of the display width
+            this.Width = Screen.PrimaryScreen.WorkingArea.Width / 2;
+
+            // Set the height of the form to 1080
+            this.Height = 1080;
         }
 
         private void DungeonMasterUI_Load(object sender, EventArgs e)
