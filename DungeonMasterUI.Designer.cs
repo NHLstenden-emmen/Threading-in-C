@@ -96,6 +96,7 @@
             this.ExportGameButton = new System.Windows.Forms.Button();
             this.SaveGameButton = new System.Windows.Forms.Button();
             this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
+            this.DeletePlayerButton = new System.Windows.Forms.Button();
             this.menuBar.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.PlayerCreationGroupBox.SuspendLayout();
@@ -137,6 +138,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.DeletePlayerButton);
             this.tabPage1.Controls.Add(this.AddPlayerButton);
             this.tabPage1.Controls.Add(this.PlayerCreationGroupBox);
             this.tabPage1.Controls.Add(this.PlayerListBox);
@@ -842,6 +844,16 @@
             this.SaveGameButton.Text = "Save Game";
             this.SaveGameButton.UseVisualStyleBackColor = true;
             // 
+            // DeletePlayerButton
+            // 
+            this.DeletePlayerButton.Location = new System.Drawing.Point(460, 405);
+            this.DeletePlayerButton.Name = "DeletePlayerButton";
+            this.DeletePlayerButton.Size = new System.Drawing.Size(111, 23);
+            this.DeletePlayerButton.TabIndex = 11;
+            this.DeletePlayerButton.Text = "Remove Player";
+            this.DeletePlayerButton.UseVisualStyleBackColor = true;
+            this.DeletePlayerButton.Click += new System.EventHandler(this.DeletePlayerButton_Click);
+            // 
             // DungeonMasterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -880,7 +892,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfNPCs)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -955,5 +966,6 @@
         private System.Windows.Forms.NumericUpDown PlayerIntelligenceNumeric;
         private System.Windows.Forms.NumericUpDown PlayerConstitutionNumeric;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button DeletePlayerButton;
     }
 }

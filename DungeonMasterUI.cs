@@ -84,7 +84,13 @@ namespace Threading_in_C
         {
             var player = new Player();
 
-            // Set its properties to the values entered in the TextBox controls
+            // Check if the player already exists
+            if (players.Any(p => p.Name == PlayerNameTextbox.Text))
+            {
+                MessageBox.Show("Player with the same name already exists.");
+                return;
+            }
+
             player.Name = PlayerNameTextbox.Text;
             player.Health = (int)PlayerHealthNumeric.Value;
             player.Movement = (int)PlayerMovementNumeric.Value;
@@ -114,6 +120,31 @@ namespace Threading_in_C
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void DeletePlayerButton_Click(object sender, EventArgs e)
+        {
+            // Get the selected player from the list box
+            var selectedPlayerName = PlayerListBox.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(selectedPlayerName))
+            {
+                MessageBox.Show("Please select a player to delete.");
+                return;
+            }
+
+            // Find the player in the list of players
+            var selectedPlayer = players.FirstOrDefault(p => p.Name == selectedPlayerName);
+            if (selectedPlayer == null)
+            {
+                MessageBox.Show("Selected player was not found.");
+                return;
+            }
+
+            // Remove the player from the list of players and the list box
+            players.Remove(selectedPlayer);
+            PlayerListBox.Items.Remove(selectedPlayerName);
+
+            MessageBox.Show("Player deleted successfully.");
         }
     }
 }
