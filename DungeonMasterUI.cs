@@ -15,7 +15,6 @@ namespace Threading_in_C
         public DungeonMasterUI()
         {
             InitializeComponent();
-            FormBorderStyle = FormBorderStyle.None;
 
             // Creating a top menu bar
             MenuStrip menuBar = new MenuStrip();
@@ -48,11 +47,15 @@ namespace Threading_in_C
             layoutPanel.Dock = DockStyle.Fill;
             layoutPanel.ColumnCount = 5;
             layoutPanel.RowCount = 5;
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
+
+            // Defining the column width 
+            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.00F));
+            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.00F));
+            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40.00F));
+            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.00F));
+            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.00F));
+
+            // TODO: Defining the column height
 
             // Adding the menu bar to the middle column 
             layoutPanel.Controls.Add(menuBar, 2, 0);
@@ -71,10 +74,19 @@ namespace Threading_in_C
             Button mapMonsterGenerator = new Button();
             mapMonsterGenerator.Text = "Generate monsters on the map";
 
+            // Button for the Map generator 
+            Button mapGenerator = new Button() { Text = "Generate new maps" };
+
             // Add the buttons to the layout panel in the second row
             layoutPanel.Controls.Add(mapLootGenerator, 0, 1);
             layoutPanel.Controls.Add(gridSizeGenerator, 1, 1);
             layoutPanel.Controls.Add(mapMonsterGenerator, 2, 1);
+
+            // Add the button to the layout panel in the third row
+            layoutPanel.Controls.Add(mapGenerator, 1, 2);
+
+            // Add example map (just the text so far, no functionality) 
+            
 
             // Add the layout panel to the form
             this.Controls.Add(layoutPanel);
