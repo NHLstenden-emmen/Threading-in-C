@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChoosePlayerBoardScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChoosePlayerBoardScreen.Designer.cs">
+      <DependentUpon>ChoosePlayerBoardScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="DungeonMasterUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChoosePlayerBoardScreen.resx">
+      <DependentUpon>ChoosePlayerBoardScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DungeonMasterUI.resx">
       <DependentUpon>DungeonMasterUI.cs</DependentUpon>
     </EmbeddedResource>

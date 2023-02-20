@@ -23,5 +23,10 @@ namespace Threading_in_C
 
             }
         }
+
+        private void SelectPlayerBoardScreen_Click(object sender, EventArgs e)
+        {
+            new PlayerBoard().Show();
+        }
     }
 }
