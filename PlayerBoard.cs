@@ -18,6 +18,9 @@ namespace Threading_in_C
             // maar dan moet hij nog het andere scherm pakken
             WindowState = FormWindowState.Maximized;
 
+            this.Location = Screen.AllScreens[0].WorkingArea.Location;
+
+
             InitializeComponent();
         }
 

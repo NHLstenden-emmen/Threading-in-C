@@ -21,7 +21,8 @@ namespace Threading_in_C
         {
             var forms = new List<Form>() {
                 new DungeonMasterUI(),
-                new PlayerBoard()
+                new PlayerBoard(),
+                new ChoosePlayerBoardScreen()
             };
 
             foreach (var form in forms)
