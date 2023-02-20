@@ -16,7 +16,7 @@ namespace Threading_in_C
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MyApplicationContext());
+            Application.Run(new DungeonMasterUI());
         }
     }
 
