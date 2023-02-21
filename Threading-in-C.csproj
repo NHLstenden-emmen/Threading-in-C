@@ -58,6 +58,7 @@
     <Compile Include="DungeonMasterUI.Designer.cs">
       <DependentUpon>DungeonMasterUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Character.cs" />
     <Compile Include="Entities\Enemy.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\NPC.cs" />
