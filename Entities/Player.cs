@@ -7,7 +7,7 @@ using Threading_in_C.Entities;
 
 namespace Threading_in_C.Players
 {
-    public class Player : Entity
+    public class Player : Character
     {
         public override string ToString()
         {

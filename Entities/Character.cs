@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Threading_in_C.Entities
 {
-    internal class Enemy : Entity
+    public class Character : Entity
     {
-        public float CR { get; set; }
-        public int Size { get; set; }
-        public string Type { get; set; }
+        public List<string> Race { get; set; }
+        public string Class { get; set; }
     }
 }

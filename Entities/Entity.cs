@@ -17,5 +17,7 @@ namespace Threading_in_C.Entities
         public int Intelligence { get; set; }
         public int Wisdom { get; set; }
         public int Charisma { get; set; }
+        public int AR { get; set; }
+        public int BP { get; set; }
     }
 }
