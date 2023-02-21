@@ -31,7 +31,6 @@
             this.menuBar = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ChangePlayerAttributes = new System.Windows.Forms.Button();
-            this.DeletePlayerButton = new System.Windows.Forms.Button();
             this.AddPlayerButton = new System.Windows.Forms.Button();
             this.PlayerCreationGroupBox = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -139,8 +138,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.Controls.Add(this.ChangePlayerAttributes);
-            this.tabPage1.Controls.Add(this.DeletePlayerButton);
             this.tabPage1.Controls.Add(this.AddPlayerButton);
             this.tabPage1.Controls.Add(this.PlayerCreationGroupBox);
             this.tabPage1.Controls.Add(this.PlayerListBox);
@@ -152,27 +151,16 @@
             this.tabPage1.Size = new System.Drawing.Size(700, 818);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Players";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // ChangePlayerAttributes
             // 
-            this.ChangePlayerAttributes.Location = new System.Drawing.Point(524, 405);
+            this.ChangePlayerAttributes.Location = new System.Drawing.Point(39, 704);
             this.ChangePlayerAttributes.Name = "ChangePlayerAttributes";
             this.ChangePlayerAttributes.Size = new System.Drawing.Size(111, 23);
             this.ChangePlayerAttributes.TabIndex = 12;
             this.ChangePlayerAttributes.Text = "Edit Player";
             this.ChangePlayerAttributes.UseVisualStyleBackColor = true;
             this.ChangePlayerAttributes.Click += new System.EventHandler(this.ChangePlayerAttributes_Click);
-            // 
-            // DeletePlayerButton
-            // 
-            this.DeletePlayerButton.Location = new System.Drawing.Point(395, 405);
-            this.DeletePlayerButton.Name = "DeletePlayerButton";
-            this.DeletePlayerButton.Size = new System.Drawing.Size(111, 23);
-            this.DeletePlayerButton.TabIndex = 11;
-            this.DeletePlayerButton.Text = "Remove Player";
-            this.DeletePlayerButton.UseVisualStyleBackColor = true;
-            this.DeletePlayerButton.Click += new System.EventHandler(this.DeletePlayerButton_Click);
             // 
             // AddPlayerButton
             // 
@@ -207,12 +195,12 @@
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerCharismaLabel);
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerIntelligenceLabel);
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerWisdomLabel);
+            this.PlayerCreationGroupBox.Font = new System.Drawing.Font("Viner Hand ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayerCreationGroupBox.Location = new System.Drawing.Point(39, 38);
             this.PlayerCreationGroupBox.Name = "PlayerCreationGroupBox";
             this.PlayerCreationGroupBox.Size = new System.Drawing.Size(295, 380);
             this.PlayerCreationGroupBox.TabIndex = 9;
             this.PlayerCreationGroupBox.TabStop = false;
-            this.PlayerCreationGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // pictureBox1
             // 
@@ -223,7 +211,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // PlayerCharismaNumeric
             // 
@@ -231,7 +218,7 @@
             this.PlayerCharismaNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerCharismaNumeric.Location = new System.Drawing.Point(217, 338);
             this.PlayerCharismaNumeric.Name = "PlayerCharismaNumeric";
-            this.PlayerCharismaNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerCharismaNumeric.Size = new System.Drawing.Size(40, 21);
             this.PlayerCharismaNumeric.TabIndex = 25;
             this.PlayerCharismaNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerCharismaNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -242,7 +229,7 @@
             this.PlayerWisdomNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerWisdomNumeric.Location = new System.Drawing.Point(217, 311);
             this.PlayerWisdomNumeric.Name = "PlayerWisdomNumeric";
-            this.PlayerWisdomNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerWisdomNumeric.Size = new System.Drawing.Size(40, 21);
             this.PlayerWisdomNumeric.TabIndex = 24;
             this.PlayerWisdomNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerWisdomNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -253,7 +240,7 @@
             this.PlayerIntelligenceNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerIntelligenceNumeric.Location = new System.Drawing.Point(217, 282);
             this.PlayerIntelligenceNumeric.Name = "PlayerIntelligenceNumeric";
-            this.PlayerIntelligenceNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerIntelligenceNumeric.Size = new System.Drawing.Size(40, 21);
             this.PlayerIntelligenceNumeric.TabIndex = 23;
             this.PlayerIntelligenceNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerIntelligenceNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -264,7 +251,7 @@
             this.PlayerConstitutionNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerConstitutionNumeric.Location = new System.Drawing.Point(217, 254);
             this.PlayerConstitutionNumeric.Name = "PlayerConstitutionNumeric";
-            this.PlayerConstitutionNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerConstitutionNumeric.Size = new System.Drawing.Size(40, 21);
             this.PlayerConstitutionNumeric.TabIndex = 22;
             this.PlayerConstitutionNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerConstitutionNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -275,11 +262,10 @@
             this.PlayerDexterityNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerDexterityNumeric.Location = new System.Drawing.Point(96, 339);
             this.PlayerDexterityNumeric.Name = "PlayerDexterityNumeric";
-            this.PlayerDexterityNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerDexterityNumeric.Size = new System.Drawing.Size(40, 21);
             this.PlayerDexterityNumeric.TabIndex = 21;
             this.PlayerDexterityNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerDexterityNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
-            this.PlayerDexterityNumeric.ValueChanged += new System.EventHandler(this.PlayerDexterityNumeric_ValueChanged);
             // 
             // PlayerStrengthNumeric
             // 
@@ -287,7 +273,7 @@
             this.PlayerStrengthNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerStrengthNumeric.Location = new System.Drawing.Point(96, 310);
             this.PlayerStrengthNumeric.Name = "PlayerStrengthNumeric";
-            this.PlayerStrengthNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerStrengthNumeric.Size = new System.Drawing.Size(40, 21);
             this.PlayerStrengthNumeric.TabIndex = 20;
             this.PlayerStrengthNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerStrengthNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -298,7 +284,7 @@
             this.PlayerMovementNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerMovementNumeric.Location = new System.Drawing.Point(96, 280);
             this.PlayerMovementNumeric.Name = "PlayerMovementNumeric";
-            this.PlayerMovementNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerMovementNumeric.Size = new System.Drawing.Size(40, 21);
             this.PlayerMovementNumeric.TabIndex = 19;
             this.PlayerMovementNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerMovementNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -309,7 +295,7 @@
             this.PlayerHealthNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerHealthNumeric.Location = new System.Drawing.Point(96, 252);
             this.PlayerHealthNumeric.Name = "PlayerHealthNumeric";
-            this.PlayerHealthNumeric.Size = new System.Drawing.Size(40, 16);
+            this.PlayerHealthNumeric.Size = new System.Drawing.Size(40, 21);
             this.PlayerHealthNumeric.TabIndex = 18;
             this.PlayerHealthNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerHealthNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -318,6 +304,7 @@
             // 
             this.PlayerNameTextbox.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerNameTextbox.Font = new System.Drawing.Font("Viner Hand ITC", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayerNameTextbox.Location = new System.Drawing.Point(78, 27);
             this.PlayerNameTextbox.Multiline = true;
             this.PlayerNameTextbox.Name = "PlayerNameTextbox";
@@ -330,17 +317,16 @@
             this.NameLabel.AutoSize = true;
             this.NameLabel.Location = new System.Drawing.Point(125, 11);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(35, 13);
+            this.NameLabel.Size = new System.Drawing.Size(39, 18);
             this.NameLabel.TabIndex = 0;
             this.NameLabel.Text = "Name";
-            this.NameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // PlayerHealthLabel
             // 
             this.PlayerHealthLabel.AutoSize = true;
             this.PlayerHealthLabel.Location = new System.Drawing.Point(45, 253);
             this.PlayerHealthLabel.Name = "PlayerHealthLabel";
-            this.PlayerHealthLabel.Size = new System.Drawing.Size(38, 13);
+            this.PlayerHealthLabel.Size = new System.Drawing.Size(45, 18);
             this.PlayerHealthLabel.TabIndex = 1;
             this.PlayerHealthLabel.Text = "Health";
             // 
@@ -349,7 +335,7 @@
             this.PlayerMovementLabel.AutoSize = true;
             this.PlayerMovementLabel.Location = new System.Drawing.Point(37, 281);
             this.PlayerMovementLabel.Name = "PlayerMovementLabel";
-            this.PlayerMovementLabel.Size = new System.Drawing.Size(57, 13);
+            this.PlayerMovementLabel.Size = new System.Drawing.Size(62, 18);
             this.PlayerMovementLabel.TabIndex = 2;
             this.PlayerMovementLabel.Text = "Movement";
             // 
@@ -358,7 +344,7 @@
             this.PlayerStrengthLabel.AutoSize = true;
             this.PlayerStrengthLabel.Location = new System.Drawing.Point(40, 311);
             this.PlayerStrengthLabel.Name = "PlayerStrengthLabel";
-            this.PlayerStrengthLabel.Size = new System.Drawing.Size(47, 13);
+            this.PlayerStrengthLabel.Size = new System.Drawing.Size(54, 18);
             this.PlayerStrengthLabel.TabIndex = 3;
             this.PlayerStrengthLabel.Text = "Strength";
             // 
@@ -367,7 +353,7 @@
             this.PlayerConstitutionLabel.AutoSize = true;
             this.PlayerConstitutionLabel.Location = new System.Drawing.Point(142, 253);
             this.PlayerConstitutionLabel.Name = "PlayerConstitutionLabel";
-            this.PlayerConstitutionLabel.Size = new System.Drawing.Size(62, 13);
+            this.PlayerConstitutionLabel.Size = new System.Drawing.Size(75, 18);
             this.PlayerConstitutionLabel.TabIndex = 5;
             this.PlayerConstitutionLabel.Text = "Constitution";
             // 
@@ -376,7 +362,7 @@
             this.PlayerDexterityLabel.AutoSize = true;
             this.PlayerDexterityLabel.Location = new System.Drawing.Point(42, 341);
             this.PlayerDexterityLabel.Name = "PlayerDexterityLabel";
-            this.PlayerDexterityLabel.Size = new System.Drawing.Size(48, 13);
+            this.PlayerDexterityLabel.Size = new System.Drawing.Size(57, 18);
             this.PlayerDexterityLabel.TabIndex = 4;
             this.PlayerDexterityLabel.Text = "Dexterity";
             // 
@@ -385,7 +371,7 @@
             this.PlayerCharismaLabel.AutoSize = true;
             this.PlayerCharismaLabel.Location = new System.Drawing.Point(148, 341);
             this.PlayerCharismaLabel.Name = "PlayerCharismaLabel";
-            this.PlayerCharismaLabel.Size = new System.Drawing.Size(50, 13);
+            this.PlayerCharismaLabel.Size = new System.Drawing.Size(59, 18);
             this.PlayerCharismaLabel.TabIndex = 8;
             this.PlayerCharismaLabel.Text = "Charisma";
             // 
@@ -394,7 +380,7 @@
             this.PlayerIntelligenceLabel.AutoSize = true;
             this.PlayerIntelligenceLabel.Location = new System.Drawing.Point(142, 281);
             this.PlayerIntelligenceLabel.Name = "PlayerIntelligenceLabel";
-            this.PlayerIntelligenceLabel.Size = new System.Drawing.Size(61, 13);
+            this.PlayerIntelligenceLabel.Size = new System.Drawing.Size(68, 18);
             this.PlayerIntelligenceLabel.TabIndex = 6;
             this.PlayerIntelligenceLabel.Text = "Intelligence";
             // 
@@ -403,16 +389,18 @@
             this.PlayerWisdomLabel.AutoSize = true;
             this.PlayerWisdomLabel.Location = new System.Drawing.Point(149, 311);
             this.PlayerWisdomLabel.Name = "PlayerWisdomLabel";
-            this.PlayerWisdomLabel.Size = new System.Drawing.Size(45, 13);
+            this.PlayerWisdomLabel.Size = new System.Drawing.Size(48, 18);
             this.PlayerWisdomLabel.TabIndex = 7;
             this.PlayerWisdomLabel.Text = "Wisdom";
             // 
             // PlayerListBox
             // 
+            this.PlayerListBox.Font = new System.Drawing.Font("Viner Hand ITC", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayerListBox.FormattingEnabled = true;
-            this.PlayerListBox.Location = new System.Drawing.Point(381, 38);
+            this.PlayerListBox.ItemHeight = 24;
+            this.PlayerListBox.Location = new System.Drawing.Point(39, 454);
             this.PlayerListBox.Name = "PlayerListBox";
-            this.PlayerListBox.Size = new System.Drawing.Size(272, 381);
+            this.PlayerListBox.Size = new System.Drawing.Size(608, 244);
             this.PlayerListBox.TabIndex = 8;
             // 
             // button1
@@ -465,7 +453,6 @@
             this.SavedMapsBox.Size = new System.Drawing.Size(647, 191);
             this.SavedMapsBox.TabIndex = 10;
             this.SavedMapsBox.Text = "Saved Maps Example";
-            this.SavedMapsBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged_1);
             // 
             // MapExampleThree
             // 
@@ -511,7 +498,6 @@
             this.AmountOfMaps.Name = "AmountOfMaps";
             this.AmountOfMaps.Size = new System.Drawing.Size(90, 20);
             this.AmountOfMaps.TabIndex = 4;
-            this.AmountOfMaps.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // GenerateEnemies
             // 
@@ -585,7 +571,6 @@
             this.DeleteEnemyButton.TabIndex = 12;
             this.DeleteEnemyButton.Text = "Delete Enemy";
             this.DeleteEnemyButton.UseVisualStyleBackColor = true;
-            this.DeleteEnemyButton.Click += new System.EventHandler(this.button3_Click);
             // 
             // SavedEnemyBox
             // 
@@ -685,7 +670,6 @@
             this.DifficultyText.Size = new System.Drawing.Size(48, 20);
             this.DifficultyText.TabIndex = 0;
             this.DifficultyText.Text = "Difficulty";
-            this.DifficultyText.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // tabPage4
             // 
@@ -716,7 +700,6 @@
             this.NPCExampleSix.Size = new System.Drawing.Size(116, 123);
             this.NPCExampleSix.TabIndex = 9;
             this.NPCExampleSix.Text = "NPC Example";
-            this.NPCExampleSix.TextChanged += new System.EventHandler(this.richTextBox4_TextChanged);
             // 
             // NPCExampleFive
             // 
@@ -878,7 +861,6 @@
             this.Name = "DungeonMasterUI";
             this.Text = "DungeonMasterUI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.DungeonMasterUI_Load);
             this.menuBar.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.PlayerCreationGroupBox.ResumeLayout(false);
@@ -904,7 +886,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfNPCs)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -979,7 +960,6 @@
         private System.Windows.Forms.NumericUpDown PlayerIntelligenceNumeric;
         private System.Windows.Forms.NumericUpDown PlayerConstitutionNumeric;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button DeletePlayerButton;
         private System.Windows.Forms.Button ChangePlayerAttributes;
     }
 }
