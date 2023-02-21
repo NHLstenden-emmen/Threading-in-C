@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.SelectPlayerBoardScreen = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SelectPlayerBoardScreen
             // 
-            this.SelectPlayerBoardScreen.Location = new System.Drawing.Point(30, 126);
+            this.SelectPlayerBoardScreen.Location = new System.Drawing.Point(39, 126);
             this.SelectPlayerBoardScreen.Name = "SelectPlayerBoardScreen";
             this.SelectPlayerBoardScreen.Size = new System.Drawing.Size(211, 23);
             this.SelectPlayerBoardScreen.TabIndex = 0;
@@ -41,20 +42,33 @@
             this.SelectPlayerBoardScreen.UseVisualStyleBackColor = true;
             this.SelectPlayerBoardScreen.Click += new System.EventHandler(this.SelectPlayerBoardScreen_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(55, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(186, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Select the monitor for the playerboard.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ChoosePlayerBoardScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 161);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SelectPlayerBoardScreen);
             this.Name = "ChoosePlayerBoardScreen";
             this.Text = "ChoosePlayerBoardScreen";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button SelectPlayerBoardScreen;
+        private System.Windows.Forms.Label label1;
     }
 }

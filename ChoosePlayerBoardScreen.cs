@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,27 +15,39 @@ namespace Threading_in_C
     {
         protected int SelectedScreen;
         protected Screen[] screens = Screen.AllScreens;
+        protected PlayerBoard board= new PlayerBoard();
         public ChoosePlayerBoardScreen()
         {
+            this.FormBorderStyle= FormBorderStyle.None;
             InitializeComponent();
             // Loop through each screen and create a button for it
             for (int i = 0; i < screens.Length; i++)
             {
-                Button button = new Button();
-                button.Text = "Monitor " + (i + 1);
-                button.Location = new Point(10, 10 + i * 30);
-                button.Click += (sender, e) =>
+                Button button = new Button
                 {
-                    SelectedScreen = i;
+                    Text = "Monitor " + (i + 1),
+                    Location = new Point(100, 50 + i * 30),
+                    Tag = i
                 };
+                button.Click += new EventHandler(SelectWindow_Click);
                 this.Controls.Add(button);
             }
         }
 
+        private void SelectWindow_Click(object sender, EventArgs e)
+        {
+            SelectedScreen = (int)((Button)sender).Tag;
+            board.Show();
+            board.ChangeLocation(SelectedScreen);
+            this.BringToFront();
+        }
+
+
         private void SelectPlayerBoardScreen_Click(object sender, EventArgs e)
         {
-            this.Location = screens[SelectedScreen].WorkingArea.Location;
-            new PlayerBoard().Show();
+            // TODO store location of screen in local storage
+            // DMBoard = ChangeLocation(1 - SelectedScreen)
+            this.Close();
         }
     }
 }
