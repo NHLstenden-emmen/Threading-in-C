@@ -58,6 +58,10 @@
     <Compile Include="DungeonMasterUI.Designer.cs">
       <DependentUpon>DungeonMasterUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Enemy.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\NPC.cs" />
+    <Compile Include="Equipment\Item.cs" />
     <Compile Include="MyApplicationContext.cs" />
     <Compile Include="PlayerBoard.cs">
       <SubType>Form</SubType>
@@ -65,7 +69,7 @@
     <Compile Include="PlayerBoard.Designer.cs">
       <DependentUpon>PlayerBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Players\Player.cs" />
+    <Compile Include="Entities\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChoosePlayerBoardScreen.resx">
@@ -106,5 +110,6 @@
   <ItemGroup>
     <None Include="Resources\DnD-Symbol.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
