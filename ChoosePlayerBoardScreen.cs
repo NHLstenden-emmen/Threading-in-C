@@ -15,9 +15,12 @@ namespace Threading_in_C
     {
         protected int SelectedScreen;
         protected Screen[] screens = Screen.AllScreens;
-        protected PlayerBoard board= new PlayerBoard();
-        public ChoosePlayerBoardScreen()
+        protected PlayerBoard boardPlayer;
+        protected DungeonMasterUI boardDM;
+        public ChoosePlayerBoardScreen(List<Form> forms)
         {
+            boardPlayer = (PlayerBoard)forms[1];
+            boardDM = (DungeonMasterUI)forms[0];
             this.FormBorderStyle= FormBorderStyle.None;
             InitializeComponent();
             // Loop through each screen and create a button for it
@@ -32,13 +35,14 @@ namespace Threading_in_C
                 button.Click += new EventHandler(SelectWindow_Click);
                 this.Controls.Add(button);
             }
+            
         }
 
         private void SelectWindow_Click(object sender, EventArgs e)
         {
             SelectedScreen = (int)((Button)sender).Tag;
-            board.Show();
-            board.ChangeLocation(SelectedScreen);
+            boardPlayer.Show();
+            boardPlayer.ChangeLocation(SelectedScreen);
             this.BringToFront();
         }
 
@@ -47,6 +51,8 @@ namespace Threading_in_C
         {
             // TODO store location of screen in local storage
             // DMBoard = ChangeLocation(1 - SelectedScreen)
+            boardDM.Show();
+            boardDM.ChangeLocation(1 - SelectedScreen);
             this.Close();
         }
     }

@@ -86,6 +86,13 @@ namespace Threading_in_C
             this.Height = 1080;
         }
 
+        internal void ChangeLocation(int selectedScreen)
+        {
+            //Change form to normal, move form to different screen return to maximized mode.
+            //this is needed because you can't move a form while it is maximized
+            this.Location = Screen.AllScreens[selectedScreen].WorkingArea.Location;
+        }
+
         private void DungeonMasterUI_Load(object sender, EventArgs e)
         {
 
