@@ -52,7 +52,7 @@ namespace Threading_in_C
             // TODO store location of screen in local storage
             // DMBoard = ChangeLocation(1 - SelectedScreen)
             boardDM.Show();
-            boardDM.ChangeLocation(1 - SelectedScreen);
+            boardDM.ChangeLocation(Math.Abs(1 - SelectedScreen));
             this.Close();
         }
     }
