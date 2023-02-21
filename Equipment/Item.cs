@@ -10,7 +10,7 @@ namespace Threading_in_C.Equipment
     {
         public string Name { get; set; }
         public string Type { get; set; }
-        public string Rarity { get; set; }
+        public EquipmentRarityEnum Rarity { get; set; }
         public int Value { get; set; }
         public string Description { get; set; }
         public List<string> Properties { get; set; }
