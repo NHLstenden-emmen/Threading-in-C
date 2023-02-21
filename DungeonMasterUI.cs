@@ -21,6 +21,7 @@ namespace Threading_in_C
         {
             //Change form to normal, move form to different screen return to maximized mode.
             //this is needed because you can't move a form while it is maximized
+            WindowState = FormWindowState.Normal;
             this.Location = Screen.AllScreens[selectedScreen].WorkingArea.Location;
         }
 
