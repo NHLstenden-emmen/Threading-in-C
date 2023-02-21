@@ -108,7 +108,7 @@ Om makkelijk verder te kunnen spelen of de spel progressie te kunnen delen met a
     -   Campaign generator
 -   Thread pool;
 -   Linq/PLinq;
+-   Task Parallel Library / Async & Await;
     -   Enemy generator
     -   Loot generator
--   Task Parallel Library / Async & Await;
 -   Multiple Asynchronized I/O calls naar een api
