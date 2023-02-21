@@ -15,75 +15,6 @@ namespace Threading_in_C
         public DungeonMasterUI()
         {
             InitializeComponent();
-            FormBorderStyle = FormBorderStyle.None;
-
-            // Creating a top menu bar
-            MenuStrip menuBar = new MenuStrip();
-
-            // Creating the menu bar items 
-            ToolStripMenuItem playerMenu = new ToolStripMenuItem();
-            playerMenu.Text = "Players"; 
-
-            ToolStripMenuItem mapMenu = new ToolStripMenuItem();
-            mapMenu.Text = "Map";
-
-            ToolStripMenuItem monsterMenu = new ToolStripMenuItem();
-            monsterMenu.Text = "Monsters";
-
-            ToolStripMenuItem npcMenu = new ToolStripMenuItem();
-            npcMenu.Text = "NPCs";
-
-            ToolStripMenuItem settingMenu = new ToolStripMenuItem();
-            settingMenu.Text = "Settings";
-
-            // Add menu items to the menu bar
-            menuBar.Items.Add(playerMenu);
-            menuBar.Items.Add(mapMenu);
-            menuBar.Items.Add(monsterMenu);
-            menuBar.Items.Add(npcMenu);
-            menuBar.Items.Add(settingMenu);
-
-            // Creating a 3 column wide top menu bar
-            TableLayoutPanel layoutPanel = new TableLayoutPanel();
-            layoutPanel.Dock = DockStyle.Fill;
-            layoutPanel.ColumnCount = 5;
-            layoutPanel.RowCount = 5;
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
-            layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
-
-            // Adding the menu bar to the middle column 
-            layoutPanel.Controls.Add(menuBar, 2, 0);
-            
-            // Center the menu bar within the column
-            menuBar.Anchor = AnchorStyles.None;
-            menuBar.Anchor |= AnchorStyles.Top;
-
-            // Three buttons for the second row in the center
-            Button mapLootGenerator = new Button();
-            mapLootGenerator.Text = "Generate loot on the map";
-
-            Button gridSizeGenerator = new Button();
-            gridSizeGenerator.Text = "Pick your grid size";
-
-            Button mapMonsterGenerator = new Button();
-            mapMonsterGenerator.Text = "Generate monsters on the map";
-
-            // Add the buttons to the layout panel in the second row
-            layoutPanel.Controls.Add(mapLootGenerator, 0, 1);
-            layoutPanel.Controls.Add(gridSizeGenerator, 1, 1);
-            layoutPanel.Controls.Add(mapMonsterGenerator, 2, 1);
-
-            // Add the layout panel to the form
-            this.Controls.Add(layoutPanel);
-
-            // Set the width of the form to 50% of the display width
-            this.Width = Screen.PrimaryScreen.WorkingArea.Width / 2;
-
-            // Set the height of the form to 1080
-            this.Height = 1080;
         }
 
         internal void ChangeLocation(int selectedScreen)
@@ -94,6 +25,41 @@ namespace Threading_in_C
         }
 
         private void DungeonMasterUI_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
