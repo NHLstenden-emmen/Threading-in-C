@@ -72,6 +72,7 @@
             this.ChangePlayerAttributes.TabIndex = 17;
             this.ChangePlayerAttributes.Text = "Edit Player";
             this.ChangePlayerAttributes.UseVisualStyleBackColor = true;
+            this.ChangePlayerAttributes.Click += new System.EventHandler(this.ChangePlayerAttributes_Click);
             // 
             // AddPlayerButton
             // 
@@ -81,6 +82,7 @@
             this.AddPlayerButton.TabIndex = 16;
             this.AddPlayerButton.Text = "Register Character";
             this.AddPlayerButton.UseVisualStyleBackColor = true;
+            this.AddPlayerButton.Click += new System.EventHandler(this.AddPlayerButton_Click);
             // 
             // PlayerCreationGroupBox
             // 
