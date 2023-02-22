@@ -101,6 +101,8 @@ namespace Threading_in_C.Forms
                 PlayerWisdomNumeric.Value = player.Wisdom;
                 PlayerCharismaNumeric.Value = player.Charisma;
                 PlayerNameTextbox.Text = player.Name;
+                PlayerArmorRatingNumeric.Value = player.AR;
+                PlayerProficiencyNumeric.Value = player.BP;
                 PlayerRaceTextbox.Text = player.Race.First();
                 PlayerClassTextbox.Text = player.Class;
 
@@ -126,3 +128,4 @@ namespace Threading_in_C.Forms
         }
     }
 }
+
