@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Threading_in_C
@@ -14,7 +15,15 @@ namespace Threading_in_C
         public DungeonMasterUI()
         {
             InitializeComponent();
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
 
         internal void ChangeLocation(int selectedScreen)
         {
@@ -43,8 +52,11 @@ namespace Threading_in_C
             {
                 if (previousBtn.GetType() == typeof(Button))
                 {
-                    previousBtn.BackColor = Color.FromArgb(51, 51, 76);
-                    previousBtn.ForeColor = Color.Gainsboro;
+                    if (previousBtn.Name != "btnClose" && previousBtn.Name != "bntMinimize")
+                    {
+                        previousBtn.BackColor = Color.Black;
+                        previousBtn.ForeColor = Color.Red;
+                    }
                 }
             }
         }
@@ -87,6 +99,23 @@ namespace Threading_in_C
         private void btnSettings_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.SettingsScreenForm(), sender);
+        }
+
+        private void panelMenu_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void bntMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

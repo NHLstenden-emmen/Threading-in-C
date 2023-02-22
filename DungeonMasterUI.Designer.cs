@@ -30,6 +30,8 @@
         {
             this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.bntMinimize = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnNPC = new System.Windows.Forms.Button();
             this.btnMonsters = new System.Windows.Forms.Button();
@@ -44,6 +46,8 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panelMenu.Controls.Add(this.bntMinimize);
+            this.panelMenu.Controls.Add(this.btnClose);
             this.panelMenu.Controls.Add(this.btnSettings);
             this.panelMenu.Controls.Add(this.btnNPC);
             this.panelMenu.Controls.Add(this.btnMonsters);
@@ -55,9 +59,39 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(708, 30);
             this.panelMenu.TabIndex = 0;
+            this.panelMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
+            // 
+            // bntMinimize
+            // 
+            this.bntMinimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.bntMinimize.FlatAppearance.BorderSize = 0;
+            this.bntMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bntMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntMinimize.Location = new System.Drawing.Point(648, 0);
+            this.bntMinimize.Name = "bntMinimize";
+            this.bntMinimize.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.bntMinimize.Size = new System.Drawing.Size(30, 30);
+            this.bntMinimize.TabIndex = 10;
+            this.bntMinimize.Text = "-";
+            this.bntMinimize.UseVisualStyleBackColor = true;
+            this.bntMinimize.Click += new System.EventHandler(this.bntMinimize_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(678, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(30, 30);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSettings
             // 
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnSettings.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSettings.FlatAppearance.BorderSize = 0;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -66,7 +100,7 @@
             this.btnSettings.Size = new System.Drawing.Size(60, 30);
             this.btnSettings.TabIndex = 9;
             this.btnSettings.Text = "Settings";
-            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnNPC
@@ -145,7 +179,7 @@
             this.Controls.Add(this.panelContentScreen);
             this.Controls.Add(this.panelMenu);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(724, 885);
+            this.MaximumSize = new System.Drawing.Size(724, 2000);
             this.MinimumSize = new System.Drawing.Size(724, 883);
             this.Name = "DungeonMasterUI";
             this.Text = "DungeonMasterUI";
@@ -165,5 +199,7 @@
         private System.Windows.Forms.Button btnMap;
         private System.Windows.Forms.Button btnPlayers;
         private System.Windows.Forms.Panel panelContentScreen;
+        private System.Windows.Forms.Button bntMinimize;
+        private System.Windows.Forms.Button btnClose;
     }
 }
