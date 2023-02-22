@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Threading_in_C.Players;
 
 namespace Threading_in_C
 {
     public partial class DungeonMasterUI : Form
     {
-        private List<Player> players = new List<Player> ();
+        private Button currentButton;
+        private Form activeForm;
+
         public DungeonMasterUI()
         {
             InitializeComponent();
@@ -22,74 +24,69 @@ namespace Threading_in_C
             this.Location = Screen.AllScreens[selectedScreen].WorkingArea.Location;
         }
 
-        private void AddPlayerButton_Click(object sender, EventArgs e)
+        private void ActivateButton(object btnSender)
         {
-            var existingPlayer = players.FirstOrDefault(p => p.Name == PlayerNameTextbox.Text);
-
-            if (existingPlayer != null)
+            if (btnSender != null)
             {
-                if (AddPlayerButton.Text == "Register Character")
+                if (currentButton != (Button)btnSender)
                 {
-                    return;
+                    DisableButton();
+                    currentButton = (Button)btnSender;
+                    currentButton.BackColor = Color.Gray;
+                    currentButton.ForeColor = Color.White;
                 }
-                var player = players[PlayerListBox.SelectedIndex];
-                PlayerListBox.Items.Remove(player.ToString());
-
-                existingPlayer.Health = (int)PlayerHealthNumeric.Value;
-                existingPlayer.Movement = (int)PlayerMovementNumeric.Value;
-                existingPlayer.Strength = (int)PlayerStrengthNumeric.Value;
-                existingPlayer.Dexterity = (int)PlayerDexterityNumeric.Value;
-                existingPlayer.Constitution = (int)PlayerConstitutionNumeric.Value;
-                existingPlayer.Intelligence = (int)PlayerIntelligenceNumeric.Value;
-                existingPlayer.Wisdom = (int)PlayerWisdomNumeric.Value;
-                existingPlayer.Charisma = (int)PlayerCharismaNumeric.Value;
-
-                AddPlayerButton.Text = "Register Character";
-                PlayerListBox.Items.Add(player.ToString());
             }
-            else
+        }
+        private void DisableButton()
+        {
+            foreach (Control previousBtn in panelMenu.Controls)
             {
-                var player = new Player();
-                player.Name = PlayerNameTextbox.Text;
-                player.Health = (int)PlayerHealthNumeric.Value;
-                player.Movement = (int)PlayerMovementNumeric.Value;
-                player.Strength = (int)PlayerStrengthNumeric.Value;
-                player.Dexterity = (int)PlayerDexterityNumeric.Value;
-                player.Constitution = (int)PlayerConstitutionNumeric.Value;
-                player.Intelligence = (int)PlayerIntelligenceNumeric.Value;
-                player.Wisdom = (int)PlayerWisdomNumeric.Value;
-                player.Charisma = (int)PlayerCharismaNumeric.Value;
-
-                // Add the player to the ListBox control
-                players.Add(player);
-                PlayerListBox.Items.Add(player.ToString());
+                if (previousBtn.GetType() == typeof(Button))
+                {
+                    previousBtn.BackColor = Color.FromArgb(51, 51, 76);
+                    previousBtn.ForeColor = Color.Gainsboro;
+                }
             }
         }
 
-        private void PlayerListBox_SelectedIndexChanged(Object sender, EventArgs e)
+        private void OpenChildForm(Form childForm, object btnSender)
         {
-            // Get the selected player
-            var player = players[PlayerListBox.SelectedIndex];
+            if (activeForm != null)
+                activeForm.Close();
+            ActivateButton(btnSender);
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelContentScreen.Controls.Add(childForm);
+            this.panelContentScreen.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
 
-        private void ChangePlayerAttributes_Click(object sender, EventArgs e)
+        private void btnPlayers_Click(object sender, EventArgs e)
         {
-            if (PlayerListBox.SelectedIndex >= 0)
-            {
-                var player = players[PlayerListBox.SelectedIndex];
+            OpenChildForm(new Forms.PlayerScreenForm(), sender);
+        }
 
-                PlayerHealthNumeric.Value = player.Health;
-                PlayerMovementNumeric.Value = player.Movement;
-                PlayerStrengthNumeric.Value = player.Strength;
-                PlayerDexterityNumeric.Value = player.Dexterity;
-                PlayerConstitutionNumeric.Value = player.Constitution;
-                PlayerIntelligenceNumeric.Value = player.Intelligence;
-                PlayerWisdomNumeric.Value = player.Wisdom;
-                PlayerCharismaNumeric.Value = player.Charisma;
-                PlayerNameTextbox.Text = player.Name;
+        private void btnMap_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.MapScreenForm(), sender);
+        }
 
-                AddPlayerButton.Text = "Update Player";
-            }
+        private void btnMonsters_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.MonstersScreenForm(), sender);
+        }
+
+        private void btnNPC_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.NpcScreenForm(), sender);
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.SettingsScreenForm(), sender);
         }
     }
 }
