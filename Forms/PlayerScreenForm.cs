@@ -47,7 +47,7 @@ namespace Threading_in_C.Forms
             }
             else
             {
-                var player = new Player(PlayerNameTextbox.Text, (int)PlayerHealthNumeric.Value, (int)PlayerMovementNumeric.Value, (int)PlayerStrengthNumeric.Value, (int)PlayerDexterityNumeric.Value, (int)
+                var player = new Player(PlayerNameTextbox.Text, (int)PlayerHealthNumeric.Value, (int)PlayerMovementNumeric.Value, (int)PlayerStrengthNumeric.Value, (int)PlayerDexterityNumeric.Value, (int)PlayerConstitutionNumeric.Value, (int)PlayerIntelligenceNumeric.Value, (int)PlayerWisdomNumeric.Value, (int)PlayerCharismaNumeric.Value, 1, 1, null, null, null, null);
                 player.Name = PlayerNameTextbox.Text;
                 player.Health = (int)PlayerHealthNumeric.Value;
                 player.Movement = (int)PlayerMovementNumeric.Value;
