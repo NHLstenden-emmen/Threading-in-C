@@ -324,12 +324,13 @@
             // 
             // PlayerListBox
             // 
+            this.PlayerListBox.BackColor = System.Drawing.Color.Beige;
             this.PlayerListBox.Font = new System.Drawing.Font("Palatino Linotype", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayerListBox.FormattingEnabled = true;
             this.PlayerListBox.ItemHeight = 17;
             this.PlayerListBox.Location = new System.Drawing.Point(21, 428);
             this.PlayerListBox.Name = "PlayerListBox";
-            this.PlayerListBox.Size = new System.Drawing.Size(608, 242);
+            this.PlayerListBox.Size = new System.Drawing.Size(626, 242);
             this.PlayerListBox.TabIndex = 14;
             // 
             // button1
@@ -344,7 +345,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.BackColor = System.Drawing.Color.Beige;
             this.groupBox1.Controls.Add(this.PlayerClassLabel);
             this.groupBox1.Controls.Add(this.PlayerClassTextbox);
             this.groupBox1.Controls.Add(this.PlayerRaceTextbox);
@@ -352,7 +353,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(350, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 136);
+            this.groupBox1.Size = new System.Drawing.Size(297, 136);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Optional";
@@ -368,7 +369,7 @@
             // 
             // PlayerClassTextbox
             // 
-            this.PlayerClassTextbox.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerClassTextbox.BackColor = System.Drawing.Color.Beige;
             this.PlayerClassTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerClassTextbox.Location = new System.Drawing.Point(11, 111);
             this.PlayerClassTextbox.Name = "PlayerClassTextbox";
@@ -377,7 +378,7 @@
             // 
             // PlayerRaceTextbox
             // 
-            this.PlayerRaceTextbox.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerRaceTextbox.BackColor = System.Drawing.Color.Beige;
             this.PlayerRaceTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerRaceTextbox.Location = new System.Drawing.Point(11, 57);
             this.PlayerRaceTextbox.Name = "PlayerRaceTextbox";
@@ -437,6 +438,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(669, 789);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ChangePlayerAttributes);
