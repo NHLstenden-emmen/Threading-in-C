@@ -62,6 +62,7 @@
     <Compile Include="Entities\Enemy.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\NPC.cs" />
+    <Compile Include="Equipment\EquipmentRarityEnum.cs" />
     <Compile Include="Equipment\Item.cs" />
     <Compile Include="Forms\MapScreenForm.cs">
       <SubType>Form</SubType>
