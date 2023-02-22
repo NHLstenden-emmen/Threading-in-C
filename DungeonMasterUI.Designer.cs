@@ -218,7 +218,7 @@
         private System.Windows.Forms.Panel panelContentScreen;
         private System.Windows.Forms.Button bntMinimize;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnTurnCounter;
+        public System.Windows.Forms.Button btnTurnCounter;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnNPC;
         private System.Windows.Forms.Button btnMonsters;

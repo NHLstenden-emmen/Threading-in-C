@@ -11,7 +11,7 @@ namespace Threading_in_C
     {
         private Button currentButton;
         private Form activeForm;
-        protected int turnCounter;
+        public int turnCounter;
 
         public DungeonMasterUI()
         {
@@ -20,6 +20,7 @@ namespace Threading_in_C
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -53,7 +54,7 @@ namespace Threading_in_C
             {
                 if (previousBtn.GetType() == typeof(Button))
                 {
-                    if (previousBtn.Name != "btnClose" && previousBtn.Name != "bntMinimize")
+                    if (previousBtn.Name != "btnClose" && previousBtn.Name != "bntMinimize" && previousBtn.Name != "btnTurnCounter")
                     {
                         previousBtn.BackColor = Color.Black;
                         previousBtn.ForeColor = Color.Red;
@@ -99,7 +100,7 @@ namespace Threading_in_C
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.SettingsScreenForm(), sender);
+            OpenChildForm(new Forms.SettingsScreenForm(this), sender);
         }
 
         private void panelMenu_MouseDown(object sender, MouseEventArgs e)
@@ -116,7 +117,7 @@ namespace Threading_in_C
 
         private void bntMinimize_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Minimized;
         }
 
         private void btnTurnCounter_Click(object sender, EventArgs e)

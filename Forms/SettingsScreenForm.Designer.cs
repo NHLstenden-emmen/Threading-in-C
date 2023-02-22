@@ -33,6 +33,7 @@
             this.ImportGameButton = new System.Windows.Forms.Button();
             this.ExportGameButton = new System.Windows.Forms.Button();
             this.SaveGameButton = new System.Windows.Forms.Button();
+            this.btnResetTurnCounter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -85,11 +86,23 @@
             this.SaveGameButton.Text = "Save Game";
             this.SaveGameButton.UseVisualStyleBackColor = true;
             // 
+            // btnResetTurnCounter
+            // 
+            this.btnResetTurnCounter.Location = new System.Drawing.Point(27, 317);
+            this.btnResetTurnCounter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetTurnCounter.Name = "btnResetTurnCounter";
+            this.btnResetTurnCounter.Size = new System.Drawing.Size(182, 66);
+            this.btnResetTurnCounter.TabIndex = 10;
+            this.btnResetTurnCounter.Text = "Reset Turn Counter";
+            this.btnResetTurnCounter.UseVisualStyleBackColor = true;
+            this.btnResetTurnCounter.Click += new System.EventHandler(this.btnResetTurnCounter_Click);
+            // 
             // SettingsScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 569);
+            this.Controls.Add(this.btnResetTurnCounter);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.SavedGameBox);
             this.Controls.Add(this.ImportGameButton);
@@ -109,5 +122,6 @@
         private System.Windows.Forms.Button ImportGameButton;
         private System.Windows.Forms.Button ExportGameButton;
         private System.Windows.Forms.Button SaveGameButton;
+        private System.Windows.Forms.Button btnResetTurnCounter;
     }
 }
