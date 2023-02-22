@@ -13,5 +13,22 @@ namespace Threading_in_C.Players
         {
             return $"{Name} (H: {Health} M: {Movement} STR: {Strength} DEX: {Dexterity} CON: {Constitution} INT: {Intelligence} WIS: {Wisdom} CHA: {Charisma})";
         }
+
+        public Player(string name, int health, int movement, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int ar, int bp, List<string> race, string characterClass, string backstory, List<string> traits)
+        {
+            Name = name;
+            Health = health;
+            Movement = movement;
+            Strength = strength;
+            Dexterity = dexterity;
+            Constitution = constitution;
+            Intelligence = intelligence;
+            Wisdom = wisdom;
+            Charisma = charisma;
+            AR = ar;
+            BP = bp;
+            Race = race;
+            Class = characterClass;
+        }
     }
 }
