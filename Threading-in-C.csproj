@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APICALL\Class1.cs" />
     <Compile Include="ChoosePlayerBoardScreen.cs">
       <SubType>Form</SubType>
     </Compile>
