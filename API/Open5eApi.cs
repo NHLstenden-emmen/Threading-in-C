@@ -34,7 +34,7 @@ namespace Threading_in_C.API
         static async Task Main(string[] args)
         {
             var clientOpen = new Open5eApiClient();
-            var response = await clientOpen.SearchMonstersAsync("fir");
+            var response = await clientOpen.SearchMonstersAsync("fir"); //haalt alle monsters met fire op
             Console.WriteLine(response);
         }
     }
