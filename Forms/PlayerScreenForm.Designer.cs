@@ -31,6 +31,10 @@
             this.ChangePlayerAttributes = new System.Windows.Forms.Button();
             this.AddPlayerButton = new System.Windows.Forms.Button();
             this.PlayerCreationGroupBox = new System.Windows.Forms.GroupBox();
+            this.PlayerProficiencyNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerArmorRatingNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerArmorRatingLabel = new System.Windows.Forms.Label();
+            this.PlayerProficiencyLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PlayerCharismaNumeric = new System.Windows.Forms.NumericUpDown();
             this.PlayerWisdomNumeric = new System.Windows.Forms.NumericUpDown();
@@ -57,11 +61,9 @@
             this.PlayerClassTextbox = new System.Windows.Forms.TextBox();
             this.PlayerRaceTextbox = new System.Windows.Forms.TextBox();
             this.PlayerRaceLabel = new System.Windows.Forms.Label();
-            this.PlayerProficiencyNumeric = new System.Windows.Forms.NumericUpDown();
-            this.PlayerArmorRatingNumeric = new System.Windows.Forms.NumericUpDown();
-            this.PlayerArmorRatingLabel = new System.Windows.Forms.Label();
-            this.PlayerProficiencyLabel = new System.Windows.Forms.Label();
             this.PlayerCreationGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerProficiencyNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerArmorRatingNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerCharismaNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerWisdomNumeric)).BeginInit();
@@ -72,8 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerMovementNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerHealthNumeric)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerProficiencyNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerArmorRatingNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // ChangePlayerAttributes
@@ -130,8 +130,49 @@
             this.PlayerCreationGroupBox.TabIndex = 15;
             this.PlayerCreationGroupBox.TabStop = false;
             // 
+            // PlayerProficiencyNumeric
+            // 
+            this.PlayerProficiencyNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerProficiencyNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerProficiencyNumeric.Location = new System.Drawing.Point(219, 339);
+            this.PlayerProficiencyNumeric.Name = "PlayerProficiencyNumeric";
+            this.PlayerProficiencyNumeric.Size = new System.Drawing.Size(40, 18);
+            this.PlayerProficiencyNumeric.TabIndex = 29;
+            this.PlayerProficiencyNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerProficiencyNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerArmorRatingNumeric
+            // 
+            this.PlayerArmorRatingNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerArmorRatingNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerArmorRatingNumeric.Location = new System.Drawing.Point(98, 340);
+            this.PlayerArmorRatingNumeric.Name = "PlayerArmorRatingNumeric";
+            this.PlayerArmorRatingNumeric.Size = new System.Drawing.Size(40, 18);
+            this.PlayerArmorRatingNumeric.TabIndex = 28;
+            this.PlayerArmorRatingNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerArmorRatingNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerArmorRatingLabel
+            // 
+            this.PlayerArmorRatingLabel.AutoSize = true;
+            this.PlayerArmorRatingLabel.Location = new System.Drawing.Point(25, 340);
+            this.PlayerArmorRatingLabel.Name = "PlayerArmorRatingLabel";
+            this.PlayerArmorRatingLabel.Size = new System.Drawing.Size(76, 15);
+            this.PlayerArmorRatingLabel.TabIndex = 26;
+            this.PlayerArmorRatingLabel.Text = "Armor Rating";
+            // 
+            // PlayerProficiencyLabel
+            // 
+            this.PlayerProficiencyLabel.AutoSize = true;
+            this.PlayerProficiencyLabel.Location = new System.Drawing.Point(150, 342);
+            this.PlayerProficiencyLabel.Name = "PlayerProficiencyLabel";
+            this.PlayerProficiencyLabel.Size = new System.Drawing.Size(63, 15);
+            this.PlayerProficiencyLabel.TabIndex = 27;
+            this.PlayerProficiencyLabel.Text = "Proficiency";
+            // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Beige;
             this.pictureBox1.Image = global::Threading_in_C.Properties.Resources.DnD_Symbol;
             this.pictureBox1.Location = new System.Drawing.Point(52, 94);
             this.pictureBox1.Name = "pictureBox1";
@@ -394,46 +435,6 @@
             this.PlayerRaceLabel.TabIndex = 0;
             this.PlayerRaceLabel.Text = "Race";
             // 
-            // PlayerProficiencyNumeric
-            // 
-            this.PlayerProficiencyNumeric.BackColor = System.Drawing.SystemColors.Control;
-            this.PlayerProficiencyNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerProficiencyNumeric.Location = new System.Drawing.Point(219, 339);
-            this.PlayerProficiencyNumeric.Name = "PlayerProficiencyNumeric";
-            this.PlayerProficiencyNumeric.Size = new System.Drawing.Size(40, 18);
-            this.PlayerProficiencyNumeric.TabIndex = 29;
-            this.PlayerProficiencyNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PlayerProficiencyNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
-            // 
-            // PlayerArmorRatingNumeric
-            // 
-            this.PlayerArmorRatingNumeric.BackColor = System.Drawing.SystemColors.Control;
-            this.PlayerArmorRatingNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerArmorRatingNumeric.Location = new System.Drawing.Point(98, 340);
-            this.PlayerArmorRatingNumeric.Name = "PlayerArmorRatingNumeric";
-            this.PlayerArmorRatingNumeric.Size = new System.Drawing.Size(40, 18);
-            this.PlayerArmorRatingNumeric.TabIndex = 28;
-            this.PlayerArmorRatingNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PlayerArmorRatingNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
-            // 
-            // PlayerArmorRatingLabel
-            // 
-            this.PlayerArmorRatingLabel.AutoSize = true;
-            this.PlayerArmorRatingLabel.Location = new System.Drawing.Point(25, 340);
-            this.PlayerArmorRatingLabel.Name = "PlayerArmorRatingLabel";
-            this.PlayerArmorRatingLabel.Size = new System.Drawing.Size(76, 15);
-            this.PlayerArmorRatingLabel.TabIndex = 26;
-            this.PlayerArmorRatingLabel.Text = "Armor Rating";
-            // 
-            // PlayerProficiencyLabel
-            // 
-            this.PlayerProficiencyLabel.AutoSize = true;
-            this.PlayerProficiencyLabel.Location = new System.Drawing.Point(150, 342);
-            this.PlayerProficiencyLabel.Name = "PlayerProficiencyLabel";
-            this.PlayerProficiencyLabel.Size = new System.Drawing.Size(63, 15);
-            this.PlayerProficiencyLabel.TabIndex = 27;
-            this.PlayerProficiencyLabel.Text = "Proficiency";
-            // 
             // PlayerScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,6 +451,8 @@
             this.Text = "PlayerScreenForm";
             this.PlayerCreationGroupBox.ResumeLayout(false);
             this.PlayerCreationGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerProficiencyNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerArmorRatingNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerCharismaNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerWisdomNumeric)).EndInit();
@@ -461,8 +464,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerHealthNumeric)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerProficiencyNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerArmorRatingNumeric)).EndInit();
             this.ResumeLayout(false);
 
         }
