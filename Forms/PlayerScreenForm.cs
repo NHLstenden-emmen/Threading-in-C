@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threading_in_C.Players;
 
@@ -15,6 +10,7 @@ namespace Threading_in_C.Forms
     {
 
         private List<Player> players = new List<Player>();
+        private int playerIndex = 0;
         public PlayerScreenForm()
         {
             InitializeComponent();
@@ -41,13 +37,19 @@ namespace Threading_in_C.Forms
                 existingPlayer.Intelligence = (int)PlayerIntelligenceNumeric.Value;
                 existingPlayer.Wisdom = (int)PlayerWisdomNumeric.Value;
                 existingPlayer.Charisma = (int)PlayerCharismaNumeric.Value;
+                existingPlayer.AR = (int)PlayerArmorRatingNumeric.Value;
+                existingPlayer.BP = (int)PlayerProficiencyNumeric.Value;
+                existingPlayer.Race.Clear();
+                existingPlayer.Race.Add(PlayerRaceTextbox.Text);
+                existingPlayer.Class =  PlayerClassTextbox.Text;
 
                 AddPlayerButton.Text = "Register Character";
-                PlayerListBox.Items.Add(player.ToString());
+                PlayerListBox.Items.Insert(player.PlayerIndex, player.ToString());
+                ClearPlayerFields();
             }
             else
             {
-                var player = new Player(PlayerNameTextbox.Text, 
+                var player = new Player(playerIndex, PlayerNameTextbox.Text, 
                     (int)PlayerHealthNumeric.Value, 
                     (int)PlayerMovementNumeric.Value, 
                     (int)PlayerStrengthNumeric.Value, 
@@ -72,7 +74,9 @@ namespace Threading_in_C.Forms
 
                 // Add the player to the ListBox control
                 players.Add(player);
-                PlayerListBox.Items.Add(player.ToString());
+                playerIndex++;
+                PlayerListBox.Items.Insert(player.PlayerIndex, player.ToString());
+                ClearPlayerFields();
             }
         }
 
@@ -97,9 +101,28 @@ namespace Threading_in_C.Forms
                 PlayerWisdomNumeric.Value = player.Wisdom;
                 PlayerCharismaNumeric.Value = player.Charisma;
                 PlayerNameTextbox.Text = player.Name;
+                PlayerRaceTextbox.Text = player.Race.First();
+                PlayerClassTextbox.Text = player.Class;
 
                 AddPlayerButton.Text = "Update Player";
             }
+        }
+
+        private void ClearPlayerFields()
+        {
+            PlayerNameTextbox.Text = "";
+            PlayerRaceTextbox.Text = "";
+            PlayerClassTextbox.Text = "";
+            PlayerHealthNumeric.Value = 0;
+            PlayerMovementNumeric.Value = 0;
+            PlayerStrengthNumeric.Value = 0;
+            PlayerDexterityNumeric.Value = 0;
+            PlayerConstitutionNumeric.Value = 0;
+            PlayerIntelligenceNumeric.Value = 0;
+            PlayerWisdomNumeric.Value = 0;
+            PlayerCharismaNumeric.Value = 0;
+            PlayerArmorRatingNumeric.Value = 0;
+            PlayerProficiencyNumeric.Value = 0;
         }
     }
 }

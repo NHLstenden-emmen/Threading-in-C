@@ -9,13 +9,15 @@ namespace Threading_in_C.Players
 {
     public class Player : Character
     {
+        public int PlayerIndex;
         public override string ToString()
         {
             return $"{Name} (H: {Health} M: {Movement} STR: {Strength} DEX: {Dexterity} CON: {Constitution} INT: {Intelligence} WIS: {Wisdom} CHA: {Charisma} AR: {AR} BP: {BP})";
         }
 
-        public Player(string name, int health, int movement, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int ar, int bp, List<string> race, string characterClass)
+        public Player(int playerIndex, string name, int health, int movement, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int ar, int bp, List<string> race, string characterClass)
         {
+            PlayerIndex = playerIndex;
             Name = name;
             Health = health;
             Movement = movement;
