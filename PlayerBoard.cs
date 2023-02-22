@@ -30,8 +30,34 @@ namespace Threading_in_C
             WindowState = FormWindowState.Maximized;
         }
 
+
+        private void setUpBoard()
+        {
+            //creates the tiles in the board, based on the display size that is used for the game
+            //the board that will be created is a grid of 16 by 9, with all the tiles being 80*80 pixels large
+
+            int initialX = 0;
+            int initialY = 0;
+            int tileSize = 80;
+
+            for (int i = 0; i <= 9; i++)
+            {
+                for (int j = 0; j <= 16; j++)
+                {
+                    Button button = new Button();
+                    this.Controls.Add(button);
+                    button.Size = new Size(tileSize, tileSize);
+                    button.Location = new Point(initialX, initialY);
+                    initialX += tileSize;
+                }
+                initialX = 0;
+                initialY += tileSize;
+            }
+        }
+
         private void PlayerBoard_Load(object sender, EventArgs e)
         {
+            setUpBoard();
         }
     }
 }
