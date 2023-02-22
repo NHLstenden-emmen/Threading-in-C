@@ -11,6 +11,7 @@ namespace Threading_in_C
     {
         private Button currentButton;
         private Form activeForm;
+        protected int turnCounter;
 
         public DungeonMasterUI()
         {
@@ -116,6 +117,12 @@ namespace Threading_in_C
         private void bntMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnTurnCounter_Click(object sender, EventArgs e)
+        {
+            turnCounter++;
+            btnTurnCounter.Text = turnCounter.ToString();
         }
     }
 }
