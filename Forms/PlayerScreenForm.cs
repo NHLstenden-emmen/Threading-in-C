@@ -47,16 +47,28 @@ namespace Threading_in_C.Forms
             }
             else
             {
-                var player = new Player(PlayerNameTextbox.Text, (int)PlayerHealthNumeric.Value, (int)PlayerMovementNumeric.Value, (int)PlayerStrengthNumeric.Value, (int)PlayerDexterityNumeric.Value, (int)PlayerConstitutionNumeric.Value, (int)PlayerIntelligenceNumeric.Value, (int)PlayerWisdomNumeric.Value, (int)PlayerCharismaNumeric.Value, 1, 1, null, null, null, null);
-                player.Name = PlayerNameTextbox.Text;
-                player.Health = (int)PlayerHealthNumeric.Value;
-                player.Movement = (int)PlayerMovementNumeric.Value;
-                player.Strength = (int)PlayerStrengthNumeric.Value;
-                player.Dexterity = (int)PlayerDexterityNumeric.Value;
-                player.Constitution = (int)PlayerConstitutionNumeric.Value;
-                player.Intelligence = (int)PlayerIntelligenceNumeric.Value;
-                player.Wisdom = (int)PlayerWisdomNumeric.Value;
-                player.Charisma = (int)PlayerCharismaNumeric.Value;
+                var player = new Player(PlayerNameTextbox.Text, 
+                    (int)PlayerHealthNumeric.Value, 
+                    (int)PlayerMovementNumeric.Value, 
+                    (int)PlayerStrengthNumeric.Value, 
+                    (int)PlayerDexterityNumeric.Value, 
+                    (int)PlayerConstitutionNumeric.Value, 
+                    (int)PlayerIntelligenceNumeric.Value, 
+                    (int)PlayerWisdomNumeric.Value, 
+                    (int)PlayerCharismaNumeric.Value, 
+                    (int)PlayerArmorRatingNumeric.Value, 
+                    (int)PlayerProficiencyNumeric.Value, 
+                    new List<string>(),
+                    null);
+
+                if (PlayerRaceTextbox.Text != null)
+                {
+                    player.Race.Add(PlayerRaceTextbox.Text);
+                }
+                if (PlayerClassTextbox.Text != null)
+                {
+                    player.Class = PlayerClassTextbox.Text;
+                }
 
                 // Add the player to the ListBox control
                 players.Add(player);
