@@ -61,8 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\Open5eApi.cs" />
-    <Compile Include="API\Dnd5eApi.cs" />
+    <Compile Include="OpenFiveApi\Open5eApi.cs" />
+    <Compile Include="OpenFiveApi\Dnd5eApi.cs" />
     <Compile Include="ChoosePlayerBoardScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +112,7 @@
       <DependentUpon>SettingsScreenForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MyApplicationContext.cs" />
+    <Compile Include="OpenFiveApi\OpenFiveApiUrlBuilder.cs" />
     <Compile Include="PlayerBoard.cs">
       <SubType>Form</SubType>
     </Compile>
