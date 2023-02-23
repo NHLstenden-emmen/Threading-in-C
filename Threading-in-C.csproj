@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APICALL\Class1.cs" />
+    <Compile Include="API\Open5eApi.cs" />
+    <Compile Include="API\Dnd5eApi.cs" />
     <Compile Include="ChoosePlayerBoardScreen.cs">
       <SubType>Form</SubType>
     </Compile>
