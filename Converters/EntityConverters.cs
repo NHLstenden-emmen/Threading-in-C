@@ -14,9 +14,8 @@ namespace Threading_in_C.Converters
         }
     }
 
-    
+
     /*
-     Code for testing the XML converter
         string testData =@"<EntityList>
             <Entity>
                 <Name>Name1</Name>
@@ -44,6 +43,27 @@ namespace Threading_in_C.Converters
                     Console.WriteLine("{0}={1}", name, value);
                 }
             }
-     
+
+     Code for testing the XML converter
+        Entity entity = new Entity()
+        {
+            Name="naam",
+            Health = 0,
+            Movement= 1,
+            Strength= 2,
+            Dexterity= 3,
+            Constitution= 4,
+            Intelligence= 5,
+            Wisdom= 6,
+            Charisma= 7,
+            AR= 8,
+            BP= 9
+        };
+        using (var stringWriter = new System.IO.StringWriter())
+        {
+            var serializer = new XmlSerializer(entity.GetType());
+            serializer.Serialize(stringWriter, entity);
+            Debug.WriteLine(stringWriter.ToString());
+        }
      */
 }

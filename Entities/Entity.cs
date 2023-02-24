@@ -11,7 +11,7 @@ namespace Threading_in_C.Entities
             get { return Health.ToString(); }
             set { Health = int.Parse(value); }
         }
-        [XmlElement("HealthInt")]
+        [XmlIgnore]
         public int Health { get; set; }
         [XmlElement("Movement")]
         public string MovementAsText
@@ -19,7 +19,7 @@ namespace Threading_in_C.Entities
             get { return Movement.ToString(); }
             set { Movement = int.Parse(value); }
         }
-        [XmlElement("MovementInt")]
+        [XmlIgnore]
         public int Movement { get; set; }
         [XmlElement("Strength")]
         public string StrengthAsText
@@ -27,7 +27,7 @@ namespace Threading_in_C.Entities
             get { return Strength.ToString(); }
             set { Strength = int.Parse(value); }
         }
-        [XmlElement("StrengthInt")]
+        [XmlIgnore]
         public int Strength { get; set; }
         [XmlElement("Dexterity")]
         public string DexterityAsText
@@ -35,7 +35,7 @@ namespace Threading_in_C.Entities
             get { return Dexterity.ToString(); }
             set { Dexterity = int.Parse(value); }
         }
-        [XmlElement("DexterityInt")]
+        [XmlIgnore]
         public int Dexterity { get; set; }
         [XmlElement("Constitution")]
         public string ConstitutionAsText
@@ -43,7 +43,7 @@ namespace Threading_in_C.Entities
             get { return Constitution.ToString(); }
             set { Constitution = int.Parse(value); }
         }
-        [XmlElement("ConstitutionInt")]
+        [XmlIgnore]
         public int Constitution { get; set; }
         [XmlElement("Intelligence")]
         public string IntelligenceAsText
@@ -51,7 +51,7 @@ namespace Threading_in_C.Entities
             get { return Intelligence.ToString(); }
             set { Intelligence = int.Parse(value); }
         }
-        [XmlElement("IntelligenceInt")]
+        [XmlIgnore]
         public int Intelligence { get; set; }
         [XmlElement("Wisdom")]
         public string WisdomAsText
@@ -59,7 +59,7 @@ namespace Threading_in_C.Entities
             get { return Wisdom.ToString(); }
             set { Wisdom = int.Parse(value); }
         }
-        [XmlElement("WisdomInt")]
+        [XmlIgnore]
         public int Wisdom { get; set; }
         [XmlElement("Charisma")]
         public string CharismaAsText
@@ -67,7 +67,7 @@ namespace Threading_in_C.Entities
             get { return Charisma.ToString(); }
             set { Charisma = int.Parse(value); }
         }
-        [XmlElement("CharismaInt")]
+        [XmlIgnore]
         public int Charisma { get; set; }
         [XmlElement("AR")]
         public string ARAsText
@@ -75,7 +75,7 @@ namespace Threading_in_C.Entities
             get { return AR.ToString(); }
             set { AR = int.Parse(value); }
         }
-        [XmlElement("ARInt")]
+        [XmlIgnore]
         public int AR { get; set; }
         [XmlElement("BP")]
         public string BPAsText
@@ -83,7 +83,7 @@ namespace Threading_in_C.Entities
             get { return BP.ToString(); }
             set { BP = int.Parse(value); }
         }
-        [XmlElement("BPInt")]
+        [XmlIgnore]
         public int BP { get; set; }
     }
 }
