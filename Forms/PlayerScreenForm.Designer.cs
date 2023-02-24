@@ -31,6 +31,10 @@
             this.ChangePlayerAttributes = new System.Windows.Forms.Button();
             this.AddPlayerButton = new System.Windows.Forms.Button();
             this.PlayerCreationGroupBox = new System.Windows.Forms.GroupBox();
+            this.PlayerProficiencyNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerArmorRatingNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PlayerArmorRatingLabel = new System.Windows.Forms.Label();
+            this.PlayerProficiencyLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PlayerCharismaNumeric = new System.Windows.Forms.NumericUpDown();
             this.PlayerWisdomNumeric = new System.Windows.Forms.NumericUpDown();
@@ -52,7 +56,14 @@
             this.PlayerWisdomLabel = new System.Windows.Forms.Label();
             this.PlayerListBox = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PlayerClassLabel = new System.Windows.Forms.Label();
+            this.PlayerClassTextbox = new System.Windows.Forms.TextBox();
+            this.PlayerRaceTextbox = new System.Windows.Forms.TextBox();
+            this.PlayerRaceLabel = new System.Windows.Forms.Label();
             this.PlayerCreationGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerProficiencyNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerArmorRatingNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerCharismaNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerWisdomNumeric)).BeginInit();
@@ -62,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerStrengthNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerMovementNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerHealthNumeric)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ChangePlayerAttributes
@@ -88,6 +100,10 @@
             // 
             this.PlayerCreationGroupBox.BackgroundImage = global::Threading_in_C.Properties.Resources.magicitemcards_template_front_poker;
             this.PlayerCreationGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerProficiencyNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerArmorRatingNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerArmorRatingLabel);
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerProficiencyLabel);
             this.PlayerCreationGroupBox.Controls.Add(this.pictureBox1);
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerCharismaNumeric);
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerWisdomNumeric);
@@ -107,15 +123,56 @@
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerCharismaLabel);
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerIntelligenceLabel);
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerWisdomLabel);
-            this.PlayerCreationGroupBox.Font = new System.Drawing.Font("Viner Hand ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayerCreationGroupBox.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayerCreationGroupBox.Location = new System.Drawing.Point(21, 12);
             this.PlayerCreationGroupBox.Name = "PlayerCreationGroupBox";
             this.PlayerCreationGroupBox.Size = new System.Drawing.Size(295, 380);
             this.PlayerCreationGroupBox.TabIndex = 15;
             this.PlayerCreationGroupBox.TabStop = false;
             // 
+            // PlayerProficiencyNumeric
+            // 
+            this.PlayerProficiencyNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerProficiencyNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerProficiencyNumeric.Location = new System.Drawing.Point(219, 339);
+            this.PlayerProficiencyNumeric.Name = "PlayerProficiencyNumeric";
+            this.PlayerProficiencyNumeric.Size = new System.Drawing.Size(40, 18);
+            this.PlayerProficiencyNumeric.TabIndex = 29;
+            this.PlayerProficiencyNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerProficiencyNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerArmorRatingNumeric
+            // 
+            this.PlayerArmorRatingNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerArmorRatingNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerArmorRatingNumeric.Location = new System.Drawing.Point(98, 340);
+            this.PlayerArmorRatingNumeric.Name = "PlayerArmorRatingNumeric";
+            this.PlayerArmorRatingNumeric.Size = new System.Drawing.Size(40, 18);
+            this.PlayerArmorRatingNumeric.TabIndex = 28;
+            this.PlayerArmorRatingNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerArmorRatingNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
+            // PlayerArmorRatingLabel
+            // 
+            this.PlayerArmorRatingLabel.AutoSize = true;
+            this.PlayerArmorRatingLabel.Location = new System.Drawing.Point(25, 340);
+            this.PlayerArmorRatingLabel.Name = "PlayerArmorRatingLabel";
+            this.PlayerArmorRatingLabel.Size = new System.Drawing.Size(76, 15);
+            this.PlayerArmorRatingLabel.TabIndex = 26;
+            this.PlayerArmorRatingLabel.Text = "Armor Rating";
+            // 
+            // PlayerProficiencyLabel
+            // 
+            this.PlayerProficiencyLabel.AutoSize = true;
+            this.PlayerProficiencyLabel.Location = new System.Drawing.Point(150, 342);
+            this.PlayerProficiencyLabel.Name = "PlayerProficiencyLabel";
+            this.PlayerProficiencyLabel.Size = new System.Drawing.Size(63, 15);
+            this.PlayerProficiencyLabel.TabIndex = 27;
+            this.PlayerProficiencyLabel.Text = "Proficiency";
+            // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Beige;
             this.pictureBox1.Image = global::Threading_in_C.Properties.Resources.DnD_Symbol;
             this.pictureBox1.Location = new System.Drawing.Point(52, 94);
             this.pictureBox1.Name = "pictureBox1";
@@ -128,9 +185,9 @@
             // 
             this.PlayerCharismaNumeric.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerCharismaNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerCharismaNumeric.Location = new System.Drawing.Point(217, 338);
+            this.PlayerCharismaNumeric.Location = new System.Drawing.Point(219, 316);
             this.PlayerCharismaNumeric.Name = "PlayerCharismaNumeric";
-            this.PlayerCharismaNumeric.Size = new System.Drawing.Size(40, 21);
+            this.PlayerCharismaNumeric.Size = new System.Drawing.Size(40, 18);
             this.PlayerCharismaNumeric.TabIndex = 25;
             this.PlayerCharismaNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerCharismaNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -139,9 +196,9 @@
             // 
             this.PlayerWisdomNumeric.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerWisdomNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerWisdomNumeric.Location = new System.Drawing.Point(217, 311);
+            this.PlayerWisdomNumeric.Location = new System.Drawing.Point(219, 291);
             this.PlayerWisdomNumeric.Name = "PlayerWisdomNumeric";
-            this.PlayerWisdomNumeric.Size = new System.Drawing.Size(40, 21);
+            this.PlayerWisdomNumeric.Size = new System.Drawing.Size(40, 18);
             this.PlayerWisdomNumeric.TabIndex = 24;
             this.PlayerWisdomNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerWisdomNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -150,9 +207,9 @@
             // 
             this.PlayerIntelligenceNumeric.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerIntelligenceNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerIntelligenceNumeric.Location = new System.Drawing.Point(217, 282);
+            this.PlayerIntelligenceNumeric.Location = new System.Drawing.Point(219, 267);
             this.PlayerIntelligenceNumeric.Name = "PlayerIntelligenceNumeric";
-            this.PlayerIntelligenceNumeric.Size = new System.Drawing.Size(40, 21);
+            this.PlayerIntelligenceNumeric.Size = new System.Drawing.Size(40, 18);
             this.PlayerIntelligenceNumeric.TabIndex = 23;
             this.PlayerIntelligenceNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerIntelligenceNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -161,9 +218,9 @@
             // 
             this.PlayerConstitutionNumeric.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerConstitutionNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerConstitutionNumeric.Location = new System.Drawing.Point(217, 254);
+            this.PlayerConstitutionNumeric.Location = new System.Drawing.Point(219, 241);
             this.PlayerConstitutionNumeric.Name = "PlayerConstitutionNumeric";
-            this.PlayerConstitutionNumeric.Size = new System.Drawing.Size(40, 21);
+            this.PlayerConstitutionNumeric.Size = new System.Drawing.Size(40, 18);
             this.PlayerConstitutionNumeric.TabIndex = 22;
             this.PlayerConstitutionNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerConstitutionNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -172,9 +229,9 @@
             // 
             this.PlayerDexterityNumeric.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerDexterityNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerDexterityNumeric.Location = new System.Drawing.Point(96, 339);
+            this.PlayerDexterityNumeric.Location = new System.Drawing.Point(98, 317);
             this.PlayerDexterityNumeric.Name = "PlayerDexterityNumeric";
-            this.PlayerDexterityNumeric.Size = new System.Drawing.Size(40, 21);
+            this.PlayerDexterityNumeric.Size = new System.Drawing.Size(40, 18);
             this.PlayerDexterityNumeric.TabIndex = 21;
             this.PlayerDexterityNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerDexterityNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -183,9 +240,9 @@
             // 
             this.PlayerStrengthNumeric.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerStrengthNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerStrengthNumeric.Location = new System.Drawing.Point(96, 310);
+            this.PlayerStrengthNumeric.Location = new System.Drawing.Point(98, 290);
             this.PlayerStrengthNumeric.Name = "PlayerStrengthNumeric";
-            this.PlayerStrengthNumeric.Size = new System.Drawing.Size(40, 21);
+            this.PlayerStrengthNumeric.Size = new System.Drawing.Size(40, 18);
             this.PlayerStrengthNumeric.TabIndex = 20;
             this.PlayerStrengthNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerStrengthNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -194,9 +251,9 @@
             // 
             this.PlayerMovementNumeric.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerMovementNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerMovementNumeric.Location = new System.Drawing.Point(96, 280);
+            this.PlayerMovementNumeric.Location = new System.Drawing.Point(98, 265);
             this.PlayerMovementNumeric.Name = "PlayerMovementNumeric";
-            this.PlayerMovementNumeric.Size = new System.Drawing.Size(40, 21);
+            this.PlayerMovementNumeric.Size = new System.Drawing.Size(40, 18);
             this.PlayerMovementNumeric.TabIndex = 19;
             this.PlayerMovementNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerMovementNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -205,9 +262,9 @@
             // 
             this.PlayerHealthNumeric.BackColor = System.Drawing.SystemColors.Control;
             this.PlayerHealthNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerHealthNumeric.Location = new System.Drawing.Point(96, 252);
+            this.PlayerHealthNumeric.Location = new System.Drawing.Point(98, 239);
             this.PlayerHealthNumeric.Name = "PlayerHealthNumeric";
-            this.PlayerHealthNumeric.Size = new System.Drawing.Size(40, 21);
+            this.PlayerHealthNumeric.Size = new System.Drawing.Size(40, 18);
             this.PlayerHealthNumeric.TabIndex = 18;
             this.PlayerHealthNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerHealthNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -227,92 +284,94 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
+            this.NameLabel.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameLabel.Location = new System.Drawing.Point(125, 11);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(39, 18);
+            this.NameLabel.Size = new System.Drawing.Size(48, 20);
             this.NameLabel.TabIndex = 0;
             this.NameLabel.Text = "Name";
             // 
             // PlayerHealthLabel
             // 
             this.PlayerHealthLabel.AutoSize = true;
-            this.PlayerHealthLabel.Location = new System.Drawing.Point(45, 253);
+            this.PlayerHealthLabel.Location = new System.Drawing.Point(47, 240);
             this.PlayerHealthLabel.Name = "PlayerHealthLabel";
-            this.PlayerHealthLabel.Size = new System.Drawing.Size(45, 18);
+            this.PlayerHealthLabel.Size = new System.Drawing.Size(42, 15);
             this.PlayerHealthLabel.TabIndex = 1;
             this.PlayerHealthLabel.Text = "Health";
             // 
             // PlayerMovementLabel
             // 
             this.PlayerMovementLabel.AutoSize = true;
-            this.PlayerMovementLabel.Location = new System.Drawing.Point(37, 281);
+            this.PlayerMovementLabel.Location = new System.Drawing.Point(39, 266);
             this.PlayerMovementLabel.Name = "PlayerMovementLabel";
-            this.PlayerMovementLabel.Size = new System.Drawing.Size(62, 18);
+            this.PlayerMovementLabel.Size = new System.Drawing.Size(59, 15);
             this.PlayerMovementLabel.TabIndex = 2;
             this.PlayerMovementLabel.Text = "Movement";
             // 
             // PlayerStrengthLabel
             // 
             this.PlayerStrengthLabel.AutoSize = true;
-            this.PlayerStrengthLabel.Location = new System.Drawing.Point(40, 311);
+            this.PlayerStrengthLabel.Location = new System.Drawing.Point(42, 291);
             this.PlayerStrengthLabel.Name = "PlayerStrengthLabel";
-            this.PlayerStrengthLabel.Size = new System.Drawing.Size(54, 18);
+            this.PlayerStrengthLabel.Size = new System.Drawing.Size(50, 15);
             this.PlayerStrengthLabel.TabIndex = 3;
             this.PlayerStrengthLabel.Text = "Strength";
             // 
             // PlayerConstitutionLabel
             // 
             this.PlayerConstitutionLabel.AutoSize = true;
-            this.PlayerConstitutionLabel.Location = new System.Drawing.Point(142, 253);
+            this.PlayerConstitutionLabel.Location = new System.Drawing.Point(144, 240);
             this.PlayerConstitutionLabel.Name = "PlayerConstitutionLabel";
-            this.PlayerConstitutionLabel.Size = new System.Drawing.Size(75, 18);
+            this.PlayerConstitutionLabel.Size = new System.Drawing.Size(73, 15);
             this.PlayerConstitutionLabel.TabIndex = 5;
             this.PlayerConstitutionLabel.Text = "Constitution";
             // 
             // PlayerDexterityLabel
             // 
             this.PlayerDexterityLabel.AutoSize = true;
-            this.PlayerDexterityLabel.Location = new System.Drawing.Point(42, 341);
+            this.PlayerDexterityLabel.Location = new System.Drawing.Point(44, 319);
             this.PlayerDexterityLabel.Name = "PlayerDexterityLabel";
-            this.PlayerDexterityLabel.Size = new System.Drawing.Size(57, 18);
+            this.PlayerDexterityLabel.Size = new System.Drawing.Size(54, 15);
             this.PlayerDexterityLabel.TabIndex = 4;
             this.PlayerDexterityLabel.Text = "Dexterity";
             // 
             // PlayerCharismaLabel
             // 
             this.PlayerCharismaLabel.AutoSize = true;
-            this.PlayerCharismaLabel.Location = new System.Drawing.Point(148, 341);
+            this.PlayerCharismaLabel.Location = new System.Drawing.Point(150, 319);
             this.PlayerCharismaLabel.Name = "PlayerCharismaLabel";
-            this.PlayerCharismaLabel.Size = new System.Drawing.Size(59, 18);
+            this.PlayerCharismaLabel.Size = new System.Drawing.Size(56, 15);
             this.PlayerCharismaLabel.TabIndex = 8;
             this.PlayerCharismaLabel.Text = "Charisma";
             // 
             // PlayerIntelligenceLabel
             // 
             this.PlayerIntelligenceLabel.AutoSize = true;
-            this.PlayerIntelligenceLabel.Location = new System.Drawing.Point(142, 281);
+            this.PlayerIntelligenceLabel.Location = new System.Drawing.Point(144, 266);
             this.PlayerIntelligenceLabel.Name = "PlayerIntelligenceLabel";
-            this.PlayerIntelligenceLabel.Size = new System.Drawing.Size(68, 18);
+            this.PlayerIntelligenceLabel.Size = new System.Drawing.Size(67, 15);
             this.PlayerIntelligenceLabel.TabIndex = 6;
             this.PlayerIntelligenceLabel.Text = "Intelligence";
             // 
             // PlayerWisdomLabel
             // 
             this.PlayerWisdomLabel.AutoSize = true;
-            this.PlayerWisdomLabel.Location = new System.Drawing.Point(149, 311);
+            this.PlayerWisdomLabel.Location = new System.Drawing.Point(151, 291);
             this.PlayerWisdomLabel.Name = "PlayerWisdomLabel";
-            this.PlayerWisdomLabel.Size = new System.Drawing.Size(48, 18);
+            this.PlayerWisdomLabel.Size = new System.Drawing.Size(48, 15);
             this.PlayerWisdomLabel.TabIndex = 7;
             this.PlayerWisdomLabel.Text = "Wisdom";
             // 
             // PlayerListBox
             // 
-            this.PlayerListBox.Font = new System.Drawing.Font("Viner Hand ITC", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayerListBox.BackColor = System.Drawing.Color.Beige;
+            this.PlayerListBox.Font = new System.Drawing.Font("Palatino Linotype", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayerListBox.FormattingEnabled = true;
-            this.PlayerListBox.ItemHeight = 24;
+            this.PlayerListBox.ItemHeight = 17;
             this.PlayerListBox.Location = new System.Drawing.Point(21, 428);
             this.PlayerListBox.Name = "PlayerListBox";
-            this.PlayerListBox.Size = new System.Drawing.Size(608, 244);
+            this.PlayerListBox.Size = new System.Drawing.Size(626, 242);
             this.PlayerListBox.TabIndex = 14;
             // 
             // button1
@@ -325,11 +384,64 @@
             this.button1.Text = "Calculate team challenge rating";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Beige;
+            this.groupBox1.Controls.Add(this.PlayerClassLabel);
+            this.groupBox1.Controls.Add(this.PlayerClassTextbox);
+            this.groupBox1.Controls.Add(this.PlayerRaceTextbox);
+            this.groupBox1.Controls.Add(this.PlayerRaceLabel);
+            this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(350, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(297, 136);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Optional";
+            // 
+            // PlayerClassLabel
+            // 
+            this.PlayerClassLabel.AutoSize = true;
+            this.PlayerClassLabel.Location = new System.Drawing.Point(7, 81);
+            this.PlayerClassLabel.Name = "PlayerClassLabel";
+            this.PlayerClassLabel.Size = new System.Drawing.Size(45, 20);
+            this.PlayerClassLabel.TabIndex = 4;
+            this.PlayerClassLabel.Text = "Class";
+            // 
+            // PlayerClassTextbox
+            // 
+            this.PlayerClassTextbox.BackColor = System.Drawing.Color.Beige;
+            this.PlayerClassTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerClassTextbox.Location = new System.Drawing.Point(11, 111);
+            this.PlayerClassTextbox.Name = "PlayerClassTextbox";
+            this.PlayerClassTextbox.Size = new System.Drawing.Size(100, 21);
+            this.PlayerClassTextbox.TabIndex = 3;
+            // 
+            // PlayerRaceTextbox
+            // 
+            this.PlayerRaceTextbox.BackColor = System.Drawing.Color.Beige;
+            this.PlayerRaceTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerRaceTextbox.Location = new System.Drawing.Point(11, 57);
+            this.PlayerRaceTextbox.Name = "PlayerRaceTextbox";
+            this.PlayerRaceTextbox.Size = new System.Drawing.Size(100, 21);
+            this.PlayerRaceTextbox.TabIndex = 2;
+            // 
+            // PlayerRaceLabel
+            // 
+            this.PlayerRaceLabel.AutoSize = true;
+            this.PlayerRaceLabel.Location = new System.Drawing.Point(7, 33);
+            this.PlayerRaceLabel.Name = "PlayerRaceLabel";
+            this.PlayerRaceLabel.Size = new System.Drawing.Size(42, 20);
+            this.PlayerRaceLabel.TabIndex = 0;
+            this.PlayerRaceLabel.Text = "Race";
+            // 
             // PlayerScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(669, 789);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ChangePlayerAttributes);
             this.Controls.Add(this.AddPlayerButton);
             this.Controls.Add(this.PlayerCreationGroupBox);
@@ -339,6 +451,8 @@
             this.Text = "PlayerScreenForm";
             this.PlayerCreationGroupBox.ResumeLayout(false);
             this.PlayerCreationGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerProficiencyNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerArmorRatingNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerCharismaNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerWisdomNumeric)).EndInit();
@@ -348,6 +462,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerStrengthNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerMovementNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerHealthNumeric)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -378,5 +494,14 @@
         private System.Windows.Forms.Label PlayerWisdomLabel;
         private System.Windows.Forms.ListBox PlayerListBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label PlayerClassLabel;
+        private System.Windows.Forms.TextBox PlayerClassTextbox;
+        private System.Windows.Forms.TextBox PlayerRaceTextbox;
+        private System.Windows.Forms.Label PlayerRaceLabel;
+        private System.Windows.Forms.NumericUpDown PlayerProficiencyNumeric;
+        private System.Windows.Forms.NumericUpDown PlayerArmorRatingNumeric;
+        private System.Windows.Forms.Label PlayerArmorRatingLabel;
+        private System.Windows.Forms.Label PlayerProficiencyLabel;
     }
 }
