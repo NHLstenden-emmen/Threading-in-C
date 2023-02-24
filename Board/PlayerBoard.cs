@@ -20,6 +20,7 @@ namespace Threading_in_C
         int gridheight = 9;
         int gridwidth = 16;
         int tileSize = 80;
+        Button selectedButton = null;
 
         public PlayerBoard()
         {
@@ -61,6 +62,7 @@ namespace Threading_in_C
                     button.Size = new Size(tileSize, tileSize);
                     button.Location = new Point(initialX, initialY);
                     button.Click += this.boardClick;
+                    button.BackColor = Color.Gray;
                     
                     Tile tile = new Tile(j, i);
                     button.Tag = tile;
@@ -109,7 +111,34 @@ namespace Threading_in_C
             //get the tile from the button
             Tile tile = (Tile)button.Tag;
 
-            Console.WriteLine(tile);
+            //select the pressed button if none other is selected
+            if (selectedButton == null)
+            {
+                selectedButton = button;
+                button.BackColor = Color.Green;
+                return;
+            }
+
+            //unselect a button if the selected button is pressed again
+            if (selectedButton == button)
+            {
+                selectedButton = null;
+                button.BackColor = Color.Gray;
+                return;
+            }
+
+            //check if tile is empty
+            if (tile.getPlaceable() != null)
+            {
+                return;
+            }
+
+            Tile selectedTile = (Tile)selectedButton.Tag;
+            tile.setPlaceable(selectedTile.getPlaceable());
+            selectedTile.setPlaceable(null);
+            selectedButton.BackColor = Color.Gray;
+            selectedButton = null;
+            updateBoard();
         }
 
         private void PlayerBoard_Load(object sender, EventArgs e)
@@ -117,19 +146,19 @@ namespace Threading_in_C
             setUpBoard();
 
             //place players as test
-            Tile buttonTile = (Tile)tileArray[1, 1].Tag;
-            buttonTile.setPlaceable(new testPlayer("Roan"));
-            updateBoard();
-        }
+            List<String> players = new List<String>();
+            players.Add("Roan");
+            players.Add("Simchaja");
+            players.Add("Daan");
+            players.Add("Kevin");
+            players.Add("Yaell");
 
-        private void moveObject(bool overrideRules = false)
-        {
-            if (!overrideRules)
-            {
-
+            for(int i = 0; i < players.Count; i++) {
+                Tile buttonTile = (Tile)tileArray[0, i].Tag;
+                buttonTile.setPlaceable(new testPlayer(players[i]));
             }
 
-
+            updateBoard();
         }
     }
 }
