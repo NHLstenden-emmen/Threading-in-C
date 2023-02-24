@@ -5,16 +5,22 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threading_in_C.Board;
+using Threading_in_C.Board.placeable;
 
 namespace Threading_in_C
 {
     public partial class PlayerBoard : Form
     {
-        Tile[,] tileArray;
+        Button[,] tileArray;
+        int gridheight = 9;
+        int gridwidth = 16;
+        int tileSize = 80;
+
         public PlayerBoard()
         {
             FormBorderStyle = FormBorderStyle.None;
@@ -40,33 +46,52 @@ namespace Threading_in_C
 
             int initialX = 0;
             int initialY = 0;
-            int gridheight = 9;
-            int gridwidth = 16;
-            int tileSize = 80;
 
             //initialize tile array with the correct dimentions
-            tileArray = new Tile[gridheight, gridwidth];
+            tileArray = new Button[gridheight, gridwidth];
 
             //creates the buttons for the board and fills tile array with empty tiles
             for (int i = 0; i < gridheight; i++)
             {
                 for (int j = 0; j < gridwidth; j++)
                 {
+                    //creates button and sets all atributes
                     Button button = new Button();
                     this.Controls.Add(button);
                     button.Size = new Size(tileSize, tileSize);
                     button.Location = new Point(initialX, initialY);
-                    initialX += tileSize;
-
-                    //sets button tags and onclick
                     button.Click += this.boardClick;
-                    button.Tag = new Tile();
+                    
+                    Tile tile = new Tile(j, i);
+                    button.Tag = tile;
 
-                    //adds tile to the array
-                    tileArray[gridheight-1, gridwidth-1] = (Tile)button.Tag;
+                    //adds button with tag to the array
+                    tileArray[i, j] = button;
+
+                    initialX += tileSize;
                 }
                 initialX = 0;
                 initialY += tileSize;
+            }
+        }
+
+        //updates the drawables on all tiles
+        public void updateBoard()
+        {
+            for (int i = 0; i < gridheight; i++)
+            {
+                for(int j = 0; j < gridwidth; j++)
+                {
+                    Tile tile = (Tile)tileArray[i, j].Tag;
+                    if (tile.getPlaceable() == null)
+                    {
+                        tileArray[i, j].Text = "";
+                    }
+                    else
+                    {
+                        tileArray[i,j].Text = tile.getPlaceable().getDrawAble();
+                    }
+                }
             }
         }
 
@@ -90,6 +115,11 @@ namespace Threading_in_C
         private void PlayerBoard_Load(object sender, EventArgs e)
         {
             setUpBoard();
+
+            //place players as test
+            Tile buttonTile = (Tile)tileArray[1, 1].Tag;
+            buttonTile.setPlaceable(new testPlayer("Roan"));
+            updateBoard();
         }
 
         private void moveObject(bool overrideRules = false)

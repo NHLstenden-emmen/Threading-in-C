@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Board\placeable\Placeable.cs" />
+    <Compile Include="Board\placeable\testPlayer.cs" />
     <Compile Include="Board\Tile.cs" />
     <Compile Include="ChoosePlayerBoardScreen.cs">
       <SubType>Form</SubType>
