@@ -8,5 +8,6 @@ namespace Threading_in_C.Board
 {
     internal class Tile
     {
+        public int x = 0;
     }
 }

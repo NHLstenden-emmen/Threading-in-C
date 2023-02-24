@@ -60,10 +60,10 @@ namespace Threading_in_C
 
                     //sets button tags and onclick
                     button.Click += this.boardClick;
-                    button.Tag = i + "-" + j;
+                    button.Tag = new Tile();
 
                     //adds tile to the array
-                    tileArray[gridheight-1, gridwidth-1] = new Tile();
+                    tileArray[gridheight-1, gridwidth-1] = (Tile)button.Tag;
                 }
                 initialX = 0;
                 initialY += tileSize;
@@ -77,10 +77,14 @@ namespace Threading_in_C
             {
                 return;
             }
+
             //parse to button to enable all useses and fields
             Button button = (Button)sender;
 
-            Console.WriteLine(button.Tag);
+            //get the tile from the button
+            Tile tile = (Tile)button.Tag;
+
+            Console.WriteLine(tile);
         }
 
         private void PlayerBoard_Load(object sender, EventArgs e)
