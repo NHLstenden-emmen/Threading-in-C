@@ -112,6 +112,7 @@
       <DependentUpon>SettingsScreenForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MyApplicationContext.cs" />
+    <Compile Include="OpenFiveApi\OpenFiveApiRequest.cs" />
     <Compile Include="OpenFiveApi\OpenFiveApiUrlBuilder.cs" />
     <Compile Include="PlayerBoard.cs">
       <SubType>Form</SubType>
