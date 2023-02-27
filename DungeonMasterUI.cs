@@ -21,7 +21,7 @@ namespace Threading_in_C
 
         public DungeonMasterUI()
         {
-            Console.WriteLine(ApiNpcAdapter.GetRandomClass());
+            Console.WriteLine(ApiNpcAdapter.GetRandomRace());
             InitializeComponent();
             this.Text = string.Empty;
             this.ControlBox = false;
@@ -131,6 +131,11 @@ namespace Threading_in_C
         {
             turnCounter++;
             btnTurnCounter.Text = turnCounter.ToString();
+        }
+
+        private void panelContentScreen_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

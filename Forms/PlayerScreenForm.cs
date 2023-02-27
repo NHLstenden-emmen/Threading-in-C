@@ -39,8 +39,7 @@ namespace Threading_in_C.Forms
                 existingPlayer.Charisma = (int)PlayerCharismaNumeric.Value;
                 existingPlayer.AR = (int)PlayerArmorRatingNumeric.Value;
                 existingPlayer.BP = (int)PlayerProficiencyNumeric.Value;
-                existingPlayer.Race.Clear();
-                existingPlayer.Race.Add(PlayerRaceTextbox.Text);
+                existingPlayer.Race = PlayerRaceTextbox.Text;
                 existingPlayer.Class =  PlayerClassTextbox.Text;
 
                 AddPlayerButton.Text = "Register Character";
@@ -60,12 +59,12 @@ namespace Threading_in_C.Forms
                     (int)PlayerCharismaNumeric.Value, 
                     (int)PlayerArmorRatingNumeric.Value, 
                     (int)PlayerProficiencyNumeric.Value, 
-                    new List<string>(),
+                    null,
                     null);
 
                 if (PlayerRaceTextbox.Text != null)
                 {
-                    player.Race.Add(PlayerRaceTextbox.Text);
+                    player.Race = PlayerRaceTextbox.Text;
                 }
                 if (PlayerClassTextbox.Text != null)
                 {
@@ -103,7 +102,7 @@ namespace Threading_in_C.Forms
                 PlayerNameTextbox.Text = player.Name;
                 PlayerArmorRatingNumeric.Value = player.AR;
                 PlayerProficiencyNumeric.Value = player.BP;
-                PlayerRaceTextbox.Text = player.Race.First();
+                PlayerRaceTextbox.Text = player.Race;
                 PlayerClassTextbox.Text = player.Class;
 
                 AddPlayerButton.Text = "Update Player";

@@ -9,9 +9,9 @@ namespace Threading_in_C.Entities
     internal class NPC : Character
     {
         public string Backstory { get; set; }
-        public List<string> Traits { get; set; }
+        public string Traits { get; set; }
 
-        public NPC(string name, int health, int movement, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int ar, int bp, List<string> race, string characterClass, string backstory, List<string> traits)
+        public NPC(string name, int health, int movement, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int ar, int bp, string race, string characterClass, string backstory, string traits)
         {
             Name = name;
             Health = health;
