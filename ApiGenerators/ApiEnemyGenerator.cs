@@ -4,7 +4,7 @@ using Threading_in_C.Entities;
 
 namespace Threading_in_C.ApiResponseAdapters
 {
-    internal class ApiEnemyAdapter
+    internal class ApiEnemyGenerator
     {
         // Changes the API response into enemies
         public static List<Enemy> Parse(string jsonString)

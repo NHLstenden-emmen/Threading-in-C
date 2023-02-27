@@ -3,18 +3,16 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
 
 namespace Threading_in_C.ApiResponseAdapters
 {
-    internal class ApiNpcAdapter
+    internal class ApiNpcGenerator
     {
-        public static NPC Parse(string jsonString)
+        public static NPC Parse()
         {
-            string name = "test";
+            string name = GenerateName();
 
             var (randomRace, randomSpeed, randomTraits) = GetRandomRace();
 
@@ -33,7 +31,7 @@ namespace Threading_in_C.ApiResponseAdapters
             string race = randomRace;
             string characterClass = GetRandomClass();
             string backstory = ""; 
-            string traits = randomTraits;
+            List<string> traits = randomTraits;
 
             NPC randomNPC = new NPC(name, health, movement, strength, dexterity, constitution, intelligence, wisdom, charisma, ar, bp, race, characterClass, backstory, traits);
             
@@ -54,7 +52,7 @@ namespace Threading_in_C.ApiResponseAdapters
         }
 
         // Returns a tuple containing a random race, its speed, and its traits.
-        public static (string race, int speed, string traits) GetRandomRace()
+        public static (string race, int speed, List<string> traits) GetRandomRace()
         {
             OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
             var raceResponse = apiRequest.MakeOpenFiveApiRequest("races");
@@ -85,19 +83,58 @@ namespace Threading_in_C.ApiResponseAdapters
             // Acceses the results, first or default is a LING method to search the array for an object with an equal name to the selected race           
             var raceObject = parsedResponse["results"].FirstOrDefault(r => (string)r["name"] == selectedRace);
             var speed = (int)(raceObject?["speed"]["walk"] ?? 20);
-            var traits = "";
+            var traits = new List<string>();
 
             // It can take a while to get all the traits, maybe implement waiting functionality
             if (raceObject != null)
             {
-                traits = (string)raceObject["traits"];
+                traits.Add((string)raceObject["traits"]);
                 foreach (var subrace in raceObject["subraces"])
                 {
-                    traits += "\n" + (string)subrace["traits"];
+                    traits.Add((string)subrace["traits"]);
                 }
             }
 
             return (selectedRace, speed, traits);
+        }
+
+        public static string GenerateName()
+        {
+            Random rand = new Random();
+
+            // Define arrays of vowels and consonants
+            string[] vowels = { "a", "e", "i", "o", "u" };
+            string[] consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z" };
+            string firstName = "";
+            string lastName = "";
+
+            // Generate a random length
+            int firstNameLength = rand.Next(5, 10);
+            int lastNameLength = rand.Next(5, 10);
+
+            // Generate a random vowel 
+            bool firstIsVowel = rand.Next(2) == 0;
+            bool secondIsVowel = rand.Next(2) == 0;
+
+            // Loop through the characters and add a vowel or consonant based on isVowel
+            for (int i = 0; i < firstNameLength; i++)
+            {
+                if (firstIsVowel) firstName += vowels[rand.Next(vowels.Length)];
+                else firstName += consonants[rand.Next(consonants.Length)];
+
+                firstIsVowel = !firstIsVowel;
+            }
+
+            for (int i = 0; i < lastNameLength; i++)
+            {
+                if (secondIsVowel) lastName += vowels[rand.Next(vowels.Length)];
+                else lastName += consonants[rand.Next(consonants.Length)];
+
+                secondIsVowel = !secondIsVowel;
+            }
+
+            // character uppercase
+            return char.ToUpper(firstName[0]) + firstName.Substring(1) + " " + char.ToUpper(lastName[0]) + lastName.Substring(1);
         }
     }
 }
