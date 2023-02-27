@@ -1,15 +1,22 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using Threading_in_C.Entities;
+using Threading_in_C.OpenFiveApi;
 
 namespace Threading_in_C.ApiResponseAdapters
 {
     internal class ApiEnemyGenerator
     {
+        // TODO: Only retrieve one random enemy at a time
         // Changes the API response into enemies
-        public static List<Enemy> Parse(string jsonString)
+        public static List<Enemy> Parse()
         {
-            JObject responseJson = JObject.Parse(jsonString);
+            OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
+            int randomPage = new Random().Next(0, 31);
+            var enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", randomPage);
+
+            JObject responseJson = JObject.Parse(enemyResponse);
             JArray enemiesJson = (JArray)responseJson["results"];
 
             List<Enemy> enemies = new List<Enemy>();
@@ -28,7 +35,7 @@ namespace Threading_in_C.ApiResponseAdapters
                 int charisma = (int)enemyJson["charisma"];
 
                 int ar = (int)enemyJson["armor_class"];
-                int bp = 0;// int.Parse(enemyJson["hp"]["formula"].ToString().Split('d')[1]);
+                int bp = 0; // TODO consult Kevin to talk about proficiency
 
                 float cr = GetChallengeRating((string)enemyJson["challenge_rating"]);
 

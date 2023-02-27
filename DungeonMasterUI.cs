@@ -21,7 +21,8 @@ namespace Threading_in_C
         public DungeonMasterUI()
         {
             var npc = ApiNpcGenerator.Parse();
-            Console.WriteLine(npc.Name);
+            Console.WriteLine(npc.Backstory);
+
             InitializeComponent();
             this.Text = string.Empty;
             this.ControlBox = false;

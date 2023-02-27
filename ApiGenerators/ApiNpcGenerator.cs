@@ -26,11 +26,11 @@ namespace Threading_in_C.ApiResponseAdapters
             int charisma = new Random().Next(31);
 
             int ar = new Random().Next(31);
-            int bp = 0;
+            int bp = 0; // TODO consult Kevin to talk about proficiency
 
             string race = randomRace;
-            string characterClass = GetRandomClass();
-            string backstory = ""; 
+            string characterClass = GetRandomClassAspects();
+            string backstory = getBackstory(); 
             List<string> traits = randomTraits;
 
             NPC randomNPC = new NPC(name, health, movement, strength, dexterity, constitution, intelligence, wisdom, charisma, ar, bp, race, characterClass, backstory, traits);
@@ -39,8 +39,20 @@ namespace Threading_in_C.ApiResponseAdapters
             return randomNPC;
         }
 
+        public static string getBackstory()
+        {
+            // At the moment the open five api only has 3 backstories
+            OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
+            var backstoryResponse = apiRequest.MakeOpenFiveApiRequest("backgrounds");
+
+            // Parse the available backstories
+            var backstories = JObject.Parse(backstoryResponse)["results"].Select(c => (string)c["desc"]).ToList();
+
+            return backstories[new Random().Next(backstories.Count)];
+        }
+
         // New method, now also using LINQ
-        public static string GetRandomClass()
+        public static string GetRandomClassAspects()
         {
             OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
             var classResponse = apiRequest.MakeOpenFiveApiRequest("classes");

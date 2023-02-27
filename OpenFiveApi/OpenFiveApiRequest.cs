@@ -24,14 +24,21 @@ namespace Threading_in_C.OpenFiveApi
             return urlBuilder.returnOpenFiveApiURl(endpoint);
         }
 
-        public string MakeOpenFiveApiRequest(string endpoint)
+        public string MakeOpenFiveApiRequest(string endpoint, int? page = null)
         {
             string url = GetEndpointUrl(endpoint);
+
+            // Checks if page parameter is given
+            if (page != null && page != 0)
+            {
+                url += $"?page={page}";
+            }
 
             using (var client = new WebClient())
             {
                 return client.DownloadString(url);
             }
         }
+
     }
 }
