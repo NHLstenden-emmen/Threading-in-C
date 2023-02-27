@@ -84,7 +84,7 @@ namespace Threading_in_C.ApiResponseAdapters
 
             /* Acceses the results, first or default is a LING method to search the array for an object with an equal name to the selected race
             * then checks if a results gets returned, then acceses the speed of the object, defaults to 10 if no speed is found */
-            var speed = (int)parsedResponse["results"].FirstOrDefault(r => (string)r["name"] == selectedRace)?["speed"]["walk"];
+            var speed = (int)(parsedResponse["results"].FirstOrDefault(r => (string)r["name"] == selectedRace)?["speed"]["walk"] ?? 20);
             var traits = "";
 
             return (selectedRace, speed, traits);
