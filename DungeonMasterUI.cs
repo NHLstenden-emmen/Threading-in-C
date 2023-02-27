@@ -5,6 +5,8 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Threading_in_C.ApiResponseAdapters;
+using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
 
 namespace Threading_in_C
@@ -18,8 +20,16 @@ namespace Threading_in_C
 
         public DungeonMasterUI()
         {
-            var response = apiRequest.GetApiObjects("monsters", 5);
-            Console.WriteLine(response);
+            var response = apiRequest.MakeOpenFiveApiRequest("monsters");
+            var enemies = ApiEnemyAdapter.Parse(response);
+            foreach (Enemy enemy in enemies)
+            {
+                Console.WriteLine("Name: " + enemy.Name);
+                Console.WriteLine("Health: " + enemy.Health);
+                Console.WriteLine("Movement: " + enemy.Movement);
+                Console.WriteLine("Strength: " + enemy.Strength);
+                Console.WriteLine("CR: " + enemy.CR);
+            }
             InitializeComponent();
             this.Text = string.Empty;
             this.ControlBox = false;

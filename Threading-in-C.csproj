@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiResponseAdapters\ApiEnemyAdapter.cs" />
     <Compile Include="OpenFiveApi\Open5eApi.cs" />
     <Compile Include="OpenFiveApi\Dnd5eApi.cs" />
     <Compile Include="ChoosePlayerBoardScreen.cs">
