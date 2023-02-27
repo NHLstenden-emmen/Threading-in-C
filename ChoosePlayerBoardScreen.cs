@@ -63,6 +63,8 @@ namespace Threading_in_C
                 boardDM.ChangeLocation(SelectedScreen);
                 this.Close();
             }
+
+            boardPlayer.initiateBasicSetup(SelectedScreen);
         }
     }
 }
