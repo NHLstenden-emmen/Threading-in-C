@@ -16,8 +16,10 @@ namespace Threading_in_C.ApiResponseAdapters
         {
             string name = "test";
 
+            var (randomRace, randomSpeed, randomTraits) = GetRandomRace();
+
             int health = new Random().Next(401);
-            int movement = 10;
+            int movement = randomSpeed;
             int strength = new Random().Next(31);
             int dexterity = new Random().Next(31);
             int constitution = new Random().Next(31);
@@ -28,11 +30,11 @@ namespace Threading_in_C.ApiResponseAdapters
             int ar = new Random().Next(31);
             int bp = 0;
 
-            var randomClass = GetRandomClass();
-            string race = GetRandomRace();
-            string characterClass = randomClass;
-            string backstory = "";
-            string traits = "";
+            string race = randomRace;
+            string characterClass = GetRandomClass();
+            string backstory = ""; 
+            string traits = randomTraits;
+
             NPC randomNPC = new NPC(name, health, movement, strength, dexterity, constitution, intelligence, wisdom, charisma, ar, bp, race, characterClass, backstory, traits);
             
             // Returns a NPC
@@ -51,21 +53,41 @@ namespace Threading_in_C.ApiResponseAdapters
             return classes[new Random().Next(classes.Count)];
         }
 
-        //TODO get speed, traits and subraces
-        public static string GetRandomRace()
+        // Returns a tuple containing a random race, its speed, and its traits.
+        public static (string race, int speed, string traits) GetRandomRace()
         {
             OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
-            var raceResponse = apiRequest.MakeOpenFiveApiRequest("classes");
-            var races = JObject.Parse(raceResponse)["results"].Select(c => (string)c["name"]).ToList();
-            // add the subraces
+            var raceResponse = apiRequest.MakeOpenFiveApiRequest("races");
 
+            var races = new List<string>();
+            var parsedResponse = JObject.Parse(raceResponse);
+
+            // Loop through each race 
+            foreach (var race in parsedResponse["results"])
+            {
+                var raceName = (string)race["name"];
+                races.Add(raceName);
+
+                // If the race has subraces add it to the list of races.
+                if (race["subraces"].Any())
+                {
+                    foreach (var subrace in race["subraces"])
+                    {
+                        var subraceName = (string)subrace["name"];
+                        races.Add($"{raceName} - {subraceName}");
+                    }
+                }
+            }
+
+            // Select a random race 
             var selectedRace = races[new Random().Next(races.Count)];
-            // var speed
-            // var traits
 
-            /* Select, Using the Select method to extract the "name" property of each object in the "results" array.
-             * is a linq method, aswell as converting the result into a List using ToList. */
-            return races[new Random().Next(races.Count)];
+            /* Acceses the results, first or default is a LING method to search the array for an object with an equal name to the selected race
+            * then checks if a results gets returned, then acceses the speed of the object, defaults to 10 if no speed is found */
+            var speed = (int)parsedResponse["results"].FirstOrDefault(r => (string)r["name"] == selectedRace)?["speed"]["walk"];
+            var traits = "";
+
+            return (selectedRace, speed, traits);
         }
     }
 }
