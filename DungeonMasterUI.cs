@@ -17,19 +17,11 @@ namespace Threading_in_C
         private Form activeForm;
         public int turnCounter;
         private readonly OpenFiveApiRequest apiRequest= new OpenFiveApiRequest();
+        private ApiNpcAdapter adapter = new ApiNpcAdapter();
 
         public DungeonMasterUI()
         {
-            var response = apiRequest.MakeOpenFiveApiRequest("monsters");
-            var enemies = ApiEnemyAdapter.Parse(response);
-            foreach (Enemy enemy in enemies)
-            {
-                Console.WriteLine("Name: " + enemy.Name);
-                Console.WriteLine("Health: " + enemy.Health);
-                Console.WriteLine("Movement: " + enemy.Movement);
-                Console.WriteLine("Strength: " + enemy.Strength);
-                Console.WriteLine("CR: " + enemy.CR);
-            }
+            Console.WriteLine(ApiNpcAdapter.GetRandomClass());
             InitializeComponent();
             this.Text = string.Empty;
             this.ControlBox = false;
