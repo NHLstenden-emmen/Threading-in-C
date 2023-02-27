@@ -143,6 +143,24 @@ namespace Threading_in_C
 
         private void PlayerBoard_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        public void initiateBasicSetup(int SelectedScreen)
+        {
+            // Get the selected screen
+            Screen selectedScreen = Screen.AllScreens[SelectedScreen];
+
+            // Set the form to the size of the selected screen
+            this.Location = selectedScreen.Bounds.Location;
+            this.Size = selectedScreen.Bounds.Size;
+
+            // Get the DPI of the selected screen
+            Graphics graphics = Graphics.FromHwnd(IntPtr.Zero);
+            float dpiX = graphics.DpiX;
+            float dpiY = graphics.DpiY;
+            graphics.Dispose();
+
             setUpBoard();
 
             //place players as test
@@ -153,7 +171,8 @@ namespace Threading_in_C
             players.Add("Kevin");
             players.Add("Yaell");
 
-            for(int i = 0; i < players.Count; i++) {
+            for (int i = 0; i < players.Count; i++)
+            {
                 Tile buttonTile = (Tile)tileArray[0, i].Tag;
                 buttonTile.setPlaceable(new testPlayer(players[i]));
             }
