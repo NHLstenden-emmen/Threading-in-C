@@ -82,10 +82,20 @@ namespace Threading_in_C.ApiResponseAdapters
             // Select a random race 
             var selectedRace = races[new Random().Next(races.Count)];
 
-            /* Acceses the results, first or default is a LING method to search the array for an object with an equal name to the selected race
-            * then checks if a results gets returned, then acceses the speed of the object, defaults to 10 if no speed is found */
-            var speed = (int)(parsedResponse["results"].FirstOrDefault(r => (string)r["name"] == selectedRace)?["speed"]["walk"] ?? 20);
+            // Acceses the results, first or default is a LING method to search the array for an object with an equal name to the selected race           
+            var raceObject = parsedResponse["results"].FirstOrDefault(r => (string)r["name"] == selectedRace);
+            var speed = (int)(raceObject?["speed"]["walk"] ?? 20);
             var traits = "";
+
+            // It can take a while to get all the traits, maybe implement waiting functionality
+            if (raceObject != null)
+            {
+                traits = (string)raceObject["traits"];
+                foreach (var subrace in raceObject["subraces"])
+                {
+                    traits += "\n" + (string)subrace["traits"];
+                }
+            }
 
             return (selectedRace, speed, traits);
         }
