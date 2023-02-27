@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Threading_in_C.OpenFiveApi;
 
 namespace Threading_in_C
 {
@@ -12,9 +14,12 @@ namespace Threading_in_C
         private Button currentButton;
         private Form activeForm;
         public int turnCounter;
+        private readonly OpenFiveApiRequest apiRequest= new OpenFiveApiRequest();
 
         public DungeonMasterUI()
         {
+            var response = apiRequest.GetApiObjects("monsters", 5);
+            Console.WriteLine(response);
             InitializeComponent();
             this.Text = string.Empty;
             this.ControlBox = false;
