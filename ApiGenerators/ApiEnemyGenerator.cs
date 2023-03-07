@@ -8,45 +8,42 @@ namespace Threading_in_C.ApiResponseAdapters
 {
     internal class ApiEnemyGenerator
     {
-        // TODO: Only retrieve one random enemy at a time
-        // Changes the API response into enemies
-        public static List<Enemy> Parse()
+        // Changes the API response into an enemy
+        public static Enemy Parse()
         {
+            Random random = new Random();
             OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
-            int randomPage = new Random().Next(0, 31);
-            var enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", randomPage);
+            var enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", random.Next(0, 31));
 
             JObject responseJson = JObject.Parse(enemyResponse);
             JArray enemiesJson = (JArray)responseJson["results"];
 
-            List<Enemy> enemies = new List<Enemy>();
-            foreach (JObject enemyJson in enemiesJson)
-            {
-                string name = (string)enemyJson["name"];
+            // Choose a random enemy from the response
+            int randomIndex = new Random().Next(0, enemiesJson.Count);
+            JObject enemyJson = (JObject)enemiesJson[randomIndex];
 
-                int health = (int)enemyJson["hit_points"];
-                int movement = (int)enemyJson["speed"]["walk"];
+            string name = (string)enemyJson["name"];
 
-                int strength = (int)enemyJson["strength"];
-                int dexterity = (int)enemyJson["dexterity"];
-                int constitution = (int)enemyJson["constitution"];
-                int intelligence = (int)enemyJson["intelligence"];
-                int wisdom = (int)enemyJson["wisdom"];
-                int charisma = (int)enemyJson["charisma"];
+            int health = (int)enemyJson["hit_points"];
+            int movement = (int)enemyJson["speed"]["walk"];
 
-                int ar = (int)enemyJson["armor_class"];
-                int bp = 0; // TODO consult Kevin to talk about proficiency
+            int strength = (int)enemyJson["strength"];
+            int dexterity = (int)enemyJson["dexterity"];
+            int constitution = (int)enemyJson["constitution"];
+            int intelligence = (int)enemyJson["intelligence"];
+            int wisdom = (int)enemyJson["wisdom"];
+            int charisma = (int)enemyJson["charisma"];
 
-                float cr = GetChallengeRating((string)enemyJson["challenge_rating"]);
+            int ar = (int)enemyJson["armor_class"];
+            int bp = 0; // TODO consult Kevin to talk about proficiency
 
-                int size = GetSizeValue((string)enemyJson["size"]);
-                string type = (string)enemyJson["type"];
+            float cr = GetChallengeRating((string)enemyJson["challenge_rating"]);
 
-                enemies.Add(new Enemy(name, health, movement, strength, dexterity, constitution, intelligence, wisdom, charisma, ar, bp, cr, size, type));
-            }
+            int size = GetSizeValue((string)enemyJson["size"]);
+            string type = (string)enemyJson["type"];
 
-            // Returns a list with enemies
-            return enemies;
+            // Return the chosen enemy
+            return new Enemy(name, health, movement, strength, dexterity, constitution, intelligence, wisdom, charisma, ar, bp, cr, size, type);
         }
 
         // Defines the size based on a int instead of a string
