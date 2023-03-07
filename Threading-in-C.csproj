@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiGenerators\ApiEnemyGenerator.cs" />
+    <Compile Include="ApiGenerators\ApiItemGenerator.cs" />
     <Compile Include="ApiGenerators\ApiNpcGenerator.cs" />
     <Compile Include="OpenFiveApi\Open5eApi.cs" />
     <Compile Include="OpenFiveApi\Dnd5eApi.cs" />

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Threading_in_C.ApiGenerators;
 using Threading_in_C.ApiResponseAdapters;
 using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
@@ -24,6 +25,9 @@ namespace Threading_in_C
             Console.WriteLine(npc.Backstory);
             var enemy = ApiEnemyGenerator.Parse();
             Console.WriteLine(enemy.Name);
+
+            var item = ApiItemGenerator.Parse();
+            Console.WriteLine(item.Type);
 
             InitializeComponent();
             this.Text = string.Empty;
