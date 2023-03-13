@@ -9,11 +9,13 @@ namespace Threading_in_C.ApiResponseAdapters
     internal class ApiEnemyGenerator
     {
         // Changes the API response into an enemy
-        public static Enemy Parse()
+        public static Enemy Parse(int? ChallengeRating = null)
         {
             Random random = new Random();
             OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
-            var enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", random.Next(0, 31));
+            string enemyResponse;
+            if (ChallengeRating != null) { enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", null, ChallengeRating); }
+            else { enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", random.Next(0, 50)); }
 
             JObject responseJson = JObject.Parse(enemyResponse);
             JArray enemiesJson = (JArray)responseJson["results"];

@@ -26,6 +26,7 @@ namespace Threading_in_C
 
             var enemy = ApiEnemyGenerator.Parse();
             Console.WriteLine(enemy.Name);
+            Console.WriteLine(enemy.CR);
 
             var item = ApiItemGenerator.Parse();
             Console.WriteLine(item.Type);

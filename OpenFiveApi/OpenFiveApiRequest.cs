@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,21 +25,27 @@ namespace Threading_in_C.OpenFiveApi
             return urlBuilder.returnOpenFiveApiURl(endpoint);
         }
 
-        public string MakeOpenFiveApiRequest(string endpoint, int? page = null)
+        public string MakeOpenFiveApiRequest(string endpoint, int? page = null, int? cr = null)
         {
             string url = GetEndpointUrl(endpoint);
 
             // Checks if page parameter is given
-            if (page != null && page != 0)
+            if (page != null && page != null)
             {
                 url += $"?page={page}";
             }
+
+            if (endpoint == "monsters" && cr != null)
+            {
+                int crConstrained = Math.Min(Math.Max((int)cr, 0), 30);
+                url += $"?challenge_rating={crConstrained}";
+            }
+
 
             using (var client = new WebClient())
             {
                 return client.DownloadString(url);
             }
         }
-
     }
 }

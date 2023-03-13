@@ -35,7 +35,7 @@ namespace Threading_in_C.ApiGenerators
             int value = getValue(itemRarity, random);
             string description = (string)itemJson["description"];
             List<string> properties = ExtractProperties(itemJson);
-            List<string> drawbacks = null;
+            List<string> drawbacks = null; // TODO: See where we can get this from
             List<string> requirements = ExtractRequirements(itemJson, type, random);
             string history = (string)itemJson["history"];
 
@@ -125,7 +125,7 @@ namespace Threading_in_C.ApiGenerators
             requirementsToken = itemJson["requires_attunement"];
             if (requirementsToken != null)
             {
-                if (requirementsToken.ToString() == "") { requirementsToken = "Requires Attunement"; }
+                if (requirementsToken.ToString() == "") { requirementsToken = "Yes"; }
                 requirementsList.Add($"Requires Attunement: {requirementsToken}");
             }
 
