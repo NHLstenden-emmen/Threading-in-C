@@ -30,6 +30,11 @@ namespace Threading_in_C
             var item = ApiItemGenerator.Parse();
             Console.WriteLine(item.Type);
 
+            for (int i = 0;i < item.Requirements.Count; i++)
+            {
+                Console.WriteLine(item.Requirements[i]);
+            }
+
             InitializeComponent();
             this.Text = string.Empty;
             this.ControlBox = false;

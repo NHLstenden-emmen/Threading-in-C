@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace Threading_in_C.ApiGenerators
             string description = (string)itemJson["description"];
             List<string> properties = ExtractProperties(itemJson);
             List<string> drawbacks = null;
-            List<string> requirements = null;
+            List<string> requirements = ExtractRequirements(itemJson, type, random);
             string history = (string)itemJson["history"];
 
             return new Item(name, type, itemRarity, value, description, properties, drawbacks, requirements, history);
@@ -111,5 +112,43 @@ namespace Threading_in_C.ApiGenerators
             }
         }
 
+        // Possible TO DO: add it so that if no requirements are found, you can generate them
+        // TODO: Improve code
+        private static List<string> ExtractRequirements(JToken itemJson, string Type, Random random)
+        {
+            // Gets requirements from an item
+            JToken requirementsToken = null;
+
+            List<string> requirementsList = new List<string>();
+
+            // check if these exist
+            requirementsToken = itemJson["requires_attunement"];
+            if (requirementsToken != null)
+            {
+                if (requirementsToken.ToString() == "") { requirementsToken = "Requires Attunement"; }
+                requirementsList.Add($"Requires Attunement: {requirementsToken}");
+            }
+
+            requirementsToken = itemJson["strength_requirement"];
+            if (requirementsToken != null)
+            {
+                if (requirementsToken.ToString() == "") { requirementsToken = random.Next(0, 30); }
+                requirementsList.Add($"Strength Requirement: {requirementsToken}");
+            }
+
+            requirementsToken = itemJson["category"];
+            if (requirementsToken != null)
+            {
+                requirementsList.Add($"Your character should be able to wield: '{requirementsToken}'");
+            }
+
+            // If they do exist, return them in a list
+            if (requirementsList.Count > 0)
+            {
+                return requirementsList;
+            }
+
+            return new List<string>();
+        }
     }
 }
