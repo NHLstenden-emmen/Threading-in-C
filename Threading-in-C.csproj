@@ -67,8 +67,6 @@
     <Compile Include="ApiGenerators\ApiEnemyGenerator.cs" />
     <Compile Include="ApiGenerators\ApiItemGenerator.cs" />
     <Compile Include="ApiGenerators\ApiNpcGenerator.cs" />
-    <Compile Include="OpenFiveApi\Open5eApi.cs" />
-    <Compile Include="OpenFiveApi\Dnd5eApi.cs" />
     <Compile Include="ChoosePlayerBoardScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,7 +83,6 @@
     <Compile Include="Entities\Enemy.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\NPC.cs" />
-    <Compile Include="Equipment\EquipmentRarityEnum.cs" />
     <Compile Include="Equipment\Item.cs" />
     <Compile Include="Forms\MapScreenForm.cs">
       <SubType>Form</SubType>

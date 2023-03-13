@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -24,10 +25,9 @@ namespace Threading_in_C.ApiGenerators
             string type = (string)itemJson["type"];
 
             // If the retrieved item has a rarity, it will be used, else it will be random.
-            EquipmentRarityEnum itemRarity;
-            JToken rarityToken = itemJson.SelectToken("rarity");
+            var rarityToken = itemJson.SelectToken("rarity");
+            string itemRarity = (string)rarityToken;
             if (rarityToken == null) itemRarity = GetRarity(random.Next(0, 5));
-            else itemRarity = (EquipmentRarityEnum)Enum.Parse(typeof(EquipmentRarityEnum), rarityToken.ToString());
 
             int value = getValue(itemRarity, random);
             string description = (string)itemJson["description"];
@@ -39,39 +39,38 @@ namespace Threading_in_C.ApiGenerators
             return new Item(name, type, itemRarity, value, description, properties, drawbacks, requirements, history);
         }
 
-        private static int getValue(EquipmentRarityEnum itemRarity, Random random)
+        private static int getValue(string itemRarity, Random random)
         {
             // Based on the rarity, gets a value that fits
             switch (itemRarity)
             {
-                case EquipmentRarityEnum.Common:
+                case "Common":
                     return random.Next(50, 100);
-                case EquipmentRarityEnum.Uncommon:
+                case "Uncommon":
                     return random.Next(101, 500);
-                case EquipmentRarityEnum.Rare:
+                case "Rare":
                     return random.Next(501, 5000);
-                case EquipmentRarityEnum.VeryRare:
+                case "Very Rare":
                     return random.Next(5001, 50000);
-                case EquipmentRarityEnum.Legendary:
+                case "Legendary":
                     return random.Next(50000, 1000000);
-                case EquipmentRarityEnum.Artifact:
+                case "Artifact":
                     return 0;
                 default:
                     return 0;
             }
         }
 
-        private static EquipmentRarityEnum GetRarity(int randomRarity)
+        private static string GetRarity(int randomRarity)
         {
             // If no rarity is declared, get a random rarity
-            if (randomRarity < 0 || randomRarity >= Enum.GetNames(typeof(EquipmentRarityEnum)).Length)
-            {
-                throw new ArgumentException("Invalid rarity value: " + randomRarity);
-            }
-            return (EquipmentRarityEnum)randomRarity;
+            String[] rarityList = new string[] { "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact" };
+
+            // If no random rarity is specified, return null
+            return rarityList[randomRarity];
         }
 
-        private static JArray randomItem(Random random)
+        private static JObject randomItem(Random random)
         {
             // Declaring every possible type of item, and getting a random one
             string[] itemTypes = new string[] { "armor", "weapons", "magicitems" };
@@ -81,14 +80,22 @@ namespace Threading_in_C.ApiGenerators
             OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
             var itemResponse = apiRequest.MakeOpenFiveApiRequest(itemType);
             JObject responseJson = JObject.Parse(itemResponse);
-            JArray itemJson = (JArray)responseJson["results"];
+            JArray itemsJson = (JArray)responseJson["results"];
 
-            if (itemType == "armor" || itemType == "weapon")
+            // Choose a random enemy from the response
+            int randomIndex = new Random().Next(0, itemsJson.Count);
+            JObject itemJson = (JObject)itemsJson[randomIndex];
+
+            Console.WriteLine(itemJson.ToString());
+
+            Console.WriteLine(itemType.ToString());
+
+            if (itemType == "armor" || itemType == "weapons")
             {
-                JObject typeObj = new JObject();
-                typeObj["type"] = itemType;
-                itemJson.Insert(0, typeObj);
+                itemJson["type"] = itemType.Replace("s", "");
             }
+
+            Console.WriteLine(itemJson["type"]);
 
             return itemJson;
         }

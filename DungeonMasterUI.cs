@@ -23,11 +23,14 @@ namespace Threading_in_C
         {
             var npc = ApiNpcGenerator.Parse();
             Console.WriteLine(npc.Backstory);
+
             var enemy = ApiEnemyGenerator.Parse();
             Console.WriteLine(enemy.Name);
 
             var item = ApiItemGenerator.Parse();
             Console.WriteLine(item.Type);
+            Console.WriteLine(item.Value);
+            Console.WriteLine(item.Rarity);
 
             InitializeComponent();
             this.Text = string.Empty;
