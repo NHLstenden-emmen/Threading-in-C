@@ -21,6 +21,8 @@ namespace Threading_in_C.ApiGenerators
             Random random = new Random();
             var itemJson = randomItem(random);
 
+            Console.WriteLine(itemJson);
+
             string name = (string)itemJson["name"];
             string type = (string)itemJson["type"];
 
@@ -31,7 +33,7 @@ namespace Threading_in_C.ApiGenerators
 
             int value = getValue(itemRarity, random);
             string description = (string)itemJson["description"];
-            List<string> properties = null;
+            List<string> properties = ExtractProperties(itemJson);
             List<string> drawbacks = null;
             List<string> requirements = null;
             string history = (string)itemJson["history"];
@@ -86,18 +88,28 @@ namespace Threading_in_C.ApiGenerators
             int randomIndex = new Random().Next(0, itemsJson.Count);
             JObject itemJson = (JObject)itemsJson[randomIndex];
 
-            Console.WriteLine(itemJson.ToString());
-
-            Console.WriteLine(itemType.ToString());
-
             if (itemType == "armor" || itemType == "weapons")
             {
                 itemJson["type"] = itemType.Replace("s", "");
             }
 
-            Console.WriteLine(itemJson["type"]);
-
             return itemJson;
         }
+
+        // Possible TO DO: add it so that if no properties are found, you can generate them
+        private static List<string> ExtractProperties(JToken itemJson)
+        {
+            // Gets properties from an item
+            JToken propertiesToken = itemJson["properties"];
+            if (propertiesToken != null && propertiesToken.Any())
+            {
+                return ((JArray)propertiesToken).Select(p => (string)p).ToList();
+            }
+            else
+            {
+                return new List<string>();
+            }
+        }
+
     }
 }

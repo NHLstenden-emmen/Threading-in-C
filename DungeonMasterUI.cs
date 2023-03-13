@@ -29,8 +29,6 @@ namespace Threading_in_C
 
             var item = ApiItemGenerator.Parse();
             Console.WriteLine(item.Type);
-            Console.WriteLine(item.Value);
-            Console.WriteLine(item.Rarity);
 
             InitializeComponent();
             this.Text = string.Empty;
