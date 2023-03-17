@@ -18,6 +18,7 @@ namespace Threading_in_C
         private Form activeForm;
         public int turnCounter;
         private readonly OpenFiveApiRequest apiRequest= new OpenFiveApiRequest();
+        private ApiEnemyGenerator apiEnemyGenerator = new ApiEnemyGenerator();
 
         public DungeonMasterUI()
         {
@@ -27,6 +28,8 @@ namespace Threading_in_C
             var enemy = ApiEnemyGenerator.Parse();
             Console.WriteLine(enemy.Name);
             Console.WriteLine(enemy.CR);
+
+            apiEnemyGenerator.PutEnemyInDatabase(enemy);
 
             var item = ApiItemGenerator.Parse("rare");
             Console.WriteLine(item.Rarity);

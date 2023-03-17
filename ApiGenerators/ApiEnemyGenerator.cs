@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
@@ -91,14 +93,17 @@ namespace Threading_in_C.ApiResponseAdapters
             }
         }
 
-        public void PutEnemyInDatabase(Enemy enemy, SqlConnection connection = new SqlConnection("your_connection_string_here"))
+
+        public SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath.Replace("bin\\Debug", "DungeonDB.mdf;Integrated Security=True"));
+
+        public void PutEnemyInDatabase(Enemy enemy)
         {
-            connection.Open();
+            con.Open();
 
             using (SqlCommand command = new SqlCommand())
             {
-                command.Connection = connection;
-                command.CommandText = "INSERT INTO [dbo].[Enemies] " +
+                command.Connection = con;
+                command.CommandText = "INSERT INTO [Enemies] " +
                                       "([Name], [Health], [Movement], [Strength], [Dexterity], [Constitution], [Intelligence], [Wisdom], [Charisma], [ArmorRating], [Proficiency], [Size], [Type], [ChallengeRating]) " +
                                       "VALUES (@Name, @Health, @Movement, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @ArmorRating, @Proficiency, @Size, @Type, @ChallengeRating)";
 
