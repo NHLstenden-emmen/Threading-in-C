@@ -25,22 +25,26 @@ namespace Threading_in_C.OpenFiveApi
             return urlBuilder.returnOpenFiveApiURl(endpoint);
         }
 
-        public string MakeOpenFiveApiRequest(string endpoint, int? page = null, int? cr = null)
+        public string MakeOpenFiveApiRequest(string endpoint, int? page = null, int? cr = null, string rarity = null)
         {
             string url = GetEndpointUrl(endpoint);
 
             // Checks if page parameter is given
-            if (page != null && page != null)
+            if (page != null)
             {
                 url += $"?page={page}";
             }
 
-            if (endpoint == "monsters" && cr != null)
+            if (endpoint == "monsters" && cr.HasValue)
             {
                 int crConstrained = Math.Min(Math.Max((int)cr, 0), 30);
                 url += $"?challenge_rating={crConstrained}";
             }
 
+            if (endpoint == "magicitems" && rarity != null)
+            {
+                url += $"?rarity={rarity}";
+            }
 
             using (var client = new WebClient())
             {

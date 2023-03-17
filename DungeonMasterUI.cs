@@ -28,8 +28,8 @@ namespace Threading_in_C
             Console.WriteLine(enemy.Name);
             Console.WriteLine(enemy.CR);
 
-            var item = ApiItemGenerator.Parse();
-            Console.WriteLine(item.Type);
+            var item = ApiItemGenerator.Parse("rare");
+            Console.WriteLine(item.Rarity);
 
             for (int i = 0;i < item.Requirements.Count; i++)
             {

@@ -1,8 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Xml.Linq;
 using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Threading_in_C.ApiResponseAdapters
 {
@@ -84,6 +88,36 @@ namespace Threading_in_C.ApiResponseAdapters
                 cr = (float)numerator / (float)denominator;
 
                 return cr;
+            }
+        }
+
+        public void PutEnemyInDatabase(Enemy enemy, SqlConnection connection = new SqlConnection("your_connection_string_here"))
+        {
+            connection.Open();
+
+            using (SqlCommand command = new SqlCommand())
+            {
+                command.Connection = connection;
+                command.CommandText = "INSERT INTO [dbo].[Enemies] " +
+                                      "([Name], [Health], [Movement], [Strength], [Dexterity], [Constitution], [Intelligence], [Wisdom], [Charisma], [ArmorRating], [Proficiency], [Size], [Type], [ChallengeRating]) " +
+                                      "VALUES (@Name, @Health, @Movement, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @ArmorRating, @Proficiency, @Size, @Type, @ChallengeRating)";
+
+                command.Parameters.AddWithValue("@Name", enemy.Name);
+                command.Parameters.AddWithValue("@Health", enemy.Health);
+                command.Parameters.AddWithValue("@Movement", enemy.Movement);
+                command.Parameters.AddWithValue("@Strength", enemy.Strength);
+                command.Parameters.AddWithValue("@Dexterity", enemy.Dexterity);
+                command.Parameters.AddWithValue("@Constitution", enemy.Constitution);
+                command.Parameters.AddWithValue("@Intelligence", enemy.Intelligence);
+                command.Parameters.AddWithValue("@Wisdom", enemy.Wisdom);
+                command.Parameters.AddWithValue("@Charisma", enemy.Charisma);
+                command.Parameters.AddWithValue("@ArmorRating", enemy.AR);
+                command.Parameters.AddWithValue("@Proficiency", enemy.BP);
+                command.Parameters.AddWithValue("@Size", enemy.Size);
+                command.Parameters.AddWithValue("@Type", enemy.Type);
+                command.Parameters.AddWithValue("@ChallengeRating", enemy.CR);
+
+                command.ExecuteNonQuery();
             }
         }
     }

@@ -17,10 +17,10 @@ namespace Threading_in_C.ApiGenerators
     internal class ApiItemGenerator
     {
         // TODO, first check if rarity is available, if not, use getRarity method
-        public static Item Parse()
+        public static Item Parse(string rarity = null)
         {
             Random random = new Random();
-            var itemJson = randomItem(random);
+            var itemJson = randomItem(random, rarity);
 
             Console.WriteLine(itemJson);
 
@@ -73,15 +73,18 @@ namespace Threading_in_C.ApiGenerators
             return rarityList[randomRarity];
         }
 
-        private static JObject randomItem(Random random)
+        private static JObject randomItem(Random random, string rarity = null)
         {
+
             // Declaring every possible type of item, and getting a random one
             string[] itemTypes = new string[] { "armor", "weapons", "magicitems" };
             string itemType = itemTypes[random.Next(itemTypes.Length)];
 
             // Make the request and return a JArray of the item
             OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
-            var itemResponse = apiRequest.MakeOpenFiveApiRequest(itemType);
+            string itemResponse; 
+            if (rarity != null && itemType == "magicitems") { itemResponse = apiRequest.MakeOpenFiveApiRequest(itemType, null, null, rarity); }
+            else { itemResponse = apiRequest.MakeOpenFiveApiRequest(itemType); }
             JObject responseJson = JObject.Parse(itemResponse);
             JArray itemsJson = (JArray)responseJson["results"];
 
@@ -92,6 +95,10 @@ namespace Threading_in_C.ApiGenerators
             if (itemType == "armor" || itemType == "weapons")
             {
                 itemJson["type"] = itemType.Replace("s", "");
+            }
+            if (itemType != "magicitems")
+            {
+                itemJson["rarity"] = rarity;
             }
 
             return itemJson;
