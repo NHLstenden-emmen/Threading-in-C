@@ -93,20 +93,20 @@ namespace Threading_in_C.ApiResponseAdapters
             }
         }
 
-
-        public SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath.Replace("bin\\Debug", "DungeonDB.mdf;Integrated Security=True"));
+        public SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath.Replace("bin\\Debug", "Datasets\\DungeonDB.mdf;Integrated Security=True"));
 
         public void PutEnemyInDatabase(Enemy enemy)
         {
             con.Open();
 
-            using (SqlCommand command = new SqlCommand())
+            string insertSql = "INSERT INTO [dbo].[Enemies] ([Name], [Health], [Movement], [Strength], [Dexterity], [Constitution], [Intelligence], [Wisdom], [Charisma], [ArmorRating], [Proficiency], [Size], [Type], [ChallengeRating]) " +
+                   "VALUES (@Name, @Health, @Movement, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @ArmorRating, @Proficiency, @Size, @Type, @ChallengeRating)";
+
+
+            using (SqlCommand command = new SqlCommand(insertSql, con))
             {
                 command.Connection = con;
-                command.CommandText = "INSERT INTO [Enemies] " +
-                                      "([Name], [Health], [Movement], [Strength], [Dexterity], [Constitution], [Intelligence], [Wisdom], [Charisma], [ArmorRating], [Proficiency], [Size], [Type], [ChallengeRating]) " +
-                                      "VALUES (@Name, @Health, @Movement, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @ArmorRating, @Proficiency, @Size, @Type, @ChallengeRating)";
-
+               
                 command.Parameters.AddWithValue("@Name", enemy.Name);
                 command.Parameters.AddWithValue("@Health", enemy.Health);
                 command.Parameters.AddWithValue("@Movement", enemy.Movement);
