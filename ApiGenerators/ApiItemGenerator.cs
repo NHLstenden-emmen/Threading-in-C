@@ -3,9 +3,11 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Threading_in_C.Entities;
@@ -22,8 +24,6 @@ namespace Threading_in_C.ApiGenerators
             Random random = new Random();
             var itemJson = randomItem(random, rarity);
 
-            Console.WriteLine(itemJson);
-
             string name = (string)itemJson["name"];
             string type = (string)itemJson["type"];
 
@@ -33,31 +33,33 @@ namespace Threading_in_C.ApiGenerators
             if (rarityToken == null) itemRarity = GetRarity(random.Next(0, 5));
 
             int value = getValue(itemRarity, random);
-            string description = (string)itemJson["description"];
+            string description = (string)itemJson["description"] ?? null; // TODO: See where we can get this from
             List<string> properties = ExtractProperties(itemJson);
-            List<string> drawbacks = null; // TODO: See where we can get this from
+            List<string> drawbacks = itemJson["drawbacks"]?.ToObject<List<string>>() ?? new List<string>(); // TODO: See where we can get this from
             List<string> requirements = ExtractRequirements(itemJson, type, random);
-            string history = (string)itemJson["history"];
+            string history = (string)itemJson["history"] ?? null;
 
             return new Item(name, type, itemRarity, value, description, properties, drawbacks, requirements, history);
         }
 
         private static int getValue(string itemRarity, Random random)
         {
+            itemRarity = itemRarity.ToLower();
+
             // Based on the rarity, gets a value that fits
             switch (itemRarity)
             {
-                case "Common":
+                case "common":
                     return random.Next(50, 100);
-                case "Uncommon":
+                case "uncommon":
                     return random.Next(101, 500);
-                case "Rare":
+                case "rare":
                     return random.Next(501, 5000);
-                case "Very Rare":
+                case "very Rare":
                     return random.Next(5001, 50000);
-                case "Legendary":
+                case "legendary":
                     return random.Next(50000, 1000000);
-                case "Artifact":
+                case "artifact":
                     return 0;
                 default:
                     return 0;
@@ -156,6 +158,40 @@ namespace Threading_in_C.ApiGenerators
             }
 
             return new List<string>();
+        }
+
+        public void PutItemInDatabase(Item item)
+        {
+            OpenFiveApiRequest.con.Open();
+
+            string insertSql = "INSERT INTO [dbo].[Items] ([Name], [Type], [Rarity], [Value], [Description], [Properties], [Drawbacks], [Requirements], [History]) " +
+                   "VALUES (@Name, @Type, @Rarity, @Value, @Description, @Properties, @Drawbacks, @Requirements, @History)";
+
+            using (SqlCommand command = new SqlCommand(insertSql, OpenFiveApiRequest.con))
+            {
+                command.Connection = OpenFiveApiRequest.con;
+
+                command.Parameters.AddWithValue("@Name", item.Name);
+                command.Parameters.AddWithValue("@Type", item.Type);
+                command.Parameters.AddWithValue("@Rarity", item.Rarity);
+                command.Parameters.AddWithValue("@Value", item.Value);
+                command.Parameters.AddWithValue("@Description", item.Description != null ? string.Join(",", item.Description) : "");
+                command.Parameters.AddWithValue("@Properties", string.Join(", ", item.Properties));
+                command.Parameters.AddWithValue("@Drawbacks", item.Drawbacks != null ? string.Join(",", item.Drawbacks) : "");
+                command.Parameters.AddWithValue("@Requirements", string.Join(", ", item.Requirements));
+                command.Parameters.AddWithValue("@History", item.History != null ? string.Join(",", item.History) : "");
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("An error occurred while inserting data: " + ex.Message);
+                }
+            }
+
+            OpenFiveApiRequest.con.Close();
         }
     }
 }

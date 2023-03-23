@@ -24,14 +24,6 @@ namespace Threading_in_C
 
         public DungeonMasterUI()
         {
-            var npc = ApiNpcGenerator.Parse();
-
-            apiNpcGenerator.PutNPCInDatabase(npc);
-
-            var item = ApiItemGenerator.Parse("rare");
-
-            apiItemGenerator.PutItemInDatabase(item);
-
             InitializeComponent();
             this.Text = string.Empty;
             this.ControlBox = false;
