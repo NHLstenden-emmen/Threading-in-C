@@ -20,27 +20,17 @@ namespace Threading_in_C
         private readonly OpenFiveApiRequest apiRequest= new OpenFiveApiRequest();
         private ApiEnemyGenerator apiEnemyGenerator = new ApiEnemyGenerator();
         private ApiNpcGenerator apiNpcGenerator = new ApiNpcGenerator();
+        private ApiItemGenerator apiItemGenerator = new ApiItemGenerator();
 
         public DungeonMasterUI()
         {
             var npc = ApiNpcGenerator.Parse();
-            Console.WriteLine(npc.Backstory);
 
             apiNpcGenerator.PutNPCInDatabase(npc);
 
-            var enemy = ApiEnemyGenerator.Parse(10);
-            Console.WriteLine(enemy.Name);
-            Console.WriteLine(enemy.CR);
-
-            apiEnemyGenerator.PutEnemyInDatabase(enemy);
-
             var item = ApiItemGenerator.Parse("rare");
-            Console.WriteLine(item.Rarity);
 
-            for (int i = 0;i < item.Requirements.Count; i++)
-            {
-                Console.WriteLine(item.Requirements[i]);
-            }
+            apiItemGenerator.PutItemInDatabase(item);
 
             InitializeComponent();
             this.Text = string.Empty;

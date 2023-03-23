@@ -114,7 +114,14 @@ namespace Threading_in_C.ApiResponseAdapters
                 command.Parameters.AddWithValue("@Type", enemy.Type);
                 command.Parameters.AddWithValue("@ChallengeRating", enemy.CR);
 
-                command.ExecuteNonQuery();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("An error occurred while inserting data: " + ex.Message);
+                }
             }
 
             OpenFiveApiRequest.con.Close();

@@ -177,7 +177,14 @@ namespace Threading_in_C.ApiResponseAdapters
                 command.Parameters.AddWithValue("@Class", npc.Class);
                 command.Parameters.AddWithValue("@Backstory", npc.Backstory);
 
-                command.ExecuteNonQuery();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("An error occurred while inserting data: " + ex.Message);
+                }
             }
 
             OpenFiveApiRequest.con.Close();
