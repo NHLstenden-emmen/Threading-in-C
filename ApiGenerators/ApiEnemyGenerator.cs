@@ -1,14 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Xml.Linq;
 using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Threading_in_C.ApiResponseAdapters
 {
@@ -93,19 +87,17 @@ namespace Threading_in_C.ApiResponseAdapters
             }
         }
 
-        public SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath.Replace("bin\\Debug", "Datasets\\DungeonDB.mdf;Integrated Security=True"));
-
         public void PutEnemyInDatabase(Enemy enemy)
         {
-            con.Open();
+            OpenFiveApiRequest.con.Open();
 
             string insertSql = "INSERT INTO [dbo].[Enemies] ([Name], [Health], [Movement], [Strength], [Dexterity], [Constitution], [Intelligence], [Wisdom], [Charisma], [ArmorRating], [Proficiency], [Size], [Type], [ChallengeRating]) " +
                    "VALUES (@Name, @Health, @Movement, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @ArmorRating, @Proficiency, @Size, @Type, @ChallengeRating)";
 
 
-            using (SqlCommand command = new SqlCommand(insertSql, con))
+            using (SqlCommand command = new SqlCommand(insertSql, OpenFiveApiRequest.con))
             {
-                command.Connection = con;
+                command.Connection = OpenFiveApiRequest.con;
                
                 command.Parameters.AddWithValue("@Name", enemy.Name);
                 command.Parameters.AddWithValue("@Health", enemy.Health);
@@ -124,6 +116,8 @@ namespace Threading_in_C.ApiResponseAdapters
 
                 command.ExecuteNonQuery();
             }
+
+            OpenFiveApiRequest.con.Close();
         }
     }
 }

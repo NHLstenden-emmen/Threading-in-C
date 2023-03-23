@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Net;
-using System.Security.Policy;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Windows.Forms;
 
 namespace Threading_in_C.OpenFiveApi
 {
     public class OpenFiveApiRequest
     {
+        public static SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath.Replace("bin\\Debug", "Datasets\\DungeonDB.mdf;Integrated Security=True"));
         private readonly OpenFiveApiUrlBuilder urlBuilder;
 
         public OpenFiveApiRequest()

@@ -19,13 +19,16 @@ namespace Threading_in_C
         public int turnCounter;
         private readonly OpenFiveApiRequest apiRequest= new OpenFiveApiRequest();
         private ApiEnemyGenerator apiEnemyGenerator = new ApiEnemyGenerator();
+        private ApiNpcGenerator apiNpcGenerator = new ApiNpcGenerator();
 
         public DungeonMasterUI()
         {
             var npc = ApiNpcGenerator.Parse();
             Console.WriteLine(npc.Backstory);
 
-            var enemy = ApiEnemyGenerator.Parse();
+            apiNpcGenerator.PutNPCInDatabase(npc);
+
+            var enemy = ApiEnemyGenerator.Parse(10);
             Console.WriteLine(enemy.Name);
             Console.WriteLine(enemy.CR);
 

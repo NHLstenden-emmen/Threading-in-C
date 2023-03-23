@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
@@ -148,5 +149,39 @@ namespace Threading_in_C.ApiResponseAdapters
             // character uppercase
             return char.ToUpper(firstName[0]) + firstName.Substring(1) + " " + char.ToUpper(lastName[0]) + lastName.Substring(1);
         }
+
+        public void PutNPCInDatabase(NPC npc)
+        {
+            OpenFiveApiRequest.con.Open();
+
+            string insertSql = "INSERT INTO [dbo].[NPCs] ([Name], [Health], [Movement], [Strength], [Dexterity], [Constitution], [Intelligence], [Wisdom], [Charisma], [ArmorRating], [Proficiency], [Race], [Class], [Backstory]) " +
+                   "VALUES (@Name, @Health, @Movement, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @ArmorRating, @Proficiency, @Race, @Class, @Backstory)";
+
+
+            using (SqlCommand command = new SqlCommand(insertSql, OpenFiveApiRequest.con))
+            {
+                command.Connection = OpenFiveApiRequest.con;
+
+                command.Parameters.AddWithValue("@Name", npc.Name);
+                command.Parameters.AddWithValue("@Health", npc.Health);
+                command.Parameters.AddWithValue("@Movement", npc.Movement);
+                command.Parameters.AddWithValue("@Strength", npc.Strength);
+                command.Parameters.AddWithValue("@Dexterity", npc.Dexterity);
+                command.Parameters.AddWithValue("@Constitution", npc.Constitution);
+                command.Parameters.AddWithValue("@Intelligence", npc.Intelligence);
+                command.Parameters.AddWithValue("@Wisdom", npc.Wisdom);
+                command.Parameters.AddWithValue("@Charisma", npc.Charisma);
+                command.Parameters.AddWithValue("@ArmorRating", npc.AR);
+                command.Parameters.AddWithValue("@Proficiency", npc.BP);
+                command.Parameters.AddWithValue("@Race", npc.Race);
+                command.Parameters.AddWithValue("@Class", npc.Class);
+                command.Parameters.AddWithValue("@Backstory", npc.Backstory);
+
+                command.ExecuteNonQuery();
+            }
+
+            OpenFiveApiRequest.con.Close();
+        }
+
     }
 }
