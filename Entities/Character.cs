@@ -8,7 +8,7 @@ namespace Threading_in_C.Entities
 {
     public class Character : Entity
     {
-        public List<string> Race { get; set; }
+        public string Race { get; set; }
         public string Class { get; set; }
     }
 }
