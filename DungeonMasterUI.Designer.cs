@@ -201,6 +201,7 @@
             this.panelContentScreen.Name = "panelContentScreen";
             this.panelContentScreen.Size = new System.Drawing.Size(724, 853);
             this.panelContentScreen.TabIndex = 1;
+            this.panelContentScreen.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContentScreen_Paint);
             // 
             // TitleApplication
             // 
@@ -225,7 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 883);
+            this.ClientSize = new System.Drawing.Size(724, 883);
             this.Controls.Add(this.panelContentScreen);
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

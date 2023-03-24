@@ -1,9 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Threading_in_C.ApiGenerators;
+using Threading_in_C.ApiResponseAdapters;
+using Threading_in_C.Entities;
+using Threading_in_C.OpenFiveApi;
 
 namespace Threading_in_C
 {
@@ -12,6 +17,10 @@ namespace Threading_in_C
         private Button currentButton;
         private Form activeForm;
         public int turnCounter;
+        private readonly OpenFiveApiRequest apiRequest= new OpenFiveApiRequest();
+        private ApiEnemyGenerator apiEnemyGenerator = new ApiEnemyGenerator();
+        private ApiNpcGenerator apiNpcGenerator = new ApiNpcGenerator();
+        private ApiItemGenerator apiItemGenerator = new ApiItemGenerator();
 
         public DungeonMasterUI()
         {
@@ -124,6 +133,11 @@ namespace Threading_in_C
         {
             turnCounter++;
             btnTurnCounter.Text = turnCounter.ToString();
+        }
+
+        private void panelContentScreen_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

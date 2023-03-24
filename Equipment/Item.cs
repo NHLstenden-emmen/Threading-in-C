@@ -10,7 +10,7 @@ namespace Threading_in_C.Equipment
     {
         public string Name { get; set; }
         public string Type { get; set; }
-        public EquipmentRarityEnum Enum { get; set; }
+        public string Rarity { get; set; }
         public int Value { get; set; }
         public string Description { get; set; }
         public List<string> Properties { get; set; }
@@ -18,11 +18,11 @@ namespace Threading_in_C.Equipment
         public List<string> Requirements { get; set; }
         public string History { get; set; }
 
-        public Item(string name, string type, EquipmentRarityEnum rarity, int value, string description, List<string> properties, List<string> drawbacks, List<string> requirements, string history)
+        public Item(string name, string type, string rarity, int value, string description, List<string> properties, List<string> drawbacks, List<string> requirements, string history)
         {
             Name = name;
             Type = type;
-            Enum = rarity;
+            Rarity = rarity;
             Value = value;
             Description = description;
             Properties = properties;
