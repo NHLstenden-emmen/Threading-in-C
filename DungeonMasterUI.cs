@@ -75,16 +75,33 @@ namespace Threading_in_C
         private void OpenChildForm(Form childForm, object btnSender)
         {
             if (activeForm != null)
-                activeForm.Close();
-            ActivateButton(btnSender);
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            this.panelContentScreen.Controls.Add(childForm);
-            this.panelContentScreen.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
+            {
+                if (childForm.Text != activeForm.Text)
+                {
+                    activeForm.Close();
+                    ActivateButton(btnSender);
+                    activeForm = childForm;
+                    childForm.TopLevel = false;
+                    childForm.FormBorderStyle = FormBorderStyle.None;
+                    childForm.Dock = DockStyle.Fill;
+                    this.panelContentScreen.Controls.Add(childForm);
+                    this.panelContentScreen.Tag = childForm;
+                    childForm.BringToFront();
+                    childForm.Show();
+                }
+            } else
+            {
+                ActivateButton(btnSender);
+                activeForm = childForm;
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
+                this.panelContentScreen.Controls.Add(childForm);
+                this.panelContentScreen.Tag = childForm;
+                childForm.BringToFront();
+                childForm.Show();
+            }
+
         }
 
         private void btnPlayers_Click(object sender, EventArgs e)
@@ -135,8 +152,9 @@ namespace Threading_in_C
             btnTurnCounter.Text = turnCounter.ToString();
         }
 
-        private void panelContentScreen_Paint(object sender, PaintEventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
+            activeForm.Close();
 
         }
     }

@@ -37,9 +37,9 @@
             this.btnPlayers = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnTurnCounter = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.bntMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.panelLogo = new System.Windows.Forms.Panel();
             this.panelContentScreen = new System.Windows.Forms.Panel();
             this.TitleApplication = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -58,9 +58,9 @@
             this.panelMenu.Controls.Add(this.btnPlayers);
             this.panelMenu.Controls.Add(this.panel1);
             this.panelMenu.Controls.Add(this.btnTurnCounter);
+            this.panelMenu.Controls.Add(this.btnHome);
             this.panelMenu.Controls.Add(this.bntMinimize);
             this.panelMenu.Controls.Add(this.btnClose);
-            this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
@@ -77,7 +77,7 @@
             this.btnSettings.Location = new System.Drawing.Point(420, 0);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(60, 30);
-            this.btnSettings.TabIndex = 19;
+            this.btnSettings.TabIndex = 27;
             this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
@@ -90,7 +90,7 @@
             this.btnNPC.Location = new System.Drawing.Point(360, 0);
             this.btnNPC.Name = "btnNPC";
             this.btnNPC.Size = new System.Drawing.Size(60, 30);
-            this.btnNPC.TabIndex = 18;
+            this.btnNPC.TabIndex = 26;
             this.btnNPC.Text = "NPC\'s";
             this.btnNPC.UseVisualStyleBackColor = true;
             this.btnNPC.Click += new System.EventHandler(this.btnNPC_Click);
@@ -103,7 +103,7 @@
             this.btnMonsters.Location = new System.Drawing.Point(300, 0);
             this.btnMonsters.Name = "btnMonsters";
             this.btnMonsters.Size = new System.Drawing.Size(60, 30);
-            this.btnMonsters.TabIndex = 17;
+            this.btnMonsters.TabIndex = 25;
             this.btnMonsters.Text = "Monsters";
             this.btnMonsters.UseVisualStyleBackColor = true;
             this.btnMonsters.Click += new System.EventHandler(this.btnMonsters_Click);
@@ -116,7 +116,7 @@
             this.btnMap.Location = new System.Drawing.Point(240, 0);
             this.btnMap.Name = "btnMap";
             this.btnMap.Size = new System.Drawing.Size(60, 30);
-            this.btnMap.TabIndex = 16;
+            this.btnMap.TabIndex = 24;
             this.btnMap.Text = "Map";
             this.btnMap.UseVisualStyleBackColor = true;
             this.btnMap.Click += new System.EventHandler(this.btnMap_Click);
@@ -129,7 +129,7 @@
             this.btnPlayers.Location = new System.Drawing.Point(180, 0);
             this.btnPlayers.Name = "btnPlayers";
             this.btnPlayers.Size = new System.Drawing.Size(60, 30);
-            this.btnPlayers.TabIndex = 15;
+            this.btnPlayers.TabIndex = 23;
             this.btnPlayers.Text = "Players";
             this.btnPlayers.UseVisualStyleBackColor = true;
             this.btnPlayers.Click += new System.EventHandler(this.btnPlayers_Click);
@@ -140,7 +140,7 @@
             this.panel1.Location = new System.Drawing.Point(120, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(60, 30);
-            this.panel1.TabIndex = 11;
+            this.panel1.TabIndex = 22;
             // 
             // btnTurnCounter
             // 
@@ -149,10 +149,23 @@
             this.btnTurnCounter.Location = new System.Drawing.Point(60, 0);
             this.btnTurnCounter.Name = "btnTurnCounter";
             this.btnTurnCounter.Size = new System.Drawing.Size(60, 30);
-            this.btnTurnCounter.TabIndex = 0;
+            this.btnTurnCounter.TabIndex = 21;
             this.btnTurnCounter.Text = "0";
             this.btnTurnCounter.UseVisualStyleBackColor = true;
             this.btnTurnCounter.Click += new System.EventHandler(this.btnTurnCounter_Click);
+            // 
+            // btnHome
+            // 
+            this.btnHome.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Location = new System.Drawing.Point(0, 0);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(60, 30);
+            this.btnHome.TabIndex = 20;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // bntMinimize
             // 
@@ -182,14 +195,6 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // panelLogo
-            // 
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(60, 30);
-            this.panelLogo.TabIndex = 4;
-            // 
             // panelContentScreen
             // 
             this.panelContentScreen.Controls.Add(this.TitleApplication);
@@ -199,7 +204,6 @@
             this.panelContentScreen.Name = "panelContentScreen";
             this.panelContentScreen.Size = new System.Drawing.Size(724, 853);
             this.panelContentScreen.TabIndex = 1;
-            this.panelContentScreen.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContentScreen_Paint);
             // 
             // TitleApplication
             // 
@@ -247,15 +251,15 @@
         private System.Windows.Forms.Panel panelContentScreen;
         private System.Windows.Forms.Button bntMinimize;
         private System.Windows.Forms.Button btnClose;
-        public System.Windows.Forms.Button btnTurnCounter;
+        private System.Windows.Forms.Label TitleApplication;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnNPC;
         private System.Windows.Forms.Button btnMonsters;
         private System.Windows.Forms.Button btnMap;
         private System.Windows.Forms.Button btnPlayers;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panelLogo;
-        private System.Windows.Forms.Label TitleApplication;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.Button btnTurnCounter;
     }
 }
