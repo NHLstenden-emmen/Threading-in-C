@@ -43,9 +43,39 @@
             this.panelContentScreen = new System.Windows.Forms.Panel();
             this.TitleApplication = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.RollTheDice = new System.Windows.Forms.GroupBox();
+            this.numericUpDownD8Roll = new System.Windows.Forms.NumericUpDown();
+            this.pictureBoxD8Roll = new System.Windows.Forms.PictureBox();
+            this.numericUpDownD6Roll = new System.Windows.Forms.NumericUpDown();
+            this.pictureBoxD6Roll = new System.Windows.Forms.PictureBox();
+            this.numericUpDownD4Roll = new System.Windows.Forms.NumericUpDown();
+            this.pictureBoxD4Roll = new System.Windows.Forms.PictureBox();
+            this.numericUpDownD10Roll = new System.Windows.Forms.NumericUpDown();
+            this.pictureBoxD10Roll = new System.Windows.Forms.PictureBox();
+            this.numericUpDownD12Roll = new System.Windows.Forms.NumericUpDown();
+            this.pictureBoxD12Roll = new System.Windows.Forms.PictureBox();
+            this.numericUpDownD20Roll = new System.Windows.Forms.NumericUpDown();
+            this.pictureBoxD20Roll = new System.Windows.Forms.PictureBox();
+            this.numericUpDownD100Roll = new System.Windows.Forms.NumericUpDown();
+            this.pictureBoxD100Roll = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelContentScreen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.RollTheDice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD8Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD8Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD6Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD6Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD4Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD4Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD10Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD10Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD12Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD12Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD20Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD20Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD100Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD100Roll)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -197,6 +227,7 @@
             // 
             // panelContentScreen
             // 
+            this.panelContentScreen.Controls.Add(this.RollTheDice);
             this.panelContentScreen.Controls.Add(this.TitleApplication);
             this.panelContentScreen.Controls.Add(this.pictureBox1);
             this.panelContentScreen.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -224,6 +255,134 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // RollTheDice
+            // 
+            this.RollTheDice.Controls.Add(this.numericUpDownD100Roll);
+            this.RollTheDice.Controls.Add(this.pictureBoxD100Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD20Roll);
+            this.RollTheDice.Controls.Add(this.pictureBoxD20Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD12Roll);
+            this.RollTheDice.Controls.Add(this.pictureBoxD12Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD10Roll);
+            this.RollTheDice.Controls.Add(this.pictureBoxD10Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD8Roll);
+            this.RollTheDice.Controls.Add(this.pictureBoxD8Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD6Roll);
+            this.RollTheDice.Controls.Add(this.pictureBoxD6Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD4Roll);
+            this.RollTheDice.Controls.Add(this.pictureBoxD4Roll);
+            this.RollTheDice.Location = new System.Drawing.Point(12, 255);
+            this.RollTheDice.Name = "RollTheDice";
+            this.RollTheDice.Size = new System.Drawing.Size(253, 87);
+            this.RollTheDice.TabIndex = 4;
+            this.RollTheDice.TabStop = false;
+            this.RollTheDice.Text = "groupBox1";
+            // 
+            // numericUpDownD8Roll
+            // 
+            this.numericUpDownD8Roll.Location = new System.Drawing.Point(73, 56);
+            this.numericUpDownD8Roll.Name = "numericUpDownD8Roll";
+            this.numericUpDownD8Roll.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD8Roll.TabIndex = 5;
+            // 
+            // pictureBoxD8Roll
+            // 
+            this.pictureBoxD8Roll.Location = new System.Drawing.Point(73, 19);
+            this.pictureBoxD8Roll.Name = "pictureBoxD8Roll";
+            this.pictureBoxD8Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD8Roll.TabIndex = 4;
+            this.pictureBoxD8Roll.TabStop = false;
+            // 
+            // numericUpDownD6Roll
+            // 
+            this.numericUpDownD6Roll.Location = new System.Drawing.Point(39, 56);
+            this.numericUpDownD6Roll.Name = "numericUpDownD6Roll";
+            this.numericUpDownD6Roll.Size = new System.Drawing.Size(28, 20);
+            this.numericUpDownD6Roll.TabIndex = 3;
+            // 
+            // pictureBoxD6Roll
+            // 
+            this.pictureBoxD6Roll.Location = new System.Drawing.Point(39, 19);
+            this.pictureBoxD6Roll.Name = "pictureBoxD6Roll";
+            this.pictureBoxD6Roll.Size = new System.Drawing.Size(28, 30);
+            this.pictureBoxD6Roll.TabIndex = 2;
+            this.pictureBoxD6Roll.TabStop = false;
+            // 
+            // numericUpDownD4Roll
+            // 
+            this.numericUpDownD4Roll.Location = new System.Drawing.Point(5, 56);
+            this.numericUpDownD4Roll.Name = "numericUpDownD4Roll";
+            this.numericUpDownD4Roll.Size = new System.Drawing.Size(28, 20);
+            this.numericUpDownD4Roll.TabIndex = 1;
+            // 
+            // pictureBoxD4Roll
+            // 
+            this.pictureBoxD4Roll.Location = new System.Drawing.Point(5, 19);
+            this.pictureBoxD4Roll.Name = "pictureBoxD4Roll";
+            this.pictureBoxD4Roll.Size = new System.Drawing.Size(28, 30);
+            this.pictureBoxD4Roll.TabIndex = 0;
+            this.pictureBoxD4Roll.TabStop = false;
+            // 
+            // numericUpDownD10Roll
+            // 
+            this.numericUpDownD10Roll.Location = new System.Drawing.Point(108, 56);
+            this.numericUpDownD10Roll.Name = "numericUpDownD10Roll";
+            this.numericUpDownD10Roll.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD10Roll.TabIndex = 7;
+            // 
+            // pictureBoxD10Roll
+            // 
+            this.pictureBoxD10Roll.Location = new System.Drawing.Point(108, 19);
+            this.pictureBoxD10Roll.Name = "pictureBoxD10Roll";
+            this.pictureBoxD10Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD10Roll.TabIndex = 6;
+            this.pictureBoxD10Roll.TabStop = false;
+            // 
+            // numericUpDownD12Roll
+            // 
+            this.numericUpDownD12Roll.Location = new System.Drawing.Point(143, 56);
+            this.numericUpDownD12Roll.Name = "numericUpDownD12Roll";
+            this.numericUpDownD12Roll.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD12Roll.TabIndex = 9;
+            // 
+            // pictureBoxD12Roll
+            // 
+            this.pictureBoxD12Roll.Location = new System.Drawing.Point(143, 19);
+            this.pictureBoxD12Roll.Name = "pictureBoxD12Roll";
+            this.pictureBoxD12Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD12Roll.TabIndex = 8;
+            this.pictureBoxD12Roll.TabStop = false;
+            // 
+            // numericUpDownD20Roll
+            // 
+            this.numericUpDownD20Roll.Location = new System.Drawing.Point(178, 56);
+            this.numericUpDownD20Roll.Name = "numericUpDownD20Roll";
+            this.numericUpDownD20Roll.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD20Roll.TabIndex = 11;
+            // 
+            // pictureBoxD20Roll
+            // 
+            this.pictureBoxD20Roll.Location = new System.Drawing.Point(178, 19);
+            this.pictureBoxD20Roll.Name = "pictureBoxD20Roll";
+            this.pictureBoxD20Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD20Roll.TabIndex = 10;
+            this.pictureBoxD20Roll.TabStop = false;
+            // 
+            // numericUpDownD100Roll
+            // 
+            this.numericUpDownD100Roll.Location = new System.Drawing.Point(217, 56);
+            this.numericUpDownD100Roll.Name = "numericUpDownD100Roll";
+            this.numericUpDownD100Roll.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD100Roll.TabIndex = 13;
+            // 
+            // pictureBoxD100Roll
+            // 
+            this.pictureBoxD100Roll.Location = new System.Drawing.Point(217, 19);
+            this.pictureBoxD100Roll.Name = "pictureBoxD100Roll";
+            this.pictureBoxD100Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD100Roll.TabIndex = 12;
+            this.pictureBoxD100Roll.TabStop = false;
+            // 
             // DungeonMasterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,6 +401,21 @@
             this.panelContentScreen.ResumeLayout(false);
             this.panelContentScreen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.RollTheDice.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD8Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD8Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD6Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD6Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD4Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD4Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD10Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD10Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD12Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD12Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD20Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD20Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD100Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD100Roll)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -261,5 +435,20 @@
         private System.Windows.Forms.Button btnPlayers;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnTurnCounter;
+        private System.Windows.Forms.GroupBox RollTheDice;
+        private System.Windows.Forms.NumericUpDown numericUpDownD100Roll;
+        private System.Windows.Forms.PictureBox pictureBoxD100Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD20Roll;
+        private System.Windows.Forms.PictureBox pictureBoxD20Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD12Roll;
+        private System.Windows.Forms.PictureBox pictureBoxD12Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD10Roll;
+        private System.Windows.Forms.PictureBox pictureBoxD10Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD8Roll;
+        private System.Windows.Forms.PictureBox pictureBoxD8Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD6Roll;
+        private System.Windows.Forms.PictureBox pictureBoxD6Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD4Roll;
+        private System.Windows.Forms.PictureBox pictureBoxD4Roll;
     }
 }

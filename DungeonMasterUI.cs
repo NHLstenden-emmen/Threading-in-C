@@ -157,5 +157,15 @@ namespace Threading_in_C
             activeForm.Close();
 
         }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
