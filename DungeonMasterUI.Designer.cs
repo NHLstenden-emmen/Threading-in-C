@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DungeonMasterUI));
-            this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnNPC = new System.Windows.Forms.Button();
@@ -44,7 +43,6 @@
             this.panelContentScreen = new System.Windows.Forms.Panel();
             this.TitleApplication = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panelContentScreen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -245,7 +243,6 @@
         }
 
         #endregion
-        private System.Diagnostics.PerformanceCounter performanceCounter1;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelContentScreen;
         private System.Windows.Forms.Button bntMinimize;
