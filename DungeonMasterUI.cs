@@ -174,5 +174,50 @@ namespace Threading_in_C
             activeForm.Close();
 
         }
+        private void btnAddNewDiceRoll_Click(object sender, EventArgs e)
+        {
+            GroupBox groupBoxCopy = new GroupBox();
+
+            if (createdGroupBoxes < 4)
+            {
+                groupBoxCopy.Location = new Point(30, RollTheDice.Location.Y + ((RollTheDice.Size.Height + 20) * createdGroupBoxes));
+            }
+            else if (createdGroupBoxes < 8)
+            {
+                groupBoxCopy.Location = new Point(RollTheDice.Location.X + RollTheDice.Size.Width + 150, RollTheDice.Location.Y + ((RollTheDice.Size.Height + 20) * (createdGroupBoxes - 4)));
+            }
+            else
+            {
+                MessageBox.Show("Max dobbelsteen roll's behaald");
+                return;
+            }
+            createdGroupBoxes++;
+
+            groupBoxCopy.Size = RollTheDice.Size;
+
+            foreach (Control control in RollTheDice.Controls)
+            {
+                Control controlCopy = (Control)Activator.CreateInstance(control.GetType());
+                controlCopy.Location = control.Location;
+                controlCopy.Name = control.Name.Remove(control.Name.Length -1) + createdGroupBoxes;
+                controlCopy.Size = control.Size;
+                controlCopy.Text = control.Text;
+                controlCopy.Tag = control.Tag;
+                if (control is ComboBox)
+                {
+                    ComboBox comboBox = control as ComboBox;
+                    ComboBox comboBoxCopy = controlCopy as ComboBox;
+
+                    foreach (var item in comboBox.Items)
+                    {
+                        comboBoxCopy.Items.Add(item);
+                    }
+                }
+
+                groupBoxCopy.Controls.Add(controlCopy);
+            }
+
+            this.panelContentScreen.Controls.Add(groupBoxCopy);
+        }
     }
 }
