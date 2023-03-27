@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -21,6 +22,7 @@ namespace Threading_in_C
         private ApiEnemyGenerator apiEnemyGenerator = new ApiEnemyGenerator();
         private ApiNpcGenerator apiNpcGenerator = new ApiNpcGenerator();
         private ApiItemGenerator apiItemGenerator = new ApiItemGenerator();
+        int createdGroupBoxes = 1;
 
         public DungeonMasterUI()
         {
@@ -174,6 +176,37 @@ namespace Threading_in_C
             activeForm.Close();
 
         }
+
+        private void btnRollDice_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            Dictionary<string, Dictionary<string, List<int>>> rollValues = new Dictionary<string, Dictionary<string, List<int>>>();
+
+            for (int i = 1; i == createdGroupBoxes; i++)
+            {
+                string comboBoxName = "comboBoxDiceRoll" + i.ToString();
+                rollValues.Add(comboBoxName, new Dictionary<string, List<int>>());
+
+                int[] diceValues = { 4, 6, 8, 10, 12, 20, 100 };
+
+                foreach (int diceValue in diceValues)
+                {
+                    string numericUpDownName = "numericUpDownD" + diceValue.ToString() + "Roll" + i.ToString();
+                    int value = (int)((NumericUpDown)this.Controls.Find(numericUpDownName, true)[0]).Value;
+                    int tag = (int)((NumericUpDown)this.Controls.Find(numericUpDownName, true)[0]).Tag;
+
+                    // add the D value to Dictionary
+                    rollValues[comboBoxName].Add("D" + tag, new List<int>());
+
+                    // loop through the dice and get a random number between the max dice 
+                    for (int k = 0; k < value; k++)
+                    {
+                        rollValues[comboBoxName]["D" + tag].Add(rand.Next(1, tag + 1));
+                    }
+                }
+            }
+        }
+
         private void btnAddNewDiceRoll_Click(object sender, EventArgs e)
         {
             GroupBox groupBoxCopy = new GroupBox();
