@@ -28,6 +28,23 @@ namespace Threading_in_C
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
+            // Fill the combobox with the enemies
+            SqlConnection connection = OpenFiveApiRequest.con;
+            connection.Open();
+            SqlCommand allEnemies = new SqlCommand("SELECT Name FROM Enemies", connection);
+            SqlDataReader reader = allEnemies.ExecuteReader();
+            while (reader.Read())
+            {
+                // Add each player name to the ComboBox
+                string playerName = reader.GetString(0);
+                comboBoxDiceRoll1.Items.Add(playerName);
+            }
+
+            // Close the connection and dispose of the command and reader objects
+            reader.Close();
+            allEnemies.Dispose();
+            connection.Close();
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
