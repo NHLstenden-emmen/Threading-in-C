@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using Threading_in_C.ApiGenerators;
 using Threading_in_C.ApiResponseAdapters;
@@ -23,6 +24,10 @@ namespace Threading_in_C
         private ApiNpcGenerator apiNpcGenerator = new ApiNpcGenerator();
         private ApiItemGenerator apiItemGenerator = new ApiItemGenerator();
         int createdGroupBoxes = 1;
+        Random rand = new Random();
+        Dictionary<string, Dictionary<string, List<int>>> rollValues = new Dictionary<string, Dictionary<string, List<int>>>();
+        List<Thread> threads = new List<Thread>();
+
 
         public DungeonMasterUI()
         {
@@ -179,13 +184,13 @@ namespace Threading_in_C
 
         private void btnRollDice_Click(object sender, EventArgs e)
         {
-            Random rand = new Random();
-            Dictionary<string, Dictionary<string, List<int>>> rollValues = new Dictionary<string, Dictionary<string, List<int>>>();
-
-            for (int i = 1; i == createdGroupBoxes; i++)
+            for (int i = 1; i <= createdGroupBoxes; i++)
             {
                 string comboBoxName = "comboBoxDiceRoll" + i.ToString();
-                rollValues.Add(comboBoxName, new Dictionary<string, List<int>>());
+                if (!rollValues.ContainsKey(comboBoxName))
+                {
+                    rollValues.Add(comboBoxName, new Dictionary<string, List<int>>());
+                }
 
                 int[] diceValues = { 4, 6, 8, 10, 12, 20, 100 };
 
@@ -193,17 +198,45 @@ namespace Threading_in_C
                 {
                     string numericUpDownName = "numericUpDownD" + diceValue.ToString() + "Roll" + i.ToString();
                     int value = (int)((NumericUpDown)this.Controls.Find(numericUpDownName, true)[0]).Value;
-                    int tag = (int)((NumericUpDown)this.Controls.Find(numericUpDownName, true)[0]).Tag;
 
-                    // add the D value to Dictionary
-                    rollValues[comboBoxName].Add("D" + tag, new List<int>());
+                    int tag = Convert.ToInt32(((NumericUpDown)this.Controls.Find(numericUpDownName, true)[0]).Tag);
 
-                    // loop through the dice and get a random number between the max dice 
-                    for (int k = 0; k < value; k++)
-                    {
-                        rollValues[comboBoxName]["D" + tag].Add(rand.Next(1, tag + 1));
-                    }
+                    // nieuwe thread for nieuwe dice rolls
+                    Thread thread = new Thread(() => RollDice(comboBoxName, diceValue, i, value, tag));
+                    threads.Add(thread);
+                    thread.Start();
                 }
+            }
+
+            // wait for all the threads to finish before moving on
+            foreach (Thread thread in threads)
+            {
+                thread.Join();
+            }
+        }
+
+        // method to roll the dice and add the values to the dictionary
+        private void RollDice(string comboBoxName, int diceValue, int i, int value, int tag)
+        {
+            Random rand = new Random();
+            List<int> rolls = new List<int>();
+
+            // generate the random numbers
+            for (int k = 0; k < value; k++)
+            {
+                int roll = rand.Next(1, tag);
+                rolls.Add(roll);
+            }
+
+            // add the rolls to the dictionary
+            lock (rollValues)
+            {
+                if (!rollValues[comboBoxName].ContainsKey("D" + tag))
+                {
+                    rollValues[comboBoxName].Add("D" + tag, new List<int>());
+                }
+
+                rollValues[comboBoxName]["D" + tag].AddRange(rolls);
             }
         }
 

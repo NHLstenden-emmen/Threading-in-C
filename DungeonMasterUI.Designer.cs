@@ -298,6 +298,7 @@
             this.numericUpDownD100Roll1.Name = "numericUpDownD100Roll1";
             this.numericUpDownD100Roll1.Size = new System.Drawing.Size(29, 20);
             this.numericUpDownD100Roll1.TabIndex = 13;
+            this.numericUpDownD100Roll1.Tag = "100";
             // 
             // pictureBoxD100Roll
             // 
@@ -313,6 +314,7 @@
             this.numericUpDownD20Roll1.Name = "numericUpDownD20Roll1";
             this.numericUpDownD20Roll1.Size = new System.Drawing.Size(29, 20);
             this.numericUpDownD20Roll1.TabIndex = 11;
+            this.numericUpDownD20Roll1.Tag = "20";
             // 
             // pictureBoxD20Roll
             // 
@@ -328,6 +330,7 @@
             this.numericUpDownD12Roll1.Name = "numericUpDownD12Roll1";
             this.numericUpDownD12Roll1.Size = new System.Drawing.Size(29, 20);
             this.numericUpDownD12Roll1.TabIndex = 9;
+            this.numericUpDownD12Roll1.Tag = "12";
             // 
             // pictureBoxD12Roll
             // 
@@ -343,6 +346,7 @@
             this.numericUpDownD10Roll1.Name = "numericUpDownD10Roll1";
             this.numericUpDownD10Roll1.Size = new System.Drawing.Size(29, 20);
             this.numericUpDownD10Roll1.TabIndex = 7;
+            this.numericUpDownD10Roll1.Tag = "10";
             // 
             // pictureBoxD10Roll
             // 
@@ -358,6 +362,7 @@
             this.numericUpDownD8Roll1.Name = "numericUpDownD8Roll1";
             this.numericUpDownD8Roll1.Size = new System.Drawing.Size(29, 20);
             this.numericUpDownD8Roll1.TabIndex = 5;
+            this.numericUpDownD8Roll1.Tag = "8";
             // 
             // pictureBoxD8Roll
             // 
@@ -373,6 +378,7 @@
             this.numericUpDownD6Roll1.Name = "numericUpDownD6Roll1";
             this.numericUpDownD6Roll1.Size = new System.Drawing.Size(28, 20);
             this.numericUpDownD6Roll1.TabIndex = 3;
+            this.numericUpDownD6Roll1.Tag = "6";
             // 
             // pictureBoxD6Roll
             // 
