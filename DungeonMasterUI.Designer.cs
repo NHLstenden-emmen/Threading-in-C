@@ -41,42 +41,42 @@
             this.bntMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panelContentScreen = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnRollDice = new System.Windows.Forms.Button();
             this.btnAddNewDiceRoll = new System.Windows.Forms.Button();
             this.RollTheDice = new System.Windows.Forms.GroupBox();
-            this.numericUpDownD100Roll = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxDiceRoll1 = new System.Windows.Forms.ComboBox();
+            this.numericUpDownD100Roll1 = new System.Windows.Forms.NumericUpDown();
             this.pictureBoxD100Roll = new System.Windows.Forms.PictureBox();
-            this.numericUpDownD20Roll = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownD20Roll1 = new System.Windows.Forms.NumericUpDown();
             this.pictureBoxD20Roll = new System.Windows.Forms.PictureBox();
-            this.numericUpDownD12Roll = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownD12Roll1 = new System.Windows.Forms.NumericUpDown();
             this.pictureBoxD12Roll = new System.Windows.Forms.PictureBox();
-            this.numericUpDownD10Roll = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownD10Roll1 = new System.Windows.Forms.NumericUpDown();
             this.pictureBoxD10Roll = new System.Windows.Forms.PictureBox();
-            this.numericUpDownD8Roll = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownD8Roll1 = new System.Windows.Forms.NumericUpDown();
             this.pictureBoxD8Roll = new System.Windows.Forms.PictureBox();
-            this.numericUpDownD6Roll = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownD6Roll1 = new System.Windows.Forms.NumericUpDown();
             this.pictureBoxD6Roll = new System.Windows.Forms.PictureBox();
-            this.numericUpDownD4Roll = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownD4Roll1 = new System.Windows.Forms.NumericUpDown();
             this.pictureBoxD4Roll = new System.Windows.Forms.PictureBox();
             this.TitleApplication = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnRollDice = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelContentScreen.SuspendLayout();
             this.RollTheDice.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD100Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD100Roll1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD100Roll)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD20Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD20Roll1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD20Roll)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD12Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD12Roll1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD12Roll)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD10Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD10Roll1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD10Roll)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD8Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD8Roll1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD8Roll)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD6Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD6Roll1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD6Roll)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD4Roll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD4Roll1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD4Roll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -241,13 +241,15 @@
             this.panelContentScreen.Size = new System.Drawing.Size(724, 853);
             this.panelContentScreen.TabIndex = 1;
             // 
-            // comboBox1
+            // btnRollDice
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(63, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
+            this.btnRollDice.Location = new System.Drawing.Point(300, 818);
+            this.btnRollDice.Name = "btnRollDice";
+            this.btnRollDice.Size = new System.Drawing.Size(75, 23);
+            this.btnRollDice.TabIndex = 7;
+            this.btnRollDice.Text = "Roll Dice";
+            this.btnRollDice.UseVisualStyleBackColor = true;
+            this.btnRollDice.Click += new System.EventHandler(this.btnRollDice_Click);
             // 
             // btnAddNewDiceRoll
             // 
@@ -257,36 +259,45 @@
             this.btnAddNewDiceRoll.TabIndex = 6;
             this.btnAddNewDiceRoll.Text = "Add new group";
             this.btnAddNewDiceRoll.UseVisualStyleBackColor = true;
+            this.btnAddNewDiceRoll.Click += new System.EventHandler(this.btnAddNewDiceRoll_Click);
             // 
             // RollTheDice
             // 
-            this.RollTheDice.Controls.Add(this.comboBox1);
-            this.RollTheDice.Controls.Add(this.numericUpDownD100Roll);
+            this.RollTheDice.Controls.Add(this.comboBoxDiceRoll1);
+            this.RollTheDice.Controls.Add(this.numericUpDownD100Roll1);
             this.RollTheDice.Controls.Add(this.pictureBoxD100Roll);
-            this.RollTheDice.Controls.Add(this.numericUpDownD20Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD20Roll1);
             this.RollTheDice.Controls.Add(this.pictureBoxD20Roll);
-            this.RollTheDice.Controls.Add(this.numericUpDownD12Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD12Roll1);
             this.RollTheDice.Controls.Add(this.pictureBoxD12Roll);
-            this.RollTheDice.Controls.Add(this.numericUpDownD10Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD10Roll1);
             this.RollTheDice.Controls.Add(this.pictureBoxD10Roll);
-            this.RollTheDice.Controls.Add(this.numericUpDownD8Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD8Roll1);
             this.RollTheDice.Controls.Add(this.pictureBoxD8Roll);
-            this.RollTheDice.Controls.Add(this.numericUpDownD6Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD6Roll1);
             this.RollTheDice.Controls.Add(this.pictureBoxD6Roll);
-            this.RollTheDice.Controls.Add(this.numericUpDownD4Roll);
+            this.RollTheDice.Controls.Add(this.numericUpDownD4Roll1);
             this.RollTheDice.Controls.Add(this.pictureBoxD4Roll);
-            this.RollTheDice.Location = new System.Drawing.Point(28, 258);
+            this.RollTheDice.Location = new System.Drawing.Point(30, 250);
             this.RollTheDice.Name = "RollTheDice";
-            this.RollTheDice.Size = new System.Drawing.Size(253, 112);
+            this.RollTheDice.Size = new System.Drawing.Size(250, 110);
             this.RollTheDice.TabIndex = 4;
             this.RollTheDice.TabStop = false;
             // 
-            // numericUpDownD100Roll
+            // comboBoxDiceRoll1
             // 
-            this.numericUpDownD100Roll.Location = new System.Drawing.Point(218, 80);
-            this.numericUpDownD100Roll.Name = "numericUpDownD100Roll";
-            this.numericUpDownD100Roll.Size = new System.Drawing.Size(29, 20);
-            this.numericUpDownD100Roll.TabIndex = 13;
+            this.comboBoxDiceRoll1.FormattingEnabled = true;
+            this.comboBoxDiceRoll1.Location = new System.Drawing.Point(63, 16);
+            this.comboBoxDiceRoll1.Name = "comboBoxDiceRoll1";
+            this.comboBoxDiceRoll1.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxDiceRoll1.TabIndex = 7;
+            // 
+            // numericUpDownD100Roll1
+            // 
+            this.numericUpDownD100Roll1.Location = new System.Drawing.Point(218, 80);
+            this.numericUpDownD100Roll1.Name = "numericUpDownD100Roll1";
+            this.numericUpDownD100Roll1.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD100Roll1.TabIndex = 13;
             // 
             // pictureBoxD100Roll
             // 
@@ -296,12 +307,12 @@
             this.pictureBoxD100Roll.TabIndex = 12;
             this.pictureBoxD100Roll.TabStop = false;
             // 
-            // numericUpDownD20Roll
+            // numericUpDownD20Roll1
             // 
-            this.numericUpDownD20Roll.Location = new System.Drawing.Point(179, 80);
-            this.numericUpDownD20Roll.Name = "numericUpDownD20Roll";
-            this.numericUpDownD20Roll.Size = new System.Drawing.Size(29, 20);
-            this.numericUpDownD20Roll.TabIndex = 11;
+            this.numericUpDownD20Roll1.Location = new System.Drawing.Point(179, 80);
+            this.numericUpDownD20Roll1.Name = "numericUpDownD20Roll1";
+            this.numericUpDownD20Roll1.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD20Roll1.TabIndex = 11;
             // 
             // pictureBoxD20Roll
             // 
@@ -311,12 +322,12 @@
             this.pictureBoxD20Roll.TabIndex = 10;
             this.pictureBoxD20Roll.TabStop = false;
             // 
-            // numericUpDownD12Roll
+            // numericUpDownD12Roll1
             // 
-            this.numericUpDownD12Roll.Location = new System.Drawing.Point(144, 80);
-            this.numericUpDownD12Roll.Name = "numericUpDownD12Roll";
-            this.numericUpDownD12Roll.Size = new System.Drawing.Size(29, 20);
-            this.numericUpDownD12Roll.TabIndex = 9;
+            this.numericUpDownD12Roll1.Location = new System.Drawing.Point(144, 80);
+            this.numericUpDownD12Roll1.Name = "numericUpDownD12Roll1";
+            this.numericUpDownD12Roll1.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD12Roll1.TabIndex = 9;
             // 
             // pictureBoxD12Roll
             // 
@@ -326,12 +337,12 @@
             this.pictureBoxD12Roll.TabIndex = 8;
             this.pictureBoxD12Roll.TabStop = false;
             // 
-            // numericUpDownD10Roll
+            // numericUpDownD10Roll1
             // 
-            this.numericUpDownD10Roll.Location = new System.Drawing.Point(109, 80);
-            this.numericUpDownD10Roll.Name = "numericUpDownD10Roll";
-            this.numericUpDownD10Roll.Size = new System.Drawing.Size(29, 20);
-            this.numericUpDownD10Roll.TabIndex = 7;
+            this.numericUpDownD10Roll1.Location = new System.Drawing.Point(109, 80);
+            this.numericUpDownD10Roll1.Name = "numericUpDownD10Roll1";
+            this.numericUpDownD10Roll1.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD10Roll1.TabIndex = 7;
             // 
             // pictureBoxD10Roll
             // 
@@ -341,12 +352,12 @@
             this.pictureBoxD10Roll.TabIndex = 6;
             this.pictureBoxD10Roll.TabStop = false;
             // 
-            // numericUpDownD8Roll
+            // numericUpDownD8Roll1
             // 
-            this.numericUpDownD8Roll.Location = new System.Drawing.Point(74, 80);
-            this.numericUpDownD8Roll.Name = "numericUpDownD8Roll";
-            this.numericUpDownD8Roll.Size = new System.Drawing.Size(29, 20);
-            this.numericUpDownD8Roll.TabIndex = 5;
+            this.numericUpDownD8Roll1.Location = new System.Drawing.Point(74, 80);
+            this.numericUpDownD8Roll1.Name = "numericUpDownD8Roll1";
+            this.numericUpDownD8Roll1.Size = new System.Drawing.Size(29, 20);
+            this.numericUpDownD8Roll1.TabIndex = 5;
             // 
             // pictureBoxD8Roll
             // 
@@ -356,12 +367,12 @@
             this.pictureBoxD8Roll.TabIndex = 4;
             this.pictureBoxD8Roll.TabStop = false;
             // 
-            // numericUpDownD6Roll
+            // numericUpDownD6Roll1
             // 
-            this.numericUpDownD6Roll.Location = new System.Drawing.Point(40, 80);
-            this.numericUpDownD6Roll.Name = "numericUpDownD6Roll";
-            this.numericUpDownD6Roll.Size = new System.Drawing.Size(28, 20);
-            this.numericUpDownD6Roll.TabIndex = 3;
+            this.numericUpDownD6Roll1.Location = new System.Drawing.Point(40, 80);
+            this.numericUpDownD6Roll1.Name = "numericUpDownD6Roll1";
+            this.numericUpDownD6Roll1.Size = new System.Drawing.Size(28, 20);
+            this.numericUpDownD6Roll1.TabIndex = 3;
             // 
             // pictureBoxD6Roll
             // 
@@ -371,12 +382,13 @@
             this.pictureBoxD6Roll.TabIndex = 2;
             this.pictureBoxD6Roll.TabStop = false;
             // 
-            // numericUpDownD4Roll
+            // numericUpDownD4Roll1
             // 
-            this.numericUpDownD4Roll.Location = new System.Drawing.Point(6, 80);
-            this.numericUpDownD4Roll.Name = "numericUpDownD4Roll";
-            this.numericUpDownD4Roll.Size = new System.Drawing.Size(28, 20);
-            this.numericUpDownD4Roll.TabIndex = 1;
+            this.numericUpDownD4Roll1.Location = new System.Drawing.Point(6, 80);
+            this.numericUpDownD4Roll1.Name = "numericUpDownD4Roll1";
+            this.numericUpDownD4Roll1.Size = new System.Drawing.Size(28, 20);
+            this.numericUpDownD4Roll1.TabIndex = 1;
+            this.numericUpDownD4Roll1.Tag = "4";
             // 
             // pictureBoxD4Roll
             // 
@@ -405,15 +417,6 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // btnRollDice
-            // 
-            this.btnRollDice.Location = new System.Drawing.Point(300, 818);
-            this.btnRollDice.Name = "btnRollDice";
-            this.btnRollDice.Size = new System.Drawing.Size(75, 23);
-            this.btnRollDice.TabIndex = 7;
-            this.btnRollDice.Text = "Roll Dice";
-            this.btnRollDice.UseVisualStyleBackColor = true;
-            // 
             // DungeonMasterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,19 +435,19 @@
             this.panelContentScreen.ResumeLayout(false);
             this.panelContentScreen.PerformLayout();
             this.RollTheDice.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD100Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD100Roll1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD100Roll)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD20Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD20Roll1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD20Roll)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD12Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD12Roll1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD12Roll)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD10Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD10Roll1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD10Roll)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD8Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD8Roll1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD8Roll)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD6Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD6Roll1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD6Roll)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD4Roll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD4Roll1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD4Roll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -467,22 +470,22 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnTurnCounter;
         private System.Windows.Forms.GroupBox RollTheDice;
-        private System.Windows.Forms.NumericUpDown numericUpDownD100Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD100Roll1;
         private System.Windows.Forms.PictureBox pictureBoxD100Roll;
-        private System.Windows.Forms.NumericUpDown numericUpDownD20Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD20Roll1;
         private System.Windows.Forms.PictureBox pictureBoxD20Roll;
-        private System.Windows.Forms.NumericUpDown numericUpDownD12Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD12Roll1;
         private System.Windows.Forms.PictureBox pictureBoxD12Roll;
-        private System.Windows.Forms.NumericUpDown numericUpDownD10Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD10Roll1;
         private System.Windows.Forms.PictureBox pictureBoxD10Roll;
-        private System.Windows.Forms.NumericUpDown numericUpDownD8Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD8Roll1;
         private System.Windows.Forms.PictureBox pictureBoxD8Roll;
-        private System.Windows.Forms.NumericUpDown numericUpDownD6Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD6Roll1;
         private System.Windows.Forms.PictureBox pictureBoxD6Roll;
-        private System.Windows.Forms.NumericUpDown numericUpDownD4Roll;
+        private System.Windows.Forms.NumericUpDown numericUpDownD4Roll1;
         private System.Windows.Forms.PictureBox pictureBoxD4Roll;
         private System.Windows.Forms.Button btnAddNewDiceRoll;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxDiceRoll1;
         private System.Windows.Forms.Button btnRollDice;
     }
 }
