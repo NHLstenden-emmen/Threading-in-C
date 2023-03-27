@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Threading_in_C.Board.placeable
 {
-    internal class testPlayer : Placeable
+    internal class testPlayer : Moveable
     {
         string name;
 

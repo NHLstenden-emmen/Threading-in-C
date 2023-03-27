@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Board\placeable\InMovable.cs" />
     <Compile Include="Board\placeable\Moveable.cs" />
+    <Compile Include="Board\placeable\Obstacle.cs" />
     <Compile Include="Board\placeable\Placeable.cs" />
     <Compile Include="Board\placeable\testPlayer.cs" />
     <Compile Include="Board\Tile.cs" />

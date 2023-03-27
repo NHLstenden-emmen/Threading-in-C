@@ -111,6 +111,18 @@ namespace Threading_in_C
             //get the tile from the button
             Tile tile = (Tile)button.Tag;
 
+            //check if the tile is empty at first selection
+            if (selectedButton == null && tile.getPlaceable() == null)
+            {
+                return;
+            }
+
+            //Check if the object is movable
+            if (selectedButton == null && !tile.getPlaceable().GetType().IsSubclassOf(typeof(Moveable)))
+            {
+                return;
+            }
+
             //select the pressed button if none other is selected
             if (selectedButton == null)
             {
@@ -176,6 +188,11 @@ namespace Threading_in_C
                 Tile buttonTile = (Tile)tileArray[0, i].Tag;
                 buttonTile.setPlaceable(new testPlayer(players[i]));
             }
+
+            Tile RockTile = (Tile)tileArray[3, 5].Tag;
+            RockTile.setPlaceable(new Obstacle("Rock"));
+
+
 
             updateBoard();
         }
