@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
+using Threading_in_C.Players;
 
 namespace Threading_in_C
 {
@@ -111,6 +112,18 @@ namespace Threading_in_C
             //get the tile from the button
             Tile tile = (Tile)button.Tag;
 
+            //check if the tile is empty at first selection
+            if (selectedButton == null && tile.getPlaceable() == null)
+            {
+                return;
+            }
+
+            //Check if the object is movable
+            if (selectedButton == null && !tile.getPlaceable().GetType().IsSubclassOf(typeof(Moveable)))
+            {
+                return;
+            }
+
             //select the pressed button if none other is selected
             if (selectedButton == null)
             {
@@ -174,8 +187,11 @@ namespace Threading_in_C
             for (int i = 0; i < players.Count; i++)
             {
                 Tile buttonTile = (Tile)tileArray[0, i].Tag;
-                buttonTile.setPlaceable(new testPlayer(players[i]));
+                buttonTile.setPlaceable(new Player(1, players[i], 100, 10, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"));
             }
+
+            Tile RockTile = (Tile)tileArray[3, 5].Tag;
+            RockTile.setPlaceable(new Obstacle("Rock"));
 
             updateBoard();
         }

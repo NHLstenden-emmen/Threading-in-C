@@ -64,8 +64,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Board\placeable\Entities\Character.cs" />
+    <Compile Include="Board\placeable\Entities\Enemy.cs" />
+    <Compile Include="Board\placeable\Entities\Entity.cs" />
+    <Compile Include="Board\placeable\Entities\NPC.cs" />
+    <Compile Include="Board\placeable\Entities\Player.cs" />
+    <Compile Include="Board\placeable\InMovable.cs" />
+    <Compile Include="Board\placeable\Moveable.cs" />
+    <Compile Include="Board\placeable\Obstacle.cs" />
     <Compile Include="Board\placeable\Placeable.cs" />
-    <Compile Include="Board\placeable\testPlayer.cs" />
     <Compile Include="Board\Tile.cs" />
     <Compile Include="ApiGenerators\ApiEnemyGenerator.cs" />
     <Compile Include="ApiGenerators\ApiItemGenerator.cs" />
@@ -83,10 +90,6 @@
     <Compile Include="DungeonMasterUI.Designer.cs">
       <DependentUpon>DungeonMasterUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Character.cs" />
-    <Compile Include="Entities\Enemy.cs" />
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\NPC.cs" />
     <Compile Include="Equipment\Item.cs" />
     <Compile Include="Forms\MapScreenForm.cs">
       <SubType>Form</SubType>
@@ -127,7 +130,6 @@
     <Compile Include="Board\PlayerBoard.Designer.cs">
       <DependentUpon>PlayerBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChoosePlayerBoardScreen.resx">
