@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Threading_in_C.Board.placeable
 {
-    internal abstract class Moveable : Placeable
+    public abstract class Moveable : Placeable
     {
-        protected Moveable() { }
+        public Moveable() { }
 
     }
 }

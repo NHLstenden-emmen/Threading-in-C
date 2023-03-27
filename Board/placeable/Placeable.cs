@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Threading_in_C.Board.placeable
 {
-    internal abstract class Placeable {
+    public abstract class Placeable {
         private string name;
 
         public abstract string getDrawAble();
