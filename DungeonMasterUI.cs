@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using Threading_in_C.ApiGenerators;
@@ -184,6 +185,8 @@ namespace Threading_in_C
 
         private void btnRollDice_Click(object sender, EventArgs e)
         {
+            rollValues.Clear();
+
             for (int i = 1; i <= createdGroupBoxes; i++)
             {
                 string comboBoxName = "comboBoxDiceRoll" + i.ToString();
@@ -213,6 +216,27 @@ namespace Threading_in_C
             {
                 thread.Join();
             }
+
+            // create a new string builder to store the results
+            StringBuilder sb = new StringBuilder();
+
+
+            // loop through the rollValues dictionary
+            foreach (string comboBoxName in rollValues.Keys)
+            {
+                sb.AppendLine(comboBoxName + ":");
+
+                foreach (string dice in rollValues[comboBoxName].Keys)
+                {
+                    sb.AppendLine("" + dice + ": " + string.Join(", ", rollValues[comboBoxName][dice]));
+                }
+
+                sb.AppendLine();
+            }
+
+            // display the results in a multi-line text box or list box
+
+            richTextBox1.Text = sb.ToString();
         }
 
         // method to roll the dice and add the values to the dictionary
