@@ -190,24 +190,38 @@ namespace Threading_in_C
             for (int i = 1; i <= createdGroupBoxes; i++)
             {
                 string comboBoxName = "comboBoxDiceRoll" + i.ToString();
-                if (!rollValues.ContainsKey(comboBoxName))
-                {
-                    rollValues.Add(comboBoxName, new Dictionary<string, List<int>>());
-                }
+                ComboBox comboBox = (ComboBox)this.Controls.Find(comboBoxName, true)[0];
+
+                comboBoxName = comboBox.Text;
 
                 int[] diceValues = { 4, 6, 8, 10, 12, 20, 100 };
 
+                // check if any of the dice have a value
+                bool hasValue = false;
                 foreach (int diceValue in diceValues)
                 {
                     string numericUpDownName = "numericUpDownD" + diceValue.ToString() + "Roll" + i.ToString();
                     int value = (int)((NumericUpDown)this.Controls.Find(numericUpDownName, true)[0]).Value;
+                    if (value > 0)
+                    {
+                        if (!rollValues.ContainsKey(comboBoxName))
+                        {
+                            rollValues.Add(comboBoxName, new Dictionary<string, List<int>>());
+                        }
+                        hasValue = true;
+                        int tag = Convert.ToInt32(((NumericUpDown)this.Controls.Find(numericUpDownName, true)[0]).Tag);
 
-                    int tag = Convert.ToInt32(((NumericUpDown)this.Controls.Find(numericUpDownName, true)[0]).Tag);
+                        // nieuwe thread for nieuwe dice rolls
+                        Thread thread = new Thread(() => RollDice(comboBoxName, diceValue, i, value, tag));
+                        threads.Add(thread);
+                        thread.Start();
+                    }
+                }
 
-                    // nieuwe thread for nieuwe dice rolls
-                    Thread thread = new Thread(() => RollDice(comboBoxName, diceValue, i, value, tag));
-                    threads.Add(thread);
-                    thread.Start();
+                // if none of the dice have a value, skip the comboBox
+                if (!hasValue)
+                {
+                    continue;
                 }
             }
 
@@ -238,6 +252,7 @@ namespace Threading_in_C
 
             richTextBox1.Text = sb.ToString();
         }
+
 
         // method to roll the dice and add the values to the dictionary
         private void RollDice(string comboBoxName, int diceValue, int i, int value, int tag)
