@@ -61,6 +61,7 @@
             this.pictureBoxD4Roll = new System.Windows.Forms.PictureBox();
             this.TitleApplication = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panelMenu.SuspendLayout();
             this.panelContentScreen.SuspendLayout();
             this.RollTheDice.SuspendLayout();
@@ -230,6 +231,7 @@
             // 
             // panelContentScreen
             // 
+            this.panelContentScreen.Controls.Add(this.richTextBox1);
             this.panelContentScreen.Controls.Add(this.btnRollDice);
             this.panelContentScreen.Controls.Add(this.btnAddNewDiceRoll);
             this.panelContentScreen.Controls.Add(this.RollTheDice);
@@ -423,6 +425,14 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(290, 250);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(140, 550);
+            this.richTextBox1.TabIndex = 10;
+            this.richTextBox1.Text = "";
+            // 
             // DungeonMasterUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -493,5 +503,6 @@
         private System.Windows.Forms.Button btnAddNewDiceRoll;
         private System.Windows.Forms.ComboBox comboBoxDiceRoll1;
         private System.Windows.Forms.Button btnRollDice;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
