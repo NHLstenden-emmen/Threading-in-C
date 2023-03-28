@@ -231,6 +231,11 @@ namespace Threading_in_C
                 thread.Join();
             }
 
+            DisplayRollValueText();
+        }
+
+        private void DisplayRollValueText() 
+        {
             // create a new string builder to store the results
             StringBuilder sb = new StringBuilder();
 
@@ -252,7 +257,6 @@ namespace Threading_in_C
 
             richTextBox1.Text = sb.ToString();
         }
-
 
         // method to roll the dice and add the values to the dictionary
         private void RollDice(string comboBoxName, int diceValue, int i, int value, int tag)
