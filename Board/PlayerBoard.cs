@@ -194,6 +194,9 @@ namespace Threading_in_C
             RockTile.setPlaceable(new Obstacle("Rock"));
 
             updateBoard();
+
+            Tile tile = (Tile)tileArray[4, 4].Tag;
+            showAllPosibleMoves(new Player(1, players[4], 100, 2, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"), tile);
         }
 
         private List<Tile> getAllPosibleMoves(Moveable moveable, Tile location)
@@ -212,8 +215,16 @@ namespace Threading_in_C
                 }
 
                 //create a seperate list to store the temporary tiles that where just stored
-                List<Tile> temp = upNext;
+                List<Tile> temp = new List<Tile>();
+
+                foreach(Tile tile in upNext)
+                {
+                    temp.Add(tile);
+                }
+
+                Console.WriteLine(temp.Count);
                 upNext.Clear();
+                Console.WriteLine(temp.Count);
 
                 foreach (Tile temptile in temp)
                 {
@@ -223,7 +234,7 @@ namespace Threading_in_C
                     if (temptile.getX() > 0)
                     {
                         //find tile to the left
-                        sideTile = (Tile)tileArray[temptile.getX() - 1, temptile.getY()].Tag;
+                        sideTile = (Tile)tileArray[temptile.getY(), temptile.getX() - 1].Tag;
                         if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
                         {
                             upNext.Add(sideTile);
@@ -234,7 +245,7 @@ namespace Threading_in_C
                     if (temptile.getX() < tileArray.GetLength(1))
                     {
                         //find tile to the right
-                        sideTile = (Tile)tileArray[temptile.getX() + 1, temptile.getY()].Tag;
+                        sideTile = (Tile)tileArray[temptile.getY(), temptile.getX() + 1].Tag;
                         if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
                         {
                             upNext.Add(sideTile);
@@ -245,7 +256,7 @@ namespace Threading_in_C
                     if (temptile.getY() > 0)
                     {
                         //find upwards tile
-                        sideTile = (Tile)tileArray[temptile.getX(), temptile.getY() - 1].Tag;
+                        sideTile = (Tile)tileArray[temptile.getY() - 1, temptile.getX()].Tag;
                         if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
                         {
                             upNext.Add(sideTile);
@@ -256,7 +267,7 @@ namespace Threading_in_C
                     if (temptile.getX() < tileArray.GetLength(0))
                     {
                         //find downwards tile
-                        sideTile = (Tile)tileArray[temptile.getX(), temptile.getY() + 1].Tag;
+                        sideTile = (Tile)tileArray[temptile.getY() + 1, temptile.getX()].Tag;
                         if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
                         {
                             upNext.Add(sideTile);
