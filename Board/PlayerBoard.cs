@@ -190,13 +190,13 @@ namespace Threading_in_C
                 buttonTile.setPlaceable(new Player(1, players[i], 100, 2, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"));
             }
 
-            Tile RockTile = (Tile)tileArray[3, 5].Tag;
+            Tile RockTile = (Tile)tileArray[4, 5].Tag;
             RockTile.setPlaceable(new Obstacle("Rock"));
 
             updateBoard();
 
-            Tile tile = (Tile)tileArray[4, 4].Tag;
-            showAllPosibleMoves(new Player(1, players[4], 100, 2, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"), tile);
+            Tile tile = (Tile)tileArray[3, 6].Tag;
+            showAllPosibleMoves(new Player(1, players[4], 100, 3, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"), tile);
         }
 
         private List<Tile> getAllPosibleMoves(Moveable moveable, Tile location)
@@ -222,35 +222,11 @@ namespace Threading_in_C
                     temp.Add(tile);
                 }
 
-                Console.WriteLine(temp.Count);
                 upNext.Clear();
-                Console.WriteLine(temp.Count);
 
                 foreach (Tile temptile in temp)
                 {
                     Tile sideTile;
-
-                    //check if tile to the left is posible
-                    if (temptile.getX() > 0)
-                    {
-                        //find tile to the left
-                        sideTile = (Tile)tileArray[temptile.getY(), temptile.getX() - 1].Tag;
-                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
-                        {
-                            upNext.Add(sideTile);
-                        }
-                    }
-
-                    //check if tile to the right is posible
-                    if (temptile.getX() < tileArray.GetLength(1))
-                    {
-                        //find tile to the right
-                        sideTile = (Tile)tileArray[temptile.getY(), temptile.getX() + 1].Tag;
-                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
-                        {
-                            upNext.Add(sideTile);
-                        }
-                    }
 
                     //check if tile upwards is posible
                     if (temptile.getY() > 0)
@@ -259,18 +235,68 @@ namespace Threading_in_C
                         sideTile = (Tile)tileArray[temptile.getY() - 1, temptile.getX()].Tag;
                         if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
                         {
-                            upNext.Add(sideTile);
+                            if (sideTile.getPlaceable() == null)
+                            {
+                                upNext.Add(sideTile);
+                            }
+                            else if(!sideTile.getPlaceable().GetType().IsSubclassOf(typeof(InMovable)))
+                            {
+                                upNext.Add(sideTile);
+                            }
                         }
                     }
 
                     //check if tile downwards is posible
-                    if (temptile.getX() < tileArray.GetLength(0))
+                    if (temptile.getY() < tileArray.GetLength(0) - 1)
                     {
                         //find downwards tile
                         sideTile = (Tile)tileArray[temptile.getY() + 1, temptile.getX()].Tag;
                         if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
                         {
-                            upNext.Add(sideTile);
+                            if (sideTile.getPlaceable() == null)
+                            {
+                                upNext.Add(sideTile);
+                            }
+                            else if (!sideTile.getPlaceable().GetType().IsSubclassOf(typeof(InMovable)))
+                            {
+                                upNext.Add(sideTile);
+                            }
+                        }
+                    }
+
+                    //check if tile to the left is posible
+                    if (temptile.getX() > 0)
+                    {
+                        //find tile to the left
+                        sideTile = (Tile)tileArray[temptile.getY(), temptile.getX() - 1].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            if (sideTile.getPlaceable() == null)
+                            {
+                                upNext.Add(sideTile);
+                            }
+                            else if (!sideTile.getPlaceable().GetType().IsSubclassOf(typeof(InMovable)))
+                            {
+                                upNext.Add(sideTile);
+                            }
+                        }
+                    }
+
+                    //check if tile to the right is posible
+                    if (temptile.getX() < tileArray.GetLength(1) - 1)
+                    {
+                        //find tile to the right
+                        sideTile = (Tile)tileArray[temptile.getY(), temptile.getX() + 1].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            if (sideTile.getPlaceable() == null)
+                            {
+                                upNext.Add(sideTile);
+                            }
+                            else if (!sideTile.getPlaceable().GetType().IsSubclassOf(typeof(InMovable)))
+                            {
+                                upNext.Add(sideTile);
+                            }
                         }
                     }
                 }
@@ -283,7 +309,7 @@ namespace Threading_in_C
         {
             foreach (Tile tile in getAllPosibleMoves(moveable, location))
             {
-                tileArray[tile.getX(), tile.getY()].BackColor = Color.Blue;
+                tileArray[tile.getY(), tile.getX()].BackColor = Color.Blue;
             }
         }
     }
