@@ -187,13 +187,96 @@ namespace Threading_in_C
             for (int i = 0; i < players.Count; i++)
             {
                 Tile buttonTile = (Tile)tileArray[0, i].Tag;
-                buttonTile.setPlaceable(new Player(1, players[i], 100, 10, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"));
+                buttonTile.setPlaceable(new Player(1, players[i], 100, 2, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"));
             }
 
             Tile RockTile = (Tile)tileArray[3, 5].Tag;
             RockTile.setPlaceable(new Obstacle("Rock"));
 
             updateBoard();
+        }
+
+        private List<Tile> getAllPosibleMoves(Moveable moveable, Tile location)
+        {
+            List<Tile> posibleMoves = new List<Tile>();
+            List<Tile> upNext = new List<Tile>();
+
+            upNext.Add(location);
+
+            for(int i = 0; i <= moveable.getMovement(); i++)
+            {
+                //add all upnext moves to the possible move list
+                foreach (Tile temptile in upNext)
+                {
+                    posibleMoves.Add(temptile);
+                }
+                
+                //create a seperate list to store the temporary tiles that where just stored
+                List<Tile> temp = upNext;
+                upNext.Clear();
+
+                foreach (Tile temptile in temp)
+                {
+                    Tile sideTile;
+
+                    //check if tile to the left is posible
+                    if (temptile.getX() > 0)
+                    {
+                        //find tile to the left
+                        sideTile = (Tile)tileArray[temptile.getX() - 1, temptile.getY()].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            upNext.Add(sideTile);
+                        }
+                    }
+
+                    //check if tile to the right is posible
+                    if (temptile.getX() < tileArray.GetLength(1))
+                    {
+                        //find tile to the right
+                        sideTile = (Tile)tileArray[temptile.getX() + 1, temptile.getY()].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            upNext.Add(sideTile);
+                        }
+                    }
+
+                    //check if tile upwards is posible
+                    if (temptile.getY() > 0)
+                    {
+                        //find upwards tile
+                        sideTile = (Tile)tileArray[temptile.getX(), temptile.getY() - 1].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            upNext.Add(sideTile);
+                        }
+                    }
+
+                    //check if tile downwards is posible
+                    if (temptile.getX() < tileArray.GetLength(0))
+                    {
+                        //find downwards tile
+                        sideTile = (Tile)tileArray[temptile.getX(), temptile.getY() + 1].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            upNext.Add(sideTile);
+                        }
+                    }
+
+                }
+
+                
+            }
+            
+
+            moveable.getMovement();
+
+            return null;
+        }
+
+        public void showAllPosibleMoves()
+        {
+
         }
     }
 }
