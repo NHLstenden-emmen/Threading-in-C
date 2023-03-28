@@ -203,14 +203,14 @@ namespace Threading_in_C
 
             upNext.Add(location);
 
-            for(int i = 0; i <= moveable.getMovement(); i++)
+            for (int i = 0; i <= moveable.getMovement(); i++)
             {
                 //add all upnext moves to the possible move list
                 foreach (Tile temptile in upNext)
                 {
                     posibleMoves.Add(temptile);
                 }
-                
+
                 //create a seperate list to store the temporary tiles that where just stored
                 List<Tile> temp = upNext;
                 upNext.Clear();
@@ -262,21 +262,18 @@ namespace Threading_in_C
                             upNext.Add(sideTile);
                         }
                     }
-
                 }
-
-                
             }
-            
 
-            moveable.getMovement();
-
-            return null;
+            return posibleMoves;
         }
 
-        public void showAllPosibleMoves()
+        private void showAllPosibleMoves(Moveable moveable, Tile location)
         {
-
+            foreach (Tile tile in getAllPosibleMoves(moveable, location))
+            {
+                tileArray[tile.getX(), tile.getY()].BackColor = Color.Blue;
+            }
         }
     }
 }
