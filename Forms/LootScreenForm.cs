@@ -46,6 +46,32 @@ namespace Threading_in_C.Forms
             RetrieveItemsFromDatabase();
             AddItemsToList();
         }
+        private bool ItemExistsInDatabase(string ItemName)
+        {
+            bool itemExists = false;
+            dbMutex.WaitOne(); // acquire the mutex
+            try
+            {
+                OpenFiveApiRequest.con.Open();
+                string retrieveSQL = "SELECT * FROM Items WHERE Name = @ItemName";
+                using (SqlCommand command = new SqlCommand(retrieveSQL, OpenFiveApiRequest.con))
+                {
+                    command.Parameters.AddWithValue("@ItemName", ItemName);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            itemExists = true;
+                        }
+                    }
+                }
+                OpenFiveApiRequest.con.Close();
+            }
+            finally
+            {
+                dbMutex.ReleaseMutex(); // release the mutex
+            }
+            return itemExists;
         }
     }
 }
