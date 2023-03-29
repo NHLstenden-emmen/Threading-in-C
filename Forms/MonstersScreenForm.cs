@@ -17,7 +17,6 @@ namespace Threading_in_C.Forms
     public partial class MonstersScreenForm : Form
     {
         private List<Enemy> enemies = new List<Enemy>();
-        private int enemyIndex = 0;
         public MonstersScreenForm()
         {
             InitializeComponent();
@@ -56,7 +55,7 @@ namespace Threading_in_C.Forms
                 }
             }
 
-            OpenFiveApiRequest.con.Close(); 
+            OpenFiveApiRequest.con.Close();
         }
     }
 }
