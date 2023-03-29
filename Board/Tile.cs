@@ -7,7 +7,7 @@ using Threading_in_C.Board.placeable;
 
 namespace Threading_in_C.Board
 {
-    internal class Tile
+    public class Tile
     {
         private Placeable placeable;
         private int x;

@@ -12,15 +12,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
+using Threading_in_C.Forms;
 using Threading_in_C.Players;
 
 namespace Threading_in_C
 {
     public partial class PlayerBoard : Form
     {
-        Button[,] tileArray;
-        int gridheight = 9;
-        int gridwidth = 16;
+        public Button[,] tileArray;
+        public int gridheight = 9;
+        public int gridwidth = 16;
         int tileSize = 80;
         Button selectedButton = null;
         public static PlayerBoard intsance;
@@ -65,7 +66,7 @@ namespace Threading_in_C
                     this.Controls.Add(button);
                     button.Size = new Size(tileSize, tileSize);
                     button.Location = new Point(initialX, initialY);
-                    button.Click += this.boardClick;
+                    button.MouseDown += this.boardClick;
                     button.BackColor = Color.Gray;
                     
                     Tile tile = new Tile(j, i);
@@ -99,63 +100,128 @@ namespace Threading_in_C
                     }
                 }
             }
+
+            foreach (Button button in tileArray)
+            {
+                Tile tile = (Tile)button.Tag;
+                if (tile.getPlaceable() == null)
+                {
+                    button.BackColor = Color.Gray;
+                }
+                else if (tile.getPlaceable() is Obstacle)
+                {
+                    Obstacle obstacle = (Obstacle)tile.getPlaceable();
+                    switch (obstacle.type)
+                    {
+                        case "Wall":
+                            button.BackColor = Color.DarkSlateGray; 
+                            break;
+                        case "Tree":
+                            button.BackColor = Color.Green;
+                            break;
+                        case "Rock":
+                            button.BackColor = Color.RosyBrown;
+                            break;
+                    }
+                }
+            }
         }
 
         private void boardClick(object sender, EventArgs e)
         {
-            //catch off any sender object that is not a button
-            if (!(sender is Button))
+            if (MapScreenForm.instance == null || !MapScreenForm.instance.isMasterOverrideText())
             {
-                return;
-            }
+                //catch off any sender object that is not a button
+                if (!(sender is Button))
+                {
+                    return;
+                }
 
-            //parse to button to enable all useses and fields
-            Button button = (Button)sender;
+                //parse to button to enable all useses and fields
+                Button button = (Button)sender;
 
-            //get the tile from the button
-            Tile tile = (Tile)button.Tag;
+                //get the tile from the button
+                Tile tile = (Tile)button.Tag;
 
-            //check if the tile is empty at first selection
-            if (selectedButton == null && tile.getPlaceable() == null)
-            {
-                return;
-            }
+                //check if the tile is empty at first selection
+                if (selectedButton == null && tile.getPlaceable() == null)
+                {
+                    return;
+                }
 
-            //Check if the object is movable
-            if (selectedButton == null && !tile.getPlaceable().GetType().IsSubclassOf(typeof(Moveable)))
-            {
-                return;
-            }
+                //Check if the object is movable
+                if (selectedButton == null && !tile.getPlaceable().GetType().IsSubclassOf(typeof(Moveable)))
+                {
+                    return;
+                }
 
-            //select the pressed button if none other is selected
-            if (selectedButton == null)
-            {
-                selectedButton = button;
-                showAllPosibleMoves((Player)tile.getPlaceable(), tile);
-                button.BackColor = Color.Green;
-                return;
-            }
+                //select the pressed button if none other is selected
+                if (selectedButton == null)
+                {
+                    selectedButton = button;
+                    showAllPosibleMoves((Player)tile.getPlaceable(), tile);
+                    button.BackColor = Color.Green;
+                    return;
+                }
 
-            //unselect a button if the selected button is pressed again
-            if (selectedButton == button)
-            {
+                //unselect a button if the selected button is pressed again
+                if (selectedButton == button)
+                {
+                    selectedButton = null;
+                    DesellectAllPosibleMoves((Player)tile.getPlaceable(), tile);
+                    return;
+                }
+
+                //check if tile is empty
+                if (tile.getPlaceable() != null)
+                {
+                    return;
+                }
+
+                Tile selectedTile = (Tile)selectedButton.Tag;
+                DesellectAllPosibleMoves((Player)selectedTile.getPlaceable(), selectedTile);
+                tile.setPlaceable(selectedTile.getPlaceable());
+                selectedTile.setPlaceable(null);
+                selectedButton.BackColor = Color.Gray;
                 selectedButton = null;
-                DesellectAllPosibleMoves((Player)tile.getPlaceable(), tile);
-                return;
+                
             }
-
-            //check if tile is empty
-            if (tile.getPlaceable() != null)
+            else
             {
-                return;
+                MouseEventArgs me = (MouseEventArgs)e;
+                Button button = (Button)sender;
+
+                //get the tile from the button
+                Tile tile = (Tile)button.Tag;
+
+                if (me.Button == MouseButtons.Left)
+                {
+                    if (selectedButton == null)
+                    {
+                        selectedButton = button;
+                        button.BackColor = Color.Green;
+                        return;
+                    }
+
+                    if (selectedButton == button)
+                    {
+                        selectedButton = null;
+                        button.BackColor = Color.Gray;
+                        return;
+                    }
+
+                    Tile selectedTile = (Tile)selectedButton.Tag;
+                    tile.setPlaceable(selectedTile.getPlaceable());
+                    selectedTile.setPlaceable(null);
+                    selectedButton.BackColor = Color.Gray;
+                    selectedButton = null;
+                }
+                else
+                {
+                    tile.setPlaceable(null);
+                }
             }
 
-            Tile selectedTile = (Tile)selectedButton.Tag;
-            DesellectAllPosibleMoves((Player)selectedTile.getPlaceable(), selectedTile);
-            tile.setPlaceable(selectedTile.getPlaceable());
-            selectedTile.setPlaceable(null);
-            selectedButton.BackColor = Color.Gray;
-            selectedButton = null;
             updateBoard();
         }
 
@@ -173,37 +239,7 @@ namespace Threading_in_C
             this.Location = selectedScreen.Bounds.Location;
             this.Size = selectedScreen.Bounds.Size;
 
-            // Get the DPI of the selected screen
-            Graphics graphics = Graphics.FromHwnd(IntPtr.Zero);
-            float dpiX = graphics.DpiX;
-            float dpiY = graphics.DpiY;
-            graphics.Dispose();
-
             setUpBoard();
-
-            //place players as test
-            List<String> players = new List<String>();
-            players.Add("Roan");
-            players.Add("Simchaja");
-            players.Add("Daan");
-            players.Add("Kevin");
-            players.Add("Yaell");
-
-            for (int i = 0; i < players.Count; i++)
-            {
-                Tile buttonTile = (Tile)tileArray[0, i].Tag;
-                buttonTile.setPlaceable(new Player(1, players[i], 100, 2, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"));
-            }
-
-            Tile RockTile = (Tile)tileArray[4, 5].Tag;
-            RockTile.setPlaceable(new Obstacle("Rock"));
-
-            Tile RockTile2 = (Tile)tileArray[5, 5].Tag;
-            RockTile2.setPlaceable(new Obstacle("Rock"));
-
-            Tile RockTile3 = (Tile)tileArray[6, 5].Tag;
-            RockTile3.setPlaceable(new Obstacle("Rock"));
-
             updateBoard();
         }
 
