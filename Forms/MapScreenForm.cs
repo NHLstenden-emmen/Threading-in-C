@@ -46,8 +46,15 @@ namespace Threading_in_C.Forms
 
             map = addrandomRoom(map);
 
-            map[rnd.Next(0, PlayerBoard.intsance.gridheight), rnd.Next(0, PlayerBoard.intsance.gridwidth)] = new Obstacle("tree");
-            map[rnd.Next(0, PlayerBoard.intsance.gridheight), rnd.Next(0, PlayerBoard.intsance.gridwidth)] = new Obstacle("tree");
+            for (int i = 0; i < rnd.Next(1, 4); i++)
+            {
+                map[rnd.Next(0, PlayerBoard.intsance.gridheight), rnd.Next(0, PlayerBoard.intsance.gridwidth)] = new Obstacle("Tree");
+            }
+
+            for (int i = 0; i < rnd.Next(1, 4); i++)
+            {
+                map[rnd.Next(0, PlayerBoard.intsance.gridheight), rnd.Next(0, PlayerBoard.intsance.gridwidth)] = new Obstacle("Rock");
+            }
 
             return map;
         }
@@ -105,6 +112,43 @@ namespace Threading_in_C.Forms
                 richTextBox.Text += Environment.NewLine;
                 richTextBox.Tag = map;
             }
+        }
+
+        private void SelectMap(object sender, EventArgs e)
+        {
+            RichTextBox richTextBox = sender as RichTextBox;
+            if (richTextBox.Tag == null)
+            {
+                return;
+            }
+
+            Placeable[,] map = (Placeable[,])richTextBox.Tag;
+
+            for (int i = 0; i < PlayerBoard.intsance.gridheight; i++)
+            {
+                for (int j = 0; j < PlayerBoard.intsance.gridwidth; j++)
+                {
+                    Tile tile = (Tile)PlayerBoard.intsance.tileArray[i, j].Tag;
+
+                    if (map[i,j] != null)
+                    {
+                        tile.setPlaceable(map[i,j]);
+                    }
+                    else
+                    {
+                        tile.setPlaceable(null);
+                    }
+                }
+            }
+
+            PlayerBoard.intsance.updateBoard();
+            MapExampleOne.Text = "";
+            MapExampleTwo.Text = "";
+            MapExampleThree.Text = "";
+
+            MapExampleOne.Tag = null;
+            MapExampleTwo.Tag = null;
+            MapExampleThree.Tag = null;
         }
     }
 }

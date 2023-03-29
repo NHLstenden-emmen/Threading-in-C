@@ -68,6 +68,7 @@
             this.MapExampleThree.Size = new System.Drawing.Size(255, 234);
             this.MapExampleThree.TabIndex = 20;
             this.MapExampleThree.Text = "Map Example Three";
+            this.MapExampleThree.DoubleClick += new System.EventHandler(this.SelectMap);
             // 
             // MapExampleTwo
             // 
@@ -77,6 +78,7 @@
             this.MapExampleTwo.Size = new System.Drawing.Size(255, 234);
             this.MapExampleTwo.TabIndex = 19;
             this.MapExampleTwo.Text = "Map Example Two";
+            this.MapExampleTwo.DoubleClick += new System.EventHandler(this.SelectMap);
             // 
             // MapExampleOne
             // 
@@ -86,6 +88,7 @@
             this.MapExampleOne.Size = new System.Drawing.Size(255, 234);
             this.MapExampleOne.TabIndex = 18;
             this.MapExampleOne.Text = "Map Example One";
+            this.MapExampleOne.DoubleClick += new System.EventHandler(this.SelectMap);
             // 
             // button2
             // 

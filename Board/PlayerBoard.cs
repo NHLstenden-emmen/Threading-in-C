@@ -80,8 +80,6 @@ namespace Threading_in_C
                 initialX = 0;
                 initialY += tileSize;
             }
-
-            Rooms.drawRoom(Rooms.getRoom5(1, 1));
         }
 
         //updates the drawables on all tiles
