@@ -153,6 +153,10 @@ namespace Threading_in_C
         {
             OpenChildForm(new Forms.SettingsScreenForm(this), sender);
         }
+        private void btnLoot_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.LootScreenForm(), sender);
+        }
 
         private void panelMenu_MouseDown(object sender, MouseEventArgs e)
         {
