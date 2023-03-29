@@ -8,6 +8,11 @@ namespace Threading_in_C.Equipment
 {
     internal class Item
     {
+        public override string ToString()
+        {
+            return $"{Name} (Type: {Type}, Rarity: {Rarity}, Value: {Value}, Description: {Description}, Properties: {string.Join(",", Properties)}, Drawbacks: {string.Join(",", Drawbacks)}, Requirements: {string.Join(",", Requirements)}, History: {History})";
+        }
+
         public string Name { get; set; }
         public string Type { get; set; }
         public string Rarity { get; set; }

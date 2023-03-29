@@ -62,7 +62,6 @@ namespace Threading_in_C.OpenFiveApi
                     return null;
                 }
             }
-
         }
     }
 }
