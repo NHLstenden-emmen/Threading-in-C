@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threading_in_C.Entities;
@@ -24,6 +25,7 @@ namespace Threading_in_C.Forms
             AddEnemiesToList();
         }
 
+        // Retrieves all the enemies from the db and puts them in the enemies list
         private void RetrieveEnemiesFromDatabase()
         {
             OpenFiveApiRequest.con.Open();
@@ -62,6 +64,7 @@ namespace Threading_in_C.Forms
             OpenFiveApiRequest.con.Close();
         }
 
+        // Displays all the enemies in the enemies list in the list box
         private void AddEnemiesToList()
         {
             foreach (Enemy enemy in enemies)
@@ -75,6 +78,23 @@ namespace Threading_in_C.Forms
         {
             RetrieveEnemiesFromDatabase();
             AddEnemiesToList();
+        }
+
+        private void GenerateMonsterButton_Click(object sender, EventArgs e)
+        {
+            SavedEnemiesListBox.Items.Add("test");
+            for (int i = 0; i < (int)MonsterAmount.Value; i++)
+            {
+                SavedEnemiesListBox.Items.Add((int)MonsterAmount.Value);
+                //Thread t = new Thread(new ThreadStart(PerformTask));
+                //t.Start();
+            }
+        }
+
+        private void PerformTask()
+        {
+            // This is where you would put the code for the task
+            // that each thread needs to perform
         }
     }
 }

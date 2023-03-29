@@ -58,14 +58,25 @@
             this.GenerateMonsterButton.TabIndex = 16;
             this.GenerateMonsterButton.Text = "Generate Monsters";
             this.GenerateMonsterButton.UseVisualStyleBackColor = true;
+            this.GenerateMonsterButton.Click += new System.EventHandler(this.GenerateMonsterButton_Click);
             // 
             // MonsterAmount
             // 
             this.MonsterAmount.Location = new System.Drawing.Point(243, 25);
             this.MonsterAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.MonsterAmount.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.MonsterAmount.Name = "MonsterAmount";
             this.MonsterAmount.Size = new System.Drawing.Size(33, 20);
             this.MonsterAmount.TabIndex = 15;
+            this.MonsterAmount.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // numericUpDown2
             // 
