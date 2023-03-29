@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.DeleteEnemyButton = new System.Windows.Forms.Button();
-            this.SavedEnemyBox = new System.Windows.Forms.RichTextBox();
             this.EnemyExampleSix = new System.Windows.Forms.RichTextBox();
             this.EnemyExampleFive = new System.Windows.Forms.RichTextBox();
             this.EnemyExampleFour = new System.Windows.Forms.RichTextBox();
@@ -40,6 +39,8 @@
             this.MonsterAmount = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.DifficultyText = new System.Windows.Forms.TextBox();
+            this.RefreshSavedEnemies = new System.Windows.Forms.Button();
+            this.SavedEnemiesListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.MonsterAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -53,15 +54,6 @@
             this.DeleteEnemyButton.TabIndex = 24;
             this.DeleteEnemyButton.Text = "Delete Enemy";
             this.DeleteEnemyButton.UseVisualStyleBackColor = true;
-            // 
-            // SavedEnemyBox
-            // 
-            this.SavedEnemyBox.Location = new System.Drawing.Point(335, 11);
-            this.SavedEnemyBox.Margin = new System.Windows.Forms.Padding(2);
-            this.SavedEnemyBox.Name = "SavedEnemyBox";
-            this.SavedEnemyBox.Size = new System.Drawing.Size(302, 768);
-            this.SavedEnemyBox.TabIndex = 23;
-            this.SavedEnemyBox.Text = "Saved Enemies appear here";
             // 
             // EnemyExampleSix
             // 
@@ -153,13 +145,32 @@
             this.DifficultyText.TabIndex = 13;
             this.DifficultyText.Text = "Difficulty";
             // 
+            // RefreshSavedEnemies
+            // 
+            this.RefreshSavedEnemies.Location = new System.Drawing.Point(562, 775);
+            this.RefreshSavedEnemies.Name = "RefreshSavedEnemies";
+            this.RefreshSavedEnemies.Size = new System.Drawing.Size(75, 23);
+            this.RefreshSavedEnemies.TabIndex = 25;
+            this.RefreshSavedEnemies.Text = "Refresh";
+            this.RefreshSavedEnemies.UseVisualStyleBackColor = true;
+            this.RefreshSavedEnemies.Click += new System.EventHandler(this.RefreshSavedEnemies_Click);
+            // 
+            // SavedEnemiesListBox
+            // 
+            this.SavedEnemiesListBox.FormattingEnabled = true;
+            this.SavedEnemiesListBox.Location = new System.Drawing.Point(342, 25);
+            this.SavedEnemiesListBox.Name = "SavedEnemiesListBox";
+            this.SavedEnemiesListBox.Size = new System.Drawing.Size(295, 745);
+            this.SavedEnemiesListBox.TabIndex = 26;
+            // 
             // MonstersScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 805);
+            this.Controls.Add(this.SavedEnemiesListBox);
+            this.Controls.Add(this.RefreshSavedEnemies);
             this.Controls.Add(this.DeleteEnemyButton);
-            this.Controls.Add(this.SavedEnemyBox);
             this.Controls.Add(this.EnemyExampleSix);
             this.Controls.Add(this.EnemyExampleFive);
             this.Controls.Add(this.EnemyExampleFour);
@@ -182,7 +193,6 @@
         #endregion
 
         private System.Windows.Forms.Button DeleteEnemyButton;
-        private System.Windows.Forms.RichTextBox SavedEnemyBox;
         private System.Windows.Forms.RichTextBox EnemyExampleSix;
         private System.Windows.Forms.RichTextBox EnemyExampleFive;
         private System.Windows.Forms.RichTextBox EnemyExampleFour;
@@ -193,5 +203,7 @@
         private System.Windows.Forms.NumericUpDown MonsterAmount;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.TextBox DifficultyText;
+        private System.Windows.Forms.Button RefreshSavedEnemies;
+        private System.Windows.Forms.ListBox SavedEnemiesListBox;
     }
 }
