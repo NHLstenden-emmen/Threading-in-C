@@ -18,6 +18,9 @@ namespace Threading_in_C.Forms
     public partial class MonstersScreenForm : Form
     {
         private List<Enemy> enemies = new List<Enemy>();
+        private ManualResetEvent threadExitEvent = new ManualResetEvent(false);
+        private int numThreads = 0;
+
         public MonstersScreenForm()
         {
             InitializeComponent();
@@ -83,18 +86,36 @@ namespace Threading_in_C.Forms
         private void GenerateMonsterButton_Click(object sender, EventArgs e)
         {
             SavedEnemiesListBox.Items.Add("test");
-            for (int i = 0; i < (int)MonsterAmount.Value; i++)
+            CreateThreads((int)MonsterAmount.Value);
+            CleanupThreads();
+        }
+
+        private void CreateThreads(int numThreadsToCreate)
+        {
+            for (int i = 0; i < numThreadsToCreate; i++)
             {
-                SavedEnemiesListBox.Items.Add((int)MonsterAmount.Value);
-                //Thread t = new Thread(new ThreadStart(PerformTask));
-                //t.Start();
+                Interlocked.Increment(ref numThreads);
+                Thread t = new Thread(new ThreadStart(PerformTask));
+                t.Start();
             }
         }
 
         private void PerformTask()
         {
-            // This is where you would put the code for the task
-            // that each thread needs to perform
+            // task to perform
+
+            // Signal the thread to exit
+            Interlocked.Decrement(ref numThreads);
+            threadExitEvent.Set();
+        }
+
+        private void CleanupThreads()
+        {
+            // Wait for all threads to exit
+            threadExitEvent.WaitOne();
+
+            // Dispose of the synchronization object
+            threadExitEvent.Dispose();
         }
     }
 }
