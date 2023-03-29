@@ -43,8 +43,26 @@ namespace Threading_in_C.OpenFiveApi
 
             using (var client = new WebClient())
             {
-                return client.DownloadString(url);
+                try
+                {
+                    return client.DownloadString(url);
+                }
+                catch (WebException ex)
+                {
+                    if (ex.Response is HttpWebResponse response && response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        // handle 404 error
+                        Console.WriteLine("Resource not found: " + url);
+                    }
+                    else
+                    {
+                        Console.WriteLine("WebException occurred: " + ex.Message);
+                    }
+
+                    return null;
+                }
             }
+
         }
     }
 }
