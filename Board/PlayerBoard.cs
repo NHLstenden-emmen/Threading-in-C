@@ -173,27 +173,7 @@ namespace Threading_in_C
             this.Location = selectedScreen.Bounds.Location;
             this.Size = selectedScreen.Bounds.Size;
 
-            // Get the DPI of the selected screen
-            Graphics graphics = Graphics.FromHwnd(IntPtr.Zero);
-            float dpiX = graphics.DpiX;
-            float dpiY = graphics.DpiY;
-            graphics.Dispose();
-
             setUpBoard();
-
-            //place players as test
-            List<String> players = new List<String>();
-            players.Add("Roan");
-            players.Add("Simchaja");
-            players.Add("Daan");
-            players.Add("Kevin");
-            players.Add("Yaell");
-
-            for (int i = 0; i < players.Count; i++)
-            {
-                Tile buttonTile = (Tile)tileArray[0, i].Tag;
-                buttonTile.setPlaceable(new Player(1, players[i], 100, 2, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"));
-            }
 
             Tile RockTile = (Tile)tileArray[4, 5].Tag;
             RockTile.setPlaceable(new Obstacle("Rock"));
