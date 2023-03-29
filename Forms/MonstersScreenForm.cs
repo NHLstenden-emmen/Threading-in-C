@@ -17,13 +17,14 @@ namespace Threading_in_C.Forms
     public partial class MonstersScreenForm : Form
     {
         private List<Enemy> enemies = new List<Enemy>();
-        private int enemyIndex = 0;
         public MonstersScreenForm()
         {
             InitializeComponent();
+            RetrieveEnemiesFromDatabase();
+            AddEnemiesToList();
         }
 
-        private void RefreshSavedEnemies_Click(object sender, EventArgs e)
+        private void RetrieveEnemiesFromDatabase()
         {
             OpenFiveApiRequest.con.Open();
             enemies.Clear();
@@ -52,19 +53,28 @@ namespace Threading_in_C.Forms
                             reader["ChallengeRating"].ToString(),
                             reader["Size"].ToString(),
                             reader["Type"].ToString()
-                        ); 
+                        );
                         enemies.Add(enemy);
                     }
                 }
             }
 
             OpenFiveApiRequest.con.Close();
+        }
+
+        private void AddEnemiesToList()
+        {
             foreach (Enemy enemy in enemies)
             {
                 // Add the player to the ListBox control
                 SavedEnemiesListBox.Items.Add(enemy.ToString());
-                enemyIndex++;
             }
+        }
+
+        private void RefreshSavedEnemies_Click(object sender, EventArgs e)
+        {
+            RetrieveEnemiesFromDatabase();
+            AddEnemiesToList();
         }
     }
 }
