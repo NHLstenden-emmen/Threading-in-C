@@ -102,6 +102,31 @@ namespace Threading_in_C
                     }
                 }
             }
+
+            foreach (Button button in tileArray)
+            {
+                Tile tile = (Tile)button.Tag;
+                if (tile.getPlaceable() == null)
+                {
+                    button.BackColor = Color.Gray;
+                }
+                else if (tile.getPlaceable() is Obstacle)
+                {
+                    Obstacle obstacle = (Obstacle)tile.getPlaceable();
+                    switch (obstacle.type)
+                    {
+                        case "Wall":
+                            button.BackColor = Color.DarkSlateGray; 
+                            break;
+                        case "Tree":
+                            button.BackColor = Color.Green;
+                            break;
+                        case "Rock":
+                            button.BackColor = Color.RosyBrown;
+                            break;
+                    }
+                }
+            }
         }
 
         private void boardClick(object sender, EventArgs e)

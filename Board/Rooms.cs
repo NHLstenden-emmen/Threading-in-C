@@ -16,7 +16,6 @@ namespace Threading_in_C.Board
         {
             foreach (Point point in wallList)
             {
-                Console.WriteLine("Yeet");
                 Tile tile2 = (Tile)PlayerBoard.intsance.tileArray[point.Y, point.X].Tag;
                 tile2.setPlaceable(new Obstacle("Wall"));
 
