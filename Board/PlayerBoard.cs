@@ -20,8 +20,8 @@ namespace Threading_in_C
     public partial class PlayerBoard : Form
     {
         public Button[,] tileArray;
-        int gridheight = 9;
-        int gridwidth = 16;
+        public int gridheight = 9;
+        public int gridwidth = 16;
         int tileSize = 80;
         Button selectedButton = null;
         public static PlayerBoard intsance;
