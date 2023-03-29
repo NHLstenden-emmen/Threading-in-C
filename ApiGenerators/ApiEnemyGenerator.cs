@@ -14,8 +14,9 @@ namespace Threading_in_C.ApiResponseAdapters
             Random random = new Random();
             OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
             string enemyResponse;
+
             if (ChallengeRating != null) { enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", null, ChallengeRating); }
-            else { enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", random.Next(0, 50)); }
+            else { enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", random.Next(1, 50)); }
 
             JObject responseJson = JObject.Parse(enemyResponse);
             JArray enemiesJson = (JArray)responseJson["results"];
