@@ -125,6 +125,33 @@ namespace Threading_in_C.Forms
 
             OpenFiveApiRequest.con.Close();
         }
+
+        private bool NpcExistsInDatabase(string NpcName)
+        {
+            bool npcExists = false;
+            dbMutex.WaitOne(); // acquire the mutex
+            try
+            {
+                OpenFiveApiRequest.con.Open();
+                string retrieveSQL = "SELECT * FROM NPCs WHERE Name = @NpcName";
+                using (SqlCommand command = new SqlCommand(retrieveSQL, OpenFiveApiRequest.con))
+                {
+                    command.Parameters.AddWithValue("@NpcName", NpcName);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            npcExists = true;
+                        }
+                    }
+                }
+                OpenFiveApiRequest.con.Close();
+            }
+            finally
+            {
+                dbMutex.ReleaseMutex(); // release the mutex
+            }
+            return npcExists;
         }
     }
 }
