@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
 
 namespace Threading_in_C.Forms
@@ -34,8 +35,23 @@ namespace Threading_in_C.Forms
         {
             Placeable[,] map = new Placeable[PlayerBoard.intsance.gridheight, PlayerBoard.intsance.gridwidth];
 
-            map[3, 3] = new Obstacle("Tree");
-            map[7, 3] = new Obstacle("Tree");
+            map = addrandomRoom(map);
+
+            return map;
+        }
+
+        public Placeable[,] addrandomRoom(Placeable[,] map)
+        {
+            Random rnd = new Random();
+            List<Point> room = Rooms.getRandomRoom(rnd.Next(0,PlayerBoard.intsance.gridwidth - 4), rnd.Next(0, PlayerBoard.intsance.gridheight - 4));
+
+            foreach (Point p in room)
+            {
+                if(p.X <  PlayerBoard.intsance.gridwidth && p.Y < PlayerBoard.intsance.gridheight)
+                {
+                    map[p.Y,p.X] = new Obstacle("Wall");
+                }
+            }
 
             return map;
         }
