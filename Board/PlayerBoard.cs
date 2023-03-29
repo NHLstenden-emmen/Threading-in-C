@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threading_in_C.Board;
@@ -22,6 +23,7 @@ namespace Threading_in_C
         int gridwidth = 16;
         int tileSize = 80;
         Button selectedButton = null;
+        public static PlayerBoard intsance;
 
         public PlayerBoard()
         {
@@ -29,6 +31,7 @@ namespace Threading_in_C
             // maar dan moet hij nog het andere scherm pakken
 
             InitializeComponent();
+            PlayerBoard.intsance = this;
         }
 
         internal void ChangeLocation(int selectedScreen)
@@ -128,6 +131,7 @@ namespace Threading_in_C
             if (selectedButton == null)
             {
                 selectedButton = button;
+                showAllPosibleMoves((Player)tile.getPlaceable(), tile);
                 button.BackColor = Color.Green;
                 return;
             }
@@ -136,7 +140,7 @@ namespace Threading_in_C
             if (selectedButton == button)
             {
                 selectedButton = null;
-                button.BackColor = Color.Gray;
+                DesellectAllPosibleMoves((Player)tile.getPlaceable(), tile);
                 return;
             }
 
@@ -147,6 +151,7 @@ namespace Threading_in_C
             }
 
             Tile selectedTile = (Tile)selectedButton.Tag;
+            DesellectAllPosibleMoves((Player)selectedTile.getPlaceable(), selectedTile);
             tile.setPlaceable(selectedTile.getPlaceable());
             selectedTile.setPlaceable(null);
             selectedButton.BackColor = Color.Gray;
@@ -187,13 +192,155 @@ namespace Threading_in_C
             for (int i = 0; i < players.Count; i++)
             {
                 Tile buttonTile = (Tile)tileArray[0, i].Tag;
-                buttonTile.setPlaceable(new Player(1, players[i], 100, 10, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"));
+                buttonTile.setPlaceable(new Player(1, players[i], 100, 2, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"));
             }
 
-            Tile RockTile = (Tile)tileArray[3, 5].Tag;
+            Tile RockTile = (Tile)tileArray[4, 5].Tag;
             RockTile.setPlaceable(new Obstacle("Rock"));
 
+            Tile RockTile2 = (Tile)tileArray[5, 5].Tag;
+            RockTile2.setPlaceable(new Obstacle("Rock"));
+
+            Tile RockTile3 = (Tile)tileArray[6, 5].Tag;
+            RockTile3.setPlaceable(new Obstacle("Rock"));
+
             updateBoard();
+        }
+
+        private List<Tile> getAllPosibleMoves(Moveable moveable, Tile location)
+        {
+            List<Tile> posibleMoves = new List<Tile>();
+            List<Tile> upNext = new List<Tile>();
+
+            upNext.Add(location);
+
+            for (int i = 0; i <= moveable.getMovement(); i++)
+            {
+                //add all upnext moves to the possible move list
+                foreach (Tile temptile in upNext)
+                {
+                    posibleMoves.Add(temptile);
+                }
+
+                //create a seperate list to store the temporary tiles that where just stored
+                List<Tile> temp = new List<Tile>();
+
+                foreach(Tile tile in upNext)
+                {
+                    temp.Add(tile);
+                }
+
+                upNext.Clear();
+
+                foreach (Tile temptile in temp)
+                {
+                    Tile sideTile;
+
+                    //check if tile upwards is posible
+                    if (temptile.getY() > 0)
+                    {
+                        //find upwards tile
+                        sideTile = (Tile)tileArray[temptile.getY() - 1, temptile.getX()].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            if (sideTile.getPlaceable() == null)
+                            {
+                                upNext.Add(sideTile);
+                            }
+                            else if(!sideTile.getPlaceable().GetType().IsSubclassOf(typeof(InMovable)))
+                            {
+                                upNext.Add(sideTile);
+                            }
+                        }
+                    }
+
+                    //check if tile downwards is posible
+                    if (temptile.getY() < tileArray.GetLength(0) - 1)
+                    {
+                        //find downwards tile
+                        sideTile = (Tile)tileArray[temptile.getY() + 1, temptile.getX()].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            if (sideTile.getPlaceable() == null)
+                            {
+                                upNext.Add(sideTile);
+                            }
+                            else if (!sideTile.getPlaceable().GetType().IsSubclassOf(typeof(InMovable)))
+                            {
+                                upNext.Add(sideTile);
+                            }
+                        }
+                    }
+
+                    //check if tile to the left is posible
+                    if (temptile.getX() > 0)
+                    {
+                        //find tile to the left
+                        sideTile = (Tile)tileArray[temptile.getY(), temptile.getX() - 1].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            if (sideTile.getPlaceable() == null)
+                            {
+                                upNext.Add(sideTile);
+                            }
+                            else if (!sideTile.getPlaceable().GetType().IsSubclassOf(typeof(InMovable)))
+                            {
+                                upNext.Add(sideTile);
+                            }
+                        }
+                    }
+
+                    //check if tile to the right is posible
+                    if (temptile.getX() < tileArray.GetLength(1) - 1)
+                    {
+                        //find tile to the right
+                        sideTile = (Tile)tileArray[temptile.getY(), temptile.getX() + 1].Tag;
+                        if (!posibleMoves.Contains(sideTile) && !upNext.Contains(sideTile))
+                        {
+                            if (sideTile.getPlaceable() == null)
+                            {
+                                upNext.Add(sideTile);
+                            }
+                            else if (!sideTile.getPlaceable().GetType().IsSubclassOf(typeof(InMovable)))
+                            {
+                                upNext.Add(sideTile);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return posibleMoves;
+        }
+
+        private void showAllPosibleMoves(Moveable moveable, Tile location)
+        {
+            foreach (Tile tile in getAllPosibleMoves(moveable, location))
+            {
+                tileArray[tile.getY(), tile.getX()].BackColor = Color.Blue;
+            }
+        }
+
+        private void DesellectAllPosibleMoves(Moveable moveable, Tile location)
+        {
+            foreach (Tile tile in getAllPosibleMoves(moveable, location))
+            {
+                tileArray[tile.getY(), tile.getX()].BackColor = Color.Gray;
+            }
+        }
+
+        public void placePlaceableOnPossibleTile(Placeable placeable)
+        {
+            foreach (Button button in tileArray)
+            {
+                Tile tile = (Tile)button.Tag;
+                if (tile.getPlaceable() == null)
+                {
+                    tile.setPlaceable(placeable);
+                    updateBoard();
+                    return;
+                }
+            }
         }
     }
 }

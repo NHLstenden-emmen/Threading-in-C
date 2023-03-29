@@ -10,5 +10,6 @@ namespace Threading_in_C.Board.placeable
     {
         public Moveable() { }
 
+        public abstract int getMovement();
     }
 }
