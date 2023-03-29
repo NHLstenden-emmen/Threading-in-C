@@ -18,7 +18,7 @@ namespace Threading_in_C
 {
     public partial class PlayerBoard : Form
     {
-        Button[,] tileArray;
+        public Button[,] tileArray;
         int gridheight = 9;
         int gridwidth = 16;
         int tileSize = 80;
@@ -79,6 +79,8 @@ namespace Threading_in_C
                 initialX = 0;
                 initialY += tileSize;
             }
+
+            Rooms.placeRoom1(1, 1);
         }
 
         //updates the drawables on all tiles
@@ -174,16 +176,6 @@ namespace Threading_in_C
             this.Size = selectedScreen.Bounds.Size;
 
             setUpBoard();
-
-            Tile RockTile = (Tile)tileArray[4, 5].Tag;
-            RockTile.setPlaceable(new Obstacle("Rock"));
-
-            Tile RockTile2 = (Tile)tileArray[5, 5].Tag;
-            RockTile2.setPlaceable(new Obstacle("Rock"));
-
-            Tile RockTile3 = (Tile)tileArray[6, 5].Tag;
-            RockTile3.setPlaceable(new Obstacle("Rock"));
-
             updateBoard();
         }
 
