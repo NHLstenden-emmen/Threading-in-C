@@ -46,7 +46,7 @@ namespace Threading_in_C.ApiGenerators
         {
             if (itemRarity == null)
             {
-               return 0;
+                itemRarity = GetRarity(random.Next(0, 5));
             }
             itemRarity = itemRarity.ToLower();
 
