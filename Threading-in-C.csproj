@@ -70,6 +70,9 @@
     <Compile Include="ApiGenerators\ApiEnemyGenerator.cs" />
     <Compile Include="ApiGenerators\ApiItemGenerator.cs" />
     <Compile Include="ApiGenerators\ApiNpcGenerator.cs" />
+    <Compile Include="CalculatorCR\CharacterCR.cs" />
+    <Compile Include="CalculatorCR\MonsterCR.cs" />
+    <Compile Include="CalculatorCR\Winrate.cs" />
     <Compile Include="ChoosePlayerBoardScreen.cs">
       <SubType>Form</SubType>
     </Compile>
