@@ -37,13 +37,14 @@
             // 
             // DeleteNPC
             // 
-            this.DeleteNPC.Location = new System.Drawing.Point(303, 787);
+            this.DeleteNPC.Location = new System.Drawing.Point(27, 763);
             this.DeleteNPC.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteNPC.Name = "DeleteNPC";
             this.DeleteNPC.Size = new System.Drawing.Size(153, 71);
             this.DeleteNPC.TabIndex = 13;
-            this.DeleteNPC.Text = "Delete NPC";
+            this.DeleteNPC.Text = "Delete All";
             this.DeleteNPC.UseVisualStyleBackColor = true;
+            this.DeleteNPC.Click += new System.EventHandler(this.DeleteNPC_Click);
             // 
             // AmountOfNPCs
             // 

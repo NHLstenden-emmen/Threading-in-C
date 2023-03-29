@@ -43,8 +43,9 @@
             this.DeleteEnemyButton.Name = "DeleteEnemyButton";
             this.DeleteEnemyButton.Size = new System.Drawing.Size(165, 59);
             this.DeleteEnemyButton.TabIndex = 24;
-            this.DeleteEnemyButton.Text = "Delete Enemy";
+            this.DeleteEnemyButton.Text = "Delete All";
             this.DeleteEnemyButton.UseVisualStyleBackColor = true;
+            this.DeleteEnemyButton.Click += new System.EventHandler(this.DeleteEnemyButton_Click);
             // 
             // GenerateMonsterButton
             // 

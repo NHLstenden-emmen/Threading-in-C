@@ -208,5 +208,18 @@ namespace Threading_in_C.Forms
                 AddItemsToList();
             }
         }
+
+        private void DeleteItem_Click(object sender, EventArgs e)
+        {
+            string deleteSQL = "DELETE FROM Items";
+            using (SqlCommand command = new SqlCommand(deleteSQL, OpenFiveApiRequest.con))
+            {
+                OpenFiveApiRequest.con.Open();
+                command.ExecuteNonQuery();
+                OpenFiveApiRequest.con.Close();
+            }
+            RetrieveItemsFromDatabase();
+            AddItemsToList();
+        }
     }
 }

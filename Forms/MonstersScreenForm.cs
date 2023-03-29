@@ -191,5 +191,18 @@ namespace Threading_in_C.Forms
                 AddEnemiesToList();
             }
         }
+
+        private void DeleteEnemyButton_Click(object sender, EventArgs e)
+        {
+            string deleteSQL = "DELETE FROM Enemies";
+            using (SqlCommand command = new SqlCommand(deleteSQL, OpenFiveApiRequest.con))
+            {
+                OpenFiveApiRequest.con.Open();
+                command.ExecuteNonQuery();
+                OpenFiveApiRequest.con.Close();
+            }
+            RetrieveEnemiesFromDatabase();
+            AddEnemiesToList();
+        }
     }
 }

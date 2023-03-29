@@ -45,13 +45,14 @@
             // 
             // DeleteItem
             // 
-            this.DeleteItem.Location = new System.Drawing.Point(329, 779);
+            this.DeleteItem.Location = new System.Drawing.Point(53, 727);
             this.DeleteItem.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteItem.Name = "DeleteItem";
             this.DeleteItem.Size = new System.Drawing.Size(153, 71);
             this.DeleteItem.TabIndex = 30;
-            this.DeleteItem.Text = "Delete Item";
+            this.DeleteItem.Text = "Delete All";
             this.DeleteItem.UseVisualStyleBackColor = true;
+            this.DeleteItem.Click += new System.EventHandler(this.DeleteItem_Click);
             // 
             // AmountOfItems
             // 

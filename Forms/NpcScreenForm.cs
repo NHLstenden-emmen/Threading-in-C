@@ -201,5 +201,18 @@ namespace Threading_in_C.Forms
             }
             return npcExists;
         }
+
+        private void DeleteNPC_Click(object sender, EventArgs e)
+        {
+            string deleteSQL = "DELETE FROM NPCs";
+            using (SqlCommand command = new SqlCommand(deleteSQL, OpenFiveApiRequest.con))
+            {
+                OpenFiveApiRequest.con.Open();
+                command.ExecuteNonQuery();
+                OpenFiveApiRequest.con.Close();
+            }
+            RetrieveNpcsFromDatabase();
+            AddNpcsToList();
+        }
     }
 }
