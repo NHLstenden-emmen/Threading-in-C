@@ -50,7 +50,7 @@
             this.DeleteItem.Name = "DeleteItem";
             this.DeleteItem.Size = new System.Drawing.Size(153, 71);
             this.DeleteItem.TabIndex = 30;
-            this.DeleteItem.Text = "Delete NPC";
+            this.DeleteItem.Text = "Delete Item";
             this.DeleteItem.UseVisualStyleBackColor = true;
             // 
             // AmountOfItems
@@ -70,6 +70,7 @@
             this.GenerateItemButton.TabIndex = 28;
             this.GenerateItemButton.Text = "Generate NPC\'s";
             this.GenerateItemButton.UseVisualStyleBackColor = true;
+            this.GenerateItemButton.Click += new System.EventHandler(this.GenerateItemButton_Click);
             // 
             // LootScreenForm
             // 
