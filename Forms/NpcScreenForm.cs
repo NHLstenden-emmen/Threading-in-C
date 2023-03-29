@@ -96,6 +96,35 @@ namespace Threading_in_C.Forms
         {
             CreateThreads((int)AmountOfNPCs.Value);
         }
+        private void AddNPCToDatabase(NPC npc)
+        {
+            OpenFiveApiRequest.con.Open();
+
+            string insertSQL = "INSERT INTO NPCs (Name, Health, Movement, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, ArmorRating, Proficiency, Race, Class, Backstory, Traits) VALUES (@Name, @Health, @Movement, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @ArmorRating, @Proficiency, @Race, @Class, @Backstory, @Traits)";
+
+            using (SqlCommand command = new SqlCommand(insertSQL, OpenFiveApiRequest.con))
+            {
+                command.Parameters.AddWithValue("@Name", npc.Name);
+                command.Parameters.AddWithValue("@Health", npc.Health);
+                command.Parameters.AddWithValue("@Movement", npc.Movement);
+                command.Parameters.AddWithValue("@Strength", npc.Strength);
+                command.Parameters.AddWithValue("@Dexterity", npc.Dexterity);
+                command.Parameters.AddWithValue("@Constitution", npc.Constitution);
+                command.Parameters.AddWithValue("@Intelligence", npc.Intelligence);
+                command.Parameters.AddWithValue("@Wisdom", npc.Wisdom);
+                command.Parameters.AddWithValue("@Charisma", npc.Charisma);
+                command.Parameters.AddWithValue("@ArmorRating", npc.AR);
+                command.Parameters.AddWithValue("@Proficiency", npc.BP);
+                command.Parameters.AddWithValue("@Race", npc.Race);
+                command.Parameters.AddWithValue("@Class", npc.Class);
+                command.Parameters.AddWithValue("@Backstory", npc.Backstory);
+                command.Parameters.AddWithValue("@Traits", string.Join(";", npc.Traits));
+
+                command.ExecuteNonQuery();
+            }
+
+            OpenFiveApiRequest.con.Close();
+        }
         }
     }
 }
