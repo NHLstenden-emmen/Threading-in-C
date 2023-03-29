@@ -48,12 +48,28 @@ namespace Threading_in_C.Board
         {
             List<Point> wallList = new List<Point>();
             
+
             return wallList;
         }
 
         public static List<Point> getRoom3(int x, int y)
         {
             List<Point> wallList = new List<Point>();
+
+            wallList.Add(new Point(x, y));
+            wallList.Add(new Point(x + 1, y + 1));
+            wallList.Add(new Point(x + 2, y + 2));
+            wallList.Add(new Point(x + 2, y + 3));
+            wallList.Add(new Point(x + 3, y + 2));
+            wallList.Add(new Point(x + 4, y + 2));
+            wallList.Add(new Point(x + 4, y + 4));
+            wallList.Add(new Point(x + 3, y + 5));
+            wallList.Add(new Point(x + 2, y + 5));
+            wallList.Add(new Point(x + 1, y + 5));
+            wallList.Add(new Point(x, y + 4));
+            wallList.Add(new Point(x, y + 3));
+            wallList.Add(new Point(x, y + 2));
+            wallList.Add(new Point(x, y + 1));
 
             return wallList;
         }
@@ -62,12 +78,38 @@ namespace Threading_in_C.Board
         {
             List<Point> wallList = new List<Point>();
 
+            wallList.Add(new Point(x, y));
+            wallList.Add(new Point(x + 1, y));
+            wallList.Add(new Point(x + 3, y));
+            wallList.Add(new Point(x + 4, y + 1));
+            wallList.Add(new Point(x + 4, y + 3));
+            wallList.Add(new Point(x + 3, y + 4));
+            wallList.Add(new Point(x + 2, y + 4));
+            wallList.Add(new Point(x + 1, y + 4));
+            wallList.Add(new Point(x, y + 4));
+            wallList.Add(new Point(x, y + 2));
+            wallList.Add(new Point(x, y + 1));
+            wallList.Add(new Point(x, y + 0));
+            wallList.Add(new Point(x + 2, y + 1));
+            wallList.Add(new Point(x + 2, y + 2));
+            wallList.Add(new Point(x + 2, y + 3));
+
             return wallList;
         }
 
         public static List<Point> getRoom5(int x, int y)
         {
             List<Point> wallList = new List<Point>();
+
+            wallList.Add(new Point(x, y));
+            wallList.Add(new Point(x + 1, y));
+            wallList.Add(new Point(x + 2, y));
+            wallList.Add(new Point(x + 3, y));
+            wallList.Add(new Point(x + 4, y));
+            wallList.Add(new Point(x + 5, y));
+            wallList.Add(new Point(x + 2, y + 1));
+            wallList.Add(new Point(x + 2, y + 2));
+            wallList.Add(new Point(x + 2, y + 3));
 
             return wallList;
         }
