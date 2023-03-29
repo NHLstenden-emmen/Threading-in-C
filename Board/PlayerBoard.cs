@@ -128,6 +128,7 @@ namespace Threading_in_C
             if (selectedButton == null)
             {
                 selectedButton = button;
+                showAllPosibleMoves((Player)tile.getPlaceable(), tile);
                 button.BackColor = Color.Green;
                 return;
             }
@@ -136,7 +137,7 @@ namespace Threading_in_C
             if (selectedButton == button)
             {
                 selectedButton = null;
-                button.BackColor = Color.Gray;
+                DesellectAllPosibleMoves((Player)tile.getPlaceable(), tile);
                 return;
             }
 
@@ -147,6 +148,7 @@ namespace Threading_in_C
             }
 
             Tile selectedTile = (Tile)selectedButton.Tag;
+            DesellectAllPosibleMoves((Player)selectedTile.getPlaceable(), selectedTile);
             tile.setPlaceable(selectedTile.getPlaceable());
             selectedTile.setPlaceable(null);
             selectedButton.BackColor = Color.Gray;
@@ -193,10 +195,13 @@ namespace Threading_in_C
             Tile RockTile = (Tile)tileArray[4, 5].Tag;
             RockTile.setPlaceable(new Obstacle("Rock"));
 
-            updateBoard();
+            Tile RockTile2 = (Tile)tileArray[5, 5].Tag;
+            RockTile2.setPlaceable(new Obstacle("Rock"));
 
-            Tile tile = (Tile)tileArray[3, 6].Tag;
-            showAllPosibleMoves(new Player(1, players[4], 100, 3, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"), tile);
+            Tile RockTile3 = (Tile)tileArray[6, 5].Tag;
+            RockTile3.setPlaceable(new Obstacle("Rock"));
+
+            updateBoard();
         }
 
         private List<Tile> getAllPosibleMoves(Moveable moveable, Tile location)
@@ -310,6 +315,14 @@ namespace Threading_in_C
             foreach (Tile tile in getAllPosibleMoves(moveable, location))
             {
                 tileArray[tile.getY(), tile.getX()].BackColor = Color.Blue;
+            }
+        }
+
+        private void DesellectAllPosibleMoves(Moveable moveable, Tile location)
+        {
+            foreach (Tile tile in getAllPosibleMoves(moveable, location))
+            {
+                tileArray[tile.getY(), tile.getX()].BackColor = Color.Gray;
             }
         }
     }
