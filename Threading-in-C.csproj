@@ -51,7 +51,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,6 +66,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Board\placeable\Entities\Character.cs" />
+    <Compile Include="Board\placeable\Entities\Enemy.cs" />
+    <Compile Include="Board\placeable\Entities\Entity.cs" />
+    <Compile Include="Board\placeable\Entities\NPC.cs" />
+    <Compile Include="Board\placeable\Entities\Player.cs" />
+    <Compile Include="Board\placeable\InMovable.cs" />
+    <Compile Include="Board\placeable\Moveable.cs" />
+    <Compile Include="Board\placeable\Obstacle.cs" />
+    <Compile Include="Board\placeable\Placeable.cs" />
+    <Compile Include="Board\Tile.cs" />
     <Compile Include="ApiGenerators\ApiEnemyGenerator.cs" />
     <Compile Include="ApiGenerators\ApiItemGenerator.cs" />
     <Compile Include="ApiGenerators\ApiNpcGenerator.cs" />
@@ -80,10 +92,6 @@
     <Compile Include="DungeonMasterUI.Designer.cs">
       <DependentUpon>DungeonMasterUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Character.cs" />
-    <Compile Include="Entities\Enemy.cs" />
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\NPC.cs" />
     <Compile Include="Equipment\Item.cs" />
     <Compile Include="Forms\MapScreenForm.cs">
       <SubType>Form</SubType>
@@ -118,13 +126,12 @@
     <Compile Include="MyApplicationContext.cs" />
     <Compile Include="OpenFiveApi\OpenFiveApiRequest.cs" />
     <Compile Include="OpenFiveApi\OpenFiveApiUrlBuilder.cs" />
-    <Compile Include="PlayerBoard.cs">
+    <Compile Include="Board\PlayerBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayerBoard.Designer.cs">
+    <Compile Include="Board\PlayerBoard.Designer.cs">
       <DependentUpon>PlayerBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChoosePlayerBoardScreen.resx">
@@ -148,7 +155,7 @@
     <EmbeddedResource Include="Forms\SettingsScreenForm.resx">
       <DependentUpon>SettingsScreenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayerBoard.resx">
+    <EmbeddedResource Include="Board\PlayerBoard.resx">
       <DependentUpon>PlayerBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

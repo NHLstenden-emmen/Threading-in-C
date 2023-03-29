@@ -1,8 +1,9 @@
 ﻿using System.Xml.Serialization;
+using Threading_in_C.Board.placeable;
 
 namespace Threading_in_C.Entities
 {
-    public class Entity
+    public class Entity : Moveable
     {
         [XmlElement("Name")]
         public string Name { get; set; }
@@ -85,5 +86,10 @@ namespace Threading_in_C.Entities
         }
         [XmlIgnore]
         public int BP { get; set; }
+
+        public override string getDrawAble()
+        {
+            return Name;
+        }
     }
 }
