@@ -28,32 +28,35 @@ namespace Threading_in_C.Forms
             OpenFiveApiRequest.con.Open();
 
             string retrieveSQL = "SELECT * FROM Enemies";
-
-            // add every enemy in the enemies table to the SavedEnemiesListBox
-            // FINISH CODE HERE
-
-            // Add the enemy to the ListBox control
-            // enemies.Add(enemy);
-            // enemyIndex++;
-            // SavedEnemiesListBox.Items.Insert(enemy.enemyIndex, enemy.ToString());
-
             using (SqlCommand command = new SqlCommand(retrieveSQL, OpenFiveApiRequest.con))
             {
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        // Print the values of each column in the current row
-                        for (int i = 0; i < reader.FieldCount; i++)
-                        {
-                            Console.Write(reader.GetValue(i));
-                        }
-                        Console.WriteLine();
+                        Enemy enemy = new Enemy
+                        (
+                            reader["Name"].ToString(),
+                            (int)reader["Health"],
+                            (int)reader["Movement"],
+                            (int)reader["Strength"],
+                            (int)reader["Dexterity"],
+                            (int)reader["Constitution"],
+                            (int)reader["Intelligence"],
+                            (int)reader["Wisdom"],
+                            (int)reader["Charisma"],
+                            (int)reader["ArmorRating"],
+                            (int)reader["Proficiency"],
+                            reader["ChallengeRating"].ToString(),
+                            reader["Size"].ToString(),
+                            reader["Type"].ToString()
+                        ); 
+                        enemies.Add(enemy);
                     }
                 }
             }
 
-            OpenFiveApiRequest.con.Close();
+            OpenFiveApiRequest.con.Close(); 
         }
     }
 }

@@ -11,24 +11,24 @@ namespace Threading_in_C.Entities
     internal class Enemy : Entity
     {
         [XmlIgnore]
-        public float CR { get; set; }
+        public string CR { get; set; }
         [XmlElement("CR")]
         public string CRAsText
         {
             get { return CR.ToString(); }
-            set { CR = float.Parse(value); }
+            set { CR = (value); }
         }
         [XmlIgnore]
-        public int Size { get; set; }
+        public string Size { get; set; }
         [XmlElement("Size")]
         public string SizeAsText
         {
             get { return Size.ToString(); }
-            set { Size = int.Parse(value); }
+            set { Size = (value); }
         }
         [XmlElement("Type")]
         public string Type { get; set; }
-        public Enemy(string name, int health, int movement, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int ar, int bp, float cr, int size, string type)
+        public Enemy(string name, int health, int movement, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int ar, int bp, string cr, string size, string type)
         {
             Name = name;
             Health = health;
