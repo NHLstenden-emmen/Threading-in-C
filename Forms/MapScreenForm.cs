@@ -33,9 +33,21 @@ namespace Threading_in_C.Forms
 
         public Placeable[,] generateRandomMap()
         {
+            Random rnd = new Random();
             Placeable[,] map = new Placeable[PlayerBoard.intsance.gridheight, PlayerBoard.intsance.gridwidth];
 
             map = addrandomRoom(map);
+
+            fillDisplayMap(MapExampleOne, map);
+
+            map = addrandomRoom(map);
+
+            fillDisplayMap(MapExampleOne, map);
+
+            map = addrandomRoom(map);
+
+            map[rnd.Next(0, PlayerBoard.intsance.gridheight), rnd.Next(0, PlayerBoard.intsance.gridwidth)] = new Obstacle("tree");
+            map[rnd.Next(0, PlayerBoard.intsance.gridheight), rnd.Next(0, PlayerBoard.intsance.gridwidth)] = new Obstacle("tree");
 
             return map;
         }
@@ -59,7 +71,18 @@ namespace Threading_in_C.Forms
         //create maps button click
         private void button2_Click(object sender, EventArgs e)
         {
-            fillDisplayMap(MapExampleOne, generateRandomMap());
+            if (AmountOfMaps.Value >= 1)
+            {
+                fillDisplayMap(MapExampleOne, generateRandomMap());
+            }
+            if (AmountOfMaps.Value >= 2)
+            {
+                fillDisplayMap(MapExampleTwo, generateRandomMap());
+            }
+            if (AmountOfMaps.Value == 3)
+            {
+                fillDisplayMap(MapExampleThree, generateRandomMap());
+            }
         }
 
         private void fillDisplayMap(RichTextBox richTextBox, Placeable[,] map)
