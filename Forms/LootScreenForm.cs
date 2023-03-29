@@ -31,6 +31,61 @@ namespace Threading_in_C.Forms
             AddItemsToList();
         }
 
+        // Retrieves all the items from the db and puts them in the items list
+        private void RetrieveItemsFromDatabase()
+        {
+            OpenFiveApiRequest.con.Open();
+            items.Clear();
+            SavedItemsListBox.Items.Clear();
+
+            string retrieveSQL = "SELECT * FROM Items";
+            using (SqlCommand command = new SqlCommand(retrieveSQL, OpenFiveApiRequest.con))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        List<string> properties = new List<string>();
+                        string[] propertiesStrings = reader["Properties"].ToString().Split(';');
+                        foreach (string propertiesString in propertiesStrings)
+                        {
+                            properties.Add(propertiesString);
+                        }
+
+                        List<string> drawbacks = new List<string>();
+                        string[] drawbacksStrings = reader["Drawbacks"].ToString().Split(';');
+                        foreach (string drawbacksString in drawbacksStrings)
+                        {
+                            drawbacks.Add(drawbacksString);
+                        }
+
+                        List<string> requirements = new List<string>();
+                        string[] requirementsStrings = reader["Requirements"].ToString().Split(';');
+                        foreach (string requirementsString in requirementsStrings)
+                        {
+                            requirements.Add(requirementsString);
+                        }
+
+                        Item item = new Item
+                        (
+                            reader["Name"].ToString(),
+                            reader["Type"].ToString(),
+                            reader["Rarity"].ToString(),
+                            (int)reader["Value"],
+                            reader["Description"].ToString(),
+                            properties,
+                            drawbacks,
+                            requirements,
+                            reader["history"].ToString()
+                        );
+                        items.Add(item);
+                    }
+                }
+            }
+
+            OpenFiveApiRequest.con.Close();
+        }
+
         // Displays all the items in the items list in the list box
         private void AddItemsToList()
         {
@@ -46,6 +101,59 @@ namespace Threading_in_C.Forms
             RetrieveItemsFromDatabase();
             AddItemsToList();
         }
+
+        private void GenerateItemButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < AmountOfItems.Value; i++)
+            {
+                Interlocked.Increment(ref numThreads);
+                Thread t = new Thread(new ThreadStart(PerformTask));
+                t.Start();
+            }
+
+            // Wait for all threads to finish executing
+            while (numThreads > 0)
+            {
+                threadExitEvent.WaitOne();
+            }
+
+            // Dispose of the ManualResetEvent object
+            threadExitEvent.Set();
+            using (threadExitEvent)
+            {
+                // do niks nie
+            }
+        }
+
+        private void PerformTask()
+        {
+            // hier item aanmaken
+            Item item;
+            bool itemExist = true;
+            while (itemExist)
+            {
+                item = ApiItemGenerator.Parse();
+
+                dbMutex.WaitOne(); // acquire the mutex
+                try
+                {
+                    itemExist = ItemExistsInDatabase(item.Name);
+                    if (!itemExist)
+                    {
+                        AddItemToDatabase(item);
+                    }
+                }
+                finally
+                {
+                    dbMutex.ReleaseMutex(); // release the mutex
+                }
+            }
+
+            // Signal the thread to exit
+            Interlocked.Decrement(ref numThreads);
+            threadExitEvent.Set();
+        }
+
         private void AddItemToDatabase(Item item)
         {
             OpenFiveApiRequest.con.Open();
