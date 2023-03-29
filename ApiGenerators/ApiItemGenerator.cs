@@ -177,8 +177,7 @@ namespace Threading_in_C.ApiGenerators
 
                 command.Parameters.AddWithValue("@Name", item.Name);
                 command.Parameters.AddWithValue("@Type", item.Type);
-                command.Parameters.AddWithValue("@Rarity", item.Rarity);
-                Console.WriteLine(item.Rarity);
+                command.Parameters.AddWithValue("@Rarity", item.Rarity != null ? string.Join(",", item.Description) : "");
                 command.Parameters.AddWithValue("@Value", item.Value);
                 command.Parameters.AddWithValue("@Description", item.Description != null ? string.Join(",", item.Description) : "");
                 command.Parameters.AddWithValue("@Properties", string.Join(", ", item.Properties));

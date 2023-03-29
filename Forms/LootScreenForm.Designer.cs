@@ -55,7 +55,7 @@
             // 
             // AmountOfItems
             // 
-            this.AmountOfItems.Location = new System.Drawing.Point(439, 15);
+            this.AmountOfItems.Location = new System.Drawing.Point(138, 22);
             this.AmountOfItems.Margin = new System.Windows.Forms.Padding(2);
             this.AmountOfItems.Maximum = new decimal(new int[] {
             10,
@@ -78,7 +78,7 @@
             // 
             // GenerateItemButton
             // 
-            this.GenerateItemButton.Location = new System.Drawing.Point(354, 15);
+            this.GenerateItemButton.Location = new System.Drawing.Point(53, 22);
             this.GenerateItemButton.Margin = new System.Windows.Forms.Padding(2);
             this.GenerateItemButton.Name = "GenerateItemButton";
             this.GenerateItemButton.Size = new System.Drawing.Size(86, 19);
