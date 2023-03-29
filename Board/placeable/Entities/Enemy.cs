@@ -10,6 +10,11 @@ namespace Threading_in_C.Entities
 {
     internal class Enemy : Entity
     {
+        public override string ToString()
+        {
+            return $"{Name} (H: {Health} M: {Movement} STR: {Strength} DEX: {Dexterity} CON: {Constitution} INT: {Intelligence} WIS: {Wisdom} CHA: {Charisma} AR: {AR} BP: {BP}, CR: {CR}, SIZE: {Size}, TP: {Type})";
+        }
+
         [XmlIgnore]
         public string CR { get; set; }
         [XmlElement("CR")]

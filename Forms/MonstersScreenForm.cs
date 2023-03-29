@@ -17,6 +17,7 @@ namespace Threading_in_C.Forms
     public partial class MonstersScreenForm : Form
     {
         private List<Enemy> enemies = new List<Enemy>();
+        private int enemyIndex = 0;
         public MonstersScreenForm()
         {
             InitializeComponent();
@@ -25,6 +26,8 @@ namespace Threading_in_C.Forms
         private void RefreshSavedEnemies_Click(object sender, EventArgs e)
         {
             OpenFiveApiRequest.con.Open();
+            enemies.Clear();
+            SavedEnemiesListBox.Items.Clear();
 
             string retrieveSQL = "SELECT * FROM Enemies";
             using (SqlCommand command = new SqlCommand(retrieveSQL, OpenFiveApiRequest.con))
@@ -56,6 +59,12 @@ namespace Threading_in_C.Forms
             }
 
             OpenFiveApiRequest.con.Close();
+            foreach (Enemy enemy in enemies)
+            {
+                // Add the player to the ListBox control
+                SavedEnemiesListBox.Items.Add(enemy.ToString());
+                enemyIndex++;
+            }
         }
     }
 }
