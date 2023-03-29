@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Threading_in_C.ApiResponseAdapters;
+using Threading_in_C.Entities;
+using Threading_in_C.OpenFiveApi;
 
 namespace Threading_in_C.Forms
 {
@@ -15,9 +20,15 @@ namespace Threading_in_C.Forms
         private List<NPC> npcs = new List<NPC>();
         private ManualResetEvent threadExitEvent = new ManualResetEvent(false);
         private int numThreads = 0;
+        private Mutex dbMutex = new Mutex();
+
         public NpcScreenForm()
         {
             InitializeComponent();
+            RetrieveNpcsFromDatabase();
+            AddNpcsToList();
+        }
+
         // Retrieves all the npcs from the db and puts them in the npcs list
         private void RetrieveNpcsFromDatabase()
         {
@@ -63,6 +74,27 @@ namespace Threading_in_C.Forms
             }
 
             OpenFiveApiRequest.con.Close();
+        }
+
+        // Displays all the npcs in the npcs list in the list box
+        private void AddNpcsToList()
+        {
+            foreach (NPC npc in npcs)
+            {
+                // Add the player to the ListBox control
+                SavedNpcsListBox.Items.Add(npc.Name.ToString());
+            }
+        }
+
+        private void RefreshSavedNpcs_Click(object sender, EventArgs e)
+        {
+            RetrieveNpcsFromDatabase();
+            AddNpcsToList();
+        }
+        
+        private void GenerateNPCButton_Click(object sender, EventArgs e)
+        {
+            CreateThreads((int)AmountOfNPCs.Value);
         }
         }
     }
