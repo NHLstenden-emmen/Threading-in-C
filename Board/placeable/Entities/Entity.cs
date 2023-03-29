@@ -91,5 +91,10 @@ namespace Threading_in_C.Entities
         {
             return Name;
         }
+
+        public override int getMovement()
+        {
+            return this.Movement;
+        }
     }
 }

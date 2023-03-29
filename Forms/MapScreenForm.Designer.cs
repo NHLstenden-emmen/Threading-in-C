@@ -35,123 +35,131 @@
             this.MapExampleOne = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.AmountOfMaps = new System.Windows.Forms.NumericUpDown();
-            this.GenerateEnemies = new System.Windows.Forms.CheckBox();
-            this.GridSizeTextBox = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.GenerateLootOnMapCheckBox = new System.Windows.Forms.CheckBox();
+            this.masterOverrideCheckbox = new System.Windows.Forms.CheckBox();
+            this.obstacleButton = new System.Windows.Forms.Button();
+            this.objectNameBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfMaps)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // DeleteMap
             // 
-            this.DeleteMap.Location = new System.Drawing.Point(277, 676);
-            this.DeleteMap.Margin = new System.Windows.Forms.Padding(2);
+            this.DeleteMap.Location = new System.Drawing.Point(369, 832);
+            this.DeleteMap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DeleteMap.Name = "DeleteMap";
-            this.DeleteMap.Size = new System.Drawing.Size(136, 58);
+            this.DeleteMap.Size = new System.Drawing.Size(181, 71);
             this.DeleteMap.TabIndex = 22;
             this.DeleteMap.Text = "DeleteMap";
             this.DeleteMap.UseVisualStyleBackColor = true;
             // 
             // SavedMapsBox
             // 
-            this.SavedMapsBox.Location = new System.Drawing.Point(22, 438);
-            this.SavedMapsBox.Margin = new System.Windows.Forms.Padding(2);
+            this.SavedMapsBox.Location = new System.Drawing.Point(29, 539);
+            this.SavedMapsBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SavedMapsBox.Name = "SavedMapsBox";
-            this.SavedMapsBox.Size = new System.Drawing.Size(647, 191);
+            this.SavedMapsBox.Size = new System.Drawing.Size(861, 234);
             this.SavedMapsBox.TabIndex = 21;
             this.SavedMapsBox.Text = "Saved Maps Example";
             // 
             // MapExampleThree
             // 
-            this.MapExampleThree.Location = new System.Drawing.Point(477, 143);
-            this.MapExampleThree.Margin = new System.Windows.Forms.Padding(2);
+            this.MapExampleThree.Location = new System.Drawing.Point(636, 176);
+            this.MapExampleThree.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MapExampleThree.Name = "MapExampleThree";
-            this.MapExampleThree.Size = new System.Drawing.Size(192, 191);
+            this.MapExampleThree.Size = new System.Drawing.Size(255, 234);
             this.MapExampleThree.TabIndex = 20;
             this.MapExampleThree.Text = "Map Example Three";
+            this.MapExampleThree.DoubleClick += new System.EventHandler(this.SelectMap);
             // 
             // MapExampleTwo
             // 
-            this.MapExampleTwo.Location = new System.Drawing.Point(246, 143);
-            this.MapExampleTwo.Margin = new System.Windows.Forms.Padding(2);
+            this.MapExampleTwo.Location = new System.Drawing.Point(328, 176);
+            this.MapExampleTwo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MapExampleTwo.Name = "MapExampleTwo";
-            this.MapExampleTwo.Size = new System.Drawing.Size(192, 191);
+            this.MapExampleTwo.Size = new System.Drawing.Size(255, 234);
             this.MapExampleTwo.TabIndex = 19;
             this.MapExampleTwo.Text = "Map Example Two";
+            this.MapExampleTwo.DoubleClick += new System.EventHandler(this.SelectMap);
             // 
             // MapExampleOne
             // 
-            this.MapExampleOne.Location = new System.Drawing.Point(22, 143);
-            this.MapExampleOne.Margin = new System.Windows.Forms.Padding(2);
+            this.MapExampleOne.Location = new System.Drawing.Point(29, 176);
+            this.MapExampleOne.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MapExampleOne.Name = "MapExampleOne";
-            this.MapExampleOne.Size = new System.Drawing.Size(192, 191);
+            this.MapExampleOne.Size = new System.Drawing.Size(255, 234);
             this.MapExampleOne.TabIndex = 18;
             this.MapExampleOne.Text = "Map Example One";
+            this.MapExampleOne.DoubleClick += new System.EventHandler(this.SelectMap);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(253, 91);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(337, 112);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 19);
+            this.button2.Size = new System.Drawing.Size(121, 23);
             this.button2.TabIndex = 17;
             this.button2.Text = "Generate Maps";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AmountOfMaps
             // 
-            this.AmountOfMaps.Location = new System.Drawing.Point(343, 91);
-            this.AmountOfMaps.Margin = new System.Windows.Forms.Padding(2);
+            this.AmountOfMaps.Location = new System.Drawing.Point(457, 112);
+            this.AmountOfMaps.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AmountOfMaps.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.AmountOfMaps.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.AmountOfMaps.Name = "AmountOfMaps";
-            this.AmountOfMaps.Size = new System.Drawing.Size(90, 20);
+            this.AmountOfMaps.Size = new System.Drawing.Size(120, 22);
             this.AmountOfMaps.TabIndex = 16;
+            this.AmountOfMaps.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // GenerateEnemies
+            // masterOverrideCheckbox
             // 
-            this.GenerateEnemies.AutoSize = true;
-            this.GenerateEnemies.Location = new System.Drawing.Point(562, 27);
-            this.GenerateEnemies.Margin = new System.Windows.Forms.Padding(2);
-            this.GenerateEnemies.Name = "GenerateEnemies";
-            this.GenerateEnemies.Size = new System.Drawing.Size(113, 17);
-            this.GenerateEnemies.TabIndex = 15;
-            this.GenerateEnemies.Text = "Generate Enemies";
-            this.GenerateEnemies.UseVisualStyleBackColor = true;
+            this.masterOverrideCheckbox.AutoSize = true;
+            this.masterOverrideCheckbox.Location = new System.Drawing.Point(784, 832);
+            this.masterOverrideCheckbox.Name = "masterOverrideCheckbox";
+            this.masterOverrideCheckbox.Size = new System.Drawing.Size(125, 20);
+            this.masterOverrideCheckbox.TabIndex = 23;
+            this.masterOverrideCheckbox.Text = "Master Override";
+            this.masterOverrideCheckbox.UseVisualStyleBackColor = true;
             // 
-            // GridSizeTextBox
+            // obstacleButton
             // 
-            this.GridSizeTextBox.Location = new System.Drawing.Point(261, 27);
-            this.GridSizeTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.GridSizeTextBox.Name = "GridSizeTextBox";
-            this.GridSizeTextBox.ReadOnly = true;
-            this.GridSizeTextBox.Size = new System.Drawing.Size(76, 20);
-            this.GridSizeTextBox.TabIndex = 14;
-            this.GridSizeTextBox.Text = "Grid Size";
+            this.obstacleButton.Location = new System.Drawing.Point(29, 866);
+            this.obstacleButton.Name = "obstacleButton";
+            this.obstacleButton.Size = new System.Drawing.Size(128, 37);
+            this.obstacleButton.TabIndex = 24;
+            this.obstacleButton.Text = "Place obstacle";
+            this.obstacleButton.UseVisualStyleBackColor = true;
+            this.obstacleButton.Click += new System.EventHandler(this.obstacleButton_Click);
             // 
-            // numericUpDown1
+            // objectNameBox
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(336, 27);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(90, 20);
-            this.numericUpDown1.TabIndex = 13;
-            // 
-            // GenerateLootOnMapCheckBox
-            // 
-            this.GenerateLootOnMapCheckBox.AutoSize = true;
-            this.GenerateLootOnMapCheckBox.Location = new System.Drawing.Point(22, 27);
-            this.GenerateLootOnMapCheckBox.Margin = new System.Windows.Forms.Padding(2);
-            this.GenerateLootOnMapCheckBox.Name = "GenerateLootOnMapCheckBox";
-            this.GenerateLootOnMapCheckBox.Size = new System.Drawing.Size(93, 17);
-            this.GenerateLootOnMapCheckBox.TabIndex = 12;
-            this.GenerateLootOnMapCheckBox.Text = "Generate loot ";
-            this.GenerateLootOnMapCheckBox.UseVisualStyleBackColor = true;
+            this.objectNameBox.Location = new System.Drawing.Point(29, 838);
+            this.objectNameBox.Name = "objectNameBox";
+            this.objectNameBox.Size = new System.Drawing.Size(128, 22);
+            this.objectNameBox.TabIndex = 25;
+            this.objectNameBox.Text = "Obstacle Name";
             // 
             // MapScreenForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 756);
+            this.ClientSize = new System.Drawing.Size(941, 930);
+            this.Controls.Add(this.objectNameBox);
+            this.Controls.Add(this.obstacleButton);
+            this.Controls.Add(this.masterOverrideCheckbox);
             this.Controls.Add(this.DeleteMap);
             this.Controls.Add(this.SavedMapsBox);
             this.Controls.Add(this.MapExampleThree);
@@ -159,14 +167,10 @@
             this.Controls.Add(this.MapExampleOne);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.AmountOfMaps);
-            this.Controls.Add(this.GenerateEnemies);
-            this.Controls.Add(this.GridSizeTextBox);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.GenerateLootOnMapCheckBox);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MapScreenForm";
             this.Text = "MapScreenForm";
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfMaps)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,9 +185,8 @@
         private System.Windows.Forms.RichTextBox MapExampleOne;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.NumericUpDown AmountOfMaps;
-        private System.Windows.Forms.CheckBox GenerateEnemies;
-        private System.Windows.Forms.TextBox GridSizeTextBox;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.CheckBox GenerateLootOnMapCheckBox;
+        private System.Windows.Forms.CheckBox masterOverrideCheckbox;
+        private System.Windows.Forms.Button obstacleButton;
+        private System.Windows.Forms.TextBox objectNameBox;
     }
 }

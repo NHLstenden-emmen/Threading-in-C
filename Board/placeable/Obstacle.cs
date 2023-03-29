@@ -8,7 +8,7 @@ namespace Threading_in_C.Board.placeable
 {
     internal class Obstacle : InMovable
     {
-        String type;
+        public String type;
         public Obstacle(String type)
         {
             this.type = type;

@@ -75,6 +75,7 @@
     <Compile Include="Board\placeable\Moveable.cs" />
     <Compile Include="Board\placeable\Obstacle.cs" />
     <Compile Include="Board\placeable\Placeable.cs" />
+    <Compile Include="Board\Rooms.cs" />
     <Compile Include="Board\Tile.cs" />
     <Compile Include="ApiGenerators\ApiEnemyGenerator.cs" />
     <Compile Include="ApiGenerators\ApiItemGenerator.cs" />
