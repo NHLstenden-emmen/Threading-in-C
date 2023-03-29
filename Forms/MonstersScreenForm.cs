@@ -22,6 +22,7 @@ namespace Threading_in_C.Forms
         private ManualResetEvent threadExitEvent = new ManualResetEvent(false);
         private int numThreads = 0;
         private Mutex dbMutex = new Mutex();
+        ApiEnemyGenerator apiEnemyGenerator = new ApiEnemyGenerator();
 
         public MonstersScreenForm()
         {
@@ -35,7 +36,7 @@ namespace Threading_in_C.Forms
         {
             OpenFiveApiRequest.con.Open();
             enemies.Clear();
-            SavedEnemiesListBox.Items.Clear();
+           SavedEnemiesListBox.Items.Clear();
 
             string retrieveSQL = "SELECT * FROM Enemies";
             using (SqlCommand command = new SqlCommand(retrieveSQL, OpenFiveApiRequest.con))
@@ -87,7 +88,6 @@ namespace Threading_in_C.Forms
 
         private void GenerateMonsterButton_Click(object sender, EventArgs e)
         {
-            SavedEnemiesListBox.Items.Add("test");
             CreateThreads((int)MonsterAmount.Value);
             CleanupThreads();
         }
@@ -125,12 +125,13 @@ namespace Threading_in_C.Forms
             for (int i = 0; i < numThreadsToCreate; i++)
             {
                 Interlocked.Increment(ref numThreads);
-                Thread t = new Thread(new ThreadStart(PerformTask));
+                ManualResetEventSlim threadExitEvent = new ManualResetEventSlim(false);
+                Thread t = new Thread(() => PerformTask(threadExitEvent));
                 t.Start();
             }
         }
 
-        private void PerformTask()
+        private void PerformTask(ManualResetEventSlim threadExitEvent)
         {
             // task to perform
 
@@ -144,8 +145,7 @@ namespace Threading_in_C.Forms
                 enemyExist = EnemyExistsInDatabase(enemy.Name);
                 if (!enemyExist)
                 {
-                    // Als die niet bestaat toevoegen aan database en enemies lijst 
-                    // ...
+                    apiEnemyGenerator.PutEnemyInDatabase(enemy);
                 }
             }
             finally
@@ -163,10 +163,16 @@ namespace Threading_in_C.Forms
         private void CleanupThreads()
         {
             // Wait for all threads to exit
-            threadExitEvent.WaitOne();
+            while (numThreads > 0)
+            {
+                Thread.Sleep(10);
+            }
 
-            // Dispose of the synchronization object
-            threadExitEvent.Dispose();
+            if (numThreads == 0)
+            {
+                RetrieveEnemiesFromDatabase();
+                AddEnemiesToList();
+            }
         }
     }
 }
