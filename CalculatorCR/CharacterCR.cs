@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static Threading_in_C.CRCalculator.MonsterCR;
+
 
 namespace Threading_in_C.CRCalculator
 {
@@ -23,8 +23,7 @@ namespace Threading_in_C.CRCalculator
         public int damagePerRound;
         public int specialAbilities;
         public int characterLevel;
-        public int movementspeed;
-        public int level;
+        public int movementSpeed;
     }
 
     public class TeamInfo
@@ -63,7 +62,7 @@ namespace Threading_in_C.CRCalculator
             double TotalLevel = 0;
             foreach (CreateCharacter character in characters)
             {
-                TotalLevel += character.level;
+                TotalLevel += character.characterLevel;
             }
             return TotalLevel;
         }
@@ -82,7 +81,7 @@ namespace Threading_in_C.CRCalculator
             double movementSpeed = 0;
             foreach (CreateCharacter createCharacter in characters)
             {
-                movementSpeed += createCharacter.movementspeed;
+                movementSpeed += createCharacter.movementSpeed;
             }
             return movementSpeed;
         }
@@ -97,15 +96,12 @@ namespace Threading_in_C.CRCalculator
             return SpecialAbilities;
         }
 
-        public double CalculatorCR(List<CreateCharacter> characters)
-        {
-            double CalculatorCR = GetAverageLevel(characters) / GetPartySize(characters) + 0.5 * GetMonsters() + 0.25 * GetTotalDamageOutput(characters) + 0.25 * GetTotalHitPoints(characters)/* + 0.5 * total attack bonusses*/ + GetSpecialAbilities(characters);
-            return CalculatorCR;
-        }
 
         public double GetPartySize(List<CreateCharacter> characters)
         {
             return characters.Count;
         }
+
+
     }
 }

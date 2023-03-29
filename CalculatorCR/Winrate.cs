@@ -7,7 +7,7 @@ using Threading_in_C.CRCalculator;
 
 namespace Threading_in_C.CalculatorCR
 {
-    public class monsterInfo
+    public class winrateFormula
     {
         Monster monster = new Monster();
         List<MonsterCreation> monsters = new List<MonsterCreation>();
@@ -19,7 +19,7 @@ namespace Threading_in_C.CalculatorCR
 
         public double getMonsterCR()
         {
-            double TotalMonsterCR = monster.CalculatorCRMonster(monsters);
+            double TotalMonsterCR = monster.CalculatorCRMonster(monsters, characters);
             return TotalMonsterCR;
         }
 
@@ -32,13 +32,10 @@ namespace Threading_in_C.CalculatorCR
 
         public double MonsterFormula()
         {
-            double formulaMonster = getMonsterSpeed() * 1.5 + getAvarageMonsterCR() * monster.GetAllMonsters(monsters);
+            double formulaMonster = (getMonsterSpeed()) + (getAvarageMonsterCR() * monster.GetAllMonsters(monsters));
             return formulaMonster;
         }
-    }
 
-    public class TeamStats
-    {
         TeamInfo teamInfo = new TeamInfo();
         List<CreateCharacter> characters = new List<CreateCharacter>();
         public double getMovementSpeed()
@@ -65,12 +62,15 @@ namespace Threading_in_C.CalculatorCR
             return Teamform;
         }
 
-    }
+        public double FormulaWinrate()
+        {
+            double formula1 = MonsterFormula();
+            double formula2 = TeamFormula();
+            double calculationStep1 = formula1 / formula2 * 100;
+            double calculationStep2 = 100 - calculationStep1;
+            return calculationStep2;
 
-
-    public class calculateWinrate
-    {
-
+        }
 
 
     }

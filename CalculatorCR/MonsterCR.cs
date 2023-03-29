@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Threading_in_C.CRCalculator.CRCharacter;
+
 
 namespace Threading_in_C.CRCalculator
 {
@@ -84,14 +84,46 @@ namespace Threading_in_C.CRCalculator
             return AttackBonus;
         }
 
-        TeamInfo teamInfo = new TeamInfo();
-        List<CreateCharacter> characters = new List<CreateCharacter>();
-        public double CalculatorCRMonster(List<MonsterCreation> monsters)
+
+        public double CalculatorCRMonster(List<MonsterCreation> monsters, List<CreateCharacter> characters)
         {
-            double averageLevel = teamInfo.GetAverageLevel(characters);
-            double partySize = teamInfo.GetPartySize(characters);
-            double CalculatorCR = averageLevel / partySize + 0.5 * GetAllMonsters(monsters) + 0.25 * GetTotalDamageOutput(monsters) + 0.25 * GetTotalHitPoints(monsters) + 0.5 * GetAttackBonus(monsters) + GetSpecialAbilities(monsters);
-            return CalculatorCR;
+
+            double CalculatorCR = ((0.5 * GetAllMonsters(monsters)) + (0.25 * GetTotalDamageOutput(monsters)) + (0.25 * GetTotalHitPoints(monsters)) + (0.5 * GetAttackBonus(monsters)) + GetSpecialAbilities(monsters)) - (GetAverageLevel(characters) * GetPartySize(characters) + GetSpecialAbilities(characters) - GetPartySize(characters));
+            if (CalculatorCR <= 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return CalculatorCR;
+            }
+
+        }
+
+
+        public double GetSpecialAbilities(List<CreateCharacter> characters)
+        {
+            double SpecialAbilities = 0;
+            foreach (CreateCharacter character in characters)
+            {
+                SpecialAbilities += character.specialAbilities;
+            }
+            return SpecialAbilities;
+        }
+
+        public double GetAverageLevel(List<CreateCharacter> characters)
+        {
+            double sum = 0;
+
+            foreach (CreateCharacter character in characters)
+            {
+                sum += character.characterLevel;
+            }
+            return sum / characters.Count;
+        }
+        public double GetPartySize(List<CreateCharacter> characters)
+        {
+            return characters.Count;
         }
     }
 }
