@@ -194,8 +194,6 @@ namespace Threading_in_C
                 //get the tile from the button
                 Tile tile = (Tile)button.Tag;
 
-
-                Console.WriteLine(me.Button);
                 if (me.Button == MouseButtons.Left)
                 {
                     if (selectedButton == null)
