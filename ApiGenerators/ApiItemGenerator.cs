@@ -44,6 +44,10 @@ namespace Threading_in_C.ApiGenerators
 
         private static int getValue(string itemRarity, Random random)
         {
+            if (itemRarity == null)
+            {
+               return 0;
+            }
             itemRarity = itemRarity.ToLower();
 
             // Based on the rarity, gets a value that fits
@@ -174,6 +178,7 @@ namespace Threading_in_C.ApiGenerators
                 command.Parameters.AddWithValue("@Name", item.Name);
                 command.Parameters.AddWithValue("@Type", item.Type);
                 command.Parameters.AddWithValue("@Rarity", item.Rarity);
+                Console.WriteLine(item.Rarity);
                 command.Parameters.AddWithValue("@Value", item.Value);
                 command.Parameters.AddWithValue("@Description", item.Description != null ? string.Join(",", item.Description) : "");
                 command.Parameters.AddWithValue("@Properties", string.Join(", ", item.Properties));

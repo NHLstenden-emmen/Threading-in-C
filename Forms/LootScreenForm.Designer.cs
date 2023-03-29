@@ -57,9 +57,24 @@
             // 
             this.AmountOfItems.Location = new System.Drawing.Point(439, 15);
             this.AmountOfItems.Margin = new System.Windows.Forms.Padding(2);
+            this.AmountOfItems.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.AmountOfItems.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.AmountOfItems.Name = "AmountOfItems";
             this.AmountOfItems.Size = new System.Drawing.Size(30, 20);
             this.AmountOfItems.TabIndex = 29;
+            this.AmountOfItems.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // GenerateItemButton
             // 

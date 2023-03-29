@@ -36,7 +36,7 @@ namespace Threading_in_C.Forms
         {
             OpenFiveApiRequest.con.Open();
             enemies.Clear();
-           SavedEnemiesListBox.Items.Clear();
+            SavedEnemiesListBox.Items.Clear();
 
             string retrieveSQL = "SELECT * FROM Enemies";
             using (SqlCommand command = new SqlCommand(retrieveSQL, OpenFiveApiRequest.con))

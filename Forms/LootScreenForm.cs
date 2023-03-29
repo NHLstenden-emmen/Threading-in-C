@@ -105,78 +105,8 @@ namespace Threading_in_C.Forms
 
         private void GenerateItemButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < AmountOfItems.Value; i++)
-            {
-                Interlocked.Increment(ref numThreads);
-                Thread t = new Thread(new ThreadStart(PerformTask));
-                t.Start();
-            }
-
-            // Wait for all threads to finish executing
-            while (numThreads > 0)
-            {
-                threadExitEvent.WaitOne();
-            }
-
-            // Dispose of the ManualResetEvent object
-            threadExitEvent.Set();
-            using (threadExitEvent)
-            {
-                // do niks nie
-            }
-        }
-
-        private void PerformTask()
-        {
-            // hier item aanmaken
-            Item item;
-            bool itemExist = true;
-            while (itemExist)
-            {
-                item = ApiItemGenerator.Parse();
-
-                dbMutex.WaitOne(); // acquire the mutex
-                try
-                {
-                    itemExist = ItemExistsInDatabase(item.Name);
-                    if (!itemExist)
-                    {
-                        AddItemToDatabase(item);
-                    }
-                }
-                finally
-                {
-                    dbMutex.ReleaseMutex(); // release the mutex
-                }
-            }
-
-            // Signal the thread to exit
-            Interlocked.Decrement(ref numThreads);
-            threadExitEvent.Set();
-        }
-
-        private void AddItemToDatabase(Item item)
-        {
-            OpenFiveApiRequest.con.Open();
-            
-            string insertSQL = "INSERT INTO Items (Name, Type, Rarity, Value, Description, Properties, Drawbacks, Requirements, History) VALUES (@Name, @Type, @Rarity, @Value, @Description, @Properties, @Drawbacks, @Requirements, @History)";
-
-            using (SqlCommand command = new SqlCommand(insertSQL, OpenFiveApiRequest.con))
-            {
-                command.Parameters.AddWithValue("@Name", item.Name);
-                command.Parameters.AddWithValue("@Type", item.Type);
-                command.Parameters.AddWithValue("@Rarity", item.Rarity);
-                command.Parameters.AddWithValue("@Value", item.Value);
-                command.Parameters.AddWithValue("@Description", item.Description);
-                command.Parameters.AddWithValue("@Properties", string.Join(";", item.Properties));
-                command.Parameters.AddWithValue("@Drawbacks", string.Join(";", item.Drawbacks));
-                command.Parameters.AddWithValue("@Requirements", string.Join(";", item.Requirements));
-                command.Parameters.AddWithValue("@History", item.History);
-
-                command.ExecuteNonQuery();
-            }
-
-            OpenFiveApiRequest.con.Close();
+            CreateThreads((int)AmountOfItems.Value);
+            CleanupThreads();
         }
 
         private bool ItemExistsInDatabase(string ItemName)
@@ -205,6 +135,78 @@ namespace Threading_in_C.Forms
                 dbMutex.ReleaseMutex(); // release the mutex
             }
             return itemExists;
+        }
+
+        // Method that tries to get a unique item up to three times
+        private void PutNewItemInDatabase(Item item)
+        {
+            bool itemExist = ItemExistsInDatabase(item.Name);
+            if (!itemExist)
+            {
+                apiItemGenerator.PutItemInDatabase(item);
+            }
+            else
+            {
+                int attempts = 0;
+                Item newItem;
+                do
+                {
+                    newItem = ApiItemGenerator.Parse();
+                    itemExist = ItemExistsInDatabase(item.Name);
+                    attempts++;
+                } while (itemExist && attempts < 3);
+
+                if (!itemExist)
+                {
+                    apiItemGenerator.PutItemInDatabase(newItem);
+                }
+            }
+        }
+
+        private void CreateThreads(int numThreadsToCreate)
+        {
+            for (int i = 0; i < numThreadsToCreate; i++)
+            {
+                Interlocked.Increment(ref numThreads);
+                ManualResetEventSlim threadExitEvent = new ManualResetEventSlim(false);
+                Thread t = new Thread(() => PerformTask(threadExitEvent));
+                t.Start();
+            }
+        }
+
+        private void PerformTask(ManualResetEventSlim threadExitEvent)
+        {
+            // create item
+            var item = ApiItemGenerator.Parse();
+            dbMutex.WaitOne(); // acquire the mutex
+            try
+            {
+                // tries to get a unique item up to three times
+                PutNewItemInDatabase(item);
+            }
+            finally
+            {
+                dbMutex.ReleaseMutex(); // release the mutex
+            }
+
+            // Signal the thread to exit
+            Interlocked.Decrement(ref numThreads);
+            threadExitEvent.Set();
+        }
+
+        private void CleanupThreads()
+        {
+            // Wait for all threads to exit
+            while (numThreads > 0)
+            {
+                Thread.Sleep(10);
+            }
+
+            if (numThreads == 0)
+            {
+                RetrieveItemsFromDatabase();
+                AddItemsToList();
+            }
         }
     }
 }
