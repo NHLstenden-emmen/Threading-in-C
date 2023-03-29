@@ -40,5 +40,8 @@ namespace Threading_in_C.Players
             Race = race;
             Class = characterClass;
         }
+        public Player()
+        {
+        }
     }
 }

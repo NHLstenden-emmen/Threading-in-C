@@ -10,8 +10,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
+using Threading_in_C.Entities;
 using Threading_in_C.Players;
 
 namespace Threading_in_C
@@ -352,13 +354,19 @@ namespace Threading_in_C
                 for (int j = 0; j < gridwidth; j++)
                 {
                     Tile tile = (Tile)tileArray[i, j].Tag;
-                    if (tile.getPlaceable() == null)
-                    {
-                        tileArray[i, j].Text = "";
-                    }
-                    else
-                    {
-                        Debug.WriteLine(tile.getPlaceable().getDrawAble());
+                    if (tile.getPlaceable() != null && tile.getPlaceable().getDrawAble() != null)
+                    { 
+                        if(tile.getPlaceable().GetType() == typeof(Player) || true)
+                        {
+                            //Debug.WriteLine(tile.getPlaceable());
+                            //Entity entity = (Entity)tile.getPlaceable();
+                            using (var stringWriter = new System.IO.StringWriter())
+                            {
+                                var serializer = new XmlSerializer(tile.getPlaceable().GetType());
+                                serializer.Serialize(stringWriter, tile.getPlaceable());
+                                Debug.WriteLine(stringWriter.ToString());
+                            }
+                        }
                     }
                 }
             }

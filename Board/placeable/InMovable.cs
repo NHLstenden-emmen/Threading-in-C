@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Threading_in_C.Board.placeable
 {
-    internal abstract class InMovable : Placeable
+    public abstract class InMovable : Placeable
     {
         protected InMovable() { }
      

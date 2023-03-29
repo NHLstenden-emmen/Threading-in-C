@@ -12,7 +12,7 @@ namespace Threading_in_C.Entities
         [XmlIgnore] // ignore Race for now
         public string Race { get; set; }
 
-        [XmlElement("Name")]
+        [XmlElement("Class")]
         public string Class { get; set; }
     }
 }
