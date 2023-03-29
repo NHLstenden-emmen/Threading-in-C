@@ -12,7 +12,7 @@ namespace Threading_in_C.Board
 {
     public static class Rooms
     {
-        private static void drawRoom(List<Point> wallList)
+        public static void drawRoom(List<Point> wallList)
         {
             foreach (Point point in wallList)
             {
@@ -24,9 +24,9 @@ namespace Threading_in_C.Board
             }
         }
 
-        public static void placeRoom1(int x, int y)
+        public static List<Point> getRoom1(int x, int y)
         {
-            List<Point> wallList = new List<Point>();;
+            List<Point> wallList = new List<Point>();
 
             wallList.Add(new Point(x,y));
             wallList.Add(new Point(x + 1, y));
@@ -41,28 +41,56 @@ namespace Threading_in_C.Board
             wallList.Add(new Point(x, y + 1));
             wallList.Add(new Point(x, y + 0));
 
-            drawRoom(wallList);
+            return wallList;
         }
 
-        public static void placeRoom2()
+        public static List<Point> getRoom2(int x, int y)
         {
-
+            List<Point> wallList = new List<Point>();
+            
+            return wallList;
         }
 
-        public static void placeRoom3()
+        public static List<Point> getRoom3(int x, int y)
         {
+            List<Point> wallList = new List<Point>();
 
+            return wallList;
         }
 
-        public static void placeRoom4()
+        public static List<Point> getRoom4(int x, int y)
         {
+            List<Point> wallList = new List<Point>();
 
+            return wallList;
         }
 
-        public static void placeRoom5()
+        public static List<Point> getRoom5(int x, int y)
         {
+            List<Point> wallList = new List<Point>();
 
+            return wallList;
+        }
 
+        public static List<Point> getRandomRoom(int x, int y)
+        {
+            Random rnd = new Random();
+
+            switch (rnd.Next(1,6))
+            {
+                case 1:
+                    return getRoom1(x, y);
+                case 2:
+                    return getRoom2(x, y);
+                case 3:
+                    return getRoom3(x, y);
+                case 4:
+                    return getRoom4(x, y);
+                case 5:
+                    return getRoom5(x, y);
+                default:
+                    return getRoom1(x, y);
+            }
         }
     }
 }
