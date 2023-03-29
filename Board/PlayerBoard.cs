@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threading_in_C.Board;
@@ -22,6 +23,7 @@ namespace Threading_in_C
         int gridwidth = 16;
         int tileSize = 80;
         Button selectedButton = null;
+        public static PlayerBoard intsance;
 
         public PlayerBoard()
         {
@@ -29,6 +31,7 @@ namespace Threading_in_C
             // maar dan moet hij nog het andere scherm pakken
 
             InitializeComponent();
+            PlayerBoard.intsance = this;
         }
 
         internal void ChangeLocation(int selectedScreen)
@@ -323,6 +326,20 @@ namespace Threading_in_C
             foreach (Tile tile in getAllPosibleMoves(moveable, location))
             {
                 tileArray[tile.getY(), tile.getX()].BackColor = Color.Gray;
+            }
+        }
+
+        public void placePlaceableOnPossibleTile(Placeable placeable)
+        {
+            foreach (Button button in tileArray)
+            {
+                Tile tile = (Tile)button.Tag;
+                if (tile.getPlaceable() == null)
+                {
+                    tile.setPlaceable(placeable);
+                    updateBoard();
+                    return;
+                }
             }
         }
     }
