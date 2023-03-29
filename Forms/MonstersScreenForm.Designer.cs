@@ -31,17 +31,14 @@
             this.DeleteEnemyButton = new System.Windows.Forms.Button();
             this.GenerateMonsterButton = new System.Windows.Forms.Button();
             this.MonsterAmount = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.DifficultyText = new System.Windows.Forms.TextBox();
             this.RefreshSavedEnemies = new System.Windows.Forms.Button();
             this.SavedEnemiesListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.MonsterAmount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // DeleteEnemyButton
             // 
-            this.DeleteEnemyButton.Location = new System.Drawing.Point(11, 599);
+            this.DeleteEnemyButton.Location = new System.Drawing.Point(11, 600);
             this.DeleteEnemyButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteEnemyButton.Name = "DeleteEnemyButton";
             this.DeleteEnemyButton.Size = new System.Drawing.Size(165, 59);
@@ -51,7 +48,7 @@
             // 
             // GenerateMonsterButton
             // 
-            this.GenerateMonsterButton.Location = new System.Drawing.Point(140, 25);
+            this.GenerateMonsterButton.Location = new System.Drawing.Point(11, 32);
             this.GenerateMonsterButton.Margin = new System.Windows.Forms.Padding(2);
             this.GenerateMonsterButton.Name = "GenerateMonsterButton";
             this.GenerateMonsterButton.Size = new System.Drawing.Size(104, 19);
@@ -62,8 +59,13 @@
             // 
             // MonsterAmount
             // 
-            this.MonsterAmount.Location = new System.Drawing.Point(243, 25);
+            this.MonsterAmount.Location = new System.Drawing.Point(114, 32);
             this.MonsterAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.MonsterAmount.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.MonsterAmount.Minimum = new decimal(new int[] {
             2,
             0,
@@ -78,24 +80,6 @@
             0,
             0});
             // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(58, 26);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(33, 20);
-            this.numericUpDown2.TabIndex = 14;
-            // 
-            // DifficultyText
-            // 
-            this.DifficultyText.Enabled = false;
-            this.DifficultyText.Location = new System.Drawing.Point(11, 26);
-            this.DifficultyText.Margin = new System.Windows.Forms.Padding(2);
-            this.DifficultyText.Name = "DifficultyText";
-            this.DifficultyText.Size = new System.Drawing.Size(48, 20);
-            this.DifficultyText.TabIndex = 13;
-            this.DifficultyText.Text = "Difficulty";
-            // 
             // RefreshSavedEnemies
             // 
             this.RefreshSavedEnemies.Location = new System.Drawing.Point(577, 600);
@@ -109,7 +93,7 @@
             // SavedEnemiesListBox
             // 
             this.SavedEnemiesListBox.FormattingEnabled = true;
-            this.SavedEnemiesListBox.Location = new System.Drawing.Point(11, 83);
+            this.SavedEnemiesListBox.Location = new System.Drawing.Point(11, 69);
             this.SavedEnemiesListBox.Name = "SavedEnemiesListBox";
             this.SavedEnemiesListBox.Size = new System.Drawing.Size(641, 511);
             this.SavedEnemiesListBox.TabIndex = 26;
@@ -124,14 +108,10 @@
             this.Controls.Add(this.DeleteEnemyButton);
             this.Controls.Add(this.GenerateMonsterButton);
             this.Controls.Add(this.MonsterAmount);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.DifficultyText);
             this.Name = "MonstersScreenForm";
             this.Text = "MonstersScreenForm";
             ((System.ComponentModel.ISupportInitialize)(this.MonsterAmount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -140,8 +120,6 @@
         private System.Windows.Forms.Button DeleteEnemyButton;
         private System.Windows.Forms.Button GenerateMonsterButton;
         private System.Windows.Forms.NumericUpDown MonsterAmount;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.TextBox DifficultyText;
         private System.Windows.Forms.Button RefreshSavedEnemies;
         private System.Windows.Forms.ListBox SavedEnemiesListBox;
     }

@@ -120,6 +120,32 @@ namespace Threading_in_C.Forms
             return enemyExists;
         }
 
+        // Method that tries to get a unique enemy up to three times
+        private void PutNewEnemyInDatabase(Enemy enemy)
+        {
+            bool enemyExist = EnemyExistsInDatabase(enemy.Name);
+            if (!enemyExist)
+            {
+                apiEnemyGenerator.PutEnemyInDatabase(enemy);
+            }
+            else
+            {
+                int attempts = 0;
+                Enemy newEnemy;
+                do
+                {
+                    newEnemy = ApiEnemyGenerator.Parse();
+                    enemyExist = EnemyExistsInDatabase(newEnemy.Name);
+                    attempts++;
+                } while (enemyExist && attempts < 3);
+
+                if (!enemyExist)
+                {
+                    apiEnemyGenerator.PutEnemyInDatabase(newEnemy);
+                }
+            }
+        }
+
         private void CreateThreads(int numThreadsToCreate)
         {
             for (int i = 0; i < numThreadsToCreate; i++)
@@ -133,27 +159,18 @@ namespace Threading_in_C.Forms
 
         private void PerformTask(ManualResetEventSlim threadExitEvent)
         {
-            // task to perform
-
-            // hier enemy aanmaken
+            // create enemy
             var enemy = ApiEnemyGenerator.Parse();
-
-            bool enemyExist = false;
             dbMutex.WaitOne(); // acquire the mutex
             try
             {
-                enemyExist = EnemyExistsInDatabase(enemy.Name);
-                if (!enemyExist)
-                {
-                    apiEnemyGenerator.PutEnemyInDatabase(enemy);
-                }
+                // tries to get a unique enemy up to three times
+                PutNewEnemyInDatabase(enemy);
             }
             finally
             {
                 dbMutex.ReleaseMutex(); // release the mutex
             }
-
-            // Als die wel bestaat --> begin opnieuw om een unieke te genereren
 
             // Signal the thread to exit
             Interlocked.Decrement(ref numThreads);
