@@ -94,12 +94,7 @@ namespace Threading_in_C.Forms
         
         private void GenerateNPCButton_Click(object sender, EventArgs e)
         {
-            CreateThreads((int)AmountOfNPCs.Value);
-        }
-
-        private void CreateThreads(int numThreadsToCreate)
-        {
-            for (int i = 0; i < numThreadsToCreate; i++)
+            for (int i = 0; i < AmountOfNPCs.Value; i++)
             {
                 Interlocked.Increment(ref numThreads);
                 Thread t = new Thread(new ThreadStart(PerformTask));
@@ -119,7 +114,6 @@ namespace Threading_in_C.Forms
                 // do niks nie
             }
         }
-
 
         private void PerformTask()
         {
