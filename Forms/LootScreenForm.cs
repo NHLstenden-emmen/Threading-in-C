@@ -23,6 +23,7 @@ namespace Threading_in_C.Forms
         private ManualResetEvent threadExitEvent = new ManualResetEvent(false);
         private int numThreads = 0;
         private Mutex dbMutex = new Mutex();
+        ApiItemGenerator apiItemGenerator = new ApiItemGenerator();
 
         public LootScreenForm()
         {
@@ -91,8 +92,8 @@ namespace Threading_in_C.Forms
         {
             foreach (Item item in items)
             {
-                // Add the player to the ListBox control
-                SavedItemsListBox.Items.Add(item.Name.ToString());
+                // Add the item to the ListBox control
+                SavedItemsListBox.Items.Add(item.ToString());
             }
         }
 
