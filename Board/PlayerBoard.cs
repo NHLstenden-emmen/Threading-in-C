@@ -205,6 +205,7 @@ namespace Threading_in_C
             RockTile3.setPlaceable(new Obstacle("Rock"));
 
             updateBoard();
+            exportBoard();
         }
 
         private List<Tile> getAllPosibleMoves(Moveable moveable, Tile location)
@@ -339,6 +340,26 @@ namespace Threading_in_C
                     tile.setPlaceable(placeable);
                     updateBoard();
                     return;
+                }
+            }
+        }
+
+        //export the drawables on all tiles
+        public void exportBoard()
+        {
+            for (int i = 0; i < gridheight; i++)
+            {
+                for (int j = 0; j < gridwidth; j++)
+                {
+                    Tile tile = (Tile)tileArray[i, j].Tag;
+                    if (tile.getPlaceable() == null)
+                    {
+                        tileArray[i, j].Text = "";
+                    }
+                    else
+                    {
+                        Debug.WriteLine(tile.getPlaceable().getDrawAble());
+                    }
                 }
             }
         }
