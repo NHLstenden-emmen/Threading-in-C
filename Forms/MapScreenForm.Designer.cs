@@ -36,6 +36,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.AmountOfMaps = new System.Windows.Forms.NumericUpDown();
             this.masterOverrideCheckbox = new System.Windows.Forms.CheckBox();
+            this.obstacleButton = new System.Windows.Forms.Button();
+            this.objectNameBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfMaps)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,11 +130,31 @@
             this.masterOverrideCheckbox.Text = "Master Override";
             this.masterOverrideCheckbox.UseVisualStyleBackColor = true;
             // 
+            // obstacleButton
+            // 
+            this.obstacleButton.Location = new System.Drawing.Point(29, 866);
+            this.obstacleButton.Name = "obstacleButton";
+            this.obstacleButton.Size = new System.Drawing.Size(128, 37);
+            this.obstacleButton.TabIndex = 24;
+            this.obstacleButton.Text = "Place obstacle";
+            this.obstacleButton.UseVisualStyleBackColor = true;
+            this.obstacleButton.Click += new System.EventHandler(this.obstacleButton_Click);
+            // 
+            // objectNameBox
+            // 
+            this.objectNameBox.Location = new System.Drawing.Point(29, 838);
+            this.objectNameBox.Name = "objectNameBox";
+            this.objectNameBox.Size = new System.Drawing.Size(128, 22);
+            this.objectNameBox.TabIndex = 25;
+            this.objectNameBox.Text = "Obstacle Name";
+            // 
             // MapScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 930);
+            this.Controls.Add(this.objectNameBox);
+            this.Controls.Add(this.obstacleButton);
             this.Controls.Add(this.masterOverrideCheckbox);
             this.Controls.Add(this.DeleteMap);
             this.Controls.Add(this.SavedMapsBox);
@@ -160,5 +182,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.NumericUpDown AmountOfMaps;
         private System.Windows.Forms.CheckBox masterOverrideCheckbox;
+        private System.Windows.Forms.Button obstacleButton;
+        private System.Windows.Forms.TextBox objectNameBox;
     }
 }

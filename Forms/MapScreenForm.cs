@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Threading_in_C.Board.placeable;
 
 namespace Threading_in_C.Forms
 {
@@ -22,6 +23,11 @@ namespace Threading_in_C.Forms
         public bool isMasterOverrideText()
         {
             return masterOverrideCheckbox.Checked;
+        }
+
+        private void obstacleButton_Click(object sender, EventArgs e)
+        {
+            PlayerBoard.intsance.placePlaceableOnPossibleTile(new Obstacle(objectNameBox.Text));
         }
     }
 }
