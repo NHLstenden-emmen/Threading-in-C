@@ -12,9 +12,16 @@ namespace Threading_in_C.Forms
 {
     public partial class MapScreenForm : Form
     {
+        public static MapScreenForm instance;
         public MapScreenForm()
         {
             InitializeComponent();
+            MapScreenForm.instance = this;
+        }
+
+        public bool isMasterOverrideText()
+        {
+            return masterOverrideCheckbox.Checked;
         }
     }
 }

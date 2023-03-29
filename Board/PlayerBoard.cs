@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
+using Threading_in_C.Forms;
 using Threading_in_C.Players;
 
 namespace Threading_in_C
@@ -65,7 +66,7 @@ namespace Threading_in_C
                     this.Controls.Add(button);
                     button.Size = new Size(tileSize, tileSize);
                     button.Location = new Point(initialX, initialY);
-                    button.Click += this.boardClick;
+                    button.MouseDown += this.boardClick;
                     button.BackColor = Color.Gray;
                     
                     Tile tile = new Tile(j, i);
@@ -105,59 +106,101 @@ namespace Threading_in_C
 
         private void boardClick(object sender, EventArgs e)
         {
-            //catch off any sender object that is not a button
-            if (!(sender is Button))
+            if (MapScreenForm.instance == null || !MapScreenForm.instance.isMasterOverrideText())
             {
-                return;
-            }
+                //catch off any sender object that is not a button
+                if (!(sender is Button))
+                {
+                    return;
+                }
 
-            //parse to button to enable all useses and fields
-            Button button = (Button)sender;
+                //parse to button to enable all useses and fields
+                Button button = (Button)sender;
 
-            //get the tile from the button
-            Tile tile = (Tile)button.Tag;
+                //get the tile from the button
+                Tile tile = (Tile)button.Tag;
 
-            //check if the tile is empty at first selection
-            if (selectedButton == null && tile.getPlaceable() == null)
-            {
-                return;
-            }
+                //check if the tile is empty at first selection
+                if (selectedButton == null && tile.getPlaceable() == null)
+                {
+                    return;
+                }
 
-            //Check if the object is movable
-            if (selectedButton == null && !tile.getPlaceable().GetType().IsSubclassOf(typeof(Moveable)))
-            {
-                return;
-            }
+                //Check if the object is movable
+                if (selectedButton == null && !tile.getPlaceable().GetType().IsSubclassOf(typeof(Moveable)))
+                {
+                    return;
+                }
 
-            //select the pressed button if none other is selected
-            if (selectedButton == null)
-            {
-                selectedButton = button;
-                showAllPosibleMoves((Player)tile.getPlaceable(), tile);
-                button.BackColor = Color.Green;
-                return;
-            }
+                //select the pressed button if none other is selected
+                if (selectedButton == null)
+                {
+                    selectedButton = button;
+                    showAllPosibleMoves((Player)tile.getPlaceable(), tile);
+                    button.BackColor = Color.Green;
+                    return;
+                }
 
-            //unselect a button if the selected button is pressed again
-            if (selectedButton == button)
-            {
+                //unselect a button if the selected button is pressed again
+                if (selectedButton == button)
+                {
+                    selectedButton = null;
+                    DesellectAllPosibleMoves((Player)tile.getPlaceable(), tile);
+                    return;
+                }
+
+                //check if tile is empty
+                if (tile.getPlaceable() != null)
+                {
+                    return;
+                }
+
+                Tile selectedTile = (Tile)selectedButton.Tag;
+                DesellectAllPosibleMoves((Player)selectedTile.getPlaceable(), selectedTile);
+                tile.setPlaceable(selectedTile.getPlaceable());
+                selectedTile.setPlaceable(null);
+                selectedButton.BackColor = Color.Gray;
                 selectedButton = null;
-                DesellectAllPosibleMoves((Player)tile.getPlaceable(), tile);
-                return;
+                
             }
-
-            //check if tile is empty
-            if (tile.getPlaceable() != null)
+            else
             {
-                return;
+                MouseEventArgs me = (MouseEventArgs)e;
+                Button button = (Button)sender;
+
+                //get the tile from the button
+                Tile tile = (Tile)button.Tag;
+
+
+                Console.WriteLine(me.Button);
+                if (me.Button == MouseButtons.Left)
+                {
+                    if (selectedButton == null)
+                    {
+                        selectedButton = button;
+                        button.BackColor = Color.Green;
+                        return;
+                    }
+
+                    if (selectedButton == button)
+                    {
+                        selectedButton = null;
+                        button.BackColor = Color.Gray;
+                        return;
+                    }
+
+                    Tile selectedTile = (Tile)selectedButton.Tag;
+                    tile.setPlaceable(selectedTile.getPlaceable());
+                    selectedTile.setPlaceable(null);
+                    selectedButton.BackColor = Color.Gray;
+                    selectedButton = null;
+                }
+                else
+                {
+                    tile.setPlaceable(null);
+                }
             }
 
-            Tile selectedTile = (Tile)selectedButton.Tag;
-            DesellectAllPosibleMoves((Player)selectedTile.getPlaceable(), selectedTile);
-            tile.setPlaceable(selectedTile.getPlaceable());
-            selectedTile.setPlaceable(null);
-            selectedButton.BackColor = Color.Gray;
-            selectedButton = null;
             updateBoard();
         }
 
