@@ -104,6 +104,16 @@ namespace Threading_in_C.Forms
         {
             // task to perform
 
+            // hier enemy aanmaken
+
+            // Checken of de enemy al in de database zit (op naam basis?),
+            // doe dit met mutex/resource locking, dus per nieuwe enemy/thread
+            // kijken voor de volgende aan de beurt is
+
+            // Als die niet bestaat toevoegen aan database en enemies lijst 
+
+            // Als die wel bestaat --> begin opnieuw om een unieke te genereren
+
             // Signal the thread to exit
             Interlocked.Decrement(ref numThreads);
             threadExitEvent.Set();
