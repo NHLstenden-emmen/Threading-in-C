@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Threading_in_C.ApiResponseAdapters;
 using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
 using Threading_in_C.Players;
@@ -20,6 +21,7 @@ namespace Threading_in_C.Forms
         private List<Enemy> enemies = new List<Enemy>();
         private ManualResetEvent threadExitEvent = new ManualResetEvent(false);
         private int numThreads = 0;
+        private Mutex dbMutex = new Mutex();
 
         public MonstersScreenForm()
         {
@@ -90,6 +92,34 @@ namespace Threading_in_C.Forms
             CleanupThreads();
         }
 
+        private bool EnemyExistsInDatabase(string enemyName)
+        {
+            bool enemyExists = false;
+            dbMutex.WaitOne(); // acquire the mutex
+            try
+            {
+                OpenFiveApiRequest.con.Open();
+                string retrieveSQL = "SELECT * FROM Enemies WHERE Name = @EnemyName";
+                using (SqlCommand command = new SqlCommand(retrieveSQL, OpenFiveApiRequest.con))
+                {
+                    command.Parameters.AddWithValue("@EnemyName", enemyName);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            enemyExists = true;
+                        }
+                    }
+                }
+                OpenFiveApiRequest.con.Close();
+            }
+            finally
+            {
+                dbMutex.ReleaseMutex(); // release the mutex
+            }
+            return enemyExists;
+        }
+
         private void CreateThreads(int numThreadsToCreate)
         {
             for (int i = 0; i < numThreadsToCreate; i++)
@@ -105,12 +135,23 @@ namespace Threading_in_C.Forms
             // task to perform
 
             // hier enemy aanmaken
+            var enemy = ApiEnemyGenerator.Parse();
 
-            // Checken of de enemy al in de database zit (op naam basis?),
-            // doe dit met mutex/resource locking, dus per nieuwe enemy/thread
-            // kijken voor de volgende aan de beurt is
-
-            // Als die niet bestaat toevoegen aan database en enemies lijst 
+            bool enemyExist = false;
+            dbMutex.WaitOne(); // acquire the mutex
+            try
+            {
+                enemyExist = EnemyExistsInDatabase(enemy.Name);
+                if (!enemyExist)
+                {
+                    // Als die niet bestaat toevoegen aan database en enemies lijst 
+                    // ...
+                }
+            }
+            finally
+            {
+                dbMutex.ReleaseMutex(); // release the mutex
+            }
 
             // Als die wel bestaat --> begin opnieuw om een unieke te genereren
 
