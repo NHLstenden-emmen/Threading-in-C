@@ -46,6 +46,30 @@ namespace Threading_in_C.Forms
             RetrieveItemsFromDatabase();
             AddItemsToList();
         }
+        private void AddItemToDatabase(Item item)
+        {
+            OpenFiveApiRequest.con.Open();
+            
+            string insertSQL = "INSERT INTO Items (Name, Type, Rarity, Value, Description, Properties, Drawbacks, Requirements, History) VALUES (@Name, @Type, @Rarity, @Value, @Description, @Properties, @Drawbacks, @Requirements, @History)";
+
+            using (SqlCommand command = new SqlCommand(insertSQL, OpenFiveApiRequest.con))
+            {
+                command.Parameters.AddWithValue("@Name", item.Name);
+                command.Parameters.AddWithValue("@Type", item.Type);
+                command.Parameters.AddWithValue("@Rarity", item.Rarity);
+                command.Parameters.AddWithValue("@Value", item.Value);
+                command.Parameters.AddWithValue("@Description", item.Description);
+                command.Parameters.AddWithValue("@Properties", string.Join(";", item.Properties));
+                command.Parameters.AddWithValue("@Drawbacks", string.Join(";", item.Drawbacks));
+                command.Parameters.AddWithValue("@Requirements", string.Join(";", item.Requirements));
+                command.Parameters.AddWithValue("@History", item.History);
+
+                command.ExecuteNonQuery();
+            }
+
+            OpenFiveApiRequest.con.Close();
+        }
+
         private bool ItemExistsInDatabase(string ItemName)
         {
             bool itemExists = false;
