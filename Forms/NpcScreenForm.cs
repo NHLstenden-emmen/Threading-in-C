@@ -96,6 +96,60 @@ namespace Threading_in_C.Forms
         {
             CreateThreads((int)AmountOfNPCs.Value);
         }
+
+        private void CreateThreads(int numThreadsToCreate)
+        {
+            for (int i = 0; i < numThreadsToCreate; i++)
+            {
+                Interlocked.Increment(ref numThreads);
+                Thread t = new Thread(new ThreadStart(PerformTask));
+                t.Start();
+            }
+
+            // Wait for all threads to finish executing
+            while (numThreads > 0)
+            {
+                threadExitEvent.WaitOne();
+            }
+
+            // Dispose of the ManualResetEvent object
+            threadExitEvent.Set();
+            using (threadExitEvent)
+            {
+                // do niks nie
+            }
+        }
+
+
+        private void PerformTask()
+        {
+            // hier npc aanmaken
+            NPC npc;
+            bool npcExist = true;
+            while (npcExist)
+            {
+                npc = ApiNpcGenerator.Parse();
+
+                dbMutex.WaitOne(); // acquire the mutex
+                try
+                {
+                    npcExist = NpcExistsInDatabase(npc.Name);
+                    if (!npcExist)
+                    {
+                        AddNPCToDatabase(npc);
+                    }
+                }
+                finally
+                {
+                    dbMutex.ReleaseMutex(); // release the mutex
+                }
+            }
+
+            // Signal the thread to exit
+            Interlocked.Decrement(ref numThreads);
+            threadExitEvent.Set();
+        }
+
         private void AddNPCToDatabase(NPC npc)
         {
             OpenFiveApiRequest.con.Open();
