@@ -10,7 +10,7 @@ namespace Threading_in_C.CRCalculator
 {
     public class CharacterCR
     {
-        public static double CharacterCRCalculator(CreateCharacter character)
+        public static double CharacterCRCalculator(CreateCharacter character)//Extra CR calculator
         {
             double cr = (character.hitPoints + character.armorClass + character.damagePerRound + character.specialAbilities) / 4.0;
             return Math.Ceiling(cr);
