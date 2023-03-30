@@ -86,6 +86,7 @@
       <DependentUpon>ChoosePlayerBoardScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Converters\EntityConverters.cs" />
+    <Compile Include="Converters\TileConverter.cs" />
     <Compile Include="DungeonMasterUI.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -11,11 +11,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Serialization;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
+using Threading_in_C.Converters;
 using Threading_in_C.Entities;
 using Threading_in_C.Players;
+using static Threading_in_C.Converters.EntityConverters;
+using static Threading_in_C.Converters.TileConverter;
 
 namespace Threading_in_C
 {
@@ -26,7 +30,7 @@ namespace Threading_in_C
         int gridwidth = 16;
         int tileSize = 80;
         Button selectedButton = null;
-        public static PlayerBoard intsance;
+        public static PlayerBoard instance;
 
         public PlayerBoard()
         {
@@ -34,7 +38,7 @@ namespace Threading_in_C
             // maar dan moet hij nog het andere scherm pakken
 
             InitializeComponent();
-            PlayerBoard.intsance = this;
+            PlayerBoard.instance = this;
         }
 
         internal void ChangeLocation(int selectedScreen)
@@ -183,29 +187,8 @@ namespace Threading_in_C
             graphics.Dispose();
 
             setUpBoard();
-
-            //place players as test
-            List<String> players = new List<String>();
-            players.Add("Roan");
-            players.Add("Simchaja");
-            players.Add("Daan");
-            players.Add("Kevin");
-            players.Add("Yaell");
-
-            for (int i = 0; i < players.Count; i++)
-            {
-                Tile buttonTile = (Tile)tileArray[0, i].Tag;
-                buttonTile.setPlaceable(new Player(1, players[i], 100, 2, 10, 10, 10, 10, 10, 10, 10, 10, "Elf", "Dragonling"));
-            }
-
-            Tile RockTile = (Tile)tileArray[4, 5].Tag;
-            RockTile.setPlaceable(new Obstacle("Rock"));
-
-            Tile RockTile2 = (Tile)tileArray[5, 5].Tag;
-            RockTile2.setPlaceable(new Obstacle("Rock"));
-
-            Tile RockTile3 = (Tile)tileArray[6, 5].Tag;
-            RockTile3.setPlaceable(new Obstacle("Rock"));
+            // Import initial basic setup from default.xml
+            importBoard();
 
             updateBoard();
             exportBoard();
@@ -348,45 +331,49 @@ namespace Threading_in_C
         }
 
         //export the drawables on all tiles
-        public void exportBoard()
+        private void exportBoard()
         {
             using (var stringWriter = new System.IO.StringWriter())
             {
+                var serializer = new XmlSerializer(typeof(Tile));
+                stringWriter.Write("<TileConverter><TileList xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">");
                 for (int i = 0; i < gridheight; i++)
                 {
                     for (int j = 0; j < gridwidth; j++)
                     {
-                        //Tile tile = (Tile)tileArray[i, j].Tag;
-                        //if (tile.getPlaceable() != null && tile.getPlaceable().getDrawAble() != null)
-                        //{ 
-                        //    if(tile.getPlaceable().GetType() == typeof(Player) || true)
-                        //    {
-                        //        //Debug.WriteLine(tile.getPlaceable());
-                        //        //Entity entity = (Entity)tile.getPlaceable();
-                        //        using (var stringWriter = new System.IO.StringWriter())
-                        //        {
-                        //            var serializer = new XmlSerializer(tile.getPlaceable().GetType());
-                        //            serializer.Serialize(stringWriter, tile.getPlaceable());
-                        //            Debug.WriteLine(stringWriter.ToString());
-                        //        }
-                        //    }
-                        //}
                         Tile tile = (Tile)tileArray[i, j].Tag;
                         if (tile.getPlaceable() != null && tile.getPlaceable().getDrawAble() != null)
                         {
-                            //Debug.WriteLine(tile.placeable);
-                            //Entity entity = (Entity)tile.getPlaceable();
-                        
-                            var serializer = new XmlSerializer(tile.GetType());
                             serializer.Serialize(stringWriter, tile);
                             Debug.WriteLine(stringWriter.ToString());
                         }
                     }
                 }
+
                 DateTime now = DateTime.Now;
                 String path = "../../Resources/XML/DND" + now.ToString("yyyyMMdd_hhmmss") + ".xml";
-                Debug.WriteLine(path);
-                System.IO.File.WriteAllText(path, stringWriter.ToString());
+                //path = "../../Resources/XML/Default.xml";
+
+                String replace = "<?xml version=\"1.0\" encoding=\"utf-16\"?>";
+                stringWriter.GetStringBuilder().Replace(replace, "");
+                stringWriter.Write("</TileList></TileConverter>");
+                System.IO.File.WriteAllText(path, replace + stringWriter.ToString());
+            }
+        }
+
+        private void importBoard()
+        {
+            String defaultXMLString = System.IO.File.ReadAllText("../../Resources/XML/Default.xml");
+            XmlSerializer serializer = new XmlSerializer(typeof(TileList));
+            using (TextReader reader = new StringReader(defaultXMLString))
+            {
+                TileList tileList = (TileList)serializer.Deserialize(reader);
+                List<Tile> tiles = tileList.Tiles;
+                Debug.WriteLine(tiles[1]);
+                foreach (Tile tile in tiles)
+                {
+                    tileArray[tile.y, tile.x].Tag = tile;
+                }
             }
         }
     }
