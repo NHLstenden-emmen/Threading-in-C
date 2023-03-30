@@ -336,7 +336,7 @@ namespace Threading_in_C
             using (var stringWriter = new System.IO.StringWriter())
             {
                 var serializer = new XmlSerializer(typeof(Tile));
-                stringWriter.Write("<TileConverter><TileList xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">");
+                stringWriter.Write("<TileList xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">");
                 for (int i = 0; i < gridheight; i++)
                 {
                     for (int j = 0; j < gridwidth; j++)
@@ -345,7 +345,6 @@ namespace Threading_in_C
                         if (tile.getPlaceable() != null && tile.getPlaceable().getDrawAble() != null)
                         {
                             serializer.Serialize(stringWriter, tile);
-                            Debug.WriteLine(stringWriter.ToString());
                         }
                     }
                 }
@@ -356,20 +355,20 @@ namespace Threading_in_C
 
                 String replace = "<?xml version=\"1.0\" encoding=\"utf-16\"?>";
                 stringWriter.GetStringBuilder().Replace(replace, "");
-                stringWriter.Write("</TileList></TileConverter>");
+                stringWriter.Write("</TileList>");
                 System.IO.File.WriteAllText(path, replace + stringWriter.ToString());
             }
         }
 
-        private void importBoard()
+        private void importBoard(String path = "../../Resources/XML/Default.xml")
         {
-            String defaultXMLString = System.IO.File.ReadAllText("../../Resources/XML/Default.xml");
+            File.Exists(path);
+            String defaultXMLString = System.IO.File.ReadAllText(path);
             XmlSerializer serializer = new XmlSerializer(typeof(TileList));
             using (TextReader reader = new StringReader(defaultXMLString))
             {
                 TileList tileList = (TileList)serializer.Deserialize(reader);
                 List<Tile> tiles = tileList.Tiles;
-                Debug.WriteLine(tiles[1]);
                 foreach (Tile tile in tiles)
                 {
                     tileArray[tile.y, tile.x].Tag = tile;
