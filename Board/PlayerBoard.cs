@@ -166,11 +166,6 @@ namespace Threading_in_C
             updateBoard();
         }
 
-        private void PlayerBoard_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         public void initiateBasicSetup(int SelectedScreen)
         {
             // Get the selected screen
@@ -187,11 +182,9 @@ namespace Threading_in_C
             graphics.Dispose();
 
             setUpBoard();
+
             // Import initial basic setup from default.xml
             importBoard();
-
-            updateBoard();
-            exportBoard();
         }
 
         private List<Tile> getAllPosibleMoves(Moveable moveable, Tile location)
@@ -331,16 +324,18 @@ namespace Threading_in_C
         }
 
         //export the drawables on all tiles
-        private void exportBoard()
+        public void exportBoard()
         {
             using (var stringWriter = new System.IO.StringWriter())
             {
                 var serializer = new XmlSerializer(typeof(Tile));
                 stringWriter.Write("<TileList xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">");
+                // loop through playerboard
                 for (int i = 0; i < gridheight; i++)
                 {
                     for (int j = 0; j < gridwidth; j++)
                     {
+                        // if the tile isn't empty convert tile to xml and add to the xml string
                         Tile tile = (Tile)tileArray[i, j].Tag;
                         if (tile.getPlaceable() != null && tile.getPlaceable().getDrawAble() != null)
                         {
@@ -348,11 +343,12 @@ namespace Threading_in_C
                         }
                     }
                 }
-
+                // generate time for filename
                 DateTime now = DateTime.Now;
                 String path = "../../Resources/XML/DND" + now.ToString("yyyyMMdd_hhmmss") + ".xml";
                 //path = "../../Resources/XML/Default.xml";
 
+                // remove all <xml> tags
                 String replace = "<?xml version=\"1.0\" encoding=\"utf-16\"?>";
                 stringWriter.GetStringBuilder().Replace(replace, "");
                 stringWriter.Write("</TileList>");
@@ -360,20 +356,32 @@ namespace Threading_in_C
             }
         }
 
-        private void importBoard(String path = "../../Resources/XML/Default.xml")
+        public void importBoard(String path = "../../Resources/XML/Default.xml")
         {
+            // clear board
+            foreach(Button button in tileArray)
+            {
+                Tile tile = button.Tag as Tile;
+                tile.setPlaceable(null);
+            }
+            // check if file exists
             File.Exists(path);
+
+            // open file using xml reader
             String defaultXMLString = System.IO.File.ReadAllText(path);
             XmlSerializer serializer = new XmlSerializer(typeof(TileList));
             using (TextReader reader = new StringReader(defaultXMLString))
             {
                 TileList tileList = (TileList)serializer.Deserialize(reader);
                 List<Tile> tiles = tileList.Tiles;
+
+                // loop through all the tile found in the xml array and add them to the board
                 foreach (Tile tile in tiles)
                 {
                     tileArray[tile.y, tile.x].Tag = tile;
                 }
             }
+            updateBoard();
         }
     }
 }

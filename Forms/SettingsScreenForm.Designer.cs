@@ -34,6 +34,7 @@
             this.ExportGameButton = new System.Windows.Forms.Button();
             this.SaveGameButton = new System.Windows.Forms.Button();
             this.btnResetTurnCounter = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // textBox1
@@ -65,6 +66,7 @@
             this.ImportGameButton.TabIndex = 7;
             this.ImportGameButton.Text = "Import Game";
             this.ImportGameButton.UseVisualStyleBackColor = true;
+            this.ImportGameButton.Click += new System.EventHandler(this.ImportGameButton_Click);
             // 
             // ExportGameButton
             // 
@@ -75,6 +77,7 @@
             this.ExportGameButton.TabIndex = 6;
             this.ExportGameButton.Text = "Export Game";
             this.ExportGameButton.UseVisualStyleBackColor = true;
+            this.ExportGameButton.Click += new System.EventHandler(this.ExportGameButton_Click);
             // 
             // SaveGameButton
             // 
@@ -96,6 +99,10 @@
             this.btnResetTurnCounter.Text = "Reset Turn Counter";
             this.btnResetTurnCounter.UseVisualStyleBackColor = true;
             this.btnResetTurnCounter.Click += new System.EventHandler(this.btnResetTurnCounter_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // SettingsScreenForm
             // 
@@ -123,5 +130,6 @@
         private System.Windows.Forms.Button ExportGameButton;
         private System.Windows.Forms.Button SaveGameButton;
         private System.Windows.Forms.Button btnResetTurnCounter;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
