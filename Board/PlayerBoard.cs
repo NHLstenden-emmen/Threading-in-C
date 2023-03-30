@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -349,38 +350,40 @@ namespace Threading_in_C
         //export the drawables on all tiles
         public void exportBoard()
         {
-            for (int i = 0; i < gridheight; i++)
+            using (var stringWriter = new System.IO.StringWriter())
             {
-                for (int j = 0; j < gridwidth; j++)
+                for (int i = 0; i < gridheight; i++)
                 {
-                    //Tile tile = (Tile)tileArray[i, j].Tag;
-                    //if (tile.getPlaceable() != null && tile.getPlaceable().getDrawAble() != null)
-                    //{ 
-                    //    if(tile.getPlaceable().GetType() == typeof(Player) || true)
-                    //    {
-                    //        //Debug.WriteLine(tile.getPlaceable());
-                    //        //Entity entity = (Entity)tile.getPlaceable();
-                    //        using (var stringWriter = new System.IO.StringWriter())
-                    //        {
-                    //            var serializer = new XmlSerializer(tile.getPlaceable().GetType());
-                    //            serializer.Serialize(stringWriter, tile.getPlaceable());
-                    //            Debug.WriteLine(stringWriter.ToString());
-                    //        }
-                    //    }
-                    //}
-                    Tile tile = (Tile)tileArray[i, j].Tag;
-                    if (tile.getPlaceable() != null && tile.getPlaceable().getDrawAble() != null)
+                    for (int j = 0; j < gridwidth; j++)
                     {
-                        //Debug.WriteLine(tile.placeable);
-                        //Entity entity = (Entity)tile.getPlaceable();
-                        using (var stringWriter = new System.IO.StringWriter())
+                        //Tile tile = (Tile)tileArray[i, j].Tag;
+                        //if (tile.getPlaceable() != null && tile.getPlaceable().getDrawAble() != null)
+                        //{ 
+                        //    if(tile.getPlaceable().GetType() == typeof(Player) || true)
+                        //    {
+                        //        //Debug.WriteLine(tile.getPlaceable());
+                        //        //Entity entity = (Entity)tile.getPlaceable();
+                        //        using (var stringWriter = new System.IO.StringWriter())
+                        //        {
+                        //            var serializer = new XmlSerializer(tile.getPlaceable().GetType());
+                        //            serializer.Serialize(stringWriter, tile.getPlaceable());
+                        //            Debug.WriteLine(stringWriter.ToString());
+                        //        }
+                        //    }
+                        //}
+                        Tile tile = (Tile)tileArray[i, j].Tag;
+                        if (tile.getPlaceable() != null && tile.getPlaceable().getDrawAble() != null)
                         {
+                            //Debug.WriteLine(tile.placeable);
+                            //Entity entity = (Entity)tile.getPlaceable();
+                        
                             var serializer = new XmlSerializer(tile.GetType());
                             serializer.Serialize(stringWriter, tile);
                             Debug.WriteLine(stringWriter.ToString());
                         }
                     }
                 }
+                System.IO.File.WriteAllText("../../Resources/XML/test.xml", stringWriter.ToString());
             }
         }
     }
