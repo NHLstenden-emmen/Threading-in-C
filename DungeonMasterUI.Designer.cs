@@ -41,6 +41,7 @@
             this.bntMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panelContentScreen = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnRollDice = new System.Windows.Forms.Button();
             this.btnAddNewDiceRoll = new System.Windows.Forms.Button();
             this.RollTheDice = new System.Windows.Forms.GroupBox();
@@ -61,7 +62,7 @@
             this.pictureBoxD4Roll = new System.Windows.Forms.PictureBox();
             this.TitleApplication = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.btnLoot = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelContentScreen.SuspendLayout();
             this.RollTheDice.SuspendLayout();
@@ -85,6 +86,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panelMenu.Controls.Add(this.btnLoot);
             this.panelMenu.Controls.Add(this.btnSettings);
             this.panelMenu.Controls.Add(this.btnNPC);
             this.panelMenu.Controls.Add(this.btnMonsters);
@@ -242,6 +244,14 @@
             this.panelContentScreen.Name = "panelContentScreen";
             this.panelContentScreen.Size = new System.Drawing.Size(724, 853);
             this.panelContentScreen.TabIndex = 1;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(290, 250);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(140, 550);
+            this.richTextBox1.TabIndex = 10;
+            this.richTextBox1.Text = "";
             // 
             // btnRollDice
             // 
@@ -425,13 +435,19 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // richTextBox1
+            // btnLoot
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(290, 250);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(140, 550);
-            this.richTextBox1.TabIndex = 10;
-            this.richTextBox1.Text = "";
+            this.btnLoot.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnLoot.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnLoot.FlatAppearance.BorderSize = 0;
+            this.btnLoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoot.Location = new System.Drawing.Point(480, 0);
+            this.btnLoot.Name = "btnLoot";
+            this.btnLoot.Size = new System.Drawing.Size(60, 30);
+            this.btnLoot.TabIndex = 28;
+            this.btnLoot.Text = "Loot";
+            this.btnLoot.UseVisualStyleBackColor = false;
+            this.btnLoot.Click += new System.EventHandler(this.btnLoot_Click);
             // 
             // DungeonMasterUI
             // 
@@ -504,5 +520,6 @@
         private System.Windows.Forms.ComboBox comboBoxDiceRoll1;
         private System.Windows.Forms.Button btnRollDice;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button btnLoot;
     }
 }

@@ -17,25 +17,26 @@ namespace Threading_in_C.ApiResponseAdapters
 
             var (randomRace, randomSpeed, randomTraits) = GetRandomRace();
 
-            int health = new Random().Next(401);
+            Random random = new Random();
+            int health = random.Next(401);
             int movement = randomSpeed;
-            int strength = new Random().Next(31);
-            int dexterity = new Random().Next(31);
-            int constitution = new Random().Next(31);
-            int intelligence = new Random().Next(31);
-            int wisdom = new Random().Next(31);
-            int charisma = new Random().Next(31);
+            int strength = random.Next(31);
+            int dexterity = random.Next(31);
+            int constitution = random.Next(31);
+            int intelligence = random.Next(31);
+            int wisdom = random.Next(31);
+            int charisma = random.Next(31);
 
-            int ar = new Random().Next(31);
+            int ar = random.Next(31);
             int bp = 0; // TODO consult Kevin to talk about proficiency
 
             string race = randomRace;
             string characterClass = GetRandomClassAspects();
-            string backstory = getBackstory(); 
+            string backstory = getBackstory();
             List<string> traits = randomTraits;
 
             NPC randomNPC = new NPC(name, health, movement, strength, dexterity, constitution, intelligence, wisdom, charisma, ar, bp, race, characterClass, backstory, traits);
-            
+
             // Returns a NPC
             return randomNPC;
         }
@@ -150,13 +151,12 @@ namespace Threading_in_C.ApiResponseAdapters
             return char.ToUpper(firstName[0]) + firstName.Substring(1) + " " + char.ToUpper(lastName[0]) + lastName.Substring(1);
         }
 
-        public void PutNPCInDatabase(NPC npc)
+        public static void PutNPCInDatabase(NPC npc)
         {
             OpenFiveApiRequest.con.Open();
 
             string insertSql = "INSERT INTO [dbo].[NPCs] ([Name], [Health], [Movement], [Strength], [Dexterity], [Constitution], [Intelligence], [Wisdom], [Charisma], [ArmorRating], [Proficiency], [Race], [Class], [Backstory]) " +
                    "VALUES (@Name, @Health, @Movement, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @ArmorRating, @Proficiency, @Race, @Class, @Backstory)";
-
 
             using (SqlCommand command = new SqlCommand(insertSql, OpenFiveApiRequest.con))
             {

@@ -18,9 +18,9 @@ namespace Threading_in_C.Forms
     public partial class NpcScreenForm : Form
     {
         private List<NPC> npcs = new List<NPC>();
-        private ManualResetEvent threadExitEvent = new ManualResetEvent(false);
         private int numThreads = 0;
         private Mutex dbMutex = new Mutex();
+        ApiNpcGenerator apiNpcGenerator = new ApiNpcGenerator();    
 
         public NpcScreenForm()
         {
@@ -82,7 +82,7 @@ namespace Threading_in_C.Forms
             foreach (NPC npc in npcs)
             {
                 // Add the player to the ListBox control
-                SavedNpcsListBox.Items.Add(npc.Name.ToString());
+                SavedNpcsListBox.Items.Add(npc.ToString());
             }
         }
 
@@ -95,89 +95,7 @@ namespace Threading_in_C.Forms
         private void GenerateNPCButton_Click(object sender, EventArgs e)
         {
             CreateThreads((int)AmountOfNPCs.Value);
-        }
-
-        private void CreateThreads(int numThreadsToCreate)
-        {
-            for (int i = 0; i < numThreadsToCreate; i++)
-            {
-                Interlocked.Increment(ref numThreads);
-                Thread t = new Thread(new ThreadStart(PerformTask));
-                t.Start();
-            }
-
-            // Wait for all threads to finish executing
-            while (numThreads > 0)
-            {
-                threadExitEvent.WaitOne();
-            }
-
-            // Dispose of the ManualResetEvent object
-            threadExitEvent.Set();
-            using (threadExitEvent)
-            {
-                // do niks nie
-            }
-        }
-
-
-        private void PerformTask()
-        {
-            // hier npc aanmaken
-            NPC npc;
-            bool npcExist = true;
-            while (npcExist)
-            {
-                npc = ApiNpcGenerator.Parse();
-
-                dbMutex.WaitOne(); // acquire the mutex
-                try
-                {
-                    npcExist = NpcExistsInDatabase(npc.Name);
-                    if (!npcExist)
-                    {
-                        AddNPCToDatabase(npc);
-                    }
-                }
-                finally
-                {
-                    dbMutex.ReleaseMutex(); // release the mutex
-                }
-            }
-
-            // Signal the thread to exit
-            Interlocked.Decrement(ref numThreads);
-            threadExitEvent.Set();
-        }
-
-        private void AddNPCToDatabase(NPC npc)
-        {
-            OpenFiveApiRequest.con.Open();
-
-            string insertSQL = "INSERT INTO NPCs (Name, Health, Movement, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, ArmorRating, Proficiency, Race, Class, Backstory, Traits) VALUES (@Name, @Health, @Movement, @Strength, @Dexterity, @Constitution, @Intelligence, @Wisdom, @Charisma, @ArmorRating, @Proficiency, @Race, @Class, @Backstory, @Traits)";
-
-            using (SqlCommand command = new SqlCommand(insertSQL, OpenFiveApiRequest.con))
-            {
-                command.Parameters.AddWithValue("@Name", npc.Name);
-                command.Parameters.AddWithValue("@Health", npc.Health);
-                command.Parameters.AddWithValue("@Movement", npc.Movement);
-                command.Parameters.AddWithValue("@Strength", npc.Strength);
-                command.Parameters.AddWithValue("@Dexterity", npc.Dexterity);
-                command.Parameters.AddWithValue("@Constitution", npc.Constitution);
-                command.Parameters.AddWithValue("@Intelligence", npc.Intelligence);
-                command.Parameters.AddWithValue("@Wisdom", npc.Wisdom);
-                command.Parameters.AddWithValue("@Charisma", npc.Charisma);
-                command.Parameters.AddWithValue("@ArmorRating", npc.AR);
-                command.Parameters.AddWithValue("@Proficiency", npc.BP);
-                command.Parameters.AddWithValue("@Race", npc.Race);
-                command.Parameters.AddWithValue("@Class", npc.Class);
-                command.Parameters.AddWithValue("@Backstory", npc.Backstory);
-                command.Parameters.AddWithValue("@Traits", string.Join(";", npc.Traits));
-
-                command.ExecuteNonQuery();
-            }
-
-            OpenFiveApiRequest.con.Close();
+            CleanupThreads();
         }
 
         private bool NpcExistsInDatabase(string NpcName)
@@ -206,6 +124,96 @@ namespace Threading_in_C.Forms
                 dbMutex.ReleaseMutex(); // release the mutex
             }
             return npcExists;
+        }
+
+        // Method that tries to get a unique enemy up to three times
+        private void PutNewNpcInDatabase(NPC npc)
+        {
+            bool npcExist = NpcExistsInDatabase(npc.Name);
+            if (!npcExist)
+            {
+                ApiNpcGenerator.PutNPCInDatabase(npc);
+            }
+            else
+            {
+                int attempts = 0;
+                NPC newNpc;
+                do
+                {
+                    newNpc = ApiNpcGenerator.Parse();
+                    npcExist = NpcExistsInDatabase(newNpc.Name);
+                    attempts++;
+                } while (npcExist && attempts < 3);
+
+                if (!npcExist)
+                {
+                    ApiNpcGenerator.PutNPCInDatabase(newNpc);
+                }
+            }
+        }
+
+        private void CreateThreads(int numThreadsToCreate)
+        {
+            for (int i = 0; i < numThreadsToCreate; i++)
+            {
+                Interlocked.Increment(ref numThreads);
+                ManualResetEventSlim threadExitEvent = new ManualResetEventSlim(false);
+                Thread t = new Thread(() => PerformTask(threadExitEvent));
+                t.Start();
+            }
+        }
+
+        private void PerformTask(ManualResetEventSlim threadExitEvent)
+        {
+            // create enemy
+            var npc = ApiNpcGenerator.Parse();
+            dbMutex.WaitOne(); // acquire the mutex
+            try
+            {
+                // tries to get a unique enemy up to three times
+                PutNewNpcInDatabase(npc);
+            }
+            finally
+            {
+                dbMutex.ReleaseMutex(); // release the mutex
+            }
+
+            // Signal the thread to exit
+            Interlocked.Decrement(ref numThreads);
+            threadExitEvent.Set();
+        }
+
+        private void CleanupThreads()
+        {
+            // Wait for all threads to exit
+            while (numThreads > 0)
+            {
+                Thread.Sleep(10);
+            }
+
+            if (numThreads == 0)
+            {
+                RetrieveNpcsFromDatabase();
+                AddNpcsToList();
+            }
+        }
+
+        private void DeleteNPC_Click(object sender, EventArgs e)
+        {
+            string deleteSQL = "DELETE FROM NPCs";
+            using (SqlCommand command = new SqlCommand(deleteSQL, OpenFiveApiRequest.con))
+            {
+                OpenFiveApiRequest.con.Open();
+                command.ExecuteNonQuery();
+                OpenFiveApiRequest.con.Close();
+            }
+            RetrieveNpcsFromDatabase();
+            AddNpcsToList();
+        }
+
+        private void NpcScreenForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
