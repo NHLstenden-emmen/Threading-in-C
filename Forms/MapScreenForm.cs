@@ -28,13 +28,13 @@ namespace Threading_in_C.Forms
 
         private void obstacleButton_Click(object sender, EventArgs e)
         {
-            PlayerBoard.intsance.placePlaceableOnPossibleTile(new Obstacle(objectNameBox.Text));
+            PlayerBoard.instance.placePlaceableOnPossibleTile(new Obstacle(objectNameBox.Text));
         }
 
         public Placeable[,] generateRandomMap()
         {
             Random rnd = new Random();
-            Placeable[,] map = new Placeable[PlayerBoard.intsance.gridheight, PlayerBoard.intsance.gridwidth];
+            Placeable[,] map = new Placeable[PlayerBoard.instance.gridheight, PlayerBoard.instance.gridwidth];
 
             map = addrandomRoom(map);
 
@@ -48,12 +48,12 @@ namespace Threading_in_C.Forms
 
             for (int i = 0; i < rnd.Next(1, 4); i++)
             {
-                map[rnd.Next(0, PlayerBoard.intsance.gridheight), rnd.Next(0, PlayerBoard.intsance.gridwidth)] = new Obstacle("Tree");
+                map[rnd.Next(0, PlayerBoard.instance.gridheight), rnd.Next(0, PlayerBoard.instance.gridwidth)] = new Obstacle("Tree");
             }
 
             for (int i = 0; i < rnd.Next(1, 4); i++)
             {
-                map[rnd.Next(0, PlayerBoard.intsance.gridheight), rnd.Next(0, PlayerBoard.intsance.gridwidth)] = new Obstacle("Rock");
+                map[rnd.Next(0, PlayerBoard.instance.gridheight), rnd.Next(0, PlayerBoard.instance.gridwidth)] = new Obstacle("Rock");
             }
 
             return map;
@@ -62,11 +62,11 @@ namespace Threading_in_C.Forms
         public Placeable[,] addrandomRoom(Placeable[,] map)
         {
             Random rnd = new Random();
-            List<Point> room = Rooms.getRandomRoom(rnd.Next(0,PlayerBoard.intsance.gridwidth - 4), rnd.Next(0, PlayerBoard.intsance.gridheight - 4));
+            List<Point> room = Rooms.getRandomRoom(rnd.Next(0,PlayerBoard.instance.gridwidth - 4), rnd.Next(0, PlayerBoard.instance.gridheight - 4));
 
             foreach (Point p in room)
             {
-                if(p.X <  PlayerBoard.intsance.gridwidth && p.Y < PlayerBoard.intsance.gridheight)
+                if(p.X <  PlayerBoard.instance.gridwidth && p.Y < PlayerBoard.instance.gridheight)
                 {
                     map[p.Y,p.X] = new Obstacle("Wall");
                 }
@@ -95,9 +95,9 @@ namespace Threading_in_C.Forms
         private void fillDisplayMap(RichTextBox richTextBox, Placeable[,] map)
         {
             richTextBox.Text = "";
-            for (int i = 0; i < PlayerBoard.intsance.gridheight; i++)
+            for (int i = 0; i < PlayerBoard.instance.gridheight; i++)
             {
-                for (int j = 0; j < PlayerBoard.intsance.gridwidth; j++)
+                for (int j = 0; j < PlayerBoard.instance.gridwidth; j++)
                 {
                     if (map[i,j] != null)
                     {
@@ -124,11 +124,11 @@ namespace Threading_in_C.Forms
 
             Placeable[,] map = (Placeable[,])richTextBox.Tag;
 
-            for (int i = 0; i < PlayerBoard.intsance.gridheight; i++)
+            for (int i = 0; i < PlayerBoard.instance.gridheight; i++)
             {
-                for (int j = 0; j < PlayerBoard.intsance.gridwidth; j++)
+                for (int j = 0; j < PlayerBoard.instance.gridwidth; j++)
                 {
-                    Tile tile = (Tile)PlayerBoard.intsance.tileArray[i, j].Tag;
+                    Tile tile = (Tile)PlayerBoard.instance.tileArray[i, j].Tag;
 
                     if (map[i,j] != null)
                     {
@@ -141,7 +141,7 @@ namespace Threading_in_C.Forms
                 }
             }
 
-            PlayerBoard.intsance.updateBoard();
+            PlayerBoard.instance.updateBoard();
             MapExampleOne.Text = "";
             MapExampleTwo.Text = "";
             MapExampleThree.Text = "";

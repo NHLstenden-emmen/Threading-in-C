@@ -15,8 +15,8 @@ using System.Xml;
 using System.Xml.Serialization;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
+using Threading_in_C.Forms;
 using Threading_in_C.Players;
-using static Threading_in_C.Converters.EntityConverters;
 using static Threading_in_C.Converters.TileConverter;
 
 namespace Threading_in_C

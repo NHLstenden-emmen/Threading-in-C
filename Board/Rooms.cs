@@ -16,10 +16,10 @@ namespace Threading_in_C.Board
         {
             foreach (Point point in wallList)
             {
-                Tile tile2 = (Tile)PlayerBoard.intsance.tileArray[point.Y, point.X].Tag;
+                Tile tile2 = (Tile)PlayerBoard.instance.tileArray[point.Y, point.X].Tag;
                 tile2.setPlaceable(new Obstacle("Wall"));
 
-                PlayerBoard.intsance.updateBoard();
+                PlayerBoard.instance.updateBoard();
             }
         }
 
