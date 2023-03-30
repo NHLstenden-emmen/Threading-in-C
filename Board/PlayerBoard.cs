@@ -383,7 +383,10 @@ namespace Threading_in_C
                         }
                     }
                 }
-                System.IO.File.WriteAllText("../../Resources/XML/test.xml", stringWriter.ToString());
+                DateTime now = DateTime.Now;
+                String path = "../../Resources/XML/DND" + now.ToString("yyyyMMdd_hhmmss") + ".xml";
+                Debug.WriteLine(path);
+                System.IO.File.WriteAllText(path, stringWriter.ToString());
             }
         }
     }
