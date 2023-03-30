@@ -76,6 +76,8 @@ namespace Threading_in_C.Forms
                 playerIndex++;
                 PlayerListBox.Items.Insert(player.PlayerIndex, player.ToString());
                 ClearPlayerFields();
+
+                PlayerBoard.instance.placePlaceableOnPossibleTile(player);
             }
         }
 

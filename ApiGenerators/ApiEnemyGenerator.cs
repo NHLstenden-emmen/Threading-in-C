@@ -14,8 +14,9 @@ namespace Threading_in_C.ApiResponseAdapters
             Random random = new Random();
             OpenFiveApiRequest apiRequest = new OpenFiveApiRequest();
             string enemyResponse;
+
             if (ChallengeRating != null) { enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", null, ChallengeRating); }
-            else { enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", random.Next(0, 50)); }
+            else { enemyResponse = apiRequest.MakeOpenFiveApiRequest("monsters", random.Next(1, 50)); }
 
             JObject responseJson = JObject.Parse(enemyResponse);
             JArray enemiesJson = (JArray)responseJson["results"];
@@ -39,53 +40,15 @@ namespace Threading_in_C.ApiResponseAdapters
             int ar = (int)enemyJson["armor_class"];
             int bp = 0; // TODO consult Kevin to talk about proficiency
 
-            float cr = GetChallengeRating((string)enemyJson["challenge_rating"]);
+            string cr = (string)enemyJson["challenge_rating"];
 
-            int size = GetSizeValue((string)enemyJson["size"]);
+            string size = (string)enemyJson["size"];
             string type = (string)enemyJson["type"];
 
             // Return the chosen enemy
             return new Enemy(name, health, movement, strength, dexterity, constitution, intelligence, wisdom, charisma, ar, bp, cr, size, type);
         }
 
-        // Defines the size based on a int instead of a string
-        private static int GetSizeValue(string sizeString)
-        {
-            switch (sizeString.ToLower())
-            {
-                case "tiny": return 1;
-                case "small": return 2;
-                case "medium": return 3;
-                case "large": return 4;
-                case "huge": return 5;
-                case "gargantuan": return 6;
-                default: return 0;
-            }
-        }
-
-        // A method to calculate the CR, since the API gives the CR in values like 1/2, 1/4 etc.
-        public static float GetChallengeRating(string challengeRating)
-        {
-            float cr;
-
-            // Try to parse the challengeRating string as a float
-            if (float.TryParse(challengeRating, out cr))
-            {
-                return cr;
-            }
-            else
-            {
-                // If the challengeRating is "1/2", "1/4", "1/8", etc split the string 
-                string[] parts = challengeRating.Split('/');
-                int numerator = int.Parse(parts[0]);
-                int denominator = int.Parse(parts[1]);
-
-                // Calculate the float value of the fraction
-                cr = (float)numerator / (float)denominator;
-
-                return cr;
-            }
-        }
 
         public void PutEnemyInDatabase(Enemy enemy)
         {
