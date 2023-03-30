@@ -9,6 +9,11 @@ namespace Threading_in_C.Entities
 {
     internal class NPC : Character
     {
+        public override string ToString()
+        {
+            return $"{Name} (H: {Health} M: {Movement} STR: {Strength} DEX: {Dexterity} CON: {Constitution} INT: {Intelligence} WIS: {Wisdom} CHA: {Charisma} AR: {AR} BP: {BP}, Race: {Race}, Class: {Class}, Backstory: {Backstory}, Traits: {string.Join(", ", Traits)})";
+        }
+
         [XmlElement("Backstory")]
         public string Backstory { get; set; }
         [XmlIgnore]

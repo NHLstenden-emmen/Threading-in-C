@@ -48,15 +48,30 @@
             // 
             // AmountOfNPCs
             // 
-            this.AmountOfNPCs.Location = new System.Drawing.Point(413, 23);
+            this.AmountOfNPCs.Location = new System.Drawing.Point(112, 27);
             this.AmountOfNPCs.Margin = new System.Windows.Forms.Padding(2);
+            this.AmountOfNPCs.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.AmountOfNPCs.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.AmountOfNPCs.Name = "AmountOfNPCs";
             this.AmountOfNPCs.Size = new System.Drawing.Size(30, 20);
             this.AmountOfNPCs.TabIndex = 12;
+            this.AmountOfNPCs.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // GenerateNPCButton
             // 
-            this.GenerateNPCButton.Location = new System.Drawing.Point(328, 23);
+            this.GenerateNPCButton.Location = new System.Drawing.Point(27, 27);
             this.GenerateNPCButton.Margin = new System.Windows.Forms.Padding(2);
             this.GenerateNPCButton.Name = "GenerateNPCButton";
             this.GenerateNPCButton.Size = new System.Drawing.Size(86, 19);
@@ -84,6 +99,7 @@
             this.Controls.Add(this.GenerateNPCButton);
             this.Name = "NpcScreenForm";
             this.Text = "NpcScreenForm";
+            this.Load += new System.EventHandler(this.NpcScreenForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AmountOfNPCs)).EndInit();
             this.ResumeLayout(false);
 
