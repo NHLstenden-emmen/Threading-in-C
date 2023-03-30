@@ -19,7 +19,6 @@ namespace Threading_in_C.Forms
     public partial class MonstersScreenForm : Form
     {
         private List<Enemy> enemies = new List<Enemy>();
-        private ManualResetEvent threadExitEvent = new ManualResetEvent(false);
         private int numThreads = 0;
         private Mutex dbMutex = new Mutex();
         ApiEnemyGenerator apiEnemyGenerator = new ApiEnemyGenerator();
