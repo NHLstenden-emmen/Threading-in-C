@@ -449,6 +449,7 @@
             this.Controls.Add(this.button1);
             this.Name = "PlayerScreenForm";
             this.Text = "PlayerScreenForm";
+            this.Load += new System.EventHandler(this.PlayerScreenForm_Load);
             this.PlayerCreationGroupBox.ResumeLayout(false);
             this.PlayerCreationGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerProficiencyNumeric)).EndInit();

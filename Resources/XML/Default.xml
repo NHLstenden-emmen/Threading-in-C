@@ -13,7 +13,7 @@
     <AR>10</AR>
     <BP>10</BP>
     <Class>Dragonling</Class>
-    <PlayerIndex>1</PlayerIndex>
+    <PlayerIndex>0</PlayerIndex>
   </Placeable>
   <x>0</x>
   <y>0</y>
@@ -51,7 +51,7 @@
     <AR>10</AR>
     <BP>10</BP>
     <Class>Dragonling</Class>
-    <PlayerIndex>1</PlayerIndex>
+    <PlayerIndex>2</PlayerIndex>
   </Placeable>
   <x>2</x>
   <y>0</y>
@@ -70,7 +70,7 @@
     <AR>10</AR>
     <BP>10</BP>
     <Class>Dragonling</Class>
-    <PlayerIndex>1</PlayerIndex>
+    <PlayerIndex>3</PlayerIndex>
   </Placeable>
   <x>3</x>
   <y>0</y>
@@ -89,7 +89,7 @@
     <AR>10</AR>
     <BP>10</BP>
     <Class>Dragonling</Class>
-    <PlayerIndex>1</PlayerIndex>
+    <PlayerIndex>4</PlayerIndex>
   </Placeable>
   <x>4</x>
   <y>0</y>

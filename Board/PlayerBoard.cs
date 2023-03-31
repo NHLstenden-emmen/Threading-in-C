@@ -440,5 +440,20 @@ namespace Threading_in_C
             }
             updateBoard();
         }
+
+        public List<Player> getPlayers()
+        {
+            List<Player> playerList = new List<Player>();
+
+            foreach (Button button in tileArray)
+            {
+                Tile tile = button.Tag as Tile;
+                if(tile.getPlaceable() != null && tile.getPlaceable().GetType() == typeof(Player)){
+                    playerList.Add((Player)tile.getPlaceable());
+                };
+            }
+
+            return playerList;
+        }
     }
 }

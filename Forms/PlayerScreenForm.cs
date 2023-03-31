@@ -127,6 +127,16 @@ namespace Threading_in_C.Forms
             PlayerArmorRatingNumeric.Value = 0;
             PlayerProficiencyNumeric.Value = 0;
         }
+
+        private void PlayerScreenForm_Load(object sender, EventArgs e)
+        {
+            players =  PlayerBoard.instance.getPlayers();
+            foreach (Player player in players)
+            {
+                PlayerListBox.Items.Insert(player.PlayerIndex, player.ToString());
+                this.playerIndex = player.PlayerIndex + 1;
+            }
+        }
     }
 }
 
