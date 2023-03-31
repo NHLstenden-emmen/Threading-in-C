@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
+using Threading_in_C.Players;
 
 namespace Threading_in_C.Forms
 {
@@ -132,11 +134,14 @@ namespace Threading_in_C.Forms
 
                     if (map[i,j] != null)
                     {
-                        tile.setPlaceable(map[i,j]);
+                        checkForPlayer(PlayerBoard.instance.tileArray, map, i, j);
                     }
                     else
                     {
-                        tile.setPlaceable(null);
+                        if (tile.getPlaceable() == null || tile.getPlaceable().GetType() != typeof(Player))
+                        {
+                            tile.setPlaceable(null);
+                        }
                     }
                 }
             }
@@ -149,6 +154,18 @@ namespace Threading_in_C.Forms
             MapExampleOne.Tag = null;
             MapExampleTwo.Tag = null;
             MapExampleThree.Tag = null;
+        }
+
+        private void checkForPlayer(Button[,] oldMap, Placeable[,] newMap, int i, int j)
+        {
+            Tile tile = (Tile)oldMap[i, j].Tag;
+            if (tile.getPlaceable() != null && tile.getPlaceable().GetType() == typeof(Player))
+            {
+                checkForPlayer(oldMap, newMap, i, j + 1);
+                Tile nextTile = (Tile)oldMap[i, j + 1].Tag;
+                nextTile.setPlaceable(tile.getPlaceable());
+            }
+            tile.setPlaceable(newMap[i, j]);
         }
     }
 }
