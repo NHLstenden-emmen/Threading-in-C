@@ -31,7 +31,6 @@ namespace Threading_in_C.Forms
             openFileDialog1.CheckPathExists = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                textBox1.Text = openFileDialog1.FileName;
                 PlayerBoard.instance.importBoard(openFileDialog1.FileName);
             }
         }
