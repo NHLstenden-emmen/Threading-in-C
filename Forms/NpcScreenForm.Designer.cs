@@ -87,6 +87,7 @@
             this.SavedNpcsListBox.Name = "SavedNpcsListBox";
             this.SavedNpcsListBox.Size = new System.Drawing.Size(694, 654);
             this.SavedNpcsListBox.TabIndex = 27;
+            this.SavedNpcsListBox.DoubleClick += new System.EventHandler(this.SavedNpcsListBox_DoubleClick);
             // 
             // NpcScreenForm
             // 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Forms;
 using Threading_in_C.ApiResponseAdapters;
 using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
+using Threading_in_C.Players;
 
 namespace Threading_in_C.Forms
 {
@@ -214,6 +216,12 @@ namespace Threading_in_C.Forms
         private void NpcScreenForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SavedNpcsListBox_DoubleClick(object sender, EventArgs e)
+        {
+            int index = ((ListBox)sender).SelectedIndex;
+            PlayerBoard.instance.placePlaceableOnPossibleTile(npcs[index]);
         }
     }
 }
