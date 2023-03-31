@@ -331,6 +331,13 @@ namespace Threading_in_C
                         comboBoxCopy.Items.Add(item);
                     }
                 }
+                if (control is PictureBox)
+                {
+                    PictureBox pictureBox = control as PictureBox;
+                    PictureBox pictureBoxCopy = controlCopy as PictureBox;
+                    pictureBoxCopy.Image = pictureBox.Image;
+                    pictureBoxCopy.SizeMode= pictureBox.SizeMode;
+                }
 
                 groupBoxCopy.Controls.Add(controlCopy);
             }

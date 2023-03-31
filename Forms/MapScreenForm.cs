@@ -6,8 +6,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
 using Threading_in_C.Players;
@@ -16,11 +18,24 @@ namespace Threading_in_C.Forms
 {
     public partial class MapScreenForm : Form
     {
+        private RichTextBox[] richTextBoxes;
         public static MapScreenForm instance;
         public MapScreenForm()
         {
             InitializeComponent();
             MapScreenForm.instance = this;
+            richTextBoxes = new RichTextBox[] 
+            {
+                MapExampleOne,
+                MapExampleTwo,
+                MapExampleThree,
+                MapExampleFour,
+                MapExampleFive,
+                MapExampleSix,
+                MapExampleSeven,
+                MapExampleEight,
+                MapExampleNine
+            };
         }
 
         public bool isMasterOverrideText()
@@ -35,17 +50,15 @@ namespace Threading_in_C.Forms
 
         public Placeable[,] generateRandomMap()
         {
-            Random rnd = new Random();
+            ThreadLocal<Random> rand = new ThreadLocal<Random>(() => new Random());
+            Random rnd = rand.Value;
             Placeable[,] map = new Placeable[PlayerBoard.instance.gridheight, PlayerBoard.instance.gridwidth];
 
+            // Sleep for 20 ms so the random numbers are unique
             map = addrandomRoom(map);
-
-            fillDisplayMap(MapExampleOne, map);
-
+            Thread.Sleep(20);
             map = addrandomRoom(map);
-
-            fillDisplayMap(MapExampleOne, map);
-
+            Thread.Sleep(20);
             map = addrandomRoom(map);
 
             for (int i = 0; i < rnd.Next(1, 4); i++)
@@ -61,8 +74,9 @@ namespace Threading_in_C.Forms
             return map;
         }
 
-        public Placeable[,] addrandomRoom(Placeable[,] map)
+        public static Placeable[,] addrandomRoom(Placeable[,] map)
         {
+            
             Random rnd = new Random();
             List<Point> room = Rooms.getRandomRoom(rnd.Next(0,PlayerBoard.instance.gridwidth - 4), rnd.Next(0, PlayerBoard.instance.gridheight - 4));
 
@@ -80,43 +94,42 @@ namespace Threading_in_C.Forms
         //create maps button click
         private void button2_Click(object sender, EventArgs e)
         {
-            if (AmountOfMaps.Value >= 1)
+            Placeable[,] result = new Placeable[PlayerBoard.instance.gridheight, PlayerBoard.instance.gridwidth];
+            List<Placeable[,]> mapList = new List<Placeable[,]>();
+            int numMaps = (int)AmountOfMaps.Value;
+            Object randLock = new Object();
+            ManualResetEvent[] events = new ManualResetEvent[numMaps];
+
+            for (int i = 0; i < numMaps; i++)
             {
-                fillDisplayMap(MapExampleOne, generateRandomMap());
+                int mapId = i;
+                events[mapId] = new ManualResetEvent(false);
+                ThreadPool.QueueUserWorkItem(new WaitCallback(
+                    (_) =>
+                    {
+                        lock (randLock)
+                        {
+                            mapList.Add(generateRandomMap());
+                        }
+                        events[mapId].Set();
+                    }
+                ));
             }
-            if (AmountOfMaps.Value >= 2)
+            Thread waitThread = new Thread(() =>
             {
-                fillDisplayMap(MapExampleTwo, generateRandomMap());
-            }
-            if (AmountOfMaps.Value >= 3)
+                WaitHandle.WaitAll(events);
+            });
+
+            waitThread.SetApartmentState(ApartmentState.MTA);
+            waitThread.Start();
+            waitThread.Join();
+
+            for (int mapId = 0; mapId < AmountOfMaps.Value; mapId++)
             {
-                fillDisplayMap(MapExampleThree, generateRandomMap());
-            }
-            if (AmountOfMaps.Value >= 4)
-            {
-                fillDisplayMap(MapExampleFour, generateRandomMap());
-            }
-            if (AmountOfMaps.Value >= 5)
-            {
-                fillDisplayMap(MapExampleFive, generateRandomMap());
-            }
-            if (AmountOfMaps.Value >= 6)
-            {
-                fillDisplayMap(MapExampleSix, generateRandomMap());
-            }
-            if (AmountOfMaps.Value >= 7)
-            {
-                fillDisplayMap(MapExampleSeven, generateRandomMap());
-            }
-            if (AmountOfMaps.Value >= 8)
-            {
-                fillDisplayMap(MapExampleEight, generateRandomMap());
-            }
-            if (AmountOfMaps.Value == 9)
-            {
-                fillDisplayMap(MapExampleNine, generateRandomMap());
+                fillDisplayMap(richTextBoxes[mapId], mapList[mapId]);
             }
         }
+
 
         private void fillDisplayMap(RichTextBox richTextBox, Placeable[,] map)
         {
@@ -171,19 +184,11 @@ namespace Threading_in_C.Forms
             }
 
             PlayerBoard.instance.updateBoard();
-            MapExampleOne.Text = "";
-            MapExampleTwo.Text = "";
-            MapExampleThree.Text = "";
-
-            MapExampleOne.Tag = null;
-            MapExampleTwo.Tag = null;
-            MapExampleThree.Tag = null;
-            MapExampleFour.Tag = null;
-            MapExampleFive.Tag = null;
-            MapExampleSix.Tag = null;
-            MapExampleSeven.Tag = null;
-            MapExampleEight.Tag = null;
-            MapExampleNine.Tag = null;
+            foreach (RichTextBox textBox in richTextBoxes)
+            {
+                textBox.Tag = null;
+                textBox.Text = "";
+            }
         }
 
         private void checkForPlayer(Button[,] oldMap, Placeable[,] newMap, int i, int j)

@@ -328,9 +328,11 @@
             // 
             // pictureBoxD100Roll
             // 
+            this.pictureBoxD100Roll.Image = global::Threading_in_C.Properties.Resources.D100;
             this.pictureBoxD100Roll.Location = new System.Drawing.Point(218, 43);
             this.pictureBoxD100Roll.Name = "pictureBoxD100Roll";
             this.pictureBoxD100Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD100Roll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxD100Roll.TabIndex = 12;
             this.pictureBoxD100Roll.TabStop = false;
             // 
@@ -344,9 +346,11 @@
             // 
             // pictureBoxD20Roll
             // 
+            this.pictureBoxD20Roll.Image = global::Threading_in_C.Properties.Resources.D20;
             this.pictureBoxD20Roll.Location = new System.Drawing.Point(179, 43);
             this.pictureBoxD20Roll.Name = "pictureBoxD20Roll";
             this.pictureBoxD20Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD20Roll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxD20Roll.TabIndex = 10;
             this.pictureBoxD20Roll.TabStop = false;
             // 
@@ -360,9 +364,11 @@
             // 
             // pictureBoxD12Roll
             // 
+            this.pictureBoxD12Roll.Image = global::Threading_in_C.Properties.Resources.D12;
             this.pictureBoxD12Roll.Location = new System.Drawing.Point(144, 43);
             this.pictureBoxD12Roll.Name = "pictureBoxD12Roll";
             this.pictureBoxD12Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD12Roll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxD12Roll.TabIndex = 8;
             this.pictureBoxD12Roll.TabStop = false;
             // 
@@ -376,9 +382,11 @@
             // 
             // pictureBoxD10Roll
             // 
+            this.pictureBoxD10Roll.Image = global::Threading_in_C.Properties.Resources.D10;
             this.pictureBoxD10Roll.Location = new System.Drawing.Point(109, 43);
             this.pictureBoxD10Roll.Name = "pictureBoxD10Roll";
             this.pictureBoxD10Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD10Roll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxD10Roll.TabIndex = 6;
             this.pictureBoxD10Roll.TabStop = false;
             // 
@@ -392,9 +400,11 @@
             // 
             // pictureBoxD8Roll
             // 
+            this.pictureBoxD8Roll.Image = global::Threading_in_C.Properties.Resources.D8;
             this.pictureBoxD8Roll.Location = new System.Drawing.Point(74, 43);
             this.pictureBoxD8Roll.Name = "pictureBoxD8Roll";
             this.pictureBoxD8Roll.Size = new System.Drawing.Size(29, 30);
+            this.pictureBoxD8Roll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxD8Roll.TabIndex = 4;
             this.pictureBoxD8Roll.TabStop = false;
             // 
@@ -408,9 +418,11 @@
             // 
             // pictureBoxD6Roll
             // 
+            this.pictureBoxD6Roll.Image = global::Threading_in_C.Properties.Resources.D6;
             this.pictureBoxD6Roll.Location = new System.Drawing.Point(40, 43);
             this.pictureBoxD6Roll.Name = "pictureBoxD6Roll";
             this.pictureBoxD6Roll.Size = new System.Drawing.Size(28, 30);
+            this.pictureBoxD6Roll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxD6Roll.TabIndex = 2;
             this.pictureBoxD6Roll.TabStop = false;
             // 
@@ -424,9 +436,11 @@
             // 
             // pictureBoxD4Roll
             // 
+            this.pictureBoxD4Roll.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxD4Roll.Image")));
             this.pictureBoxD4Roll.Location = new System.Drawing.Point(6, 43);
             this.pictureBoxD4Roll.Name = "pictureBoxD4Roll";
             this.pictureBoxD4Roll.Size = new System.Drawing.Size(28, 30);
+            this.pictureBoxD4Roll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxD4Roll.TabIndex = 0;
             this.pictureBoxD4Roll.TabStop = false;
             // 
