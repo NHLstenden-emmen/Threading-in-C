@@ -88,9 +88,33 @@ namespace Threading_in_C.Forms
             {
                 fillDisplayMap(MapExampleTwo, generateRandomMap());
             }
-            if (AmountOfMaps.Value == 3)
+            if (AmountOfMaps.Value >= 3)
             {
                 fillDisplayMap(MapExampleThree, generateRandomMap());
+            }
+            if (AmountOfMaps.Value >= 4)
+            {
+                fillDisplayMap(MapExampleFour, generateRandomMap());
+            }
+            if (AmountOfMaps.Value >= 5)
+            {
+                fillDisplayMap(MapExampleFive, generateRandomMap());
+            }
+            if (AmountOfMaps.Value >= 6)
+            {
+                fillDisplayMap(MapExampleSix, generateRandomMap());
+            }
+            if (AmountOfMaps.Value >= 7)
+            {
+                fillDisplayMap(MapExampleSeven, generateRandomMap());
+            }
+            if (AmountOfMaps.Value >= 8)
+            {
+                fillDisplayMap(MapExampleEight, generateRandomMap());
+            }
+            if (AmountOfMaps.Value == 9)
+            {
+                fillDisplayMap(MapExampleNine, generateRandomMap());
             }
         }
 
@@ -154,6 +178,12 @@ namespace Threading_in_C.Forms
             MapExampleOne.Tag = null;
             MapExampleTwo.Tag = null;
             MapExampleThree.Tag = null;
+            MapExampleFour.Tag = null;
+            MapExampleFive.Tag = null;
+            MapExampleSix.Tag = null;
+            MapExampleSeven.Tag = null;
+            MapExampleEight.Tag = null;
+            MapExampleNine.Tag = null;
         }
 
         private void checkForPlayer(Button[,] oldMap, Placeable[,] newMap, int i, int j)
