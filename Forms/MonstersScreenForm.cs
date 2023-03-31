@@ -203,5 +203,10 @@ namespace Threading_in_C.Forms
             RetrieveEnemiesFromDatabase();
             AddEnemiesToList();
         }
+        private void SavedEnemiesListBox_DoubleClick(object sender, EventArgs e)
+        {
+            int index = ((ListBox)sender).SelectedIndex;
+            PlayerBoard.instance.placePlaceableOnPossibleTile(enemies[index]);
+        }
     }
 }

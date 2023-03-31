@@ -98,6 +98,7 @@
             this.SavedEnemiesListBox.Name = "SavedEnemiesListBox";
             this.SavedEnemiesListBox.Size = new System.Drawing.Size(641, 511);
             this.SavedEnemiesListBox.TabIndex = 26;
+            this.SavedEnemiesListBox.DoubleClick += new System.EventHandler(this.SavedEnemiesListBox_DoubleClick);
             // 
             // MonstersScreenForm
             // 
