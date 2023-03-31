@@ -12,6 +12,7 @@ using Threading_in_C.ApiGenerators;
 using Threading_in_C.ApiResponseAdapters;
 using Threading_in_C.Entities;
 using Threading_in_C.OpenFiveApi;
+using Threading_in_C.Players;
 
 namespace Threading_in_C
 {
