@@ -62,6 +62,8 @@
             this.PlayerRaceTextbox = new System.Windows.Forms.TextBox();
             this.PlayerRaceLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.levelLabel = new System.Windows.Forms.Label();
+            this.PlayerLevelNumeric = new System.Windows.Forms.NumericUpDown();
             this.PlayerCreationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerProficiencyNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerArmorRatingNumeric)).BeginInit();
@@ -75,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerMovementNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerHealthNumeric)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerLevelNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // ChangePlayerAttributes
@@ -101,6 +104,8 @@
             // 
             this.PlayerCreationGroupBox.BackgroundImage = global::Threading_in_C.Properties.Resources.magicitemcards_template_front_poker;
             this.PlayerCreationGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PlayerCreationGroupBox.Controls.Add(this.PlayerLevelNumeric);
+            this.PlayerCreationGroupBox.Controls.Add(this.levelLabel);
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerProficiencyNumeric);
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerArmorRatingNumeric);
             this.PlayerCreationGroupBox.Controls.Add(this.PlayerArmorRatingLabel);
@@ -175,7 +180,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Beige;
             this.pictureBox1.Image = global::Threading_in_C.Properties.Resources.DnD_Symbol;
-            this.pictureBox1.Location = new System.Drawing.Point(52, 94);
+            this.pictureBox1.Location = new System.Drawing.Point(52, 102);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(185, 111);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -446,6 +451,43 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.RemovePlayer_Click);
             // 
+            // levelLabel
+            // 
+            this.levelLabel.AutoSize = true;
+            this.levelLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.levelLabel.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.levelLabel.Location = new System.Drawing.Point(98, 68);
+            this.levelLabel.Name = "levelLabel";
+            this.levelLabel.Size = new System.Drawing.Size(44, 20);
+            this.levelLabel.TabIndex = 30;
+            this.levelLabel.Text = "Level";
+            // 
+            // PlayerLevelNumeric
+            // 
+            this.PlayerLevelNumeric.BackColor = System.Drawing.SystemColors.Control;
+            this.PlayerLevelNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerLevelNumeric.Location = new System.Drawing.Point(154, 70);
+            this.PlayerLevelNumeric.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.PlayerLevelNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.PlayerLevelNumeric.Name = "PlayerLevelNumeric";
+            this.PlayerLevelNumeric.Size = new System.Drawing.Size(40, 18);
+            this.PlayerLevelNumeric.TabIndex = 32;
+            this.PlayerLevelNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PlayerLevelNumeric.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.PlayerLevelNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // PlayerScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,6 +519,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PlayerHealthNumeric)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerLevelNumeric)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -517,5 +560,7 @@
         private System.Windows.Forms.Label PlayerArmorRatingLabel;
         private System.Windows.Forms.Label PlayerProficiencyLabel;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label levelLabel;
+        private System.Windows.Forms.NumericUpDown PlayerLevelNumeric;
     }
 }

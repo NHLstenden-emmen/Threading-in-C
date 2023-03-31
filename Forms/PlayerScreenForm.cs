@@ -32,6 +32,7 @@ namespace Threading_in_C.Forms
 
                 existingPlayer.Health = (int)PlayerHealthNumeric.Value;
                 existingPlayer.Movement = (int)PlayerMovementNumeric.Value;
+                existingPlayer.PlayerLevel = (int)PlayerLevelNumeric.Value;
                 existingPlayer.Strength = (int)PlayerStrengthNumeric.Value;
                 existingPlayer.Dexterity = (int)PlayerDexterityNumeric.Value;
                 existingPlayer.Constitution = (int)PlayerConstitutionNumeric.Value;
@@ -57,6 +58,7 @@ namespace Threading_in_C.Forms
                 var player = new Player(playerIndex, PlayerNameTextbox.Text, 
                     (int)PlayerHealthNumeric.Value, 
                     (int)PlayerMovementNumeric.Value, 
+                    (int)PlayerLevelNumeric.Value,
                     (int)PlayerStrengthNumeric.Value, 
                     (int)PlayerDexterityNumeric.Value, 
                     (int)PlayerConstitutionNumeric.Value, 
@@ -101,6 +103,7 @@ namespace Threading_in_C.Forms
 
                 PlayerHealthNumeric.Value = player.Health;
                 PlayerMovementNumeric.Value = player.Movement;
+                PlayerLevelNumeric.Value = player.PlayerLevel;
                 PlayerStrengthNumeric.Value = player.Strength;
                 PlayerDexterityNumeric.Value = player.Dexterity;
                 PlayerConstitutionNumeric.Value = player.Constitution;
@@ -124,6 +127,7 @@ namespace Threading_in_C.Forms
             PlayerClassTextbox.Text = "";
             PlayerHealthNumeric.Value = 0;
             PlayerMovementNumeric.Value = 0;
+            PlayerLevelNumeric.Value = 1;
             PlayerStrengthNumeric.Value = 0;
             PlayerDexterityNumeric.Value = 0;
             PlayerConstitutionNumeric.Value = 0;
