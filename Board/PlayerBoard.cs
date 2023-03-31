@@ -15,8 +15,10 @@ using System.Xml;
 using System.Xml.Serialization;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
+using Threading_in_C.Entities;
 using Threading_in_C.Forms;
 using Threading_in_C.Players;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using static Threading_in_C.Converters.TileConverter;
 
 namespace Threading_in_C
@@ -454,6 +456,20 @@ namespace Threading_in_C
             }
 
             return playerList;
+        }
+
+        public void removeEntity(Entity entity)
+        {
+            foreach (Button button in tileArray)
+            {
+                Tile tile = button.Tag as Tile;
+                if (tile.getPlaceable() != null && tile.getPlaceable().GetType() == entity.GetType() && tile.getPlaceable() == entity)
+                {
+                    tile.setPlaceable(null);
+                    updateBoard();
+                    return;
+                };
+            }
         }
     }
 }

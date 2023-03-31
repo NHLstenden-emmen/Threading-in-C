@@ -61,6 +61,7 @@
             this.PlayerClassTextbox = new System.Windows.Forms.TextBox();
             this.PlayerRaceTextbox = new System.Windows.Forms.TextBox();
             this.PlayerRaceLabel = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.PlayerCreationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerProficiencyNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerArmorRatingNumeric)).BeginInit();
@@ -435,12 +436,23 @@
             this.PlayerRaceLabel.TabIndex = 0;
             this.PlayerRaceLabel.Text = "Race";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(546, 678);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 23);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Remove Player";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.RemovePlayer_Click);
+            // 
             // PlayerScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(669, 789);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ChangePlayerAttributes);
             this.Controls.Add(this.AddPlayerButton);
@@ -504,5 +516,6 @@
         private System.Windows.Forms.NumericUpDown PlayerArmorRatingNumeric;
         private System.Windows.Forms.Label PlayerArmorRatingLabel;
         private System.Windows.Forms.Label PlayerProficiencyLabel;
+        private System.Windows.Forms.Button button2;
     }
 }
