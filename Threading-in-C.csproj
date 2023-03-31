@@ -228,6 +228,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DungeonDB.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Dice\D100.png" />
+    <None Include="Resources\Dice\D20.png" />
+    <None Include="Resources\Dice\D12.png" />
+    <None Include="Resources\Dice\D10.png" />
+    <None Include="Resources\Dice\D8.png" />
+    <None Include="Resources\Dice\D4.png" />
+    <None Include="Resources\Dice\D6.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
