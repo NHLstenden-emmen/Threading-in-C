@@ -7,6 +7,7 @@ namespace Threading_in_C
 {
     class MyApplicationContext : ApplicationContext
     {
+        public static int screenOfPlayerboard;
         private void onFormClosed(object sender, EventArgs e)
         {
             if (Application.OpenForms.Count == 0)

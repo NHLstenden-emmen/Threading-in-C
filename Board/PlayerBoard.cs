@@ -15,6 +15,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Threading_in_C.Board;
 using Threading_in_C.Board.placeable;
+using Threading_in_C.Entities;
 using Threading_in_C.Forms;
 using Threading_in_C.Players;
 using static Threading_in_C.Converters.TileConverter;
@@ -163,7 +164,7 @@ namespace Threading_in_C
                 if (selectedButton == null)
                 {
                     selectedButton = button;
-                    showAllPosibleMoves((Player)tile.getPlaceable(), tile);
+                    showAllPosibleMoves((Entity)tile.getPlaceable(), tile);
                     button.BackColor = Color.Green;
                     return;
                 }
@@ -172,7 +173,7 @@ namespace Threading_in_C
                 if (selectedButton == button)
                 {
                     selectedButton = null;
-                    DesellectAllPosibleMoves((Player)tile.getPlaceable(), tile);
+                    DesellectAllPosibleMoves((Entity)tile.getPlaceable(), tile);
                     return;
                 }
 
@@ -183,7 +184,7 @@ namespace Threading_in_C
                 }
 
                 Tile selectedTile = (Tile)selectedButton.Tag;
-                DesellectAllPosibleMoves((Player)selectedTile.getPlaceable(), selectedTile);
+                DesellectAllPosibleMoves((Entity)selectedTile.getPlaceable(), selectedTile);
                 tile.setPlaceable(selectedTile.getPlaceable());
                 selectedTile.setPlaceable(null);
                 selectedButton.BackColor = Color.Gray;
@@ -454,6 +455,20 @@ namespace Threading_in_C
             }
 
             return playerList;
+        }
+
+        public void removeEntity(Entity entity)
+        {
+            foreach (Button button in tileArray)
+            {
+                Tile tile = button.Tag as Tile;
+                if (tile.getPlaceable() != null && tile.getPlaceable().GetType() == entity.GetType() && tile.getPlaceable() == entity)
+                {
+                    tile.setPlaceable(null);
+                    updateBoard();
+                    return;
+                };
+            }
         }
     }
 }
