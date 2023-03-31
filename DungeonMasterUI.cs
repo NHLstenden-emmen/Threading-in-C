@@ -36,22 +36,26 @@ namespace Threading_in_C
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            UpdateComboBoxValue();
+        }
 
+        private void UpdateComboBoxValue()
+        {
+            comboBoxDiceRoll1.Items.Clear();
             // Fill the combobox with the enemies
             SqlConnection connection = OpenFiveApiRequest.con;
             connection.Open();
-            SqlCommand allEnemies = new SqlCommand("SELECT Name FROM Enemies", connection);
-            SqlDataReader reader = allEnemies.ExecuteReader();
+            SqlCommand allEnemiesAndNPCs = new SqlCommand("SELECT Name FROM Enemies UNION SELECT Name FROM NPCs", connection);
+            SqlDataReader reader = allEnemiesAndNPCs.ExecuteReader();
             while (reader.Read())
             {
                 // Add each player name to the ComboBox
                 string playerName = reader.GetString(0);
                 comboBoxDiceRoll1.Items.Add(playerName);
             }
-
             // Close the connection and dispose of the command and reader objects
             reader.Close();
-            allEnemies.Dispose();
+            allEnemiesAndNPCs.Dispose();
             connection.Close();
         }
 
@@ -183,8 +187,8 @@ namespace Threading_in_C
 
         private void btnHome_Click(object sender, EventArgs e)
         {
+            UpdateComboBoxValue();
             activeForm.Close();
-
         }
 
         private void btnRollDice_Click(object sender, EventArgs e)
