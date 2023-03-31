@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DungeonMasterUI));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnLoot = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnNPC = new System.Windows.Forms.Button();
             this.btnMonsters = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
             this.pictureBoxD4Roll = new System.Windows.Forms.PictureBox();
             this.TitleApplication = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnLoot = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelContentScreen.SuspendLayout();
             this.RollTheDice.SuspendLayout();
@@ -103,6 +103,20 @@
             this.panelMenu.Size = new System.Drawing.Size(724, 30);
             this.panelMenu.TabIndex = 0;
             this.panelMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
+            // 
+            // btnLoot
+            // 
+            this.btnLoot.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnLoot.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnLoot.FlatAppearance.BorderSize = 0;
+            this.btnLoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoot.Location = new System.Drawing.Point(480, 0);
+            this.btnLoot.Name = "btnLoot";
+            this.btnLoot.Size = new System.Drawing.Size(60, 30);
+            this.btnLoot.TabIndex = 28;
+            this.btnLoot.Text = "Loot";
+            this.btnLoot.UseVisualStyleBackColor = false;
+            this.btnLoot.Click += new System.EventHandler(this.btnLoot_Click);
             // 
             // btnSettings
             // 
@@ -419,11 +433,11 @@
             // TitleApplication
             // 
             this.TitleApplication.AutoSize = true;
-            this.TitleApplication.Location = new System.Drawing.Point(227, 202);
+            this.TitleApplication.Location = new System.Drawing.Point(177, 202);
             this.TitleApplication.Name = "TitleApplication";
-            this.TitleApplication.Size = new System.Drawing.Size(205, 13);
+            this.TitleApplication.Size = new System.Drawing.Size(296, 13);
             this.TitleApplication.TabIndex = 3;
-            this.TitleApplication.Text = "Hier komt de info en title van de applicatie";
+            this.TitleApplication.Text = "Hier kan de DM dobbelstenen rollen van zijn Monsters/NPC\'s";
             // 
             // pictureBox1
             // 
@@ -434,20 +448,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnLoot
-            // 
-            this.btnLoot.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnLoot.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnLoot.FlatAppearance.BorderSize = 0;
-            this.btnLoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoot.Location = new System.Drawing.Point(480, 0);
-            this.btnLoot.Name = "btnLoot";
-            this.btnLoot.Size = new System.Drawing.Size(60, 30);
-            this.btnLoot.TabIndex = 28;
-            this.btnLoot.Text = "Loot";
-            this.btnLoot.UseVisualStyleBackColor = false;
-            this.btnLoot.Click += new System.EventHandler(this.btnLoot_Click);
             // 
             // DungeonMasterUI
             // 
