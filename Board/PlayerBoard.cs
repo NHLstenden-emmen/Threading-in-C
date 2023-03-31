@@ -165,7 +165,7 @@ namespace Threading_in_C
                 if (selectedButton == null)
                 {
                     selectedButton = button;
-                    showAllPosibleMoves((Player)tile.getPlaceable(), tile);
+                    showAllPosibleMoves((Entity)tile.getPlaceable(), tile);
                     button.BackColor = Color.Green;
                     return;
                 }
@@ -174,7 +174,7 @@ namespace Threading_in_C
                 if (selectedButton == button)
                 {
                     selectedButton = null;
-                    DesellectAllPosibleMoves((Player)tile.getPlaceable(), tile);
+                    DesellectAllPosibleMoves((Entity)tile.getPlaceable(), tile);
                     return;
                 }
 
@@ -185,7 +185,7 @@ namespace Threading_in_C
                 }
 
                 Tile selectedTile = (Tile)selectedButton.Tag;
-                DesellectAllPosibleMoves((Player)selectedTile.getPlaceable(), selectedTile);
+                DesellectAllPosibleMoves((Entity)selectedTile.getPlaceable(), selectedTile);
                 tile.setPlaceable(selectedTile.getPlaceable());
                 selectedTile.setPlaceable(null);
                 selectedButton.BackColor = Color.Gray;
