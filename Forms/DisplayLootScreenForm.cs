@@ -12,9 +12,15 @@ namespace Threading_in_C.Forms
 {
     public partial class DisplayLootScreenForm : Form
     {
-        public DisplayLootScreenForm()
+        public DisplayLootScreenForm(String lootInfo)
         {
             InitializeComponent();
+            textBoxLootInfo.Text = lootInfo;
+        }
+
+        private void DisplayLootScreenForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

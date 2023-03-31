@@ -25,7 +25,7 @@ namespace Threading_in_C.Forms
         private Mutex dbMutex = new Mutex();
         ApiItemGenerator apiItemGenerator = new ApiItemGenerator();
 
-        public LootScreenForm()
+        public LootScreenForm( )
         {
             InitializeComponent();
             RetrieveItemsFromDatabase();
@@ -225,7 +225,13 @@ namespace Threading_in_C.Forms
         private void SavedItemsListBox_DoubleClick(object sender, EventArgs e)
         {
             int index = ((ListBox)sender).SelectedIndex;
-            MessageBox.Show(items[index].ToString());
+            DisplayLootScreenForm displayLootScreenForm = new DisplayLootScreenForm(items[index].ToFancyString());
+            displayLootScreenForm.Show();
+            Point point = Screen.AllScreens[MyApplicationContext.screenOfPlayerboard].WorkingArea.Location;
+            point.X += 456;
+            point.Y += 256;
+            displayLootScreenForm.Location = point;
+
         }
     }
 }

@@ -18,7 +18,6 @@ using Threading_in_C.Board.placeable;
 using Threading_in_C.Entities;
 using Threading_in_C.Forms;
 using Threading_in_C.Players;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using static Threading_in_C.Converters.TileConverter;
 
 namespace Threading_in_C

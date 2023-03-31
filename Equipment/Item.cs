@@ -12,6 +12,18 @@ namespace Threading_in_C.Equipment
         {
             return $"{Name} (Type: {Type}, Rarity: {Rarity}, Value: {Value}, Description: {Description}, Properties: {string.Join(",", Properties)}, Drawbacks: {string.Join(",", Drawbacks)}, Requirements: {string.Join(",", Requirements)}, History: {History})";
         }
+        public string ToFancyString()
+        {
+            return $"You just found a {Name} " + Environment.NewLine +
+            $"Type: {Type}, " + Environment.NewLine +
+                $"Rarity: {Rarity}, " + Environment.NewLine +
+                $"Value: {Value}, " + Environment.NewLine +
+                $"Description: {Description}, " + Environment.NewLine +
+                $"Properties: {string.Join(",", Properties)}, " + Environment.NewLine +
+                $"Drawbacks: {string.Join(",", Drawbacks)}, " + Environment.NewLine +
+                $"Requirements: {string.Join(",", Requirements)}, " + Environment.NewLine +
+                $"History: {History}";
+        }
 
         public string Name { get; set; }
         public string Type { get; set; }

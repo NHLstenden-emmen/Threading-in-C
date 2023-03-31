@@ -43,6 +43,7 @@ namespace Threading_in_C
             SelectedScreen = (int)((Button)sender).Tag;
             boardPlayer.Show();
             boardPlayer.ChangeLocation(SelectedScreen);
+            MyApplicationContext.screenOfPlayerboard = SelectedScreen;
             this.BringToFront();
         }
 
@@ -63,7 +64,6 @@ namespace Threading_in_C
                 boardDM.ChangeLocation(SelectedScreen);
                 this.Close();
             }
-
             boardPlayer.initiateBasicSetup(SelectedScreen);
         }
     }
