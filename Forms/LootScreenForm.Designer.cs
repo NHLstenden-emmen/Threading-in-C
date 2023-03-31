@@ -42,6 +42,7 @@
             this.SavedItemsListBox.Name = "SavedItemsListBox";
             this.SavedItemsListBox.Size = new System.Drawing.Size(694, 654);
             this.SavedItemsListBox.TabIndex = 31;
+            this.SavedItemsListBox.DoubleClick += new System.EventHandler(this.SavedItemsListBox_DoubleClick);
             // 
             // DeleteItem
             // 

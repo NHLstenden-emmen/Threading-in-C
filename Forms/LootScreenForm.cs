@@ -221,5 +221,11 @@ namespace Threading_in_C.Forms
             RetrieveItemsFromDatabase();
             AddItemsToList();
         }
+
+        private void SavedItemsListBox_DoubleClick(object sender, EventArgs e)
+        {
+            int index = ((ListBox)sender).SelectedIndex;
+            MessageBox.Show(items[index].ToString());
+        }
     }
 }
