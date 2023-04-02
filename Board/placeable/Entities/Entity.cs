@@ -3,6 +3,7 @@ using Threading_in_C.Board.placeable;
 
 namespace Threading_in_C.Entities
 {
+    [XmlInclude(typeof(Enemy))]
     public class Entity : Moveable
     {
         [XmlElement("Name")]
