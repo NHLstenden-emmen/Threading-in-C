@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Threading_in_C.Entities
 {
-    internal class Enemy : Entity
+    public class Enemy : Entity
     {
         public override string ToString()
         {
@@ -33,6 +33,10 @@ namespace Threading_in_C.Entities
         }
         [XmlElement("Type")]
         public string Type { get; set; }
+        public Enemy()
+        {
+        }
+
         public Enemy(string name, int health, int movement, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int ar, int bp, string cr, string size, string type)
         {
             Name = name;
